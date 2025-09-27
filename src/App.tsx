@@ -5,8 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { navItems } from "./nav-items";
-import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
+import BottomNavigation from "./components/BottomNavigation";
 import ScrollToTop from "./components/ScrollToTop";
 import { CurrencyProvider } from "./contexts/CurrencyContext";
 import { AuthProvider } from "./contexts/AuthContext";
@@ -25,8 +24,7 @@ const App = () => (
           <Toaster />
           <BrowserRouter>
             <ScrollToTop />
-            <div className="min-h-screen flex flex-col">
-              <Navigation />
+            <div className="min-h-screen flex flex-col pb-16">
               <main className="flex-1">
                 <Suspense fallback={<div>Loading...</div>}>
                   <Routes>
@@ -42,7 +40,7 @@ const App = () => (
                   </Routes>
                 </Suspense>
               </main>
-              <Footer />
+              <BottomNavigation />
             </div>
           </BrowserRouter>
         </TooltipProvider>
