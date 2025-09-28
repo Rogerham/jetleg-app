@@ -33,6 +33,8 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
     vat_number: ''
   });
 
+  const [email, setEmail] = useState('');
+
   const [passwordData, setPasswordData] = useState({
     currentPassword: '',
     newPassword: '',
@@ -42,6 +44,8 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
   useEffect(() => {
     const fetchProfile = async () => {
       if (!user) return;
+
+      setEmail(user.email || '');
 
       try {
         const { data, error } = await supabase
@@ -76,6 +80,23 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
 
     setLoading(true);
     try {
+      // Update email if changed
+      if (email !== user.email) {
+        const { error: emailError } = await supabase.auth.updateUser({
+          email: email
+        });
+        
+        if (emailError) {
+          console.error('Error updating email:', emailError);
+          toast.error('Fout bij het wijzigen van e-mail. Controleer je nieuwe e-mail voor verificatie.');
+          setLoading(false);
+          return;
+        } else {
+          toast.success('Verificatie e-mail verzonden naar je nieuwe e-mailadres');
+        }
+      }
+
+      // Update profile data
       const { error } = await supabase
         .from('profiles')
         .upsert({
@@ -168,11 +189,17 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
 
             <div>
               <label className="block text-sm font-medium text-foreground mb-2">E-mail</label>
-              <div className="flex items-center gap-2 px-3 py-2 border border-border rounded-lg bg-muted">
-                <Mail className="h-4 w-4 text-muted-foreground" />
-                <span className="text-foreground">{user?.email}</span>
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full pl-10 pr-3 py-2 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-accent/20 focus:border-accent"
+                  placeholder="user@email.com"
+                />
               </div>
-              <p className="text-xs text-muted-foreground mt-1">E-mail kan niet worden gewijzigd</p>
+              <p className="text-xs text-muted-foreground mt-1">Bij wijziging wordt een verificatie e-mail verzonden</p>
             </div>
 
             <div>

@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Bell, Globe, DollarSign, Moon, Sun, Smartphone } from 'lucide-react';
+import { Bell, Globe, DollarSign, Moon, Sun, Smartphone, Save } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
 import { useCurrency } from '@/contexts/CurrencyContext';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'sonner';
 
 interface AppSettingsProps {
   onBack: () => void;
@@ -19,6 +21,21 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
     priceAlerts: true
   });
   const [darkMode, setDarkMode] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSaveSettings = async () => {
+    setLoading(true);
+    try {
+      // Save settings to localStorage or backend
+      localStorage.setItem('notifications', JSON.stringify(notifications));
+      toast.success('Instellingen opgeslagen');
+    } catch (error) {
+      console.error('Error saving settings:', error);
+      toast.error('Fout bij het opslaan van instellingen');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     // Check if dark mode is enabled
@@ -129,7 +146,7 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
           
           <Select value={i18n.language} onValueChange={handleLanguageChange}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder="Selecteer een taal" />
+              <SelectValue />
             </SelectTrigger>
             <SelectContent>
               {languages.map((lang) => (
@@ -153,7 +170,7 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
           
           <Select value={currency} onValueChange={handleCurrencyChange}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder="Selecteer een valuta" />
+              <SelectValue />
             </SelectTrigger>
             <SelectContent>
               {currencies.map((curr) => (
@@ -188,6 +205,19 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
               onCheckedChange={toggleDarkMode}
             />
           </div>
+        </div>
+
+        {/* Save Button */}
+        <div className="flex justify-center pt-4">
+          <Button
+            onClick={handleSaveSettings}
+            disabled={loading}
+            size="lg"
+            className="w-full md:w-auto min-w-[200px] flex items-center gap-2"
+          >
+            <Save className="h-4 w-4" />
+            {loading ? 'Opslaan...' : 'Instellingen opslaan'}
+          </Button>
         </div>
       </div>
     </div>
