@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Calendar, MapPin, Users, Plane, Clock, Download, Eye, AlertCircle } from 'lucide-react';
+import { Calendar, MapPin, Users, Plane, Clock, Download, Eye, AlertCircle, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface Booking {
@@ -23,7 +23,7 @@ interface Booking {
   bookingDate: string;
 }
 
-const MyBookings = ({ hideNavigation = false }: { hideNavigation?: boolean }) => {
+const MyBookings = ({ hideNavigation = false, onBackToProfile }: { hideNavigation?: boolean; onBackToProfile?: () => void }) => {
   const [activeTab, setActiveTab] = useState<'upcoming' | 'past' | 'all'>('upcoming');
   
   const mockBookings: Booking[] = [
@@ -124,6 +124,15 @@ const MyBookings = ({ hideNavigation = false }: { hideNavigation?: boolean }) =>
     return (
       <div className="container mx-auto px-6 py-8">
         <div className="max-w-6xl mx-auto">
+          {onBackToProfile && (
+            <button
+              onClick={onBackToProfile}
+              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Terug naar profiel
+            </button>
+          )}
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-foreground mb-2">Mijn Boekingen</h1>
             <p className="text-muted-foreground">Bekijk en beheer al je vluchten</p>

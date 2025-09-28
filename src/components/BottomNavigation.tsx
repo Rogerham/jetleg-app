@@ -1,4 +1,4 @@
-import { Home, Search, Heart, User, Plane } from 'lucide-react';
+import { Home, Search, DollarSign, User, Plane } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -16,7 +16,7 @@ const BottomNavigation = () => {
     },
     {
       path: '/top-deals',
-      icon: Heart,
+      icon: DollarSign,
       label: 'Deals',
     },
     {
@@ -27,8 +27,8 @@ const BottomNavigation = () => {
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-card border-t border-border z-50 safe-area-inset-bottom">
-      <div className="flex justify-around items-center h-16 px-2">
+    <nav className="fixed bottom-0 left-0 right-0 bg-card border-t border-border z-50 pb-safe">
+      <div className="flex justify-around items-center h-16 px-2 pb-2">
         {navItems.map((item) => {
           const Icon = item.icon;
           const active = isActive(item.path);

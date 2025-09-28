@@ -68,7 +68,7 @@ const ProfileTiles = () => {
   const renderContent = () => {
     switch (activeView) {
       case 'bookings':
-        return <MyBookings hideNavigation />;
+        return <MyBookings hideNavigation onBackToProfile={() => setActiveView('main')} />;
       case 'edit-profile':
         return <EditProfile onBack={() => setActiveView('main')} />;
       case 'favorites':
