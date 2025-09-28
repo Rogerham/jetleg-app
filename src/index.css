@@ -113,6 +113,11 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Dark mode: no gradients, solid colors */
+    --gradient-hero: hsl(var(--background));
+    --gradient-card: hsl(var(--card));
+    --gradient-button: hsl(var(--accent));
   }
 }
 
@@ -133,6 +138,12 @@
     box-shadow: var(--shadow-button);
   }
 
+  .dark .btn-jetleg-primary {
+    @apply bg-accent text-accent-foreground;
+    background: hsl(var(--accent));
+    box-shadow: none;
+  }
+
   .btn-jetleg-secondary {
     @apply bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:bg-primary/90 hover:scale-105 active:scale-95;
   }
@@ -151,6 +162,12 @@
     @apply bg-card rounded-2xl overflow-hidden transition-all duration-300;
     box-shadow: var(--shadow-card);
     background: var(--gradient-card);
+  }
+
+  .dark .card-jetleg {
+    @apply bg-card;
+    background: hsl(var(--card));
+    box-shadow: 0 4px 6px -1px hsl(0 0% 0% / 0.3);
   }
   
   /* Enhanced hover effects with better mobile support */
@@ -174,6 +191,12 @@
     background-size: cover;
     background-position: center;
     background-blend-mode: overlay;
+  }
+
+  .dark .hero-jetleg {
+    background: hsl(var(--background)), url('/placeholder-hero.jpg');
+    background-size: cover;
+    background-position: center;
   }
 
   /* Search Form */

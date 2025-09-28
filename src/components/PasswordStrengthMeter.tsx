@@ -31,12 +31,14 @@ const calculateStrength = (criteria: PasswordCriteria): number => {
 
 const getStrengthLevel = (strength: number): { level: string; color: string } => {
   if (strength < 40) return { level: 'Zwak', color: 'bg-destructive' };
-  if (strength < 80) return { level: 'Gemiddeld', color: 'bg-yellow-500' };
-  return { level: 'Sterk', color: 'bg-green-500' };
+  if (strength < 80) return { level: 'Gemiddeld', color: 'bg-amber-500' };
+  return { level: 'Sterk', color: 'bg-emerald-500' };
 };
 
 export const PasswordStrengthMeter: React.FC<PasswordStrengthMeterProps> = ({ password }) => {
   if (!password) return null;
+  
+  console.log('PasswordStrengthMeter rendering with password:', password ? 'has value' : 'empty');
 
   const criteria = checkPasswordCriteria(password);
   const strength = calculateStrength(criteria);
@@ -70,7 +72,7 @@ export const PasswordStrengthMeter: React.FC<PasswordStrengthMeterProps> = ({ pa
         {criteriaList.map((criterion) => (
           <div key={criterion.key} className="flex items-center gap-2 text-sm">
             {criterion.met ? (
-              <CheckCircle2 className="h-4 w-4 text-green-500" />
+              <CheckCircle2 className="h-4 w-4 text-emerald-500" />
             ) : (
               <XCircle className="h-4 w-4 text-muted-foreground" />
             )}
