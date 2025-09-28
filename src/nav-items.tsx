@@ -9,7 +9,6 @@ import Profile from "./pages/Profile";
 import ForgotPassword from "./pages/ForgotPassword";
 import BookingFlow from "./pages/BookingFlow";
 import BookingConfirmation from "./pages/BookingConfirmation";
-import OptimizedSearchResults from "./pages/OptimizedSearchResults";
 import FavoriteFlights from "./pages/FavoriteFlights";
 import NotFound from "./pages/NotFound";
 
@@ -67,12 +66,6 @@ export const navItems = [
     to: "/booking-confirmation/:id",
     icon: Plane,
     page: <BookingConfirmation />,
-  },
-  {
-    title: "Optimized Search Results",
-    to: "/search-optimized",
-    icon: Plane,
-    page: <OptimizedSearchResults />,
   },
   {
     title: "Not Found",

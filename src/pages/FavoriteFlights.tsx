@@ -6,8 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { format } from 'date-fns';
 import { nl } from 'date-fns/locale';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import PageHeader from '@/components/PageHeader';
 
 const FavoriteFlights = () => {
   const { savedSearches, isLoading, deleteSearch } = useSavedSearches();
@@ -33,19 +32,20 @@ const FavoriteFlights = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-background flex flex-col">
-        <Navigation />
-        <main className="flex-1">
-          <div className="container mx-auto px-6 py-8">
-            <div className="flex justify-center items-center h-64">
-              <div className="text-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto mb-4"></div>
-                <p className="text-muted-foreground">Favorieten laden...</p>
-              </div>
+      <div className="min-h-screen bg-background">
+        <PageHeader
+          title="Favoriete vluchten"
+          subtitle="Beheer je opgeslagen zoekopdrachten en notificaties"
+        />
+        
+        <div className="container mx-auto px-6 py-8">
+          <div className="flex justify-center items-center h-64">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto mb-4"></div>
+              <p className="text-muted-foreground">Favorieten laden...</p>
             </div>
           </div>
-        </main>
-        <Footer />
+        </div>
       </div>
     );
   }
@@ -53,17 +53,13 @@ const FavoriteFlights = () => {
   return (
     <>
       <div className="min-h-screen bg-background">
-        <Navigation />
-        <main className="flex-1">
-          <div className="container mx-auto px-6 py-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="mb-8">
-                <h1 className="text-3xl font-bold text-foreground mb-2 flex items-center gap-2">
-                  <Heart className="h-8 w-8 text-red-500" />
-                  Favoriete vluchten
-                </h1>
-                <p className="text-muted-foreground">Beheer je opgeslagen zoekopdrachten en notificaties</p>
-              </div>
+        <PageHeader
+          title="Favoriete vluchten"
+          subtitle="Beheer je opgeslagen zoekopdrachten en notificaties"
+        />
+        
+        <div className="container mx-auto px-6 py-8">
+          <div className="max-w-4xl mx-auto">
 
               {savedSearches.length === 0 ? (
                 <div className="text-center py-12">
@@ -110,10 +106,8 @@ const FavoriteFlights = () => {
                   </DialogFooter>
                 </DialogContent>
               </Dialog>
-            </div>
           </div>
-        </main>
-        <Footer />
+        </div>
       </div>
     </>
   );
