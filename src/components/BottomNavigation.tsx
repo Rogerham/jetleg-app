@@ -1,4 +1,4 @@
-import { Home, Search, DollarSign, User, Plane } from 'lucide-react';
+import { Home, Search, DollarSign, User, Plane, Heart } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -18,6 +18,11 @@ const BottomNavigation = () => {
       path: '/top-deals',
       icon: DollarSign,
       label: 'Deals',
+    },
+    {
+      path: '/favorites',
+      icon: Heart,
+      label: 'Favorieten',
     },
     {
       path: '/profile',

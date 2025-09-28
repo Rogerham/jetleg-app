@@ -1,16 +1,15 @@
 import { useState } from 'react';
-import { Heart, Bell, BellOff, Trash2, ArrowRight, AlertTriangle } from 'lucide-react';
+import { Heart, Bell, BellOff, Trash2, ArrowRight, AlertTriangle, Search } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useSavedSearches, useAlertPreferences } from '@/hooks/useSavedSearches';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { format } from 'date-fns';
 import { nl } from 'date-fns/locale';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 
-interface FavoriteFlightsProps {
-  onBack: () => void;
-}
-
-const FavoriteFlights = ({ onBack }: FavoriteFlightsProps) => {
+const FavoriteFlights = () => {
   const { savedSearches, isLoading, deleteSearch } = useSavedSearches();
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [searchToDelete, setSearchToDelete] = useState<string | null>(null);
@@ -34,75 +33,89 @@ const FavoriteFlights = ({ onBack }: FavoriteFlightsProps) => {
 
   if (isLoading) {
     return (
-      <div className="container mx-auto px-6 py-8">
-        <div className="flex justify-center items-center h-64">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto mb-4"></div>
-            <p className="text-muted-foreground">Favorieten laden...</p>
+      <div className="min-h-screen bg-background flex flex-col">
+        <Navigation />
+        <main className="flex-1">
+          <div className="container mx-auto px-6 py-8">
+            <div className="flex justify-center items-center h-64">
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto mb-4"></div>
+                <p className="text-muted-foreground">Favorieten laden...</p>
+              </div>
+            </div>
           </div>
-        </div>
+        </main>
+        <Footer />
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto px-6 py-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2 flex items-center gap-2">
-            <Heart className="h-8 w-8 text-red-500" />
-            Favoriete vluchten
-          </h1>
-          <p className="text-muted-foreground">Beheer je opgeslagen zoekopdrachten en notificaties</p>
-        </div>
+    <>
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <main className="flex-1">
+          <div className="container mx-auto px-6 py-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="mb-8">
+                <h1 className="text-3xl font-bold text-foreground mb-2 flex items-center gap-2">
+                  <Heart className="h-8 w-8 text-red-500" />
+                  Favoriete vluchten
+                </h1>
+                <p className="text-muted-foreground">Beheer je opgeslagen zoekopdrachten en notificaties</p>
+              </div>
 
-        {savedSearches.length === 0 ? (
-          <div className="text-center py-12">
-            <Heart className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-foreground mb-2">Geen favorieten gevonden</h3>
-            <p className="text-muted-foreground mb-6">
-              Je hebt nog geen vluchten opgeslagen. Ga naar de zoekpagina en klik op het hartje om vluchten op te slaan.
-            </p>
-            <button onClick={onBack} className="btn-jetleg-primary">
-              Ga naar zoeken
-            </button>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {savedSearches.map((search) => (
-              <SavedSearchCard
-                key={search.id}
-                search={search}
-                onDelete={() => handleDeleteClick(search.id)}
-              />
-            ))}
-          </div>
-        )}
+              {savedSearches.length === 0 ? (
+                <div className="text-center py-12">
+                  <Heart className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-foreground mb-2">Geen favorieten gevonden</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Je hebt nog geen vluchten opgeslagen. Ga naar de zoekpagina en klik op het hartje om vluchten op te slaan.
+                  </p>
+                  <Link to="/" className="inline-flex items-center gap-2 bg-accent text-accent-foreground hover:bg-accent/90 px-6 py-3 rounded-xl font-medium transition-colors">
+                    <Search className="h-4 w-4" />
+                    Ga naar zoeken
+                  </Link>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {savedSearches.map((search) => (
+                    <SavedSearchCard
+                      key={search.id}
+                      search={search}
+                      onDelete={() => handleDeleteClick(search.id)}
+                    />
+                  ))}
+                </div>
+              )}
 
-        {/* Delete Confirmation Dialog */}
-        <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle className="flex items-center gap-2">
-                <AlertTriangle className="h-5 w-5 text-red-500" />
-                Favoriet verwijderen
-              </DialogTitle>
-              <DialogDescription>
-                Weet je zeker dat je deze opgeslagen zoekopdracht wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.
-              </DialogDescription>
-            </DialogHeader>
-            <DialogFooter>
-              <Button variant="outline" onClick={() => setDeleteDialogOpen(false)}>
-                Annuleren
-              </Button>
-              <Button variant="destructive" onClick={handleConfirmDelete}>
-                Verwijderen
-              </Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+              <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2">
+                      <AlertTriangle className="h-5 w-5 text-red-500" />
+                      Favoriet verwijderen
+                    </DialogTitle>
+                    <DialogDescription>
+                      Weet je zeker dat je deze opgeslagen zoekopdracht wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <DialogFooter>
+                    <Button variant="outline" onClick={() => setDeleteDialogOpen(false)}>
+                      Annuleren
+                    </Button>
+                    <Button variant="destructive" onClick={handleConfirmDelete}>
+                      Verwijderen
+                    </Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
+            </div>
+          </div>
+        </main>
+        <Footer />
       </div>
-    </div>
+    </>
   );
 };
 
@@ -126,11 +139,11 @@ const SavedSearchCard = ({ search, onDelete }: SavedSearchCardProps) => {
         saved_search_id: search.id,
         email_notifications: newValue,
         phone_notifications: false,
-        email_address: search.user_id // This should be the user's email
+        email_address: search.user_id
       });
     } catch (error) {
       console.error('Failed to update alert preferences:', error);
-      setNotificationsEnabled(!newValue); // Revert on error
+      setNotificationsEnabled(!newValue);
     }
   };
 
@@ -143,7 +156,7 @@ const SavedSearchCard = ({ search, onDelete }: SavedSearchCardProps) => {
   };
 
   return (
-    <div className="card-jetleg p-6">
+    <div className="bg-card border border-border rounded-xl p-6 hover:shadow-md transition-all duration-200">
       <div className="flex items-center justify-between">
         <div className="flex-1">
           <div className="flex items-center gap-4 mb-2">

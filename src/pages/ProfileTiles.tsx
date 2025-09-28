@@ -3,12 +3,11 @@ import { Plane, User, Heart, Settings, CreditCard, HelpCircle, ArrowLeft } from 
 import { useAuth } from '@/contexts/AuthContext';
 import MyBookings from './MyBookings';
 import EditProfile from './EditProfile';
-import FavoriteFlights from './FavoriteFlights';
 import AppSettings from './AppSettings';
 import PaymentDetails from './PaymentDetails';
 import HelpSupport from './HelpSupport';
 
-type TileView = 'main' | 'bookings' | 'edit-profile' | 'favorites' | 'settings' | 'payment' | 'help';
+type TileView = 'main' | 'bookings' | 'edit-profile' | 'settings' | 'payment' | 'help';
 
 const ProfileTiles = () => {
   const { user } = useAuth();
@@ -30,14 +29,6 @@ const ProfileTiles = () => {
       icon: User,
       color: 'text-green-600',
       bgColor: 'bg-green-50'
-    },
-    {
-      id: 'favorites',
-      title: 'Favoriete vluchten',
-      subtitle: 'Beheer je opgeslagen zoekopdrachten',
-      icon: Heart,
-      color: 'text-red-600',
-      bgColor: 'bg-red-50'
     },
     {
       id: 'settings',
@@ -71,8 +62,6 @@ const ProfileTiles = () => {
         return <MyBookings hideNavigation onBackToProfile={() => setActiveView('main')} />;
       case 'edit-profile':
         return <EditProfile onBack={() => setActiveView('main')} />;
-      case 'favorites':
-        return <FavoriteFlights onBack={() => setActiveView('main')} />;
       case 'settings':
         return <AppSettings onBack={() => setActiveView('main')} />;
       case 'payment':

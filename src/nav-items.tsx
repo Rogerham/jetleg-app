@@ -10,6 +10,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import BookingFlow from "./pages/BookingFlow";
 import BookingConfirmation from "./pages/BookingConfirmation";
 import OptimizedSearchResults from "./pages/OptimizedSearchResults";
+import FavoriteFlights from "./pages/FavoriteFlights";
 import NotFound from "./pages/NotFound";
 
 export const navItems = [
@@ -36,6 +37,12 @@ export const navItems = [
     to: "/register",
     icon: User,
     page: <Register />,
+  },
+  {
+    title: "Favorites",
+    to: "/favorites", 
+    icon: Info,
+    page: <FavoriteFlights />,
   },
   {
     title: "Profile",

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { Filter, SlidersHorizontal, MapPin, Clock, Users, Plane, Star, ArrowLeft, Calendar, X, Heart, Bell } from 'lucide-react';
+import { Filter, SlidersHorizontal, MapPin, Clock, Users, Plane, Star, ArrowLeft, Calendar, X } from 'lucide-react';
 
 // Component Imports
 import SearchWithSuggestions from '@/components/SearchWithSuggestions';
 import ActiveFilters from '@/components/ActiveFilters';
+import SaveSearchButton from '@/components/SaveSearchButton';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -303,24 +304,17 @@ const SearchResults = () => {
                   {filteredFlights.length} beschikbare vluchten
                 </span>
                 <div className="flex items-center gap-1">
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button variant="ghost" size="icon" aria-label="Zoekopdracht opslaan">
-                        <Heart className="h-5 w-5 text-muted-foreground hover:text-accent transition-colors" />
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent><p>Zoekopdracht opslaan</p></TooltipContent>
-                  </Tooltip>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button variant="ghost" size="icon" aria-label="Ontvang meldingen">
-                        <Bell className="h-5 w-5 text-muted-foreground hover:text-accent transition-colors" />
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent><p>Ontvang meldingen voor deze zoekopdracht</p></TooltipContent>
-                  </Tooltip>
+                  <SaveSearchButton 
+                    searchCriteria={{
+                      from: searchData.from,
+                      to: searchData.to,
+                      date: searchData.date,
+                      passengers: searchData.passengers
+                    }}
+                  />
                 </div>
               </div>
+            </div>
 
               <div className="flex items-center justify-between w-full lg:w-auto gap-4">
                 <div className="block lg:hidden">
@@ -404,7 +398,6 @@ const SearchResults = () => {
             </div>
           </div>
         </div>
-        
       </div>
     </TooltipProvider>
   );

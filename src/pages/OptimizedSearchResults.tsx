@@ -11,6 +11,7 @@ import FlightCardSkeleton from '@/components/FlightCardSkeleton';
 import AdvancedSearchFilters from '@/components/AdvancedSearchFilters';
 import SearchResultsSorting from '@/components/SearchResultsSorting';
 import CustomDurationSlider from '@/components/CustomDurationSlider';
+import SaveSearchButton from '@/components/SaveSearchButton';
 import { useOptimizedFlightSearch } from '@/hooks/useOptimizedFlightSearch';
 import { SearchFilters, SortOptions } from '@/types/search';
 import { Button } from '@/components/ui/button';
@@ -207,16 +208,14 @@ const OptimizedSearchResults = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="block lg:hidden">
-              <Button 
-                variant="outline" 
-                onClick={() => setIsFilterOpen(!isFilterOpen)}
-                className="flex items-center gap-2"
-              >
-                <SlidersHorizontal className="h-4 w-4" />
-                {t('search.filters')}
-              </Button>
-            </div>
+              <SaveSearchButton 
+                searchCriteria={{
+                  from: filters.from || '',
+                  to: filters.to || '', 
+                  date: filters.date || '',
+                  passengers: filters.passengers || '1'
+                }}
+              />
           </div>
         </div>
 
