@@ -68,7 +68,7 @@ const SearchWithSuggestions = ({
         passengers: initialValues.passengers || '1'
       });
     }
-  }, [initialValues]);
+  }, [initialValues?.from, initialValues?.to, initialValues?.date, initialValues?.passengers]);
 
   const handleInputChange = (field: string, value: string) => {
     setSearchData(prev => ({

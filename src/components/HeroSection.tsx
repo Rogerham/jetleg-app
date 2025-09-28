@@ -3,18 +3,19 @@ import SearchWithSuggestions from './SearchWithSuggestions';
 import heroImage from '@/assets/hero-bg.jpg';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
+import { useMemo } from 'react';
 
 const HeroSection = () => {
   const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   
-  // Read URL parameters to maintain search state
-  const initialValues = {
+  // Read URL parameters to maintain search state - use useMemo to prevent object recreation
+  const initialValues = useMemo(() => ({
     from: searchParams.get('from') || '',
     to: searchParams.get('to') || '',
     date: searchParams.get('date') || '',
     passengers: searchParams.get('passengers') || '1'
-  };
+  }), [searchParams]);
 
   return (
     <section className="hero-jetleg text-white min-h-[50vh] flex items-center" style={{
