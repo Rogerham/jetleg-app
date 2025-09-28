@@ -159,7 +159,6 @@ const SearchWithSuggestions = ({
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // === DE AANPASSING ZIT HIER ===
     if (!searchData.from) {
         toast.error("Vul een vertreklocatie in.");
         return;
@@ -179,7 +178,7 @@ const SearchWithSuggestions = ({
       date: searchData.date,
       passengers: searchData.passengers
     });
-    navigate(`/search-results?${searchParams.toString()}`);
+    navigate(`/?${searchParams.toString()}`);
   };
 
   return (

@@ -11,11 +11,6 @@ const BottomNavigation = () => {
   const navItems = [
     {
       path: '/',
-      icon: Home,
-      label: t('nav.home'),
-    },
-    {
-      path: '/search-results',
       icon: Search,
       label: t('nav.search'),
     },

@@ -26,7 +26,8 @@ const flightController = new FlightController();
 
 export const useEnhancedFlightSearch = (
   filters: SearchFilters,
-  sortOptions: SortOptions = { field: 'departure_time', direction: 'asc' }
+  sortOptions: SortOptions = { field: 'departure_time', direction: 'asc' },
+  enabled: boolean = true
 ) => {
   return useQuery({
     queryKey: ['enhanced-flight-search', filters, sortOptions],
@@ -63,7 +64,7 @@ export const useEnhancedFlightSearch = (
       // Return flights in the expected format for backward compatibility
       return result.data?.flights || [];
     },
-    enabled: true,
+    enabled,
     staleTime: 30000, // Cache for 30 seconds
   });
 };
