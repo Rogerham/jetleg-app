@@ -19,10 +19,20 @@ const ForgotPassword = () => {
       });
       
       if (error) {
-        toast.error('Er is een fout opgetreden. Probeer het opnieuw.');
+        // Check for common "user not found" patterns in Supabase error messages
+        if (error.message.toLowerCase().includes('user not found') || 
+            error.message.toLowerCase().includes('invalid email') ||
+            error.message.toLowerCase().includes('email not confirmed') ||
+            error.message.toLowerCase().includes('signup disabled')) {
+          toast.error('Dit e-mailadres is niet geregistreerd in ons systeem.');
+        } else if (error.message.toLowerCase().includes('email rate limit')) {
+          toast.error('Te veel verzoeken. Probeer het over een paar minuten opnieuw.');
+        } else {
+          toast.error('Er is een fout opgetreden. Probeer het opnieuw.');
+        }
       } else {
         setIsSuccess(true);
-        toast.success('Wachtwoord reset link verstuurd naar je e-mail!');
+        toast.success('Als dit e-mailadres geregistreerd is, ontvang je een reset link.');
       }
     } catch (error) {
       toast.error('Er is een onverwachte fout opgetreden. Probeer het opnieuw.');

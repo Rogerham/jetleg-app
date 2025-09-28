@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, User, Eye, EyeOff, Phone } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import { PasswordStrengthMeter } from '@/components/PasswordStrengthMeter';
 import { toast } from 'sonner';
 
 const Register = () => {
@@ -189,7 +190,7 @@ const Register = () => {
                     {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                   </button>
                 </div>
-                <p className="text-xs text-muted-foreground mt-1">Minimaal 6 tekens</p>
+                <PasswordStrengthMeter password={formData.password} />
               </div>
 
               <div>
