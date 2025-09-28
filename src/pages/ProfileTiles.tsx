@@ -85,7 +85,7 @@ const ProfileTiles = () => {
             <div className="max-w-4xl mx-auto">
               <div className="mb-8">
                 <h1 className="text-3xl font-bold text-foreground mb-2">Mijn Profiel</h1>
-                <p className="text-muted-foreground">Welkom, {user?.email}</p>
+                <p className="text-muted-foreground">Welkom, {user?.user_metadata?.first_name || user?.email}</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
