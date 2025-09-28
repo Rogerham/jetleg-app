@@ -46,21 +46,24 @@ const OptimizedFlightCard = React.memo(({
   const { t } = useTranslation();
   const { formatPrice } = useCurrency();
 
-  const handleBooking = React.useCallback(() => {
+  const handleBooking = React.useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
     navigate(`/booking-flow/${id}`, {
       state: {
         flight: {
-          id,
-          departure_airport,
-          arrival_airport,
-          departure_time,
-          arrival_time,
-          price_per_seat,
-          available_seats,
-          operator,
-          flight_duration,
-          jet_id,
-          jets
+          id, departure_airport, arrival_airport, departure_time, arrival_time,
+          price_per_seat, available_seats, operator, flight_duration, jet_id, jets
+        }
+      }
+    });
+  }, [id, departure_airport, arrival_airport, departure_time, arrival_time, price_per_seat, available_seats, operator, flight_duration, jet_id, jets, navigate]);
+
+  const handleCardClick = React.useCallback(() => {
+    navigate(`/flight-details/${id}`, { 
+      state: { 
+        flight: {
+          id, departure_airport, arrival_airport, departure_time, arrival_time,
+          price_per_seat, available_seats, operator, flight_duration, jet_id, jets
         }
       }
     });
@@ -68,8 +71,7 @@ const OptimizedFlightCard = React.memo(({
 
   const formatTime = React.useMemo(() => (dateString: string) => {
     return new Date(dateString).toLocaleTimeString('nl-NL', {
-      hour: '2-digit',
-      minute: '2-digit'
+      hour: '2-digit', minute: '2-digit'
     });
   }, []);
 
@@ -78,9 +80,7 @@ const OptimizedFlightCard = React.memo(({
   }, []);
 
   const routeDescription = React.useMemo(() => {
-    if (jets?.description) {
-      return jets.description;
-    }
+    if (jets?.description) return jets.description;
     return jets ? `${operator} - ${jets.brand} ${jets.model}` : `${operator} - ${t('flight.privateJet')}`;
   }, [jets, operator, t]);
 
@@ -98,7 +98,10 @@ const OptimizedFlightCard = React.memo(({
   const formattedArrivalTime = React.useMemo(() => formatTime(arrival_time), [formatTime, arrival_time]);
 
   return (
-    <div className="card-jetleg hover:scale-[1.03] transition-all duration-200 h-full flex flex-col">
+    <div 
+      className="card-jetleg hover:scale-[1.03] transition-all duration-200 h-full flex flex-col cursor-pointer"
+      onClick={handleCardClick}
+    >
       <div className="relative overflow-hidden">
         <img 
           src={imageUrl} 

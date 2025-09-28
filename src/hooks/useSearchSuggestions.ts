@@ -1,7 +1,5 @@
-
 import { useQuery } from '@tanstack/react-query';
-import { useCallback } from 'react';
-import { worldwideAirports } from '@/data/airports';
+import { extendedWorldwideAirports, type Airport } from '@/data/extendedAirports';
 
 interface SearchSuggestion {
   value: string;
@@ -18,13 +16,10 @@ const POPULAR_ROUTES = [
   { from: 'Zurich (ZUR)', to: 'Nice (NCE)', frequency: 80 },
   { from: 'Vienna (VIE)', to: 'London (LGW)', frequency: 75 },
   { from: 'Munich (MUC)', to: 'Barcelona (BCN)', frequency: 70 },
-  { from: 'Berlin (BER)', to: 'Rome (FCO)', frequency: 65 }
+  { from: 'Berlin (BER)', to: 'Rome (FCO)', frequency: 65 },
+  { from: 'Brussels (BRU)', to: 'Nice (NCE)', frequency: 60 },
+  { from: 'Paris (CDG)', to: 'Geneva (GVA)', frequency: 55 }
 ];
-
-// Convert airport objects to display format
-const airportsDisplayList = worldwideAirports.map(airport => 
-  `${airport.city} (${airport.code})`
-);
 
 export const useSearchSuggestions = (query: string, field: 'from' | 'to') => {
   return useQuery({
@@ -52,13 +47,22 @@ export const useSearchSuggestions = (query: string, field: 'from' | 'to') => {
         });
       }
 
-      // Add airport matches
-      const airportMatches = airportsDisplayList
-        .filter(airport => airport.toLowerCase().includes(queryLower))
+      // Add airport matches with enhanced matching
+      const airportMatches = extendedWorldwideAirports
+        .filter(airport => {
+          const searchTerms = [
+            airport.name.toLowerCase(),
+            airport.city.toLowerCase(), 
+            airport.code.toLowerCase(),
+            airport.country.toLowerCase(),
+            ...(airport.aliases || []).map(alias => alias.toLowerCase())
+          ];
+          return searchTerms.some(term => term.includes(queryLower));
+        })
         .slice(0, 6)
         .map(airport => ({
-          value: airport,
-          label: airport,
+          value: `${airport.city} (${airport.code})`,
+          label: `${airport.city} (${airport.code}) - ${airport.name}, ${airport.country}`,
           type: 'airport' as const
         }));
 

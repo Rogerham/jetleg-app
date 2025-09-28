@@ -294,11 +294,6 @@ const Index = () => {
         {hasSearchParams ? (
           // Search Results View - gebaseerd op SearchResults.tsx
           <>
-            <div className="bg-primary text-white py-6">
-              <div className="container mx-auto px-6">
-                <SearchWithSuggestions className="max-w-none" initialValues={searchData} />
-              </div>
-            </div>
 
             <div className="container mx-auto px-6 py-8">
               <div className="flex flex-col gap-4 mb-8">

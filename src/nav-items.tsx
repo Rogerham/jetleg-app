@@ -12,6 +12,8 @@ import BookingConfirmation from "./pages/BookingConfirmation";
 import FavoriteFlights from "./pages/FavoriteFlights";
 import NotFound from "./pages/NotFound";
 
+import FlightDetails from "./pages/FlightDetails";
+
 export const navItems = [
   {
     title: "Home",
@@ -24,6 +26,12 @@ export const navItems = [
     to: "/top-deals",
     icon: Plane,
     page: <TopDeals />,
+  },
+  {
+    title: "Flight Details",
+    to: "/flight-details/:flightId",
+    icon: Info,
+    page: <FlightDetails />,
   },
   {
     title: "Login",
