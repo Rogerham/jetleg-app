@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ArrowUpDown, ArrowUp, ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { SortOptions } from '@/hooks/useEnhancedFlightSearch';
+import { SortOptions } from '@/types/search';
 
 interface SearchResultsSortingProps {
   sortOptions: SortOptions;

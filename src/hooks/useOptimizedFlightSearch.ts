@@ -2,7 +2,7 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useCallback, useMemo } from 'react';
 import { useFlights, type Flight } from '@/hooks/useFlights';
-import { SearchFilters, SortOptions } from '@/hooks/useEnhancedFlightSearch';
+import { SearchFilters, SortOptions } from '@/types/search';
 
 const CACHE_TIME = 5 * 60 * 1000; // 5 minutes
 const STALE_TIME = 2 * 60 * 1000; // 2 minutes

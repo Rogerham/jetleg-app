@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Loader2 } from 'lucide-react';
-import { useEnhancedFlightSearch, SearchFilters, SortOptions } from '@/hooks/useEnhancedFlightSearch';
+import { useFlights, type Flight } from '@/hooks/useFlights';
+import { SearchFilters, SortOptions } from '@/types/search';
 import FlightCard from '@/components/FlightCard';
 import AdvancedSearchFilters from '@/components/AdvancedSearchFilters';
 import SearchResultsSorting from '@/components/SearchResultsSorting';
@@ -53,7 +54,7 @@ const EnhancedSearchResults = () => {
     }));
   }, [searchParams]);
 
-  const { data: flights = [], isLoading, error } = useEnhancedFlightSearch(filters, sortOptions);
+  const { data: flights = [], isLoading, error } = useFlights(filters);
 
   const handleFiltersChange = (newFilters: SearchFilters) => {
     setFilters(newFilters);

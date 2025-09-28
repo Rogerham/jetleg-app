@@ -9,7 +9,6 @@ import BottomNavigation from "./components/BottomNavigation";
 import ScrollToTop from "./components/ScrollToTop";
 import { CurrencyProvider } from "./contexts/CurrencyContext";
 import { AuthProvider } from "./contexts/AuthContext";
-import ModularSearchDemo from "./pages/ModularSearchDemo";
 import SearchResults from "./pages/SearchResults";
 import BookingFlow from "./pages/BookingFlow";
 import "./i18n/config";
@@ -32,7 +31,6 @@ const App = () => (
                       <Route key={to} path={to} element={page} />
                     ))}
                     <Route path="/search-results" element={<SearchResults />} />
-                    <Route path="/modular-demo" element={<ModularSearchDemo />} />
                     {/* Consolidated booking routes - all point to BookingFlow */}
                     <Route path="/booking/:id" element={<BookingFlow />} />
                     <Route path="/booking/:flightId" element={<BookingFlow />} />

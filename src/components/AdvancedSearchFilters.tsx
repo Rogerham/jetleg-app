@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Badge } from '@/components/ui/badge';
-import { SearchFilters } from '@/hooks/useEnhancedFlightSearch';
+import { SearchFilters } from '@/types/search';
 import { useCurrency } from '@/contexts/CurrencyContext';
 
 interface AdvancedSearchFiltersProps {

@@ -12,7 +12,7 @@ import AdvancedSearchFilters from '@/components/AdvancedSearchFilters';
 import SearchResultsSorting from '@/components/SearchResultsSorting';
 import CustomDurationSlider from '@/components/CustomDurationSlider';
 import { useOptimizedFlightSearch } from '@/hooks/useOptimizedFlightSearch';
-import { SearchFilters, SortOptions } from '@/hooks/useEnhancedFlightSearch';
+import { SearchFilters, SortOptions } from '@/types/search';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useCurrency } from '@/contexts/CurrencyContext';
