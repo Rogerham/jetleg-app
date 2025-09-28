@@ -86,14 +86,14 @@ const AdvancedSearchFilters = ({ filters, onFiltersChange, onClearFilters }: Adv
             <div className="space-y-2">
               <Label>{t('search.jetType')}</Label>
               <Select 
-                value={filters.jetType || ''} 
-                onValueChange={(value) => handleFilterChange('jetType', value || undefined)}
+                value={filters.jetType || 'all'} 
+                onValueChange={(value) => handleFilterChange('jetType', value === 'all' ? undefined : value)}
               >
                 <SelectTrigger>
                   <SelectValue placeholder={t('search.selectJetType')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">{t('search.allTypes')}</SelectItem>
+                  <SelectItem value="all">{t('search.allTypes')}</SelectItem>
                   <SelectItem value="light">{t('search.lightJet')}</SelectItem>
                   <SelectItem value="midsize">{t('search.midsizeJet')}</SelectItem>
                   <SelectItem value="heavy">{t('search.heavyJet')}</SelectItem>
@@ -116,14 +116,14 @@ const AdvancedSearchFilters = ({ filters, onFiltersChange, onClearFilters }: Adv
             <div className="space-y-2">
               <Label>{t('search.maxDuration')} ({t('search.hours')})</Label>
               <Select 
-                value={filters.maxDuration || ''} 
-                onValueChange={(value) => handleFilterChange('maxDuration', value || undefined)}
+                value={filters.maxDuration || 'any'} 
+                onValueChange={(value) => handleFilterChange('maxDuration', value === 'any' ? undefined : value)}
               >
                 <SelectTrigger>
                   <SelectValue placeholder={t('search.selectMaxDuration')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">{t('search.anyDuration')}</SelectItem>
+                  <SelectItem value="any">{t('search.anyDuration')}</SelectItem>
                   <SelectItem value="1">1 {t('search.hour')}</SelectItem>
                   <SelectItem value="2">2 {t('search.hours')}</SelectItem>
                   <SelectItem value="3">3 {t('search.hours')}</SelectItem>
