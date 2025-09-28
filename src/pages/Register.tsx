@@ -140,7 +140,7 @@ const Register = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     className="w-full pl-10 pr-4 py-3 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-accent/20 focus:border-accent transition-colors"
-                    placeholder="jan@email.com"
+                    placeholder="user@email.com"
                     required
                   />
                 </div>
