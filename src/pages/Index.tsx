@@ -8,6 +8,7 @@ import { useEnhancedFlightSearch, SearchFilters, SortOptions } from '@/hooks/use
 import HeroSection from '@/components/HeroSection';
 import DealsSection from '@/components/DealsSection';
 import FlightCard from '@/components/FlightCard';
+import ListFlightCard from '@/components/ListFlightCard';
 import AdvancedSearchFilters from '@/components/AdvancedSearchFilters';
 import SearchResultsSorting from '@/components/SearchResultsSorting';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -83,22 +84,25 @@ const Index = () => {
       {hasSearchParams ? (
         // Search Results View
         <div className="container mx-auto px-4 py-8">
-          <div className="mb-8 flex items-center justify-between">
-            <div className="flex-1">
-              <h1 className="text-3xl font-bold mb-2">{t('search.searchResults')}</h1>
-              <p className="text-muted-foreground mb-4">
-                {filters.from && filters.to 
-                  ? t('search.searchingFromTo', { 
-                      from: filters.from === 'Alle luchthavens' ? t('search.allAirports') : filters.from,
-                      to: filters.to === 'Overal' ? t('search.everywhere') : filters.to
-                    })
-                  : t('search.searchingAllFlights')
-                }
-              </p>
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold mb-2">
+              Vluchten van{' '}
+              <span className="text-accent">
+                {filters.from === 'Alle luchthavens' ? 'Alle luchthavens' : filters.from || 'Alle luchthavens'}
+              </span>
+              {' '}naar{' '}
+              <span className="text-accent">
+                {filters.to === 'Overal' ? filters.to || 'Overal' : filters.to}
+              </span>
+            </h1>
+            
+            <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-4">
+                <p className="text-muted-foreground">
+                  {flights.length} beschikbare vluchten
+                </p>
                 <button
                   onClick={() => {
-                    // Save search functionality
                     const searchQuery = `${filters.from || 'Alle luchthavens'} → ${filters.to || 'Overal'}`;
                     localStorage.setItem('favoriteSearches', JSON.stringify([
                       ...(JSON.parse(localStorage.getItem('favoriteSearches') || '[]')),
@@ -115,37 +119,43 @@ const Index = () => {
                     ]));
                     toast.success(t('search.searchSaved'));
                   }}
-                  className="flex items-center gap-2 px-3 py-2 text-sm border border-border rounded-lg hover:bg-muted transition-colors"
+                  className="text-muted-foreground hover:text-accent transition-colors"
                 >
-                  <Heart className="h-4 w-4" />
-                  {t('search.saveSearch')}
+                  <Heart className="h-5 w-5" />
                 </button>
                 <button
                   onClick={() => {
-                    // Enable notifications functionality
                     toast.success(t('search.notificationsEnabled'));
                   }}
-                  className="flex items-center gap-2 px-3 py-2 text-sm border border-border rounded-lg hover:bg-muted transition-colors"
+                  className="text-muted-foreground hover:text-accent transition-colors"
                 >
-                  <Bell className="h-4 w-4" />
-                  {t('search.enableNotifications')}
+                  <Bell className="h-5 w-5" />
                 </button>
               </div>
+              <button
+                onClick={handleClearSearch}
+                className="flex items-center gap-2 px-4 py-2 text-sm border border-border rounded-lg hover:bg-muted transition-colors"
+              >
+                <X className="h-4 w-4" />
+                Wissen
+              </button>
             </div>
-            <button
-              onClick={handleClearSearch}
-              className="flex items-center gap-2 px-4 py-2 text-sm border border-border rounded-lg hover:bg-muted transition-colors ml-4"
-            >
-              <X className="h-4 w-4" />
-              Wissen
-            </button>
-          </div>
 
-          <AdvancedSearchFilters
-            filters={filters}
-            onFiltersChange={handleFiltersChange}
-            onClearFilters={handleClearFilters}
-          />
+            <div className="flex items-center justify-between mb-6">
+              <button className="flex items-center gap-2 px-4 py-2 border border-border rounded-lg hover:bg-muted transition-colors">
+                <span className="text-sm">🔧</span>
+                Filters
+              </button>
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-muted-foreground">Sorteer:</span>
+                <SearchResultsSorting
+                  sortOptions={sortOptions}
+                  onSortChange={handleSortChange}
+                  resultsCount={flights.length}
+                />
+              </div>
+            </div>
+          </div>
 
           {error ? (
             <Alert variant="destructive" className="my-8">
@@ -160,21 +170,15 @@ const Index = () => {
             </div>
           ) : (
             <>
-              <SearchResultsSorting
-                sortOptions={sortOptions}
-                onSortChange={handleSortChange}
-                resultsCount={flights.length}
-              />
-
               {flights.length === 0 ? (
                 <div className="text-center py-12">
                   <h3 className="text-xl font-semibold mb-2">{t('search.noFlightsFound')}</h3>
                   <p className="text-muted-foreground mb-4">{t('search.tryAdjustingFilters')}</p>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="space-y-4">
                   {flights.map((flight) => (
-                    <FlightCard key={flight.id} {...flight} />
+                    <ListFlightCard key={flight.id} {...flight} />
                   ))}
                 </div>
               )}
