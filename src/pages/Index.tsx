@@ -2,7 +2,8 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Loader2, X } from 'lucide-react';
+import { Loader2, X, Heart, Bell } from 'lucide-react';
+import { toast } from 'sonner';
 import { useEnhancedFlightSearch, SearchFilters, SortOptions } from '@/hooks/useEnhancedFlightSearch';
 import HeroSection from '@/components/HeroSection';
 import DealsSection from '@/components/DealsSection';
@@ -83,9 +84,9 @@ const Index = () => {
         // Search Results View
         <div className="container mx-auto px-4 py-8">
           <div className="mb-8 flex items-center justify-between">
-            <div>
+            <div className="flex-1">
               <h1 className="text-3xl font-bold mb-2">{t('search.searchResults')}</h1>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground mb-4">
                 {filters.from && filters.to 
                   ? t('search.searchingFromTo', { 
                       from: filters.from === 'Alle luchthavens' ? t('search.allAirports') : filters.from,
@@ -94,10 +95,46 @@ const Index = () => {
                   : t('search.searchingAllFlights')
                 }
               </p>
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={() => {
+                    // Save search functionality
+                    const searchQuery = `${filters.from || 'Alle luchthavens'} → ${filters.to || 'Overal'}`;
+                    localStorage.setItem('favoriteSearches', JSON.stringify([
+                      ...(JSON.parse(localStorage.getItem('favoriteSearches') || '[]')),
+                      {
+                        id: Date.now(),
+                        from: filters.from,
+                        to: filters.to,
+                        date: filters.date,
+                        passengers: filters.passengers,
+                        displayText: searchQuery,
+                        notifications: false,
+                        createdAt: new Date().toISOString()
+                      }
+                    ]));
+                    toast.success(t('search.searchSaved'));
+                  }}
+                  className="flex items-center gap-2 px-3 py-2 text-sm border border-border rounded-lg hover:bg-muted transition-colors"
+                >
+                  <Heart className="h-4 w-4" />
+                  {t('search.saveSearch')}
+                </button>
+                <button
+                  onClick={() => {
+                    // Enable notifications functionality
+                    toast.success(t('search.notificationsEnabled'));
+                  }}
+                  className="flex items-center gap-2 px-3 py-2 text-sm border border-border rounded-lg hover:bg-muted transition-colors"
+                >
+                  <Bell className="h-4 w-4" />
+                  {t('search.enableNotifications')}
+                </button>
+              </div>
             </div>
             <button
               onClick={handleClearSearch}
-              className="flex items-center gap-2 px-4 py-2 text-sm border border-border rounded-lg hover:bg-muted transition-colors"
+              className="flex items-center gap-2 px-4 py-2 text-sm border border-border rounded-lg hover:bg-muted transition-colors ml-4"
             >
               <X className="h-4 w-4" />
               Wissen
