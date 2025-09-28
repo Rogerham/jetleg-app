@@ -37,12 +37,6 @@ export const navItems = [
     page: <Register />,
   },
   {
-    title: "My Bookings",
-    to: "/my-bookings",
-    icon: BookOpen,
-    page: <MyBookings />,
-  },
-  {
     title: "Profile",
     to: "/profile",
     icon: User,

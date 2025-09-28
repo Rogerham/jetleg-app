@@ -2,8 +2,6 @@
 import { useState } from 'react';
 import { Calendar, MapPin, Users, Plane, Clock, Download, Eye, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
 
 interface Booking {
   id: string;
@@ -25,7 +23,7 @@ interface Booking {
   bookingDate: string;
 }
 
-const MyBookings = () => {
+const MyBookings = ({ hideNavigation = false }: { hideNavigation?: boolean }) => {
   const [activeTab, setActiveTab] = useState<'upcoming' | 'past' | 'all'>('upcoming');
   
   const mockBookings: Booking[] = [
@@ -122,10 +120,181 @@ const MyBookings = () => {
 
   const filteredBookings = filterBookings(mockBookings);
 
+  if (hideNavigation) {
+    return (
+      <div className="container mx-auto px-6 py-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold text-foreground mb-2">Mijn Boekingen</h1>
+            <p className="text-muted-foreground">Bekijk en beheer al je vluchten</p>
+          </div>
+
+          {/* ... keep existing code (tabs and bookings list) */}
+          <div className="mb-8">
+            <div className="border-b border-border">
+              <nav className="flex space-x-8">
+                {[
+                  { key: 'upcoming', label: 'Aankomende vluchten', count: filterBookings(mockBookings.filter(b => activeTab !== 'upcoming')).length },
+                  { key: 'past', label: 'Eerdere vluchten', count: filterBookings(mockBookings.filter(b => activeTab !== 'past')).length },
+                  { key: 'all', label: 'Alle boekingen', count: mockBookings.length }
+                ].map((tab) => (
+                  <button
+                    key={tab.key}
+                    onClick={() => setActiveTab(tab.key as typeof activeTab)}
+                    className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
+                      activeTab === tab.key
+                        ? 'border-accent text-accent'
+                        : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border'
+                    }`}
+                  >
+                    {tab.label} ({tab.count})
+                  </button>
+                ))}
+              </nav>
+            </div>
+          </div>
+
+          {filteredBookings.length === 0 ? (
+            <div className="text-center py-12">
+              <AlertCircle className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-foreground mb-2">Geen boekingen gevonden</h3>
+              <p className="text-muted-foreground mb-6">
+                {activeTab === 'upcoming' 
+                  ? 'Je hebt nog geen aankomende vluchten.'
+                  : activeTab === 'past'
+                  ? 'Je hebt nog geen eerdere vluchten.'
+                  : 'Je hebt nog geen boekingen gemaakt.'
+                }
+              </p>
+              <Link to="/" className="btn-jetleg-primary">
+                Vind je volgende vlucht
+              </Link>
+            </div>
+          ) : (
+            <div className="space-y-6">
+              {filteredBookings.map((booking) => (
+                <div key={booking.id} className="card-jetleg overflow-hidden">
+                  <div className="p-6">
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h3 className="text-lg font-semibold text-foreground mb-1">
+                          {booking.flight.from} → {booking.flight.to}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          Boekingsreferentie: {booking.bookingReference}
+                        </p>
+                      </div>
+                      
+                      <div className="text-right">
+                        <span className={`inline-flex px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(booking.status)}`}>
+                          {getStatusText(booking.status)}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                      <div className="lg:col-span-2">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                          <div className="flex items-center gap-3">
+                            <Calendar className="h-5 w-5 text-accent" />
+                            <div>
+                              <p className="font-medium text-foreground">
+                                {new Date(booking.flight.date).toLocaleDateString('nl-NL', {
+                                  weekday: 'long',
+                                  year: 'numeric',
+                                  month: 'long',
+                                  day: 'numeric'
+                                })}
+                              </p>
+                            </div>
+                          </div>
+                          
+                          <div className="flex items-center gap-3">
+                            <Clock className="h-5 w-5 text-accent" />
+                            <div>
+                              <p className="font-medium text-foreground">
+                                {booking.flight.departure} - {booking.flight.arrival}
+                              </p>
+                              <p className="text-sm text-muted-foreground">{booking.flight.duration}</p>
+                            </div>
+                          </div>
+                          
+                          <div className="flex items-center gap-3">
+                            <Users className="h-5 w-5 text-accent" />
+                            <div>
+                              <p className="font-medium text-foreground">
+                                {booking.passengers} {booking.passengers === 1 ? 'passagier' : 'passagiers'}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-4 mb-4">
+                          <div className="text-center">
+                            <div className="text-xl font-bold text-foreground">{booking.flight.departure}</div>
+                            <div className="text-sm text-muted-foreground">{booking.flight.fromCode}</div>
+                          </div>
+                          
+                          <div className="flex-1 relative">
+                            <div className="border-t border-dashed border-border"></div>
+                            <div className="absolute top-[-8px] left-1/2 transform -translate-x-1/2 bg-background px-2">
+                              <Plane className="h-4 w-4 text-accent" />
+                            </div>
+                            <div className="text-center text-xs text-muted-foreground mt-1">
+                              {booking.flight.duration}
+                            </div>
+                          </div>
+                          
+                          <div className="text-center">
+                            <div className="text-xl font-bold text-foreground">{booking.flight.arrival}</div>
+                            <div className="text-sm text-muted-foreground">{booking.flight.toCode}</div>
+                          </div>
+                        </div>
+
+                        <div className="text-sm text-muted-foreground">
+                          <p><span className="font-medium">Vliegtuig:</span> {booking.flight.aircraft}</p>
+                          <p><span className="font-medium">Geboekt op:</span> {new Date(booking.bookingDate).toLocaleDateString('nl-NL')}</p>
+                        </div>
+                      </div>
+
+                      <div className="lg:col-span-1 text-center lg:text-right">
+                        <div className="mb-4">
+                          <div className="text-2xl font-bold text-foreground mb-1">
+                            €{booking.totalPrice.toLocaleString()}
+                          </div>
+                          <div className="text-sm text-muted-foreground">totaal betaald</div>
+                        </div>
+
+                        <div className="flex flex-col gap-2">
+                          <button className="btn-jetleg-outline flex items-center justify-center gap-2">
+                            <Eye className="h-4 w-4" />
+                            Bekijk details
+                          </button>
+                          <button className="btn-jetleg-outline flex items-center justify-center gap-2">
+                            <Download className="h-4 w-4" />
+                            Download ticket
+                          </button>
+                          
+                          {booking.status === 'confirmed' && new Date(booking.flight.date) > new Date() && (
+                            <button className="text-red-600 hover:text-red-700 text-sm font-medium transition-colors">
+                              Annuleren
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
-      
       <div className="container mx-auto px-6 py-16">
         <div className="max-w-6xl mx-auto">
           <div className="mb-8">
@@ -297,8 +466,6 @@ const MyBookings = () => {
           )}
         </div>
       </div>
-      
-      <Footer />
     </div>
   );
 };

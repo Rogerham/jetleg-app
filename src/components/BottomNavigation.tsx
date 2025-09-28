@@ -12,22 +12,17 @@ const BottomNavigation = () => {
     {
       path: '/',
       icon: Search,
-      label: t('nav.search'),
+      label: 'Zoeken',
     },
     {
       path: '/top-deals',
       icon: Heart,
-      label: t('nav.deals'),
-    },
-    {
-      path: '/my-bookings',
-      icon: Plane,
-      label: t('nav.myBookings'),
+      label: 'Deals',
     },
     {
       path: '/profile',
       icon: User,
-      label: t('nav.profile'),
+      label: 'Profiel',
     },
   ];
 
