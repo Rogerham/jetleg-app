@@ -1,19 +1,7 @@
 import { useState } from 'react';
-import { Plane, User, Heart, Settings, CreditCard, HelpCircle, ArrowLeft, LogOut, Trash2 } from 'lucide-react';
+import { Plane, User, Heart, Settings, CreditCard, HelpCircle, ArrowLeft, LogOut } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
-import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 import MyBookings from './MyBookings';
 import EditProfile from './EditProfile';
@@ -26,8 +14,6 @@ type TileView = 'main' | 'bookings' | 'edit-profile' | 'settings' | 'payment' | 
 const ProfileTiles = () => {
   const { user, signOut } = useAuth();
   const [activeView, setActiveView] = useState<TileView>('main');
-  const [isDeleting, setIsDeleting] = useState(false);
-
   const handleLogout = async () => {
     try {
       await signOut();
@@ -35,22 +21,6 @@ const ProfileTiles = () => {
     } catch (error) {
       console.error('Error logging out:', error);
       toast.error('Fout bij uitloggen');
-    }
-  };
-
-  const handleDeleteAccount = async () => {
-    if (!user) return;
-    
-    setIsDeleting(true);
-    try {
-      // For now, we'll direct users to contact support for account deletion
-      // as proper account deletion requires backend setup
-      toast.error('Account verwijdering is nog niet geïmplementeerd. Neem contact op met de klantenservice voor hulp.');
-    } catch (error) {
-      console.error('Error:', error);
-      toast.error('Er is een fout opgetreden');
-    } finally {
-      setIsDeleting(false);
     }
   };
 
@@ -143,7 +113,7 @@ const ProfileTiles = () => {
                 })}
               </div>
 
-              {/* Logout and Delete Account Buttons */}
+              {/* Logout Button */}
               <div className="space-y-4">
                 <Button
                   onClick={handleLogout}
@@ -154,37 +124,6 @@ const ProfileTiles = () => {
                   <LogOut className="h-5 w-5" />
                   Uitloggen
                 </Button>
-
-                <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="w-full flex items-center gap-2 border-destructive text-destructive hover:bg-destructive hover:text-destructive-foreground"
-                    >
-                      <Trash2 className="h-5 w-5" />
-                      Account verwijderen
-                    </Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent>
-                    <AlertDialogHeader>
-                      <AlertDialogTitle>Account definitief verwijderen?</AlertDialogTitle>
-                      <AlertDialogDescription>
-                        Deze actie kan niet ongedaan gemaakt worden. Al je gegevens, boekingen en voorkeuren worden permanent verwijderd.
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <AlertDialogCancel>Annuleren</AlertDialogCancel>
-                      <AlertDialogAction
-                        onClick={handleDeleteAccount}
-                        disabled={isDeleting}
-                        className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-                      >
-                        {isDeleting ? 'Verwijderen...' : 'Ja, verwijder account'}
-                      </AlertDialogAction>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialog>
               </div>
             </div>
           </div>

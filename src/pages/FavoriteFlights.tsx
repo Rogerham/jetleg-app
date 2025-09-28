@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Heart, Bell, BellOff, Trash2, ArrowRight, AlertTriangle, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useSavedSearches, useAlertPreferences } from '@/hooks/useSavedSearches';
+import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { format } from 'date-fns';
@@ -39,11 +40,10 @@ const FavoriteFlights = () => {
         />
         
         <div className="container mx-auto px-6 py-8">
-          <div className="flex justify-center items-center h-64">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto mb-4"></div>
-              <p className="text-muted-foreground">Favorieten laden...</p>
-            </div>
+          <div className="max-w-4xl mx-auto space-y-4">
+            {[...Array(3)].map((_, index) => (
+              <FavoriteSkeletonCard key={index} />
+            ))}
           </div>
         </div>
       </div>
@@ -118,13 +118,41 @@ interface SavedSearchCardProps {
   onDelete: () => void;
 }
 
-const SavedSearchCard = ({ search, onDelete }: SavedSearchCardProps) => {
+const FavoriteSkeletonCard = React.memo(() => {
+  return (
+    <div className="bg-card border border-border rounded-xl p-6">
+      <div className="flex items-center justify-between">
+        <div className="flex-1">
+          <div className="flex items-center gap-4 mb-2">
+            <div className="flex items-center gap-2">
+              <Skeleton className="h-5 w-16" />
+              <Skeleton className="h-4 w-4" />
+              <Skeleton className="h-5 w-16" />
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <Skeleton className="h-4 w-24" />
+            <Skeleton className="h-4 w-20" />
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <Skeleton className="h-8 w-8 rounded-full" />
+          <Skeleton className="h-8 w-8 rounded-full" />
+        </div>
+      </div>
+    </div>
+  );
+});
+
+FavoriteSkeletonCard.displayName = 'FavoriteSkeletonCard';
+
+const SavedSearchCard = React.memo(({ search, onDelete }: SavedSearchCardProps) => {
   const { alertPreferences, saveAlertPreferences } = useAlertPreferences(search.id);
   const [notificationsEnabled, setNotificationsEnabled] = useState(
     alertPreferences?.email_notifications || false
   );
 
-  const toggleNotifications = async () => {
+  const toggleNotifications = React.useCallback(async () => {
     const newValue = !notificationsEnabled;
     setNotificationsEnabled(newValue);
     
@@ -139,15 +167,15 @@ const SavedSearchCard = ({ search, onDelete }: SavedSearchCardProps) => {
       console.error('Failed to update alert preferences:', error);
       setNotificationsEnabled(!newValue);
     }
-  };
+  }, [notificationsEnabled, search.id, saveAlertPreferences, search.user_id]);
 
-  const formatDate = (dateString: string) => {
+  const formatDate = React.useCallback((dateString: string) => {
     try {
       return format(new Date(dateString), 'dd MMM yyyy', { locale: nl });
     } catch {
       return dateString;
     }
-  };
+  }, []);
 
   return (
     <div className="bg-card border border-border rounded-xl p-6 hover:shadow-md transition-all duration-200">
@@ -191,6 +219,8 @@ const SavedSearchCard = ({ search, onDelete }: SavedSearchCardProps) => {
       </div>
     </div>
   );
-};
+});
+
+SavedSearchCard.displayName = 'SavedSearchCard';
 
 export default FavoriteFlights;

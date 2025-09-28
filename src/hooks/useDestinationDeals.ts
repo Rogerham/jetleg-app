@@ -23,6 +23,9 @@ export const useDestinationDeals = () => {
       return destinationDeals;
     },
     enabled: !flightsLoading && flights.length > 0,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    gcTime: 10 * 60 * 1000, // 10 minutes
+    refetchOnWindowFocus: false,
     // Return the loading state and error from flights query
     meta: {
       isLoading: flightsLoading,

@@ -169,6 +169,10 @@ export const useFlights = (searchParams?: {
 
       return data as Flight[];
     },
+    enabled: !!searchParams && (!!searchParams.from || !!searchParams.to),
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    gcTime: 10 * 60 * 1000, // 10 minutes
+    refetchOnWindowFocus: false,
   });
 };
 
@@ -210,6 +214,9 @@ export const useFlightById = (flightId: string) => {
 
       return data as Flight | null;
     },
+    staleTime: 10 * 60 * 1000, // 10 minutes
+    gcTime: 15 * 60 * 1000, // 15 minutes
+    refetchOnWindowFocus: false,
   });
 };
 
@@ -255,6 +262,9 @@ export const useAllFlights = () => {
       console.log(`Found ${data?.length || 0} total available flights`);
       return data as Flight[];
     },
+    staleTime: 3 * 60 * 1000, // 3 minutes
+    gcTime: 8 * 60 * 1000, // 8 minutes
+    refetchOnWindowFocus: false,
   });
 };
 
@@ -303,5 +313,8 @@ export const useDealsFlights = () => {
       console.log(`Found ${data?.length || 0} total flights, de-duplicated to ${deduplicatedFlights.length} unique routes for deals`);
       return deduplicatedFlights;
     },
+    staleTime: 5 * 60 * 1000, // 5 minutes for deals
+    gcTime: 10 * 60 * 1000, // 10 minutes
+    refetchOnWindowFocus: false,
   });
 };

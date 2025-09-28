@@ -1,8 +1,19 @@
-import { useState, useEffect } from 'react';
-import { User, Mail, Phone, MapPin, Building, Save, Eye, EyeOff } from 'lucide-react';
-import { useAuth } from '@/contexts/AuthContext';
+import React, { useState, useEffect } from 'react';
+import { Eye, EyeOff, User, Mail, Phone, MapPin, Building, Hash, Trash2 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
+import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 
 interface EditProfileProps {
   onBack: () => void;
@@ -23,6 +34,7 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
   const [showPasswordForm, setShowPasswordForm] = useState(false);
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   
   const [profileData, setProfileData] = useState<ProfileData>({
     first_name: '',
@@ -154,6 +166,22 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
     }
   };
 
+  const handleDeleteAccount = async () => {
+    if (!user) return;
+    
+    setIsDeleting(true);
+    try {
+      // For now, we'll direct users to contact support for account deletion
+      // as proper account deletion requires backend setup
+      toast.error('Account verwijdering is nog niet geïmplementeerd. Neem contact op met de klantenservice voor hulp.');
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('Er is een fout opgetreden');
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
   return (
     <div className="container mx-auto px-6 py-8">
       <div className="max-w-2xl mx-auto space-y-8">
@@ -256,7 +284,7 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
               disabled={loading}
               className="btn-jetleg-primary flex items-center gap-2 w-full"
             >
-              <Save className="h-4 w-4" />
+              <User className="h-4 w-4" />
               {loading ? 'Opslaan...' : 'Gegevens opslaan'}
             </button>
           </form>
@@ -316,6 +344,42 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
               </button>
             </form>
           )}
+        </div>
+
+        {/* Account Deletion Section */}
+        <div className="bg-card rounded-xl p-6 border border-destructive/20 mt-8">
+          <h2 className="text-lg font-semibold text-destructive mb-4">Gevaarlijke zone</h2>
+          <p className="text-sm text-muted-foreground mb-6">
+            Het verwijderen van je account is permanent en kan niet ongedaan gemaakt worden. 
+            Al je gegevens, boekingen en voorkeuren worden definitief verwijderd.
+          </p>
+          
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <button className="flex items-center gap-2 px-4 py-2 bg-destructive/10 text-destructive border border-destructive/20 rounded-lg hover:bg-destructive/20 transition-colors">
+                <Trash2 className="h-4 w-4" />
+                Account verwijderen
+              </button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Account definitief verwijderen?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Deze actie kan niet ongedaan gemaakt worden. Al je gegevens, boekingen en voorkeuren worden permanent verwijderd.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Annuleren</AlertDialogCancel>
+                <AlertDialogAction
+                  onClick={handleDeleteAccount}
+                  disabled={isDeleting}
+                  className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                >
+                  {isDeleting ? 'Verwijderen...' : 'Ja, verwijder account'}
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </div>
     </div>
