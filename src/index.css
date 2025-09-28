@@ -149,7 +149,16 @@
   }
 
   .btn-jetleg-outline {
-    @apply border-2 border-accent text-accent font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:bg-accent hover:text-primary-foreground hover:scale-105 active:scale-95;
+    @apply border-2 border-accent text-accent bg-transparent font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:bg-accent hover:text-primary-foreground hover:scale-105 active:scale-95;
+  }
+
+  /* Bottom navigation stays fixed */
+  .bottom-nav-fixed {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
   }
 
   /* Standardized Page Header */

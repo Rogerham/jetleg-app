@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { MapPin, Search, Users, Plane, ArrowLeftRight } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { MapPin, Search, Users, Plane, ArrowLeftRight, X } from 'lucide-react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { extendedWorldwideAirports, type Airport } from '@/data/extendedAirports';
 import PassengerCounter from './PassengerCounter';
 import EnhancedDatePicker from './EnhancedDatePicker';
@@ -21,6 +21,10 @@ const SearchWithSuggestions = ({
   initialValues
 }: SearchWithSuggestionsProps) => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  
+  // Check if we have active search parameters
+  const hasSearchParams = searchParams.get('from') || searchParams.get('to') || searchParams.get('date');
   const [searchData, setSearchData] = useState({
     from: initialValues?.from || '',
     to: initialValues?.to || '',
@@ -199,6 +203,16 @@ const SearchWithSuggestions = ({
     navigate(`/?${searchParams.toString()}`, { replace: true });
   };
 
+  const handleClearSearch = () => {
+    setSearchData({
+      from: '',
+      to: '',
+      date: '',
+      passengers: '1'
+    });
+    navigate('/', { replace: true });
+  };
+
   return (
     <div className={`search-form-jetleg max-w-6xl mx-auto animate-fade-in ${className}`} ref={suggestionsRef}>
       <form onSubmit={handleSearch} className="space-y-6">
@@ -289,11 +303,19 @@ const SearchWithSuggestions = ({
             </div>
           </div>
           
-          {/* Search Button */}
-          <button type="submit" className="btn-jetleg-primary h-14 px-6 flex items-center justify-center gap-2 whitespace-nowrap w-full text-lg">
-            <Search className="h-5 w-5" />
-            Zoeken
-          </button>
+          {/* Search and Clear Buttons */}
+          <div className="flex gap-3">
+            <button type="submit" className="btn-jetleg-primary h-14 px-6 flex items-center justify-center gap-2 whitespace-nowrap flex-1 text-lg">
+              <Search className="h-5 w-5" />
+              Zoeken
+            </button>
+            {hasSearchParams && (
+              <button type="button" onClick={handleClearSearch} className="btn-jetleg-outline h-14 px-4 flex items-center justify-center gap-2 whitespace-nowrap">
+                <X className="h-5 w-5" />
+                Wissen
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Desktop Layout */}
@@ -381,12 +403,18 @@ const SearchWithSuggestions = ({
             <PassengerCounter value={parseInt(searchData.passengers)} onChange={handlePassengerChange} className="h-12" hideArrows={false} />
           </div>
           
-          {/* Search Button */}
-          <div className="flex-shrink-0 self-end">
+          {/* Search and Clear Buttons */}
+          <div className="flex-shrink-0 self-end flex gap-2">
             <button type="submit" className="btn-jetleg-primary h-12 px-6 flex items-center justify-center gap-2 whitespace-nowrap">
               <Search className="h-5 w-5" />
               Zoeken
             </button>
+            {hasSearchParams && (
+              <button type="button" onClick={handleClearSearch} className="btn-jetleg-outline h-12 px-4 flex items-center justify-center gap-2 whitespace-nowrap">
+                <X className="h-5 w-5" />
+                Wissen
+              </button>
+            )}
           </div>
         </div>
       </form>

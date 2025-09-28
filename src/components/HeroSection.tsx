@@ -2,9 +2,19 @@
 import SearchWithSuggestions from './SearchWithSuggestions';
 import heroImage from '@/assets/hero-bg.jpg';
 import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
 
 const HeroSection = () => {
   const { t } = useTranslation();
+  const [searchParams] = useSearchParams();
+  
+  // Read URL parameters to maintain search state
+  const initialValues = {
+    from: searchParams.get('from') || '',
+    to: searchParams.get('to') || '',
+    date: searchParams.get('date') || '',
+    passengers: searchParams.get('passengers') || '1'
+  };
 
   return (
     <section className="hero-jetleg text-white min-h-[50vh] flex items-center" style={{
@@ -21,7 +31,7 @@ const HeroSection = () => {
         </div>
         
         {/* Enhanced Search Form */}
-        <SearchWithSuggestions />
+        <SearchWithSuggestions initialValues={initialValues} />
       </div>
     </section>
   );
