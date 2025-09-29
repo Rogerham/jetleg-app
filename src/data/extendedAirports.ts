@@ -153,6 +153,10 @@ export const extendedWorldwideAirports: Airport[] = [
   { code: 'MDW', name: 'Midway International', city: 'Chicago', country: 'United States' },
   { code: 'PWK', name: 'Chicago Executive', city: 'Chicago', country: 'United States' },
   
+  { code: 'SFO', name: 'San Francisco International', city: 'San Francisco', country: 'United States' },
+  { code: 'SJC', name: 'San Jose Mineta International', city: 'San Francisco', country: 'United States' },
+  { code: 'OAK', name: 'Oakland International', city: 'San Francisco', country: 'United States' },
+  
   // Middle East & Business Hubs
   { code: 'DXB', name: 'Dubai International', city: 'Dubai', country: 'United Arab Emirates' },
   { code: 'DWC', name: 'Al Maktoum International', city: 'Dubai', country: 'United Arab Emirates' },
@@ -174,4 +178,18 @@ export const extendedWorldwideAirports: Airport[] = [
   { code: 'RAK', name: 'Marrakech Menara', city: 'Marrakech', country: 'Morocco' },
 ];
 
-export const popularAirports = extendedWorldwideAirports.slice(0, 30); // First 30 are European airports
+// Enhanced popular airports including Europe, America, and UAE
+export const popularAirports = [
+  // Major European hubs
+  ...extendedWorldwideAirports.slice(0, 25),
+  // Major American hubs  
+  { code: 'JFK', name: 'John F. Kennedy International', city: 'New York', country: 'United States' },
+  { code: 'LAX', name: 'Los Angeles International', city: 'Los Angeles', country: 'United States' },
+  { code: 'MIA', name: 'Miami International', city: 'Miami', country: 'United States' },
+  { code: 'ORD', name: 'O\'Hare International', city: 'Chicago', country: 'United States' },
+  { code: 'SFO', name: 'San Francisco International', city: 'San Francisco', country: 'United States' },
+  // Major UAE/Middle East hubs
+  { code: 'DXB', name: 'Dubai International', city: 'Dubai', country: 'United Arab Emirates' },
+  { code: 'AUH', name: 'Abu Dhabi International', city: 'Abu Dhabi', country: 'United Arab Emirates' },
+  { code: 'DOH', name: 'Hamad International', city: 'Doha', country: 'Qatar' },
+];
