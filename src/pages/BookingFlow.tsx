@@ -208,7 +208,7 @@ const BookingFlow = () => {
           <h3 className="text-xl font-semibold text-foreground mb-2">Vlucht niet gevonden</h3>
           <p className="text-muted-foreground mb-4">De vlucht die je zoekt bestaat niet of is niet beschikbaar.</p>
           <button
-            onClick={() => navigate('/search-results')}
+            onClick={() => navigate('/')}
             className="btn-jetleg-primary"
           >
             Terug naar zoekresultaten
@@ -227,7 +227,7 @@ const BookingFlow = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center gap-4">
             <button
-              onClick={() => navigate('/search-results')}
+              onClick={() => navigate('/')}
               className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
             >
               <ArrowLeft className="h-5 w-5" />

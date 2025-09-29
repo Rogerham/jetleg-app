@@ -9,7 +9,7 @@ import BottomNavigation from "./components/BottomNavigation";
 import ScrollToTop from "./components/ScrollToTop";
 import { CurrencyProvider } from "./contexts/CurrencyContext";
 import { AuthProvider } from "./contexts/AuthContext";
-import SearchResults from "./pages/SearchResults";
+
 import BookingFlow from "./pages/BookingFlow";
 import "./i18n/config";
 
@@ -30,7 +30,7 @@ const App = () => (
                     {navItems.map(({ to, page }) => (
                       <Route key={to} path={to} element={page} />
                     ))}
-                    <Route path="/search-results" element={<SearchResults />} />
+                    
                     {/* Consolidated booking routes - all point to BookingFlow */}
                     <Route path="/booking/:id" element={<BookingFlow />} />
                     <Route path="/booking/:flightId" element={<BookingFlow />} />

@@ -25,7 +25,7 @@ const DestinationDealCard = ({
       date: 'flexible',
       passengers: '1'
     });
-    navigate(`/search-results?${searchParams.toString()}`, {
+    navigate(`/?${searchParams.toString()}`, {
       state: {
         searchParams: {
           from: 'Alle luchthavens',

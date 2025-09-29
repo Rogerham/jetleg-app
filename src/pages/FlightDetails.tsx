@@ -59,7 +59,7 @@ const FlightDetails = () => {
 
   const handleBookFlight = () => {
     if (flight) {
-      navigate('/booking-flow', { 
+      navigate(`/booking-flow/${flightId}`, { 
         state: { 
           flight,
           searchData: {

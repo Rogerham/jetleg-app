@@ -209,7 +209,7 @@ const EnhancedSearchWithSuggestions = ({
           date: searchValues.date,
           passengers: searchValues.passengers
         });
-        navigate(`/search-results?${searchParams.toString()}`);
+        navigate(`/?${searchParams.toString()}`);
       }
     } catch (error) {
       console.error('Search error:', error);

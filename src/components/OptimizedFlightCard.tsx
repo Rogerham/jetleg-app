@@ -46,10 +46,10 @@ const OptimizedFlightCard = React.memo(({
   const { t } = useTranslation();
   const { formatPrice } = useCurrency();
 
-  const handleBooking = React.useCallback((e: React.MouseEvent) => {
+  const handleViewDetails = React.useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
-    navigate(`/booking-flow/${id}`, {
-      state: {
+    navigate(`/flight-details/${id}`, { 
+      state: { 
         flight: {
           id, departure_airport, arrival_airport, departure_time, arrival_time,
           price_per_seat, available_seats, operator, flight_duration, jet_id, jets
@@ -157,10 +157,10 @@ const OptimizedFlightCard = React.memo(({
             </p>
           </div>
           <button 
-            onClick={handleBooking}
+            onClick={handleViewDetails}
             className="btn-jetleg-secondary hover:bg-accent hover:text-primary-foreground w-full sm:w-auto"
           >
-            {t('flight.bookNow')}
+            Bekijk Details
           </button>
         </div>
       </div>
