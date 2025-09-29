@@ -115,7 +115,7 @@ const FlightCard = ({
         <div className="flex justify-between items-start mb-4">
           <div className="flex-grow">
             <h3 className="text-xl font-bold text-foreground mb-1">
-              {extractCityName(departure_airport)} ({extractAirportCode(departure_airport)}) → {extractCityName(arrival_airport)} ({extractAirportCode(arrival_airport)})
+              {extractCityName(departure_airport)} → {extractCityName(arrival_airport)}
             </h3>
             <p className="text-muted-foreground">
               {getRouteDescription()}
@@ -131,10 +131,6 @@ const FlightCard = ({
           <div className="flex items-center text-sm text-muted-foreground">
             <Clock className="h-4 w-4 mr-2 text-accent" />
             <span><strong>{t('flight.departure')}</strong> {formatTime(departure_time)} - {formatTime(arrival_time)} ({flight_duration})</span>
-          </div>
-          <div className="flex items-center text-sm text-muted-foreground">
-            <Plane className="h-4 w-4 mr-2 text-accent" />
-            <span><strong>{t('flight.aircraft')}</strong> {getAircraftDetails()}</span>
           </div>
           <div className="flex items-center text-sm text-muted-foreground">
             <Users className="h-4 w-4 mr-2 text-accent" />

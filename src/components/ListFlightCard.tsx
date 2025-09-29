@@ -108,10 +108,10 @@ const ListFlightCard = ({
         </div>
       </div>
 
-      {/* Aircraft and details */}
+      {/* Route and details */}
       <div className="mb-4">
         <h3 className="text-lg font-semibold text-foreground mb-2">
-          {getAircraftDetails()}
+          {extractCityName(departure_airport)} → {extractCityName(arrival_airport)}
         </h3>
         <div className="flex items-center space-x-6 text-sm text-muted-foreground">
           <div className="flex items-center">

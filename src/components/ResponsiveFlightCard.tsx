@@ -53,7 +53,7 @@ const ResponsiveFlightCard = ({
               <MapPin className="h-4 w-4 text-accent" />
               <span>{getFromCity()} → {getToCity()}</span>
             </div>
-            <h3 className="font-semibold text-foreground mb-2">{getAircraftName()}</h3>
+            <h3 className="font-semibold text-foreground mb-2">{getFromCity()} → {getToCity()}</h3>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-1">
                 <Clock className="h-4 w-4" />
@@ -93,7 +93,7 @@ const ResponsiveFlightCard = ({
               <MapPin className="h-4 w-4 text-accent" />
               <span>{getFromCity()} → {getToCity()}</span>
             </div>
-            <h3 className="font-semibold text-foreground mb-2">{getAircraftName()}</h3>
+            <h3 className="font-semibold text-foreground mb-2">{getFromCity()} → {getToCity()}</h3>
             <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
               <div className="flex items-center gap-1">
                 <Clock className="h-4 w-4" />
@@ -157,7 +157,7 @@ const ResponsiveFlightCard = ({
               <MapPin className="h-4 w-4 text-accent" />
               <span>{getFromCity()} → {getToCity()}</span>
             </div>
-            <h3 className="font-semibold text-foreground mb-2">{getAircraftName()}</h3>
+            <h3 className="font-semibold text-foreground mb-2">{getFromCity()} → {getToCity()}</h3>
             <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
               <div className="flex items-center gap-1">
                 <Clock className="h-4 w-4" />

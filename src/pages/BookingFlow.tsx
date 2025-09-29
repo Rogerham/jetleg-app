@@ -260,7 +260,8 @@ const BookingFlow = () => {
                         <span className="font-medium">{step.number}</span>
                       )}
                     </div>
-                    <div className="ml-3">
+                    {/* Only show text for current step on mobile, always show on desktop */}
+                    <div className={`ml-3 ${currentStep === step.number ? 'block' : 'hidden md:block'}`}>
                       <div className={`font-medium ${currentStep >= step.number ? 'text-foreground' : 'text-muted-foreground'}`}>
                         {step.title}
                       </div>
