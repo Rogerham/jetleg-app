@@ -402,8 +402,8 @@ const Index = () => {
                                 </div>
                               </div>
                               <div>
-                                <div className="text-sm text-muted-foreground mb-1">Vliegtuig</div>
-                                <div className="font-medium text-foreground">{flight.jets ? `${flight.jets.brand} ${flight.jets.model}` : 'Private Jet'}</div>
+                                <div className="text-sm text-muted-foreground mb-1">Route</div>
+                                <div className="font-medium text-foreground">{flight.departure_airport.split('(')[0].trim()} → {flight.arrival_airport.split('(')[0].trim()}</div>
                                 <div className="text-xs text-muted-foreground">{flight.available_seats} beschikbare plaatsen</div>
                                 <div className="text-xs text-muted-foreground mt-1">Door {flight.operator}</div>
                               </div>

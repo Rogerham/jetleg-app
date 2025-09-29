@@ -3,6 +3,7 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Check, CreditCard, Lock, Users, MapPin, Calendar, Plane } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useFlightById } from '@/hooks/useFlights';
+import { extractCityName } from '@/utils/flightUtils';
 
 interface Passenger {
   firstName: string;
@@ -509,9 +510,9 @@ const BookingFlow = () => {
                         <span className="text-foreground">{formatTime(flight.departure_time)}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-muted-foreground">Vliegtuig:</span>
+                        <span className="text-muted-foreground">Route:</span>
                         <span className="text-foreground">
-                          {flight.jets ? `${flight.jets.brand} ${flight.jets.model}` : 'Aircraft details unavailable'}
+                          {extractCityName(flight.departure_airport)} → {extractCityName(flight.arrival_airport)}
                         </span>
                       </div>
                       <div className="flex justify-between">

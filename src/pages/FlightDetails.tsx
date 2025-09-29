@@ -168,8 +168,8 @@ const FlightDetails = () => {
                   <div className="font-medium text-foreground">{flight.operator}</div>
                 </div>
                 <div>
-                  <div className="text-muted-foreground">Vliegtuig</div>
-                  <div className="font-medium text-foreground">{aircraftName}</div>
+                  <div className="text-muted-foreground">Route</div>
+                  <div className="font-medium text-foreground">{extractCityName(flight.departure_airport)} → {extractCityName(flight.arrival_airport)}</div>
                 </div>
                 <div>
                   <div className="text-muted-foreground">Beschikbare stoelen</div>

@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Filter, ChevronDown, ChevronUp, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -43,9 +43,24 @@ const AdvancedSearchFilters = ({ filters, onFiltersChange, onClearFilters }: Adv
 
   const activeFiltersCount = getActiveFiltersCount();
 
+  // Cleanup: Restore body scroll on unmount
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
+
   return (
     <div className="bg-card border border-border rounded-lg p-4 mb-6">
-      <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+      <Collapsible open={isOpen} onOpenChange={(open) => {
+        setIsOpen(open);
+        // Prevent body scroll when filter dialog is open
+        if (open) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = '';
+        }
+      }}>
         <CollapsibleTrigger asChild>
           <Button variant="outline" className="w-full justify-between">
             <div className="flex items-center gap-2">
