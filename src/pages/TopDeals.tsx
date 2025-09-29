@@ -84,13 +84,7 @@ const TopDeals = () => {
           ) : (
             <>
               <div className="text-center mb-12">
-                <h2 className="text-2xl font-bold text-foreground mb-2">
-                  {t('topDeals.exclusiveDestinations')}
-                </h2>
-                <p className="text-muted-foreground">
-                  {t('topDeals.firstComeFirstServed')}
-                </p>
-                <p className="text-sm text-muted-foreground mt-2">
+                <p className="text-sm text-muted-foreground">
                   {destinationDeals.length} {t('topDeals.destinationsAvailable')}
                 </p>
               </div>
