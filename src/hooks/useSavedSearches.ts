@@ -41,6 +41,7 @@ export const useSavedSearches = () => {
       const { data, error } = await supabase
         .from('saved_searches')
         .select('*')
+        .eq('user_id', user.user.id)
         .order('created_at', { ascending: false });
 
       if (error) throw error;
@@ -116,7 +117,7 @@ export const useAlertPreferences = (savedSearchId?: string) => {
         .from('alert_preferences')
         .select('*')
         .eq('saved_search_id', savedSearchId)
-        .single();
+        .maybeSingle();
 
       if (error && error.code !== 'PGRST116') throw error;
       return data as AlertPreferences | null;
