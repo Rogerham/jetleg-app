@@ -33,11 +33,13 @@ const BottomNavigation = () => {
   ];
 
   const navigationContent = (
-    <nav className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-sm border-t border-border z-[9999] pb-safe supports-[backdrop-filter]:bg-card/60" 
+    <nav className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-sm border-t border-border z-[99999] pb-safe supports-[backdrop-filter]:bg-card/60" 
          style={{ 
+           position: 'fixed' as const,
            transform: 'translate3d(0, 0, 0)',
            willChange: 'transform',
-           paddingBottom: 'max(8px, env(safe-area-inset-bottom))'
+           paddingBottom: 'max(8px, env(safe-area-inset-bottom))',
+           zIndex: 99999
          }}>
       <div className="flex justify-around items-center h-16 px-2">
         {navItems.map((item) => {
