@@ -1,15 +1,15 @@
 
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Filter, SlidersHorizontal, MapPin, Clock, Users, Plane, Star, ArrowLeft, Calendar, X, Heart, Bell, Loader2 } from 'lucide-react';
-import { toast } from 'sonner';
+import { Filter, SlidersHorizontal, MapPin, Clock, Users, Plane, Star, ArrowLeft, Calendar, X } from 'lucide-react';
 
 // Component Imports
 import SearchWithSuggestions from '@/components/SearchWithSuggestions';
 import ActiveFilters from '@/components/ActiveFilters';
 import HeroSection from '@/components/HeroSection';
 import DealsSection from '@/components/DealsSection';
+import SaveSearchButton from '@/components/SaveSearchButton';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -78,6 +78,7 @@ const CustomDurationSlider = ({
 
 const Index = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [filteredFlights, setFilteredFlights] = useState<Flight[]>([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -315,50 +316,15 @@ const Index = () => {
                       {filteredFlights.length} beschikbare vluchten
                     </span>
                     <div className="flex items-center gap-1">
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <Button 
-                            variant="ghost" 
-                            size="icon" 
-                            aria-label="Zoekopdracht opslaan"
-                            onClick={() => {
-                              const searchQuery = `${searchData.from || 'Alle luchthavens'} → ${searchData.to || 'Overal'}`;
-                              localStorage.setItem('favoriteSearches', JSON.stringify([
-                                ...(JSON.parse(localStorage.getItem('favoriteSearches') || '[]')),
-                                {
-                                  id: Date.now(),
-                                  from: searchData.from,
-                                  to: searchData.to,
-                                  date: searchData.date,
-                                  passengers: searchData.passengers,
-                                  displayText: searchQuery,
-                                  notifications: false,
-                                  createdAt: new Date().toISOString()
-                                }
-                              ]));
-                              toast.success('Zoekopdracht opgeslagen!');
-                            }}
-                          >
-                            <Heart className="h-5 w-5 text-muted-foreground hover:text-accent transition-colors" />
-                          </Button>
-                        </TooltipTrigger>
-                        <TooltipContent><p>Zoekopdracht opslaan</p></TooltipContent>
-                      </Tooltip>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <Button 
-                            variant="ghost" 
-                            size="icon" 
-                            aria-label="Ontvang meldingen"
-                            onClick={() => {
-                              toast.success('Notificaties ingeschakeld voor deze zoekopdracht!');
-                            }}
-                          >
-                            <Bell className="h-5 w-5 text-muted-foreground hover:text-accent transition-colors" />
-                          </Button>
-                        </TooltipTrigger>
-                        <TooltipContent><p>Ontvang meldingen voor deze zoekopdracht</p></TooltipContent>
-                      </Tooltip>
+                      <SaveSearchButton 
+                        searchCriteria={{
+                          from: searchData.from,
+                          to: searchData.to,
+                          date: searchData.date,
+                          passengers: searchData.passengers,
+                          filters
+                        }}
+                      />
                     </div>
                   </div>
 
@@ -401,7 +367,21 @@ const Index = () => {
                   ) : (
                     <div className="space-y-6">
                       {filteredFlights.map(flight => (
-                        <div key={flight.id} className="card-jetleg overflow-hidden">
+                        <div 
+                          key={flight.id} 
+                          className="card-jetleg overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300"
+                          onClick={() => navigate(`/flight-details/${flight.id}`, { 
+                            state: { 
+                              flight, 
+                              searchData: {
+                                from: searchData.from,
+                                to: searchData.to,
+                                date: searchData.date,
+                                passengers: searchData.passengers
+                              }
+                            } 
+                          })}
+                        >
                           <div className="p-6">
                             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-center">
                               <div className="lg:col-span-2">
@@ -433,9 +413,19 @@ const Index = () => {
                                   <div className="text-xs text-muted-foreground">per persoon</div>
                                 </div>
                                 <button 
-                                  onClick={() => {
-                                    // Navigate to booking flow
-                                    window.location.href = `/booking-flow?flightId=${flight.id}`;
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    navigate(`/booking-flow/${flight.id}`, {
+                                      state: {
+                                        flight,
+                                        searchData: {
+                                          from: searchData.from,
+                                          to: searchData.to,
+                                          date: searchData.date,
+                                          passengers: searchData.passengers
+                                        }
+                                      }
+                                    });
                                   }}
                                   className="btn-jetleg-primary ml-4"
                                 >
