@@ -29,7 +29,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    console.log('AuthProvider: Setting up auth listener');
+    if (process.env.NODE_ENV === 'development') {
+      console.log('AuthProvider: Setting up auth listener');
+    }
     
     let mounted = true;
     
@@ -37,7 +39,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (event, session) => {
         if (mounted) {
-          console.log('Auth state changed:', event, session?.user?.email);
+          if (process.env.NODE_ENV === 'development') {
+            console.log('Auth state changed:', event);
+          }
           setSession(session);
           setUser(session?.user ?? null);
           setLoading(false);
@@ -48,7 +52,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // Check for existing session
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (mounted) {
-        console.log('Initial session check:', session?.user?.email);
+        if (process.env.NODE_ENV === 'development') {
+          console.log('Initial session check completed');
+        }
         setSession(session);
         setUser(session?.user ?? null);
         setLoading(false);
@@ -56,14 +62,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
 
     return () => {
-      console.log('AuthProvider: Cleaning up auth listener');
+      if (process.env.NODE_ENV === 'development') {
+        console.log('AuthProvider: Cleaning up auth listener');
+      }
       mounted = false;
       subscription.unsubscribe();
     };
   }, []);
 
   const signUp = async (email: string, password: string, firstName: string, lastName: string, phone: string) => {
-    console.log('AuthProvider: Attempting sign up for:', email);
+    if (process.env.NODE_ENV === 'development') {
+      console.log('AuthProvider: Attempting sign up');
+    }
     const redirectUrl = `${window.location.origin}/`;
     
     const { error } = await supabase.auth.signUp({
@@ -80,8 +90,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
     
     if (error) {
-      console.error('Sign up error:', error);
-    } else {
+      console.error('Sign up error:', error.message);
+    } else if (process.env.NODE_ENV === 'development') {
       console.log('Sign up successful');
     }
     
@@ -89,15 +99,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const signIn = async (email: string, password: string) => {
-    console.log('AuthProvider: Attempting sign in for:', email);
+    if (process.env.NODE_ENV === 'development') {
+      console.log('AuthProvider: Attempting sign in');
+    }
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
     
     if (error) {
-      console.error('Sign in error:', error);
-    } else {
+      console.error('Sign in error:', error.message);
+    } else if (process.env.NODE_ENV === 'development') {
       console.log('Sign in successful');
     }
     
@@ -105,7 +117,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const signOut = async () => {
-    console.log('AuthProvider: Signing out');
+    if (process.env.NODE_ENV === 'development') {
+      console.log('AuthProvider: Signing out');
+    }
     await supabase.auth.signOut();
   };
 

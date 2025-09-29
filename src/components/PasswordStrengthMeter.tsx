@@ -37,8 +37,6 @@ const getStrengthLevel = (strength: number): { level: string; color: string } =>
 
 export const PasswordStrengthMeter: React.FC<PasswordStrengthMeterProps> = ({ password }) => {
   if (!password) return null;
-  
-  console.log('PasswordStrengthMeter rendering with password:', password ? 'has value' : 'empty');
 
   const criteria = checkPasswordCriteria(password);
   const strength = calculateStrength(criteria);
