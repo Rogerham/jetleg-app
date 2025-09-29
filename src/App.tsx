@@ -23,8 +23,8 @@ const App = () => (
           <Toaster />
           <BrowserRouter>
             <ScrollToTop />
-            <div className="min-h-screen flex flex-col pb-16">
-              <main className="flex-1">
+            <div className="min-h-screen flex flex-col">
+              <main className="flex-1 pb-16">
                 <Suspense fallback={<div>Loading...</div>}>
                   <Routes>
                     {navItems.map(({ to, page }) => (
@@ -38,8 +38,8 @@ const App = () => (
                   </Routes>
                 </Suspense>
               </main>
-              <BottomNavigation />
             </div>
+            <BottomNavigation />
           </BrowserRouter>
         </TooltipProvider>
       </CurrencyProvider>
