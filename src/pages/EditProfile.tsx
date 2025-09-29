@@ -31,7 +31,7 @@ interface ProfileData {
 const EditProfile = ({ onBack }: EditProfileProps) => {
   const { user } = useAuth();
   const [loading, setLoading] = useState(false);
-  const [showPasswordForm, setShowPasswordForm] = useState(false);
+  
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -186,7 +186,6 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
       } else {
         toast.success('Wachtwoord succesvol gewijzigd');
         setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
-        setShowPasswordForm(false);
       }
     } catch (error) {
       console.error('Error:', error);
@@ -329,78 +328,68 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
           
           {/* Password Change */}
           <div className="mb-8">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-medium text-foreground">Wachtwoord wijzigen</h3>
-              <button
-                onClick={() => setShowPasswordForm(!showPasswordForm)}
-                className="btn-jetleg-outline text-sm"
-              >
-                {showPasswordForm ? 'Annuleren' : 'Wijzigen'}
-              </button>
-            </div>
-
-            {showPasswordForm && (
-              <form onSubmit={handlePasswordSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Huidig wachtwoord</label>
-                  <div className="relative">
-                    <input
-                      type={showCurrentPassword ? 'text' : 'password'}
-                      value={passwordData.currentPassword}
-                      onChange={(e) => setPasswordData(prev => ({ ...prev, currentPassword: e.target.value }))}
-                      className="w-full pr-10 px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-accent/20 focus:border-accent"
-                      required
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                    >
-                      {showCurrentPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                    </button>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Nieuw wachtwoord</label>
-                  <div className="relative">
-                    <input
-                      type={showNewPassword ? 'text' : 'password'}
-                      value={passwordData.newPassword}
-                      onChange={(e) => setPasswordData(prev => ({ ...prev, newPassword: e.target.value }))}
-                      className="w-full pr-10 px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-accent/20 focus:border-accent"
-                      required
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowNewPassword(!showNewPassword)}
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                    >
-                      {showNewPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                    </button>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Bevestig nieuw wachtwoord</label>
+            <h3 className="text-lg font-medium text-foreground mb-4">Wachtwoord wijzigen</h3>
+            
+            <form onSubmit={handlePasswordSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">Huidig wachtwoord</label>
+                <div className="relative">
                   <input
-                    type="password"
-                    value={passwordData.confirmPassword}
-                    onChange={(e) => setPasswordData(prev => ({ ...prev, confirmPassword: e.target.value }))}
-                    className="w-full px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-accent/20 focus:border-accent"
+                    type={showCurrentPassword ? 'text' : 'password'}
+                    value={passwordData.currentPassword}
+                    onChange={(e) => setPasswordData(prev => ({ ...prev, currentPassword: e.target.value }))}
+                    className="w-full pr-10 px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-accent/20 focus:border-accent"
                     required
                   />
+                  <button
+                    type="button"
+                    onClick={() => setShowCurrentPassword(!showCurrentPassword)}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  >
+                    {showCurrentPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  </button>
                 </div>
+              </div>
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="btn-jetleg-primary w-full"
-                >
-                  {loading ? 'Wijzigen...' : 'Wachtwoord wijzigen'}
-                </button>
-              </form>
-            )}
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">Nieuw wachtwoord</label>
+                <div className="relative">
+                  <input
+                    type={showNewPassword ? 'text' : 'password'}
+                    value={passwordData.newPassword}
+                    onChange={(e) => setPasswordData(prev => ({ ...prev, newPassword: e.target.value }))}
+                    className="w-full pr-10 px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-accent/20 focus:border-accent"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowNewPassword(!showNewPassword)}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  >
+                    {showNewPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">Bevestig nieuw wachtwoord</label>
+                <input
+                  type="password"
+                  value={passwordData.confirmPassword}
+                  onChange={(e) => setPasswordData(prev => ({ ...prev, confirmPassword: e.target.value }))}
+                  className="w-full px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-accent/20 focus:border-accent"
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn-jetleg-primary w-full"
+              >
+                {loading ? 'Wijzigen...' : 'Wachtwoord wijzigen'}
+              </button>
+            </form>
           </div>
 
           {/* Account Info */}
