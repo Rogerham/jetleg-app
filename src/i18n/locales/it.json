@@ -135,7 +135,7 @@
   },
   "topDeals": {
     "title": "Destinazioni Top",
-    "subtitle": "Scopri le migliori offerte empty leg verso le più belle destinazioni d'Europa. Destinazioni esclusive come Barcellona, Parigi, Londra e altro.",
+    "subtitle": "Scopri le migliori offerte empty leg verso le più belle destinazioni del mondo. Destinazioni esclusive come Barcellona, Parigi, Londra, New York, Dubai e altro.",
     "backToHome": "Torna alla home",
     "destinationsAvailable": "destinazioni disponibili",
     "loading": {
@@ -213,7 +213,7 @@
       },
       "reliable": {
         "title": "Affidabile e Sicuro",
-        "description": "Tutti gli operatori sono completamente certificati e rispettano i più rigidi standard dell'aviazione europea."
+        "description": "Tutti gli operatori sono completamente certificati e rispettano i più rigidi standard dell'aviazione internazionale."
       }
     },
     "timeline": {

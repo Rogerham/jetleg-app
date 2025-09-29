@@ -136,7 +136,7 @@
   },
   "topDeals": {
     "title": "Top Bestemmingen",
-    "subtitle": "Ontdek de beste empty leg deals naar Europa's mooiste bestemmingen. Exclusieve bestemmingen zoals Barcelona, Parijs, Londen en meer.",
+    "subtitle": "Ontdek de beste empty leg deals naar de mooiste bestemmingen wereldwijd. Exclusieve bestemmingen zoals Barcelona, Parijs, Londen, New York, Dubai en meer.",
     "backToHome": "Terug naar home",
     "destinationsAvailable": "bestemmingen beschikbaar",
     "loading": {
@@ -214,7 +214,7 @@
       },
       "reliable": {
         "title": "Betrouwbaar en Veilig",
-        "description": "Alle operators zijn volledig gecertificeerd en voldoen aan de strengste Europese luchtvaartnormen."
+        "description": "Alle operators zijn volledig gecertificeerd en voldoen aan de strengste internationale luchtvaartnormen."
       }
     },
     "timeline": {

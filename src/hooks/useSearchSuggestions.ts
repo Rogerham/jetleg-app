@@ -9,16 +9,34 @@ interface SearchSuggestion {
 }
 
 const POPULAR_ROUTES = [
+  // Europe routes
   { from: 'London (LGW)', to: 'Paris (CDG)', frequency: 150 },
   { from: 'Amsterdam (AMS)', to: 'Barcelona (BCN)', frequency: 120 },
   { from: 'Frankfurt (FRA)', to: 'Rome (FCO)', frequency: 100 },
   { from: 'Brussels (BRU)', to: 'Milan (MXP)', frequency: 90 },
   { from: 'Zurich (ZUR)', to: 'Nice (NCE)', frequency: 80 },
+  
+  // Transatlantic routes
+  { from: 'London (LHR)', to: 'New York (JFK)', frequency: 200 },
+  { from: 'Paris (CDG)', to: 'Los Angeles (LAX)', frequency: 180 },
+  { from: 'Amsterdam (AMS)', to: 'Miami (MIA)', frequency: 160 },
+  { from: 'Frankfurt (FRA)', to: 'Chicago (ORD)', frequency: 140 },
+  { from: 'New York (JFK)', to: 'London (LHR)', frequency: 190 },
+  
+  // Europe to Middle East
+  { from: 'London (LHR)', to: 'Dubai (DXB)', frequency: 170 },
+  { from: 'Paris (CDG)', to: 'Abu Dhabi (AUH)', frequency: 130 },
+  { from: 'Frankfurt (FRA)', to: 'Dubai (DXB)', frequency: 125 },
+  { from: 'Dubai (DXB)', to: 'London (LHR)', frequency: 165 },
+  
+  // US domestic
+  { from: 'New York (JFK)', to: 'Los Angeles (LAX)', frequency: 110 },
+  { from: 'Los Angeles (LAX)', to: 'Miami (MIA)', frequency: 95 },
+  { from: 'Chicago (ORD)', to: 'San Francisco (SFO)', frequency: 85 },
+  
+  // Remaining European routes
   { from: 'Vienna (VIE)', to: 'London (LGW)', frequency: 75 },
-  { from: 'Munich (MUC)', to: 'Barcelona (BCN)', frequency: 70 },
-  { from: 'Berlin (BER)', to: 'Rome (FCO)', frequency: 65 },
-  { from: 'Brussels (BRU)', to: 'Nice (NCE)', frequency: 60 },
-  { from: 'Paris (CDG)', to: 'Geneva (GVA)', frequency: 55 }
+  { from: 'Munich (MUC)', to: 'Barcelona (BCN)', frequency: 70 }
 ];
 
 export const useSearchSuggestions = (query: string, field: 'from' | 'to') => {
