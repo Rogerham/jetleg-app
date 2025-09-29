@@ -26,8 +26,8 @@
     "terms": "Términos"
   },
   "hero": {
-    "title": "Vuela privado, paga menos",
-    "subtitle": "Un jetleg para recordar.",
+    "title": "Un jetleg para recordar",
+    "subtitle": "",
     "searchPlaceholder": "¿Desde dónde?",
     "destinationPlaceholder": "¿A dónde?",
     "datePlaceholder": "Fecha de salida",

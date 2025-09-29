@@ -28,8 +28,8 @@
     "terms": "Voorwaarden"
   },
   "hero": {
-    "title": "",
-    "subtitle": "Een jetleg om te herinneren.",
+    "title": "Een jetleg om te herinneren",
+    "subtitle": "",
     "searchPlaceholder": "Vanwaar?",
     "destinationPlaceholder": "Waarheen?",
     "datePlaceholder": "Vertrekdatum",

@@ -26,8 +26,8 @@
     "terms": "Bedingungen"
   },
   "hero": {
-    "title": "Fliegen Sie privat, zahlen Sie weniger",
-    "subtitle": "Ein jetleg zum Erinnern.",
+    "title": "Ein jetleg zum Erinnern",
+    "subtitle": "",
     "searchPlaceholder": "Von wo?",
     "destinationPlaceholder": "Wohin?",
     "datePlaceholder": "Abflugdatum",

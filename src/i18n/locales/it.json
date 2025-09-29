@@ -27,8 +27,8 @@
     "terms": "Termini"
   },
   "hero": {
-    "title": "Vola in privato, paga meno",
-    "subtitle": "Un jetleg da ricordare.",
+    "title": "Un jetleg da ricordare",
+    "subtitle": "",
     "searchPlaceholder": "Da dove?",
     "destinationPlaceholder": "Dove?",
     "datePlaceholder": "Data di partenza",

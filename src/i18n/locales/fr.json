@@ -26,8 +26,8 @@
     "terms": "Conditions"
   },
   "hero": {
-    "title": "Volez en privé, payez moins",
-    "subtitle": "Un jetleg à retenir.",
+    "title": "Un jetleg à retenir",
+    "subtitle": "",
     "searchPlaceholder": "D'où?",
     "destinationPlaceholder": "Vers où?",
     "datePlaceholder": "Date de départ",
