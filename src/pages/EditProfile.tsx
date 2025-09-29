@@ -348,38 +348,15 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
 
         {/* Account Deletion Section */}
         <div className="bg-card rounded-xl p-6 border border-destructive/20 mt-8">
-          <h2 className="text-lg font-semibold text-destructive mb-4">Gevaarlijke zone</h2>
-          <p className="text-sm text-muted-foreground mb-6">
-            Het verwijderen van je account is permanent en kan niet ongedaan gemaakt worden. 
-            Al je gegevens, boekingen en voorkeuren worden definitief verwijderd.
-          </p>
-          
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <button className="flex items-center gap-2 px-4 py-2 bg-destructive/10 text-destructive border border-destructive/20 rounded-lg hover:bg-destructive/20 transition-colors">
-                <Trash2 className="h-4 w-4" />
-                Account verwijderen
-              </button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>Account definitief verwijderen?</AlertDialogTitle>
-                <AlertDialogDescription>
-                  Deze actie kan niet ongedaan gemaakt worden. Al je gegevens, boekingen en voorkeuren worden permanent verwijderd.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Annuleren</AlertDialogCancel>
-                <AlertDialogAction
-                  onClick={handleDeleteAccount}
-                  disabled={isDeleting}
-                  className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-                >
-                  {isDeleting ? 'Verwijderen...' : 'Ja, verwijder account'}
-                </AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
+          <h2 className="text-lg font-semibold text-destructive mb-4">Account verwijderen</h2>
+          <button
+            onClick={handleDeleteAccount}
+            disabled={isDeleting}
+            className="flex items-center gap-2 px-4 py-2 bg-destructive/10 text-destructive border border-destructive/20 rounded-lg hover:bg-destructive/20 transition-colors"
+          >
+            <Trash2 className="h-4 w-4" />
+            {isDeleting ? 'Verwijderen...' : 'Account verwijderen'}
+          </button>
         </div>
       </div>
     </div>

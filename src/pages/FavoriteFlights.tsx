@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Heart, Bell, BellOff, Trash2, ArrowRight, AlertTriangle, Search } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSavedSearches, useAlertPreferences } from '@/hooks/useSavedSearches';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
@@ -147,6 +147,7 @@ const FavoriteSkeletonCard = React.memo(() => {
 FavoriteSkeletonCard.displayName = 'FavoriteSkeletonCard';
 
 const SavedSearchCard = React.memo(({ search, onDelete }: SavedSearchCardProps) => {
+  const navigate = useNavigate();
   const { alertPreferences, saveAlertPreferences } = useAlertPreferences(search.id);
   const [notificationsEnabled, setNotificationsEnabled] = useState(
     alertPreferences?.email_notifications || false
@@ -177,8 +178,21 @@ const SavedSearchCard = React.memo(({ search, onDelete }: SavedSearchCardProps) 
     }
   }, []);
 
+  const handleCardClick = React.useCallback(() => {
+    const params = new URLSearchParams({
+      from: search.search_criteria.from || '',
+      to: search.search_criteria.to || '',
+      date: search.search_criteria.date || '',
+      passengers: search.search_criteria.passengers || '1'
+    });
+    navigate(`/?${params.toString()}`);
+  }, [navigate, search.search_criteria]);
+
   return (
-    <div className="bg-card border border-border rounded-xl p-6 hover:shadow-md transition-all duration-200">
+    <div 
+      className="bg-card border border-border rounded-xl p-6 hover:shadow-md transition-all duration-200 cursor-pointer"
+      onClick={handleCardClick}
+    >
       <div className="flex items-center justify-between">
         <div className="flex-1">
           <div className="flex items-center gap-4 mb-2">
@@ -197,7 +211,10 @@ const SavedSearchCard = React.memo(({ search, onDelete }: SavedSearchCardProps) 
 
         <div className="flex items-center gap-2">
           <button
-            onClick={toggleNotifications}
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleNotifications();
+            }}
             className={`p-2 rounded-full transition-colors ${
               notificationsEnabled 
                 ? 'text-blue-600 bg-blue-50 hover:bg-blue-100' 
@@ -209,7 +226,10 @@ const SavedSearchCard = React.memo(({ search, onDelete }: SavedSearchCardProps) 
           </button>
           
           <button
-            onClick={onDelete}
+            onClick={(e) => {
+              e.stopPropagation();
+              onDelete();
+            }}
             className="p-2 rounded-full text-red-600 bg-red-50 hover:bg-red-100 transition-colors"
             title="Verwijderen"
           >

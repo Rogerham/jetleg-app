@@ -370,7 +370,11 @@ const SearchResults = () => {
               ) : (
                 <div className="space-y-6">
                   {filteredFlights.map(flight => (
-                    <div key={flight.id} className="card-jetleg overflow-hidden">
+                    <div 
+                      key={flight.id} 
+                      className="card-jetleg overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300"
+                      onClick={() => navigate(`/flight-details/${flight.id}`, { state: { flight, searchData } })}
+                    >
                       <div className="p-6">
                         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-center">
                           <div className="lg:col-span-2">
@@ -418,7 +422,10 @@ const SearchResults = () => {
                           <div className="lg:col-span-1 text-center lg:text-right">
                             <div className="text-2xl font-bold text-foreground mb-4">{formatPrice(flight.price_per_seat)}</div>
                             <button 
-                              onClick={() => navigate(`/booking/${flight.id}`, { state: { flight } })} 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                navigate(`/booking/${flight.id}`, { state: { flight } });
+                              }} 
                               className="btn-jetleg-primary w-full lg:w-auto"
                             >
                               Boek Nu
