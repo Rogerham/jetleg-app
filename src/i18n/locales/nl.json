@@ -29,7 +29,7 @@
   },
   "hero": {
     "title": "",
-    "subtitle": "Ontdek exclusieve empty leg vluchten en ervaar luxe reizen voor een fractie van de prijs.",
+    "subtitle": "Een jetleg om te herinneren.",
     "searchPlaceholder": "Vanwaar?",
     "destinationPlaceholder": "Waarheen?",
     "datePlaceholder": "Vertrekdatum",
@@ -138,8 +138,6 @@
     "title": "Top Bestemmingen",
     "subtitle": "Ontdek de beste empty leg deals naar Europa's mooiste bestemmingen. Exclusieve bestemmingen zoals Barcelona, Parijs, Londen en meer.",
     "backToHome": "Terug naar home",
-    "exclusiveDestinations": "Exclusieve Bestemmingen",
-    "firstComeFirstServed": "Wees snel om als eerste jouw droom charter naar je favoriete bestemming te boeken. 'Wie het eerst komt, het eerst maalt.'",
     "destinationsAvailable": "bestemmingen beschikbaar",
     "loading": {
       "title": "Bestemmingen laden...",
