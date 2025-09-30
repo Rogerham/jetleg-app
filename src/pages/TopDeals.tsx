@@ -19,13 +19,18 @@ const REGION_MAP: Record<string, string> = {
   'Milan': 'europe',
   'Barcelona': 'europe',
   'Monaco': 'europe',
+  'Berlin': 'europe',
+  'Madrid': 'europe',
+  'Courchevel': 'europe',
+  'Cannes': 'europe',
   'Dubai': 'uae',
   'Abu Dhabi': 'uae',
   'New York': 'north-america',
   'Miami': 'north-america',
+  'Los Angeles': 'north-america',
 };
 
-type RegionFilter = 'all' | 'europe' | 'north-america' | 'uae' | 'worldwide';
+type RegionFilter = 'all' | 'europe' | 'north-america' | 'uae';
 
 const TopDeals = () => {
   const navigate = useNavigate();
@@ -39,12 +44,6 @@ const TopDeals = () => {
     
     return destinationDeals.filter(deal => {
       const region = REGION_MAP[deal.destination];
-      
-      if (selectedRegion === 'worldwide') {
-        // Worldwide includes destinations not in the specific regions
-        return !region || (region !== 'europe' && region !== 'north-america' && region !== 'uae');
-      }
-      
       return region === selectedRegion;
     });
   }, [destinationDeals, selectedRegion]);
@@ -141,24 +140,6 @@ const TopDeals = () => {
             >
               {t('topDeals.filters.uae')}
             </Button>
-            <Button
-              variant={selectedRegion === 'worldwide' ? 'default' : 'outline'}
-              onClick={() => setSelectedRegion('worldwide')}
-              className="flex-1 sm:flex-initial"
-            >
-              {t('topDeals.filters.worldwide')}
-            </Button>
-            {selectedRegion !== 'all' && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setSelectedRegion('all')}
-                className="ml-auto"
-              >
-                <X className="h-4 w-4 mr-1" />
-                {t('topDeals.filters.reset')}
-              </Button>
-            )}
           </div>
 
           {destinationDeals.length === 0 ? (
