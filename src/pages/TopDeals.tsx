@@ -1,15 +1,53 @@
 
 import PageHeader from '@/components/PageHeader';
 import DestinationDealCard from '@/components/DestinationDealCard';
-import { MapPin } from 'lucide-react';
+import { MapPin, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDestinationDeals } from '@/hooks/useDestinationDeals';
+import { Button } from '@/components/ui/button';
+import { useState, useMemo } from 'react';
+
+// Region mapping for destinations
+const REGION_MAP: Record<string, string> = {
+  'Paris': 'europe',
+  'London': 'europe',
+  'Ibiza': 'europe',
+  'Nice': 'europe',
+  'Geneva': 'europe',
+  'Zurich': 'europe',
+  'Milan': 'europe',
+  'Barcelona': 'europe',
+  'Monaco': 'europe',
+  'Dubai': 'uae',
+  'Abu Dhabi': 'uae',
+  'New York': 'north-america',
+  'Miami': 'north-america',
+};
+
+type RegionFilter = 'all' | 'europe' | 'north-america' | 'uae' | 'worldwide';
 
 const TopDeals = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { data: destinationDeals = [], isLoading, error } = useDestinationDeals();
+  const [selectedRegion, setSelectedRegion] = useState<RegionFilter>('all');
+
+  // Filter deals based on selected region
+  const filteredDeals = useMemo(() => {
+    if (selectedRegion === 'all') return destinationDeals;
+    
+    return destinationDeals.filter(deal => {
+      const region = REGION_MAP[deal.destination];
+      
+      if (selectedRegion === 'worldwide') {
+        // Worldwide includes destinations not in the specific regions
+        return !region || (region !== 'europe' && region !== 'north-america' && region !== 'uae');
+      }
+      
+      return region === selectedRegion;
+    });
+  }, [destinationDeals, selectedRegion]);
 
   if (isLoading) {
     return (
@@ -71,8 +109,58 @@ const TopDeals = () => {
       />
 
       {/* Destinations Grid */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="container mx-auto px-6">
+          {/* Region Filters */}
+          <div className="flex flex-wrap items-center gap-3 mb-6">
+            <Button
+              variant={selectedRegion === 'all' ? 'default' : 'outline'}
+              onClick={() => setSelectedRegion('all')}
+              className="flex-1 sm:flex-initial"
+            >
+              {t('topDeals.filters.all')}
+            </Button>
+            <Button
+              variant={selectedRegion === 'europe' ? 'default' : 'outline'}
+              onClick={() => setSelectedRegion('europe')}
+              className="flex-1 sm:flex-initial"
+            >
+              {t('topDeals.filters.europe')}
+            </Button>
+            <Button
+              variant={selectedRegion === 'north-america' ? 'default' : 'outline'}
+              onClick={() => setSelectedRegion('north-america')}
+              className="flex-1 sm:flex-initial"
+            >
+              {t('topDeals.filters.northAmerica')}
+            </Button>
+            <Button
+              variant={selectedRegion === 'uae' ? 'default' : 'outline'}
+              onClick={() => setSelectedRegion('uae')}
+              className="flex-1 sm:flex-initial"
+            >
+              {t('topDeals.filters.uae')}
+            </Button>
+            <Button
+              variant={selectedRegion === 'worldwide' ? 'default' : 'outline'}
+              onClick={() => setSelectedRegion('worldwide')}
+              className="flex-1 sm:flex-initial"
+            >
+              {t('topDeals.filters.worldwide')}
+            </Button>
+            {selectedRegion !== 'all' && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setSelectedRegion('all')}
+                className="ml-auto"
+              >
+                <X className="h-4 w-4 mr-1" />
+                {t('topDeals.filters.reset')}
+              </Button>
+            )}
+          </div>
+
           {destinationDeals.length === 0 ? (
             <div className="text-center py-20">
               <MapPin className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
@@ -83,14 +171,14 @@ const TopDeals = () => {
             </div>
           ) : (
             <>
-              <div className="text-center mb-12">
+              <div className="text-center mb-8">
                 <p className="text-sm text-muted-foreground">
-                  {destinationDeals.length} {t('topDeals.destinationsAvailable')}
+                  {filteredDeals.length} {t('topDeals.destinationsAvailable')}
                 </p>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                {destinationDeals.map((deal, index) => (
+                {filteredDeals.map((deal, index) => (
                   <div key={deal.id} className="animate-fade-in" style={{
                     animationDelay: `${index * 0.1}s`
                   }}>

@@ -71,6 +71,14 @@
     "subtitle": "Entdecken Sie die besten Empty Leg Angebote zu den schönsten Destinationen weltweit. Exklusive Destinationen wie Barcelona, Paris, London, New York, Dubai und mehr.",
     "backToHome": "Zurück zur Startseite",
     "destinationsAvailable": "Destinationen verfügbar",
+    "filters": {
+      "all": "Alle",
+      "europe": "Europa",
+      "northAmerica": "Nordamerika",
+      "uae": "VAE",
+      "worldwide": "Weltweit",
+      "reset": "Zurücksetzen"
+    },
     "loading": {
       "title": "Destinationen werden geladen...",
       "description": "Wir suchen die besten verfügbaren Destinationen für Sie."

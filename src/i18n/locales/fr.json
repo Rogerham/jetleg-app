@@ -71,6 +71,14 @@
     "subtitle": "Découvrez les meilleures offres empty leg vers les plus belles destinations du monde. Destinations exclusives comme Barcelone, Paris, Londres, New York, Dubaï et plus.",
     "backToHome": "Retour à l'accueil",
     "destinationsAvailable": "destinations disponibles",
+    "filters": {
+      "all": "Tous",
+      "europe": "Europe",
+      "northAmerica": "Amérique du Nord",
+      "uae": "EAU",
+      "worldwide": "Dans le monde",
+      "reset": "Réinitialiser"
+    },
     "loading": {
       "title": "Chargement des destinations...",
       "description": "Nous recherchons les meilleures destinations disponibles pour vous."

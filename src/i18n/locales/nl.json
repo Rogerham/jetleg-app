@@ -139,6 +139,14 @@
     "subtitle": "Ontdek de beste empty leg deals naar de mooiste bestemmingen wereldwijd. Exclusieve bestemmingen zoals Barcelona, Parijs, Londen, New York, Dubai en meer.",
     "backToHome": "Terug naar home",
     "destinationsAvailable": "bestemmingen beschikbaar",
+    "filters": {
+      "all": "Alle",
+      "europe": "Europa",
+      "northAmerica": "Noord-Amerika",
+      "uae": "VAE",
+      "worldwide": "Wereldwijd",
+      "reset": "Reset"
+    },
     "loading": {
       "title": "Bestemmingen laden...",
       "description": "We zoeken de beste beschikbare bestemmingen voor jou."
