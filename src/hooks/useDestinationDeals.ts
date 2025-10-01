@@ -8,7 +8,7 @@ export const useDestinationDeals = () => {
   // Use ALL flights (not deduplicated) to get accurate counts for destination deals
   const { data: flights = [], isLoading: flightsLoading, error: flightsError } = useAllFlights();
 
-  return useQuery({
+  const query = useQuery({
     queryKey: ['destination-deals', flights.length],
     queryFn: async (): Promise<DestinationDeal[]> => {
       if (flights.length === 0) {
@@ -26,10 +26,12 @@ export const useDestinationDeals = () => {
     staleTime: 5 * 60 * 1000, // 5 minutes
     gcTime: 10 * 60 * 1000, // 10 minutes
     refetchOnWindowFocus: false,
-    // Return the loading state and error from flights query
-    meta: {
-      isLoading: flightsLoading,
-      error: flightsError
-    }
   });
+
+  // Return combined loading state - loading if either flights or deals are loading
+  return {
+    ...query,
+    isLoading: flightsLoading || query.isLoading,
+    error: flightsError || query.error
+  };
 };
