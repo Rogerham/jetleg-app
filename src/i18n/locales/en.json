@@ -407,13 +407,17 @@
           "How do I book a flight?",
           "Which payment methods do you accept?",
           "Can I cancel my booking?",
-          "Will I receive an invoice?"
+          "Will I receive an invoice?",
+          "What happens after I book an empty leg?",
+          "Are flights to other continents also available?"
         ],
         "answers": [
           "Booking is simple: search for a flight on our website, select your desired option, fill in your details and pay securely online. You will receive immediate confirmation by email.",
           "We accept all major credit cards (Visa, Mastercard, American Express), iDEAL, bank transfer and other local payment methods depending on your location.",
           "Cancellation conditions vary per flight and operator. In general, empty legs are less flexible than regular charters. Always check the specific conditions when booking.",
-          "Yes, after payment you automatically receive an invoice by email. For business bookings we can provide customized invoices with your company details."
+          "Yes, after payment you automatically receive an invoice by email. For business bookings we can provide customized invoices with your company details.",
+          "After booking you'll receive an immediate confirmation email with all flight details and your e-tickets. Our customer service will contact you if needed for any special requirements. On the day of departure, go directly to the private terminal - arrive 15-30 minutes before departure. After landing, you'll receive a questionnaire to share your experience with us.",
+          "Currently we focus primarily on Europe, North America and the UAE. Flights to Asia, South America, Africa and Australia are in development and will be available in the near future. We are actively expanding our partnerships worldwide to soon offer you these beautiful destinations as well."
         ]
       },
       "flights": {

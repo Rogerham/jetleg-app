@@ -46,23 +46,40 @@ const AdvancedSearchFilters = ({ filters, onFiltersChange, onClearFilters }: Adv
   // Cleanup: Restore body scroll on unmount and handle scroll lock
   useEffect(() => {
     if (isOpen) {
-      // Lock both body and html scroll
+      // Save current scroll position
+      const scrollY = window.scrollY;
       const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+      
+      // Lock scroll using position fixed to prevent any scrolling
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
       document.body.style.paddingRight = `${scrollBarWidth}px`;
+      
+      // Prevent scroll on html element
       document.documentElement.style.overflow = 'hidden';
-    } else {
-      // Restore scroll
-      document.body.style.overflow = '';
-      document.body.style.paddingRight = '';
-      document.documentElement.style.overflow = '';
+      
+      // Prevent touch move events on mobile
+      const preventScroll = (e: TouchEvent) => {
+        e.preventDefault();
+      };
+      document.body.addEventListener('touchmove', preventScroll, { passive: false });
+      
+      return () => {
+        // Restore scroll
+        document.body.removeEventListener('touchmove', preventScroll);
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+        document.documentElement.style.overflow = '';
+        
+        // Restore scroll position
+        window.scrollTo(0, scrollY);
+      };
     }
-
-    return () => {
-      document.body.style.overflow = '';
-      document.body.style.paddingRight = '';
-      document.documentElement.style.overflow = '';
-    };
   }, [isOpen]);
 
   return (

@@ -361,6 +361,78 @@
       "response": "We nemen binnen 24 uur contact met je op."
     }
   },
+  "faq": {
+    "hero": {
+      "title": "Veelgestelde Vragen",
+      "subtitle": "Vind antwoorden op de meest gestelde vragen over empty leg vluchten en ons platform."
+    },
+    "categories": {
+      "general": {
+        "title": "Algemeen",
+        "questions": [
+          "Wat is Jetleg?",
+          "Wat is een empty leg vlucht?",
+          "Hoe groot zijn de besparingen?",
+          "Is Jetleg veilig?"
+        ],
+        "answers": [
+          "Jetleg is een platform gespecialiseerd in empty leg vluchten - privéjet vluchten die anders leeg zouden vliegen. Wij bieden deze vluchten aan tegen sterk gereduceerde prijzen, waardoor privéjet reizen toegankelijker wordt.",
+          "Een empty leg vlucht ontstaat wanneer een privéjet terug moet vliegen naar zijn basis zonder passagiers, of zich moet verplaatsen naar een nieuwe locatie voor de volgende klant. In plaats van leeg te vliegen, bieden operators deze vluchten aan tegen gereduceerde prijzen.",
+          "Empty leg vluchten kunnen tot 75% goedkoper zijn dan reguliere privéjet charters. De exacte besparing is afhankelijk van de route, het vliegtuigtype en de timing van de vlucht.",
+          "Absoluut. Alle vluchten worden uitgevoerd door gecertificeerde operators die voldoen aan de hoogste veiligheidsnormen. Onze partners hebben alle benodigde licenties en certificeringen voor commerciële vluchten."
+        ]
+      },
+      "booking": {
+        "title": "Boeking en Betaling",
+        "questions": [
+          "Hoe boek ik een vlucht?",
+          "Welke betaalmethodes accepteren jullie?",
+          "Kan ik mijn boeking annuleren?",
+          "Krijg ik een factuur?",
+          "Wat gebeurt er nadat ik een empty leg geboekt heb?",
+          "Zijn vluchten naar andere werelddelen ook beschikbaar?"
+        ],
+        "answers": [
+          "Boeken is eenvoudig: zoek een vlucht op onze website, selecteer je gewenste optie, vul je gegevens in en betaal veilig online. Je ontvangt direct een bevestiging per e-mail.",
+          "Wij accepteren alle grote creditcards (Visa, Mastercard, American Express), iDEAL, bankoverschrijving en andere lokale betaalmethodes afhankelijk van jouw locatie.",
+          "Annuleringsvoorwaarden verschillen per vlucht en operator. Over het algemeen zijn empty legs minder flexibel dan reguliere charters. Check altijd de specifieke voorwaarden bij je boeking.",
+          "Ja, na betaling ontvang je automatisch een factuur per e-mail. Voor zakelijke boekingen kunnen wij aangepaste facturen leveren met je bedrijfsgegevens.",
+          "Na je boeking ontvang je direct een bevestigingsmail met alle vliegdetails en je e-tickets. Onze klantenservice neemt indien nodig contact met je op voor eventuele bijzonderheden. Op de dag van vertrek kun je rechtstreeks naar de private terminal gaan - meld je 15-30 minuten voor vertrek. Na landing ontvang je een vragenlijst om je ervaring met ons te delen.",
+          "Momenteel richten we ons voornamelijk op Europa, Noord-Amerika en de VAE. Vluchten naar Azië, Zuid-Amerika, Afrika en Australië zijn in ontwikkeling en zullen in de nabije toekomst beschikbaar komen. We zijn volop bezig met het uitbreiden van onze partnerschappen wereldwijd om jou straks ook deze prachtige bestemmingen te kunnen aanbieden."
+        ]
+      },
+      "flights": {
+        "title": "Vluchtdetails",
+        "questions": [
+          "Hoe ver van tevoren zijn empty legs beschikbaar?",
+          "Kan ik de vertrektijd wijzigen?",
+          "Wat gebeurt er bij slecht weer?",
+          "Zijn maaltijden en dranken inbegrepen?"
+        ],
+        "answers": [
+          "Empty legs zijn vaak last-minute beschikbaar, van een paar uur tot maximaal 2 weken van tevoren. De meeste deals worden 24-72 uur van tevoren gepubliceerd.",
+          "Beperkte flexibiliteit is mogelijk, maar wijzigingen zijn afhankelijk van de operator en het vliegschema. Kleine aanpassingen (1-2 uur) zijn soms mogelijk tegen een meerprijs.",
+          "Bij slecht weer volgen we standaard luchtvaartprotocollen. Vluchten kunnen vertraagd of geannuleerd worden voor jouw veiligheid. In dat geval krijg je volledige terugbetaling of alternatieve opties.",
+          "Standaard catering is meestal inbegrepen. Speciale dieetwensen of premium catering kunnen extra kosten met zich meebrengen. Dit wordt duidelijk aangegeven bij het boeken."
+        ]
+      },
+      "practical": {
+        "title": "Praktische zaken",
+        "questions": [
+          "Hoeveel bagage kan ik meenemen?",
+          "Moet ik eerder inchecken?",
+          "Kan ik mijn huisdier meenemen?",
+          "Welke documenten heb ik nodig?"
+        ],
+        "answers": [
+          "Bagagelimieten variëren per vliegtuigtype. Over het algemeen is 20-30kg handbagage en 20-50kg ruimbagage toegestaan. Je kunt exacte limieten zien in de vluchtdetails.",
+          "Inchecken is veel sneller bij privéjets. Arriveer 15-30 minuten voor vertrek bij de terminal. Op kleinere luchthavens kan dit zelfs korter zijn.",
+          "Huisdieren zijn vaak toegestaan op privéjets, afhankelijk van de operator en bestemming. Vraag naar specifieke regels en eventuele extra kosten bij het boeken.",
+          "Je hebt een geldig paspoort nodig voor internationale vluchten en een identiteitskaart voor binnenlandse vluchten. Controleer visumvereisten voor je bestemming."
+        ]
+      }
+    }
+  },
   "about": {
     "hero": {
       "title": "Over Jetleg",
