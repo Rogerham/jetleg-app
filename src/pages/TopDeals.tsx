@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDestinationDeals } from '@/hooks/useDestinationDeals';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import { useState, useMemo } from 'react';
 
 // Region mapping for destinations
@@ -58,14 +59,12 @@ const TopDeals = () => {
           backTo="/"
         />
 
-        <section className="py-20">
+        <section className="py-12">
           <div className="container mx-auto px-6">
-            <div className="flex items-center justify-center py-20">
-              <div className="text-center">
-                <MapPin className="h-16 w-16 text-accent mx-auto mb-4 animate-pulse" />
-                <h3 className="text-xl font-semibold text-foreground mb-2">{t('topDeals.loading.title')}</h3>
-                <p className="text-muted-foreground">{t('topDeals.loading.description')}</p>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
+                <DestinationDealSkeleton key={index} />
+              ))}
             </div>
           </div>
         </section>
@@ -171,6 +170,27 @@ const TopDeals = () => {
           )}
         </div>
       </section>
+    </div>
+  );
+};
+
+const DestinationDealSkeleton = () => {
+  return (
+    <div className="card-jetleg h-full flex flex-col">
+      <div className="relative overflow-hidden">
+        <Skeleton className="w-full h-48" />
+      </div>
+      
+      <div className="p-6 flex flex-col flex-grow">
+        <div className="mb-4">
+          <Skeleton className="h-6 w-3/4 mb-2" />
+          <Skeleton className="h-4 w-1/2" />
+        </div>
+        
+        <div className="mt-auto">
+          <Skeleton className="h-10 w-full rounded-lg" />
+        </div>
+      </div>
     </div>
   );
 };

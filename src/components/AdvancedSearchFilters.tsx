@@ -43,24 +43,31 @@ const AdvancedSearchFilters = ({ filters, onFiltersChange, onClearFilters }: Adv
 
   const activeFiltersCount = getActiveFiltersCount();
 
-  // Cleanup: Restore body scroll on unmount
+  // Cleanup: Restore body scroll on unmount and handle scroll lock
   useEffect(() => {
+    if (isOpen) {
+      // Lock both body and html scroll
+      const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = `${scrollBarWidth}px`;
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      // Restore scroll
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+      document.documentElement.style.overflow = '';
+    }
+
     return () => {
       document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+      document.documentElement.style.overflow = '';
     };
-  }, []);
+  }, [isOpen]);
 
   return (
     <div className="bg-card border border-border rounded-lg p-4 mb-6">
-      <Collapsible open={isOpen} onOpenChange={(open) => {
-        setIsOpen(open);
-        // Prevent body scroll when filter dialog is open
-        if (open) {
-          document.body.style.overflow = 'hidden';
-        } else {
-          document.body.style.overflow = '';
-        }
-      }}>
+      <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleTrigger asChild>
           <Button variant="outline" className="w-full justify-between">
             <div className="flex items-center gap-2">
