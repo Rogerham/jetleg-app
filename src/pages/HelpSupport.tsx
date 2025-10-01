@@ -21,6 +21,16 @@ const HelpSupport = ({ onBack }: HelpSupportProps) => {
       answer: 'Gebruik onze zoekfunctie om beschikbare vluchten te vinden. Selecteer je gewenste vlucht en volg de boekingsstappen. Je ontvangt een bevestiging via e-mail zodra je boeking is voltooid.'
     },
     {
+      id: 'after-booking',
+      question: 'Wat gebeurt er nadat ik een empty leg geboekt heb?',
+      answer: 'Na je boeking ontvang je direct een bevestigingsmail met alle vliegdetails en je e-tickets. Onze klantenservice neemt indien nodig contact met je op voor eventuele bijzonderheden. Op de dag van vertrek kun je rechtstreeks naar de private terminal gaan - meld je 15-30 minuten voor vertrek. Na landing ontvang je een vragenlijst om je ervaring met ons te delen.'
+    },
+    {
+      id: 'other-destinations',
+      question: 'Zijn vluchten naar andere werelddelen ook beschikbaar?',
+      answer: 'Momenteel richten we ons voornamelijk op Europa, Noord-Amerika en de VAE. Vluchten naar Azië, Zuid-Amerika, Afrika en Australië zijn in ontwikkeling en zullen in de nabije toekomst beschikbaar komen. We zijn volop bezig met het uitbreiden van onze partnerschappen wereldwijd om jou straks ook deze prachtige bestemmingen te kunnen aanbieden.'
+    },
+    {
       id: 'cancellation-policy',
       question: 'Wat is het annuleringsbeleid?',
       answer: 'Annuleringen zijn mogelijk tot 24 uur voor vertrek. Bij annulering binnen 24 uur kunnen kosten in rekening worden gebracht. Controleer de specifieke voorwaarden van je boeking.'
