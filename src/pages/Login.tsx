@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
-import PageHeader from '@/components/PageHeader';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
 
@@ -55,11 +54,18 @@ const Login = () => {
 
   return (
     <>
-      {/* Standardized Page Header */}
-      <PageHeader
-        title="Welkom terug"
-        subtitle="Log in om toegang te krijgen tot je account"
-      />
+      <section className="bg-gradient-to-br from-primary to-primary-dark py-12">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+              Welkom terug
+            </h1>
+            <p className="text-lg text-white/90">
+              Log in om toegang te krijgen tot je account
+            </p>
+          </div>
+        </div>
+      </section>
       
       <div className="container mx-auto px-6 py-16">
         <div className="max-w-md mx-auto">

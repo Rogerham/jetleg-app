@@ -1,5 +1,3 @@
-
-import PageHeader from '@/components/PageHeader';
 import DestinationDealCard from '@/components/DestinationDealCard';
 import { MapPin, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -52,12 +50,18 @@ const TopDeals = () => {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background">
-        <PageHeader
-          title={t('topDeals.title')}
-          subtitle={t('topDeals.subtitle')}
-          showBackButton
-          backTo="/"
-        />
+        <section className="bg-gradient-to-br from-primary to-primary-dark py-12">
+          <div className="container mx-auto px-6">
+            <div className="text-center max-w-4xl mx-auto">
+              <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+                {t('topDeals.title')}
+              </h1>
+              <p className="text-lg text-white/90">
+                {t('topDeals.subtitle')}
+              </p>
+            </div>
+          </div>
+        </section>
 
         <section className="py-12">
           <div className="container mx-auto px-6">
@@ -75,12 +79,18 @@ const TopDeals = () => {
   if (error) {
     return (
       <div className="min-h-screen bg-background">
-        <PageHeader
-          title={t('topDeals.title')}
-          subtitle={t('topDeals.subtitle')}
-          showBackButton
-          backTo="/"
-        />
+        <section className="bg-gradient-to-br from-primary to-primary-dark py-12">
+          <div className="container mx-auto px-6">
+            <div className="text-center max-w-4xl mx-auto">
+              <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+                {t('topDeals.title')}
+              </h1>
+              <p className="text-lg text-white/90">
+                {t('topDeals.subtitle')}
+              </p>
+            </div>
+          </div>
+        </section>
 
         <section className="py-20">
           <div className="container mx-auto px-6">
@@ -100,11 +110,18 @@ const TopDeals = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Standardized Page Header */}
-      <PageHeader
-        title={t('topDeals.title')}
-        subtitle={t('topDeals.subtitle')}
-      />
+      <section className="bg-gradient-to-br from-primary to-primary-dark py-12">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+              {t('topDeals.title')}
+            </h1>
+            <p className="text-lg text-white/90">
+              {t('topDeals.subtitle')}
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Destinations Grid */}
       <section className="py-12">

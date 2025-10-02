@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { format } from 'date-fns';
 import { nl } from 'date-fns/locale';
-import PageHeader from '@/components/PageHeader';
 
 const FavoriteFlights = () => {
   const { savedSearches, isLoading, deleteSearch } = useSavedSearches();
@@ -34,10 +33,18 @@ const FavoriteFlights = () => {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background">
-        <PageHeader
-          title="Favoriete vluchten"
-          subtitle="Beheer je opgeslagen zoekopdrachten en notificaties"
-        />
+        <section className="bg-gradient-to-br from-primary to-primary-dark py-12">
+          <div className="container mx-auto px-6">
+            <div className="text-center max-w-4xl mx-auto">
+              <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+                Favoriete vluchten
+              </h1>
+              <p className="text-lg text-white/90">
+                Beheer je opgeslagen zoekopdrachten en notificaties
+              </p>
+            </div>
+          </div>
+        </section>
         
         <div className="container mx-auto px-6 py-8">
           <div className="max-w-4xl mx-auto space-y-4">
@@ -53,10 +60,18 @@ const FavoriteFlights = () => {
   return (
     <>
       <div className="min-h-screen bg-background">
-        <PageHeader
-          title="Favoriete vluchten"
-          subtitle="Beheer je opgeslagen zoekopdrachten en notificaties"
-        />
+        <section className="bg-gradient-to-br from-primary to-primary-dark py-12">
+          <div className="container mx-auto px-6">
+            <div className="text-center max-w-4xl mx-auto">
+              <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+                Favoriete vluchten
+              </h1>
+              <p className="text-lg text-white/90">
+                Beheer je opgeslagen zoekopdrachten en notificaties
+              </p>
+            </div>
+          </div>
+        </section>
         
         <div className="container mx-auto px-6 py-8">
           <div className="max-w-4xl mx-auto">
