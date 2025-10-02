@@ -1,45 +1,24 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, Clock, Users, Plane, MapPin, Calendar, Star, Wifi, Utensils, Armchair, Coffee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { useFlights, type Flight } from '@/hooks/useFlights';
+import { useFlightById, type Flight } from '@/hooks/useFlights';
 import { useCurrency } from '@/contexts/CurrencyContext';
 import { extractAirportCode, extractCityName } from '@/utils/flightUtils';
 
 const FlightDetails = () => {
   const { flightId } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const { formatPrice } = useCurrency();
-  const [flight, setFlight] = useState<Flight | null>(null);
   
-  // Mock flight data - in real app this would come from API
-  useEffect(() => {
-    // For demo purposes, create mock flight data based on flightId
-    const mockFlight: Flight = {
-      id: flightId || '1',
-      departure_airport: 'Brussels (BRU)',
-      arrival_airport: 'Nice (NCE)', 
-      departure_time: '2024-01-15T14:30:00Z',
-      arrival_time: '2024-01-15T16:45:00Z',
-      flight_duration: '2u 15m',
-      price_per_seat: 2850,
-      available_seats: 6,
-      operator: 'EuroJet Services',
-      jet_id: 1,
-      jets: {
-        brand: 'Cessna',
-        model: 'Citation CJ3+',
-        type: 'Light Jet',
-        seating_capacity: 8,
-        range_km: 3500,
-        description: 'Premium light jet with excellent performance',
-        image_url: '/src/assets/jet-interior.jpg'
-      }
-    };
-    setFlight(mockFlight);
-  }, [flightId]);
+  // Use the flight from location state if available, otherwise fetch from database
+  const flightFromState = location.state?.flight;
+  const { data: flightFromDb, isLoading, error } = useFlightById(flightId || '');
+  
+  const flight = flightFromState || flightFromDb;
 
   const formatTime = (dateString: string) => {
     return new Date(dateString).toLocaleTimeString('nl-NL', { 
@@ -59,10 +38,10 @@ const FlightDetails = () => {
 
   const handleBookFlight = () => {
     if (flight) {
-      navigate(`/booking-flow/${flightId}`, { 
+      navigate(`/booking/${flightId}`, { 
         state: { 
           flight,
-          searchData: {
+          searchData: location.state?.searchData || {
             from: flight.departure_airport,
             to: flight.arrival_airport,
             date: flight.departure_time,
@@ -73,12 +52,30 @@ const FlightDetails = () => {
     }
   };
 
-  if (!flight) {
+  if (isLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <Plane className="h-16 w-16 text-accent mx-auto mb-4 animate-pulse" />
           <h3 className="text-xl font-semibold text-foreground mb-2">Vluchtdetails laden...</h3>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !flight) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <Plane className="h-16 w-16 text-destructive mx-auto mb-4" />
+          <h3 className="text-xl font-semibold text-foreground mb-2">Vlucht niet gevonden</h3>
+          <p className="text-muted-foreground mb-4">De vlucht die je zoekt bestaat niet of is niet beschikbaar.</p>
+          <button
+            onClick={() => navigate('/')}
+            className="btn-jetleg-primary"
+          >
+            Terug naar zoekresultaten
+          </button>
         </div>
       </div>
     );

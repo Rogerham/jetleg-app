@@ -167,7 +167,13 @@ const BookingFlow = () => {
     });
 
     setIsLoading(false);
-    navigate('/booking-confirmation');
+    navigate(`/booking-confirmation/${flightId}`, {
+      state: {
+        flight,
+        passengers,
+        totalPrice
+      }
+    });
   };
 
   const formatTime = (dateString: string) => {
