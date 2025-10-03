@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { extractAirportCode, extractCityName } from '@/utils/flightUtils';
 import { useCurrency } from '@/contexts/CurrencyContext';
+import { Button } from '@/components/ui/button';
 
 interface FlightCardProps {
   id: string;
@@ -143,11 +144,24 @@ const FlightCard = ({
         
         {/* Price display */}
         <div className="mt-auto">
-          <div>
-            <p className="text-sm text-muted-foreground">{t('deals.from')}</p>
-            <p className="text-3xl font-bold text-foreground">
-              {formatPrice(price_per_seat)}
-            </p>
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <p className="text-sm text-muted-foreground">{t('deals.from')}</p>
+              <p className="text-3xl font-bold text-foreground">
+                {formatPrice(price_per_seat)}
+              </p>
+            </div>
+            <Button 
+              variant="default" 
+              size="default"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleCardClick();
+              }}
+              className="whitespace-nowrap"
+            >
+              Meer details
+            </Button>
           </div>
         </div>
       </div>
