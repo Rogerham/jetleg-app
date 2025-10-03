@@ -156,7 +156,7 @@ const OptimizedFlightCard = React.memo(({
             onClick={handleViewDetails}
             className="btn-jetleg-secondary hover:bg-accent hover:text-primary-foreground w-full sm:w-auto"
           >
-            Bekijk Details
+            Meer details
           </button>
         </div>
       </div>

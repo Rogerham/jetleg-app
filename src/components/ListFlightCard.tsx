@@ -45,8 +45,8 @@ const ListFlightCard = ({
   const { t } = useTranslation();
   const { formatPrice } = useCurrency();
 
-  const handleBooking = () => {
-    navigate(`/booking-flow/${id}`, {
+  const handleViewDetails = () => {
+    navigate(`/flight-details/${id}`, {
       state: {
         flight: {
           id,
@@ -125,16 +125,16 @@ const ListFlightCard = ({
         </div>
       </div>
 
-      {/* Price and booking button */}
+      {/* Price and details button */}
       <div className="flex items-center justify-between">
         <div className="text-3xl font-bold text-foreground">
           {formatPrice(price_per_seat)}
         </div>
         <button 
-          onClick={handleBooking}
+          onClick={handleViewDetails}
           className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-semibold transition-colors"
         >
-          Boek Nu
+          Meer details
         </button>
       </div>
     </div>

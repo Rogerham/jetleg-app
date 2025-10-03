@@ -21,9 +21,9 @@ const ResponsiveFlightCard = ({
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const handleBookNow = () => {
-    // Navigate to the consolidated booking flow with flight data
-    navigate(`/booking-flow/${flight.id}`, {
+  const handleViewDetails = () => {
+    // Navigate to flight details page with flight data
+    navigate(`/flight-details/${flight.id}`, {
       state: {
         flight: flight
       }
@@ -77,10 +77,10 @@ const ResponsiveFlightCard = ({
             <p>{t('nav.operators')}: {flight.operator}</p>
           </div>
           <button 
-            onClick={handleBookNow}
+            onClick={handleViewDetails}
             className="btn-jetleg-primary text-sm px-4 py-2"
           >
-            {t('flight.bookNow')}
+            Meer details
           </button>
         </div>
       </div>
@@ -114,10 +114,10 @@ const ResponsiveFlightCard = ({
                 <p className="text-2xl font-bold text-foreground">{formatPrice(flight.price_per_seat)}</p>
               </div>
               <button 
-                onClick={handleBookNow}
+                onClick={handleViewDetails}
                 className="btn-jetleg-primary"
               >
-                {t('flight.bookNow')}
+                Meer details
               </button>
             </div>
           </div>
@@ -193,10 +193,10 @@ const ResponsiveFlightCard = ({
               <p className="text-2xl font-bold text-foreground">{formatPrice(flight.price_per_seat)}</p>
             </div>
             <button 
-              onClick={handleBookNow}
+              onClick={handleViewDetails}
               className="btn-jetleg-primary mt-4"
             >
-              {t('flight.bookNow')}
+              Meer details
             </button>
           </div>
         </div>
