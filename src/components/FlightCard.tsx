@@ -45,9 +45,9 @@ const FlightCard = ({
   const { t } = useTranslation();
   const { formatPrice } = useCurrency();
 
-  const handleBooking = () => {
-    // Navigate to the consolidated booking flow with flight data
-    navigate(`/booking-flow/${id}`, {
+  const handleCardClick = () => {
+    // Navigate to flight details page with flight data
+    navigate(`/flight-details/${id}`, {
       state: {
         flight: {
           id,
@@ -94,7 +94,10 @@ const FlightCard = ({
   };
 
   return (
-    <div className="card-jetleg hover:scale-[1.03] transition-all duration-200 h-full flex flex-col">
+    <div 
+      className="card-jetleg hover:scale-[1.03] transition-all duration-200 h-full flex flex-col cursor-pointer"
+      onClick={handleCardClick}
+    >
       <div className="relative overflow-hidden">
         <img 
           src={getImageUrl()} 
@@ -138,19 +141,14 @@ const FlightCard = ({
           </div>
         </div>
         
-        {/* Mobile: Stack price and button vertically, Desktop: Side by side */}
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mt-auto">
+        {/* Price display */}
+        <div className="mt-auto">
           <div>
+            <p className="text-sm text-muted-foreground">{t('deals.from')}</p>
             <p className="text-3xl font-bold text-foreground">
               {formatPrice(price_per_seat)}
             </p>
           </div>
-          <button 
-            onClick={handleBooking}
-            className="btn-jetleg-secondary hover:bg-accent hover:text-primary-foreground w-full sm:w-auto"
-          >
-            {t('flight.bookNow')}
-          </button>
         </div>
       </div>
     </div>
