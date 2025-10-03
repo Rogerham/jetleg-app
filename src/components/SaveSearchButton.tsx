@@ -1,9 +1,11 @@
 
 import { useState } from 'react';
-import { Heart, Bell } from 'lucide-react';
+import { Heart, LogIn } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { useSavedSearches } from '@/hooks/useSavedSearches';
+import { useAuth } from '@/contexts/AuthContext';
 import AlertPreferencesDialog from './AlertPreferencesDialog';
 
 interface SaveSearchButtonProps {
@@ -17,11 +19,20 @@ interface SaveSearchButtonProps {
 }
 
 const SaveSearchButton = ({ searchCriteria }: SaveSearchButtonProps) => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const { saveSearch, isSaving } = useSavedSearches();
   const [showAlertDialog, setShowAlertDialog] = useState(false);
+  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
   const [savedSearchId, setSavedSearchId] = useState<string | null>(null);
 
   const handleSaveSearch = async () => {
+    // Check if user is logged in
+    if (!user) {
+      setShowLoginPrompt(true);
+      return;
+    }
+
     try {
       const savedSearch = await saveSearch(searchCriteria);
       setSavedSearchId(savedSearch.id);
@@ -41,6 +52,37 @@ const SaveSearchButton = ({ searchCriteria }: SaveSearchButtonProps) => {
         <Heart className="h-4 w-4 group-hover:scale-110 transition-transform" />
         <span>{isSaving ? 'Opslaan...' : 'Zoekopdracht opslaan'}</span>
       </button>
+
+      {/* Login Prompt Dialog */}
+      <Dialog open={showLoginPrompt} onOpenChange={setShowLoginPrompt}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <Heart className="h-5 w-5 text-accent" />
+              Inloggen vereist
+            </DialogTitle>
+            <DialogDescription className="pt-4">
+              Je moet ingelogd zijn om zoekopdrachten op te slaan als favorieten. 
+              Log in of maak een gratis account aan om deze functie te gebruiken en notificaties te ontvangen over nieuwe vluchten.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="flex-col sm:flex-row gap-2">
+            <Button variant="outline" onClick={() => setShowLoginPrompt(false)}>
+              Annuleren
+            </Button>
+            <Button 
+              onClick={() => {
+                setShowLoginPrompt(false);
+                navigate('/login');
+              }}
+              className="bg-accent text-accent-foreground hover:bg-accent/90"
+            >
+              <LogIn className="h-4 w-4 mr-2" />
+              Inloggen of account maken
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <AlertPreferencesDialog
         isOpen={showAlertDialog}

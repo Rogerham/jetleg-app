@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Heart, Bell, BellOff, Trash2, ArrowRight, AlertTriangle, Search } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Heart, Bell, BellOff, Trash2, ArrowRight, AlertTriangle, Search, LogIn } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSavedSearches, useAlertPreferences } from '@/hooks/useSavedSearches';
+import { useAuth } from '@/contexts/AuthContext';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
@@ -9,9 +10,19 @@ import { format } from 'date-fns';
 import { nl } from 'date-fns/locale';
 
 const FavoriteFlights = () => {
+  const { user, loading: authLoading } = useAuth();
+  const navigate = useNavigate();
   const { savedSearches, isLoading, deleteSearch } = useSavedSearches();
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [searchToDelete, setSearchToDelete] = useState<string | null>(null);
+  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
+
+  // Check if user is logged in after auth loading completes
+  useEffect(() => {
+    if (!authLoading && !user) {
+      setShowLoginPrompt(true);
+    }
+  }, [user, authLoading]);
 
   const handleDeleteClick = (searchId: string) => {
     setSearchToDelete(searchId);
@@ -30,7 +41,7 @@ const FavoriteFlights = () => {
     }
   };
 
-  if (isLoading) {
+  if (authLoading || isLoading) {
     return (
       <div className="min-h-screen bg-background">
         <section className="bg-gradient-to-br from-primary to-primary-dark py-12">
@@ -99,6 +110,40 @@ const FavoriteFlights = () => {
                   ))}
                 </div>
               )}
+
+              {/* Login Prompt Dialog */}
+              <Dialog open={showLoginPrompt} onOpenChange={setShowLoginPrompt}>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2">
+                      <Heart className="h-5 w-5 text-accent" />
+                      Inloggen vereist
+                    </DialogTitle>
+                    <DialogDescription className="pt-4">
+                      Je moet ingelogd zijn om je favoriete vluchten te bekijken. 
+                      Log in of maak een gratis account aan om zoekopdrachten op te slaan en notificaties te ontvangen.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <DialogFooter className="flex-col sm:flex-row gap-2">
+                    <Button variant="outline" onClick={() => {
+                      setShowLoginPrompt(false);
+                      navigate('/');
+                    }}>
+                      Terug naar home
+                    </Button>
+                    <Button 
+                      onClick={() => {
+                        setShowLoginPrompt(false);
+                        navigate('/login');
+                      }}
+                      className="bg-accent text-accent-foreground hover:bg-accent/90"
+                    >
+                      <LogIn className="h-4 w-4 mr-2" />
+                      Inloggen of account maken
+                    </Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
 
               <Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
                 <DialogContent>
