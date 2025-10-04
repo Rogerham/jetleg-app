@@ -402,8 +402,7 @@ const Index = () => {
                                 </div>
                               </div>
                               <div>
-                                <div className="text-sm text-muted-foreground mb-1">Route</div>
-                                <div className="font-medium text-foreground">{flight.departure_airport.split('(')[0].trim()} → {flight.arrival_airport.split('(')[0].trim()}</div>
+                                <div className="font-medium text-foreground mb-1">{flight.departure_airport.split('(')[0].trim()} → {flight.arrival_airport.split('(')[0].trim()}</div>
                                 <div className="text-xs text-muted-foreground">{flight.available_seats} beschikbare plaatsen</div>
                                 <div className="text-xs text-muted-foreground mt-1">Door {flight.operator}</div>
                               </div>
@@ -415,7 +414,7 @@ const Index = () => {
                                 <button 
                                   onClick={(e) => {
                                     e.stopPropagation();
-                                    navigate(`/booking-flow/${flight.id}`, {
+                                    navigate(`/flight-details/${flight.id}`, {
                                       state: {
                                         flight,
                                         searchData: {
@@ -429,7 +428,7 @@ const Index = () => {
                                   }}
                                   className="btn-jetleg-primary ml-4"
                                 >
-                                  Boek nu
+                                  Meer details
                                 </button>
                               </div>
                             </div>
