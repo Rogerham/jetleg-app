@@ -12,17 +12,12 @@ import { nl } from 'date-fns/locale';
 const FavoriteFlights = () => {
   const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
-  const { savedSearches, isLoading, deleteSearch } = useSavedSearches();
+  const { savedSearches, isLoading, deleteSearch } = useSavedSearches(!!user);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [searchToDelete, setSearchToDelete] = useState<string | null>(null);
-  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
-
-  // Check if user is logged in after auth loading completes
-  useEffect(() => {
-    if (!authLoading && !user) {
-      setShowLoginPrompt(true);
-    }
-  }, [user, authLoading]);
+  
+  // Show login dialog immediately if not logged in (after auth check completes)
+  const showLoginPrompt = !authLoading && !user;
 
   const handleDeleteClick = (searchId: string) => {
     setSearchToDelete(searchId);
@@ -41,7 +36,8 @@ const FavoriteFlights = () => {
     }
   };
 
-  if (authLoading || isLoading) {
+  // Only show loading when authenticated user is fetching data
+  if (authLoading || (user && isLoading)) {
     return (
       <div className="min-h-screen bg-background">
         <section className="bg-gradient-to-br from-primary to-primary-dark py-12">
@@ -112,7 +108,9 @@ const FavoriteFlights = () => {
               )}
 
               {/* Login Prompt Dialog */}
-              <Dialog open={showLoginPrompt} onOpenChange={setShowLoginPrompt}>
+              <Dialog open={showLoginPrompt} onOpenChange={(open) => {
+                if (!open) navigate('/');
+              }}>
                 <DialogContent>
                   <DialogHeader>
                     <DialogTitle className="flex items-center gap-2">
@@ -124,18 +122,12 @@ const FavoriteFlights = () => {
                       Log in of maak een gratis account aan om zoekopdrachten op te slaan en notificaties te ontvangen.
                     </DialogDescription>
                   </DialogHeader>
-                  <DialogFooter className="flex-col sm:flex-row gap-2">
-                    <Button variant="outline" onClick={() => {
-                      setShowLoginPrompt(false);
-                      navigate('/');
-                    }}>
+                  <DialogFooter>
+                    <Button variant="outline" onClick={() => navigate('/')}>
                       Terug naar home
                     </Button>
                     <Button 
-                      onClick={() => {
-                        setShowLoginPrompt(false);
-                        navigate('/login');
-                      }}
+                      onClick={() => navigate('/login')}
                       className="bg-accent text-accent-foreground hover:bg-accent/90"
                     >
                       <LogIn className="h-4 w-4 mr-2" />

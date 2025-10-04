@@ -29,7 +29,7 @@ export interface AlertPreferences {
   updated_at: string;
 }
 
-export const useSavedSearches = () => {
+export const useSavedSearches = (enabled: boolean = true) => {
   const queryClient = useQueryClient();
 
   const { data: savedSearches = [], isLoading } = useQuery({
@@ -46,7 +46,9 @@ export const useSavedSearches = () => {
 
       if (error) throw error;
       return data as SavedSearch[];
-    }
+    },
+    enabled,
+    staleTime: 1000 * 60 * 5 // 5 minutes cache
   });
 
   const saveSearchMutation = useMutation({
