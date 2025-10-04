@@ -1,5 +1,5 @@
 
-import { Clock, Users, Plane, MapPin } from 'lucide-react';
+import { Clock, Users, Plane } from 'lucide-react';
 import { formatDistance } from 'date-fns';
 import { useCurrency } from '@/contexts/CurrencyContext';
 import { useNavigate } from 'react-router-dom';
@@ -49,10 +49,6 @@ const ResponsiveFlightCard = ({
       <div className="block sm:hidden">
         <div className="flex justify-between items-start mb-4">
           <div className="flex-1">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-              <MapPin className="h-4 w-4 text-accent" />
-              <span>{getFromCity()} → {getToCity()}</span>
-            </div>
             <h3 className="font-semibold text-foreground mb-2">{getFromCity()} → {getToCity()}</h3>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-1">
@@ -89,10 +85,6 @@ const ResponsiveFlightCard = ({
       <div className="hidden sm:block md:hidden">
         <div className="flex gap-4">
           <div className="flex-1">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-              <MapPin className="h-4 w-4 text-accent" />
-              <span>{getFromCity()} → {getToCity()}</span>
-            </div>
             <h3 className="font-semibold text-foreground mb-2">{getFromCity()} → {getToCity()}</h3>
             <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
               <div className="flex items-center gap-1">
@@ -153,10 +145,6 @@ const ResponsiveFlightCard = ({
           )}
           
           <div className="flex-1">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-              <MapPin className="h-4 w-4 text-accent" />
-              <span>{getFromCity()} → {getToCity()}</span>
-            </div>
             <h3 className="font-semibold text-foreground mb-2">{getFromCity()} → {getToCity()}</h3>
             <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
               <div className="flex items-center gap-1">
