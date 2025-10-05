@@ -173,7 +173,7 @@
   }
 
   .dark .card-jetleg {
-    @apply bg-card;
+    @apply bg-card border border-white/10;
     background: hsl(var(--card));
     box-shadow: 0 4px 6px -1px hsl(0 0% 0% / 0.3);
   }
