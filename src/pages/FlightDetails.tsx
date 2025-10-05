@@ -92,7 +92,7 @@ const FlightDetails = () => {
       {/* Header */}
       <div className="bg-primary text-white py-6">
         <div className="container mx-auto px-6">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-4 mb-4">
             <Button 
               variant="ghost" 
               size="sm"
@@ -102,19 +102,24 @@ const FlightDetails = () => {
               <ArrowLeft className="h-4 w-4 mr-2" />
               Terug naar resultaten
             </Button>
-            
-            <Button 
-              onClick={handleBookFlight}
-              className="btn-jetleg-primary h-10"
-            >
-              <Users className="h-4 w-4 mr-2" />
-              Vlucht boeken
-            </Button>
           </div>
           <h1 className="text-2xl md:text-3xl font-bold">Vluchtdetails</h1>
           <p className="text-white/90 mt-2">
             {departureCity} ({departureCode}) → {arrivalCity} ({arrivalCode})
           </p>
+        </div>
+      </div>
+
+      {/* Booking CTA */}
+      <div className="bg-background border-b border-border">
+        <div className="container mx-auto px-6 py-4">
+          <Button 
+            onClick={handleBookFlight}
+            className="w-full btn-jetleg-primary h-14 text-lg"
+          >
+            <Users className="h-5 w-5 mr-2" />
+            Vlucht boeken
+          </Button>
         </div>
       </div>
 
