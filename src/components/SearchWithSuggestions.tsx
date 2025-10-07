@@ -277,7 +277,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
                 value={searchData.to}
                 onChange={(e) => handleInputChange("to", e.target.value)}
                 onFocus={() => handleInputFocus("to")}
-                placeholder="bestemming"
+                placeholder="Bestemming"
                 className="input-jetleg h-14 w-full"
               />
 
@@ -395,7 +395,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
               value={searchData.from}
               onChange={(e) => handleInputChange("from", e.target.value)}
               onFocus={() => handleInputFocus("from")}
-              placeholder="Vertrek locatie"
+              placeholder="vertrek locatie"
               className="input-jetleg h-12"
             />
 
@@ -451,7 +451,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
               value={searchData.to}
               onChange={(e) => handleInputChange("to", e.target.value)}
               onFocus={() => handleInputFocus("to")}
-              placeholder="bestemming"
+              placeholder="Bestemming"
               className="input-jetleg h-12"
             />
 
