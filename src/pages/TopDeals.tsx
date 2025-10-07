@@ -127,7 +127,7 @@ const TopDeals = () => {
       <section className="py-12">
         <div className="container mx-auto px-6">
           {/* Region Filters */}
-          <div className="flex flex-wrap items-center gap-3 mb-6">
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
             <Button
               variant={selectedRegion === 'all' ? 'default' : 'outline'}
               onClick={() => setSelectedRegion('all')}
