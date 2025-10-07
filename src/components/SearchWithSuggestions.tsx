@@ -230,7 +230,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
                 value={searchData.from}
                 onChange={(e) => handleInputChange("from", e.target.value)}
                 onFocus={() => handleInputFocus("from")}
-                placeholder="vertrek locatie"
+                placeholder="Vertrek locatie"
                 className="input-jetleg h-14 w-full"
               />
 
@@ -395,7 +395,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
               value={searchData.from}
               onChange={(e) => handleInputChange("from", e.target.value)}
               onFocus={() => handleInputFocus("from")}
-              placeholder="vertrek locatie"
+              placeholder="Vertrek locatie"
               className="input-jetleg h-12"
             />
 
