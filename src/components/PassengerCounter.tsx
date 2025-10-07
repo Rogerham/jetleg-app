@@ -59,7 +59,7 @@ const PassengerCounter = ({
 
   if (hideArrows) {
     return (
-      <div className={`flex items-center rounded-xl border border-input bg-card overflow-hidden ${className}`}>
+      <div className={`flex items-center rounded-xl border border-input bg-white overflow-hidden ${className}`}>
         <input
           type="number"
           min="1"
@@ -67,19 +67,19 @@ const PassengerCounter = ({
           value={inputValue}
           onChange={handleInputChange}
           onBlur={handleBlur}
-          className="w-full h-full text-center bg-white/90 text-foreground border-0 focus:ring-0 focus:outline-none"
+          className="w-full h-full text-center bg-white text-[hsl(222.2,84%,4.9%)] border-0 focus:ring-0 focus:outline-none"
         />
       </div>
     );
   }
 
   return (
-    <div className={`flex items-center rounded-xl border border-input bg-card overflow-hidden ${className}`}>
+    <div className={`flex items-center rounded-xl border border-input bg-white overflow-hidden ${className}`}>
       <button
         type="button"
         onClick={decrement}
         disabled={parseInt(inputValue) <= 1}
-        className="w-10 h-full bg-white/90 hover:bg-white text-foreground border-0 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors"
+        className="w-10 h-full bg-white hover:bg-gray-50 text-[hsl(222.2,84%,4.9%)] border-0 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors"
       >
         <Minus className="h-4 w-4" />
       </button>
@@ -91,14 +91,14 @@ const PassengerCounter = ({
         value={inputValue}
         onChange={handleInputChange}
         onBlur={handleBlur}
-        className="flex-1 h-full text-center bg-white/90 text-foreground border-0 focus:ring-0 focus:outline-none"
+        className="flex-1 h-full text-center bg-white text-[hsl(222.2,84%,4.9%)] border-0 focus:ring-0 focus:outline-none"
       />
       
       <button
         type="button"
         onClick={increment}
         disabled={parseInt(inputValue) >= 20}
-        className="w-10 h-full bg-white/90 hover:bg-white text-foreground border-0 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors"
+        className="w-10 h-full bg-white hover:bg-gray-50 text-[hsl(222.2,84%,4.9%)] border-0 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors"
       >
         <Plus className="h-4 w-4" />
       </button>
