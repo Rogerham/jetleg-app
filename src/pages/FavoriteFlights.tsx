@@ -108,9 +108,7 @@ const FavoriteFlights = () => {
               )}
 
               {/* Login Prompt Dialog */}
-              <Dialog open={showLoginPrompt} onOpenChange={(open) => {
-                if (!open) navigate('/');
-              }}>
+              <Dialog open={showLoginPrompt}>
                 <DialogContent>
                   <DialogHeader>
                     <DialogTitle className="flex items-center gap-2">
