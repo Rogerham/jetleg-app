@@ -15,9 +15,16 @@ const FavoriteFlights = () => {
   const { savedSearches, isLoading, deleteSearch } = useSavedSearches(!!user);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [searchToDelete, setSearchToDelete] = useState<string | null>(null);
+  const [loginDialogOpen, setLoginDialogOpen] = useState(false);
   
   // Show login dialog immediately if not logged in (after auth check completes)
   const showLoginPrompt = !authLoading && !user;
+
+  useEffect(() => {
+    if (showLoginPrompt) {
+      setLoginDialogOpen(true);
+    }
+  }, [showLoginPrompt]);
 
   const handleDeleteClick = (searchId: string) => {
     setSearchToDelete(searchId);
@@ -108,7 +115,7 @@ const FavoriteFlights = () => {
               )}
 
               {/* Login Prompt Dialog */}
-              <Dialog open={showLoginPrompt}>
+              <Dialog open={loginDialogOpen} onOpenChange={setLoginDialogOpen}>
                 <DialogContent>
                   <DialogHeader>
                     <DialogTitle className="flex items-center gap-2">
