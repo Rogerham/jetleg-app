@@ -1,8 +1,7 @@
-
 {
   "nav": {
     "home": "Home",
-    "deals": "Deals", 
+    "deals": "Deals",
     "howItWorks": "Hoe het werkt",
     "about": "Over ons",
     "contact": "Contact",
@@ -72,7 +71,7 @@
   "booking": {
     "steps": {
       "passengers": "Passagiers",
-      "payment": "Betaling", 
+      "payment": "Betaling",
       "confirmation": "Bevestiging",
       "passengersDesc": "Voer gegevens in",
       "paymentDesc": "Betalingsgegevens",
@@ -136,7 +135,7 @@
   },
   "topDeals": {
     "title": "Top Bestemmingen",
-    "subtitle": "Ontdek de beste empty leg deals naar de mooiste bestemmingen wereldwijd. Exclusieve bestemmingen zoals Barcelona, Parijs, Londen, New York, Dubai en meer.",
+    "subtitle": "Ontdek de beste empty leg deals naar de mooiste bestemmingen wereldwijd.",
     "backToHome": "Terug naar home",
     "destinationsAvailable": "bestemmingen beschikbaar",
     "filters": {
@@ -273,7 +272,7 @@
       "viewAll": "Bekijk alle FAQ's",
       "questions": [
         "Hoe boek ik een empty leg vlucht?",
-        "Wat zijn de annuleringsvoorwaarden?", 
+        "Wat zijn de annuleringsvoorwaarden?",
         "Welke documenten heb ik nodig?",
         "Kan ik mijn vlucht wijzigen?"
       ],
@@ -324,14 +323,7 @@
       "required": "*",
       "messagePlaceholder": "Beschrijf je vraag of opmerking...",
       "selectSubject": "Selecteer onderwerp",
-      "subjects": [
-        "Algemene vraag",
-        "Boekingshulp",
-        "Klacht",
-        "Partnership",
-        "Media aanvraag",
-        "Anders"
-      ]
+      "subjects": ["Algemene vraag", "Boekingshulp", "Klacht", "Partnership", "Media aanvraag", "Anders"]
     },
     "faq": {
       "title": "Veelgestelde vragen",
@@ -500,7 +492,7 @@
     "lastUpdate": "Laatste update: 21 juli 2025"
   },
   "termsConditions": {
-    "title": "Algemene Voorwaarden", 
+    "title": "Algemene Voorwaarden",
     "lastUpdate": "Laatste update: 21 juli 2025"
   },
   "forOperators": {
@@ -512,7 +504,7 @@
     },
     "stats": {
       "extraRevenue": "Extra omzet gegenereerd voor onze partners in 2024",
-      "operators": "Operators", 
+      "operators": "Operators",
       "flights": "Vluchten",
       "averageIncrease": "Gem. toename"
     },
@@ -524,7 +516,7 @@
         "description": "Verdien geld met vluchten die anders leeg zouden vliegen. Gemiddeld 30% meer inkomsten uit je vloot."
       },
       "customers": {
-        "title": "Toegang tot nieuwe klanten", 
+        "title": "Toegang tot nieuwe klanten",
         "description": "Bereik duizenden potentiële klanten die op zoek zijn naar last-minute privéjet oplossingen."
       },
       "payments": {
@@ -541,7 +533,7 @@
       "subtitle": "Ons geavanceerde platform biedt alle tools die je nodig hebt om je empty leg business te laten groeien.",
       "list": [
         "Real-time inventory management",
-        "Automatische prijsoptimalisatie", 
+        "Automatische prijsoptimalisatie",
         "24/7 customer support",
         "Geïntegreerde betalingsverwerking",
         "Uitgebreide rapportage en analytics",
