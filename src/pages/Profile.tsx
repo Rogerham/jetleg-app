@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { Mail, Lock, Eye, EyeOff, User, Phone } from 'lucide-react';
+import { PasswordStrengthMeter } from '@/components/PasswordStrengthMeter';
 import { toast } from 'sonner';
 import { Link } from 'react-router-dom';
 import ProfileTiles from './ProfileTiles';
@@ -332,14 +333,15 @@ const Profile = () => {
                         className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                       >
                         {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                      </button>
-                    </div>
+                    </button>
                   </div>
+                  <PasswordStrengthMeter password={registerForm.password} />
+                </div>
 
-                  <div>
-                    <label htmlFor="confirmPassword" className="block text-sm font-medium text-foreground mb-2">
-                      Bevestig wachtwoord
-                    </label>
+                <div>
+                  <label htmlFor="confirmPassword" className="block text-sm font-medium text-foreground mb-2">
+                    Bevestig wachtwoord
+                  </label>
                     <div className="relative">
                       <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                       <input
