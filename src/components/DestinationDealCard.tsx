@@ -1,4 +1,4 @@
-import { MapPin, Plane, Users } from 'lucide-react';
+import { MapPin, Plane } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { DestinationDeal } from '@/types/destinationDeals';
@@ -60,16 +60,6 @@ const DestinationDealCard = ({
     defaultValue: deal.countryKey
   });
 
-  // Get operator text with proper pluralization
-  const operatorText = deal.operatorCount === 1 ? t('destinationDeals.oneOperator') : t('destinationDeals.multipleOperators');
-
-  // Generate description using translation
-  const description = t('destinationDeals.discoverDestination', {
-    destination: translatedDestination,
-    country: translatedCountry,
-    count: deal.operatorCount,
-    operators: operatorText
-  });
   return <div className="card-jetleg hover:scale-[1.03] transition-all duration-200 h-full flex flex-col group cursor-pointer" onClick={handleCardClick}>
       <div className="relative overflow-hidden">
         <img src={deal.imageUrl} alt={`${translatedDestination}, ${translatedCountry}`} className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300" onError={handleImageError} />
@@ -84,19 +74,11 @@ const DestinationDealCard = ({
       </div>
       
       <div className="p-6 flex flex-col flex-grow">
-        <p className="text-muted-foreground mb-4 flex-grow">
-          {description}
-        </p>
-        
         <div className="space-y-3 mb-6">
           <div className="flex items-center justify-between text-sm">
             <div className="flex items-center text-muted-foreground">
               <Plane className="h-4 w-4 mr-2 text-accent" />
               <span>{deal.flights.length} {t('destinationDeals.flightsAvailable')}</span>
-            </div>
-            <div className="flex items-center text-muted-foreground">
-              <Users className="h-4 w-4 mr-2 text-accent" />
-              <span>{deal.totalAvailableSeats} {t('destinationDeals.seats')}</span>
             </div>
           </div>
           
