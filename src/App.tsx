@@ -22,7 +22,7 @@ const App = () => (
         <TooltipProvider>
           <Toaster 
             position="bottom-center" 
-            offset={160}
+            offset={220}
             toastOptions={{
               classNames: {
                 toast: "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg [&]:z-[9998] mb-6",
