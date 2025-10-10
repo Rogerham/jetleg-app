@@ -39,7 +39,7 @@ const BottomNavigation = () => {
         position: "fixed" as const,
         transform: "translate3d(0, 0, 0)",
         willChange: "transform",
-        paddingBottom: "max(8px, env(safe-area-inset-bottom))",
+        paddingBottom: "max(10px, env(safe-area-inset-bottom))",
         zIndex: 99999,
       }}
     >
