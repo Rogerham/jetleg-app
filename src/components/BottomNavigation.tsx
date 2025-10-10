@@ -43,7 +43,7 @@ const BottomNavigation = () => {
         zIndex: 99999,
       }}
     >
-      <div className="flex justify-around items-center h-16 px-4">
+      <div className="flex justify-around items-center h-16 px-2">
         {navItems.map((item) => {
           const Icon = item.icon;
           const active = isActive(item.path);
