@@ -1,3 +1,4 @@
+
 import { Suspense } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -19,13 +20,12 @@ const App = () => (
     <AuthProvider>
       <CurrencyProvider>
         <TooltipProvider>
-          <Toaster
-            position="bottom-center"
-            offset={320}
+          <Toaster 
+            position="bottom-center" 
+            offset={220}
             toastOptions={{
               classNames: {
-                toast:
-                  "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg [&]:z-[9998] mb-6",
+                toast: "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg [&]:z-[9998] mb-6",
                 description: "group-[.toast]:text-muted-foreground",
                 actionButton: "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
                 cancelButton: "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
@@ -41,7 +41,7 @@ const App = () => (
                     {navItems.map(({ to, page }) => (
                       <Route key={to} path={to} element={page} />
                     ))}
-
+                    
                     {/* Consolidated booking routes - all point to BookingFlow */}
                     <Route path="/booking/:id" element={<BookingFlow />} />
                     <Route path="/booking/:flightId" element={<BookingFlow />} />
