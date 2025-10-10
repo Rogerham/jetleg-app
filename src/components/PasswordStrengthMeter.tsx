@@ -57,10 +57,9 @@ export const PasswordStrengthMeter: React.FC<PasswordStrengthMeterProps> = ({ pa
           <span className="text-sm font-medium text-foreground">Wachtwoord sterkte:</span>
           <span className="text-sm font-medium text-foreground">{level}</span>
         </div>
-        <div className="relative">
-          <Progress value={strength} className="h-2" />
+        <div className="relative w-full h-2 bg-muted rounded-full overflow-hidden">
           <div 
-            className={`absolute top-0 left-0 h-2 rounded-full transition-all duration-300 ${color}`}
+            className={`h-full rounded-full transition-all duration-300 ${color}`}
             style={{ width: `${strength}%` }}
           />
         </div>
