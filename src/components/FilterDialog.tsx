@@ -82,15 +82,12 @@ const FilterDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto sm:top-[5%] sm:translate-y-0">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Filter className="h-5 w-5" />
             Filters
           </DialogTitle>
-          <DialogDescription>
-            Pas je zoekfilters aan om de perfecte vlucht te vinden
-          </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-6 py-4">
