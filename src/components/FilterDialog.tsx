@@ -82,7 +82,7 @@ const FilterDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto sm:top-[5%] sm:translate-y-0">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto !top-4 !translate-y-0">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Filter className="h-5 w-5" />
