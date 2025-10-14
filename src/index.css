@@ -46,6 +46,7 @@
     --jetleg-amber-dark: 43 96% 56%; /* amber-400 */
     --jetleg-success: 142 76% 36%; /* emerald-600 */
     --jetleg-slate-light: 210 40% 96.1%; /* slate-100 */
+    --jetleg-banner-bg: 222.2 47.4% 11.2%; /* Always dark blue banner */
 
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(222.2 47.4% 11.2% / 0.7), hsl(222.2 47.4% 11.2% / 0.5));
