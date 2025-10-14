@@ -36,6 +36,11 @@
     "flexibleDates": "Fechas flexibles",
     "everywhere": "En todas partes"
   },
+  "search": {
+    "allAirports": "Todos los aeropuertos",
+    "everywhere": "En todas partes",
+    "popularRoute": "Ruta popular"
+  },
   "deals": {
     "title": "Vuelos de última hora",
     "subtitle": "Descubre vuelos de lujo a precios imbatibles",

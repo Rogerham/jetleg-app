@@ -51,7 +51,8 @@
     "nextWeek": "Next Week",
     "nextMonth": "Next Month",
     "allAirports": "All Airports",
-    "everywhere": "Everywhere"
+    "everywhere": "Everywhere",
+    "popularRoute": "Popular route"
   },
   "flight": {
     "departure": "Departure",

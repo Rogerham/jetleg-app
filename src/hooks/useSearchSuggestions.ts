@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { extendedWorldwideAirports, type Airport } from '@/data/extendedAirports';
+import { useTranslation } from 'react-i18next';
 
 interface SearchSuggestion {
   value: string;
@@ -40,6 +41,8 @@ const POPULAR_ROUTES = [
 ];
 
 export const useSearchSuggestions = (query: string, field: 'from' | 'to') => {
+  const { t } = useTranslation();
+  
   return useQuery({
     queryKey: ['search-suggestions', query, field],
     queryFn: async (): Promise<SearchSuggestion[]> => {
@@ -49,18 +52,21 @@ export const useSearchSuggestions = (query: string, field: 'from' | 'to') => {
       const queryLower = query.toLowerCase();
 
       // Add special options first
-      if (field === 'from' && 'alle luchthavens'.includes(queryLower)) {
+      const allAirportsText = t('search.allAirports');
+      const everywhereText = t('search.everywhere');
+      
+      if (field === 'from' && allAirportsText.toLowerCase().includes(queryLower)) {
         suggestions.push({
-          value: 'Alle luchthavens',
-          label: 'Alle luchthavens',
+          value: allAirportsText,
+          label: allAirportsText,
           type: 'special'
         });
       }
       
-      if (field === 'to' && 'overal'.includes(queryLower)) {
+      if (field === 'to' && everywhereText.toLowerCase().includes(queryLower)) {
         suggestions.push({
-          value: 'Overal',
-          label: 'Overal - Any destination',
+          value: everywhereText,
+          label: everywhereText,
           type: 'special'
         });
       }
@@ -96,7 +102,7 @@ export const useSearchSuggestions = (query: string, field: 'from' | 'to') => {
         .slice(0, 3)
         .map(route => ({
           value: field === 'from' ? route.from : route.to,
-          label: `${field === 'from' ? route.from : route.to} (Popular route)`,
+          label: `${field === 'from' ? route.from : route.to} (${t('search.popularRoute')})`,
           type: 'popular' as const,
           frequency: route.frequency
         }));

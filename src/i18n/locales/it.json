@@ -37,6 +37,11 @@
     "flexibleDates": "Date flessibili",
     "everywhere": "Ovunque"
   },
+  "search": {
+    "allAirports": "Tutti gli aeroporti",
+    "everywhere": "Ovunque",
+    "popularRoute": "Rotta popolare"
+  },
   "deals": {
     "title": "Voli dell'ultimo minuto",
     "subtitle": "Scopri voli di lusso a prezzi imbattibili",

@@ -36,6 +36,11 @@
     "flexibleDates": "Dates flexibles",
     "everywhere": "Partout"
   },
+  "search": {
+    "allAirports": "Tous les aéroports",
+    "everywhere": "Partout",
+    "popularRoute": "Route populaire"
+  },
   "deals": {
     "title": "Vols de dernière minute",
     "subtitle": "Découvrez des vols de luxe à des prix imbattables",

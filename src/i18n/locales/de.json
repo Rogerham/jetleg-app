@@ -36,6 +36,11 @@
     "flexibleDates": "Flexible Daten",
     "everywhere": "Überall"
   },
+  "search": {
+    "allAirports": "Alle Flughäfen",
+    "everywhere": "Überall",
+    "popularRoute": "Beliebte Route"
+  },
   "deals": {
     "title": "Last-Minute-Flüge",
     "subtitle": "Entdecken Sie Luxusflüge zu unschlagbaren Preisen",
