@@ -40,7 +40,13 @@
   "search": {
     "allAirports": "Tutti gli aeroporti",
     "everywhere": "Ovunque",
-    "popularRoute": "Rotta popolare"
+    "popularRoute": "Rotta popolare",
+    "validation": {
+      "fromRequired": "Si prega di selezionare un luogo di partenza",
+      "toRequired": "Si prega di selezionare una destinazione",
+      "dateRequired": "Si prega di selezionare una data di partenza",
+      "passengersRequired": "Si prega di selezionare il numero di passeggeri"
+    }
   },
   "deals": {
     "title": "Voli dell'ultimo minuto",

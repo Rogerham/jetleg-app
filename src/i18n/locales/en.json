@@ -52,7 +52,13 @@
     "nextMonth": "Next Month",
     "allAirports": "All Airports",
     "everywhere": "Everywhere",
-    "popularRoute": "Popular route"
+    "popularRoute": "Popular route",
+    "validation": {
+      "fromRequired": "Please select a departure location",
+      "toRequired": "Please select a destination",
+      "dateRequired": "Please select a departure date",
+      "passengersRequired": "Please select number of passengers"
+    }
   },
   "flight": {
     "departure": "Departure",

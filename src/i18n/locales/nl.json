@@ -558,6 +558,12 @@
     "allAirports": "Alle luchthavens",
     "everywhere": "Overal",
     "popularRoute": "Populaire route",
+    "validation": {
+      "fromRequired": "Selecteer een vertreklocatie",
+      "toRequired": "Selecteer een bestemming",
+      "dateRequired": "Selecteer een vertrekdatum om te kunnen zoeken",
+      "passengersRequired": "Selecteer het aantal passagiers"
+    },
     "errorLoadingResults": "Er is een fout opgetreden bij het laden van de resultaten",
     "searchingFlights": "Zoeken naar vluchten...",
     "noFlightsFound": "Geen vluchten gevonden",

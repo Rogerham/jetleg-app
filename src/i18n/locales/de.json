@@ -39,7 +39,13 @@
   "search": {
     "allAirports": "Alle Flughäfen",
     "everywhere": "Überall",
-    "popularRoute": "Beliebte Route"
+    "popularRoute": "Beliebte Route",
+    "validation": {
+      "fromRequired": "Bitte wählen Sie einen Abflugort",
+      "toRequired": "Bitte wählen Sie ein Ziel",
+      "dateRequired": "Bitte wählen Sie ein Abflugdatum",
+      "passengersRequired": "Bitte wählen Sie die Anzahl der Passagiere"
+    }
   },
   "deals": {
     "title": "Last-Minute-Flüge",

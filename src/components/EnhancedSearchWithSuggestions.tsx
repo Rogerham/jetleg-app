@@ -6,7 +6,7 @@ import { Search, MapPin, Calendar, Users, Plane, AlertCircle } from 'lucide-reac
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { worldwideAirports } from '@/data/airports';
+import { useSearchSuggestions } from '@/hooks/useSearchSuggestions';
 import EnhancedDatePicker from '@/components/EnhancedDatePicker';
 import PassengerCounter from '@/components/PassengerCounter';
 import SearchFormValidation from '@/components/SearchFormValidation';
@@ -46,11 +46,6 @@ const EnhancedSearchWithSuggestions = ({
     passengers: initialValues?.passengers || '1'
   });
 
-  const [suggestions, setSuggestions] = useState<{from: string[], to: string[]}>({
-    from: [],
-    to: []
-  });
-  
   const [activeSuggestion, setActiveSuggestion] = useState<{field: string, index: number} | null>(null);
   const [showSuggestions, setShowSuggestions] = useState<{from: boolean, to: boolean}>({
     from: false,
@@ -63,19 +58,9 @@ const EnhancedSearchWithSuggestions = ({
   const fromRef = useRef<HTMLInputElement>(null);
   const toRef = useRef<HTMLInputElement>(null);
 
-  // Convert airport objects to display format
-  const airportsDisplayList = worldwideAirports.map(airport => 
-    `${airport.city} (${airport.code})`
-  );
-
-  // Popular routes for suggestions
-  const popularRoutes = [
-    { from: 'London (LGW)', to: 'Paris (CDG)' },
-    { from: 'Amsterdam (AMS)', to: 'Barcelona (BCN)' },
-    { from: 'Frankfurt (FRA)', to: 'Rome (FCO)' },
-    { from: 'Brussels (BRU)', to: 'Milan (MXP)' },
-    { from: 'Zurich (ZUR)', to: 'Nice (NCE)' }
-  ];
+  // Use the search suggestions hook
+  const { data: fromSuggestions = [] } = useSearchSuggestions(searchValues.from, 'from');
+  const { data: toSuggestions = [] } = useSearchSuggestions(searchValues.to, 'to');
 
   const validateForm = (): ValidationError[] => {
     const errors: ValidationError[] = [];
@@ -83,71 +68,39 @@ const EnhancedSearchWithSuggestions = ({
     if (!searchValues.from.trim()) {
       errors.push({
         field: 'from',
-        message: 'Selecteer een vertreklocatie'
+        message: t('search.validation.fromRequired', 'Selecteer een vertreklocatie')
       });
     }
 
     if (!searchValues.to.trim()) {
       errors.push({
         field: 'to',
-        message: 'Selecteer een bestemming'
+        message: t('search.validation.toRequired', 'Selecteer een bestemming')
       });
     }
 
     if (!searchValues.date.trim()) {
       errors.push({
         field: 'date',
-        message: 'Selecteer een vertrekdatum om te kunnen zoeken'
+        message: t('search.validation.dateRequired', 'Selecteer een vertrekdatum om te kunnen zoeken')
       });
     }
 
     if (!searchValues.passengers || parseInt(searchValues.passengers) < 1) {
       errors.push({
         field: 'passengers',
-        message: 'Selecteer het aantal passagiers'
+        message: t('search.validation.passengersRequired', 'Selecteer het aantal passagiers')
       });
     }
 
     return errors;
   };
 
-  const getSuggestions = (query: string, field: 'from' | 'to'): string[] => {
-    if (query.length < 2) return [];
-
-    const airportSuggestions = airportsDisplayList
-      .filter(airport => 
-        airport.toLowerCase().includes(query.toLowerCase())
-      )
-      .slice(0, 5);
-
-    // Add special options
-    const specialOptions = [];
-    if (field === 'from' && 'alle luchthavens'.includes(query.toLowerCase())) {
-      specialOptions.push('Alle luchthavens');
-    }
-    if (field === 'to' && 'overal'.includes(query.toLowerCase())) {
-      specialOptions.push('Overal');
-    }
-
-    // Add popular route suggestions
-    const routeSuggestions = popularRoutes
-      .map(route => field === 'from' ? route.from : route.to)
-      .filter(location => 
-        location.toLowerCase().includes(query.toLowerCase()) &&
-        !airportSuggestions.includes(location)
-      )
-      .slice(0, 3);
-
-    return [...specialOptions, ...airportSuggestions, ...routeSuggestions].slice(0, 6);
-  };
-
   const handleInputChange = (field: 'from' | 'to', value: string) => {
     setSearchValues(prev => ({ ...prev, [field]: value }));
     
-    const newSuggestions = getSuggestions(value, field);
-    setSuggestions(prev => ({ ...prev, [field]: newSuggestions }));
-    
-    setShowSuggestions(prev => ({ ...prev, [field]: newSuggestions.length > 0 }));
+    const suggestions = field === 'from' ? fromSuggestions : toSuggestions;
+    setShowSuggestions(prev => ({ ...prev, [field]: value.length >= 2 && suggestions.length > 0 }));
     setActiveSuggestion(null);
 
     // Clear validation errors for this field
@@ -157,11 +110,10 @@ const EnhancedSearchWithSuggestions = ({
   const handleSuggestionClick = (field: 'from' | 'to', suggestion: string) => {
     setSearchValues(prev => ({ ...prev, [field]: suggestion }));
     setShowSuggestions(prev => ({ ...prev, [field]: false }));
-    setSuggestions(prev => ({ ...prev, [field]: [] }));
   };
 
   const handleKeyDown = (field: 'from' | 'to', e: React.KeyboardEvent) => {
-    const currentSuggestions = suggestions[field];
+    const currentSuggestions = field === 'from' ? fromSuggestions : toSuggestions;
     if (currentSuggestions.length === 0) return;
 
     if (e.key === 'ArrowDown') {
@@ -178,7 +130,7 @@ const EnhancedSearchWithSuggestions = ({
       });
     } else if (e.key === 'Enter' && activeSuggestion?.field === field) {
       e.preventDefault();
-      handleSuggestionClick(field, currentSuggestions[activeSuggestion.index]);
+      handleSuggestionClick(field, currentSuggestions[activeSuggestion.index].value);
     } else if (e.key === 'Escape') {
       setShowSuggestions(prev => ({ ...prev, [field]: false }));
       setActiveSuggestion(null);
@@ -263,7 +215,7 @@ const EnhancedSearchWithSuggestions = ({
             onChange={(e) => handleInputChange('from', e.target.value)}
             onKeyDown={(e) => handleKeyDown('from', e)}
             onFocus={() => {
-              if (suggestions.from.length > 0) {
+              if (fromSuggestions.length > 0 && searchValues.from.length >= 2) {
                 setShowSuggestions(prev => ({ ...prev, from: true }));
               }
             }}
@@ -273,25 +225,25 @@ const EnhancedSearchWithSuggestions = ({
           {/* Show inline error for from field */}
           {hasFieldError('from') && (
             <div className="absolute -bottom-5 left-0 text-xs text-destructive">
-              Selecteer een vertreklocatie
+              {validationErrors.find(e => e.field === 'from')?.message}
             </div>
           )}
           
-          {showSuggestions.from && suggestions.from.length > 0 && (
+          {showSuggestions.from && fromSuggestions.length > 0 && (
             <div className="absolute top-full left-0 right-0 z-10 mt-1 bg-popover border border-border rounded-md shadow-lg max-h-48 overflow-y-auto">
-              {suggestions.from.map((suggestion, index) => (
+              {fromSuggestions.map((suggestion, index) => (
                 <button
-                  key={suggestion}
+                  key={`${suggestion.value}-${index}`}
                   type="button"
                   className={`w-full text-left px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground ${
                     activeSuggestion?.field === 'from' && activeSuggestion?.index === index 
                       ? 'bg-accent text-accent-foreground' 
                       : ''
                   }`}
-                  onClick={() => handleSuggestionClick('from', suggestion)}
+                  onClick={() => handleSuggestionClick('from', suggestion.value)}
                 >
                   <MapPin className="h-3 w-3 inline mr-2 text-muted-foreground" />
-                  {suggestion}
+                  {suggestion.label}
                 </button>
               ))}
             </div>
@@ -311,7 +263,7 @@ const EnhancedSearchWithSuggestions = ({
             onChange={(e) => handleInputChange('to', e.target.value)}
             onKeyDown={(e) => handleKeyDown('to', e)}
             onFocus={() => {
-              if (suggestions.to.length > 0) {
+              if (toSuggestions.length > 0 && searchValues.to.length >= 2) {
                 setShowSuggestions(prev => ({ ...prev, to: true }));
               }
             }}
@@ -321,25 +273,25 @@ const EnhancedSearchWithSuggestions = ({
           {/* Show inline error for to field */}
           {hasFieldError('to') && (
             <div className="absolute -bottom-5 left-0 text-xs text-destructive">
-              Selecteer een bestemming
+              {validationErrors.find(e => e.field === 'to')?.message}
             </div>
           )}
           
-          {showSuggestions.to && suggestions.to.length > 0 && (
+          {showSuggestions.to && toSuggestions.length > 0 && (
             <div className="absolute top-full left-0 right-0 z-10 mt-1 bg-popover border border-border rounded-md shadow-lg max-h-48 overflow-y-auto">
-              {suggestions.to.map((suggestion, index) => (
+              {toSuggestions.map((suggestion, index) => (
                 <button
-                  key={suggestion}
+                  key={`${suggestion.value}-${index}`}
                   type="button"
                   className={`w-full text-left px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground ${
                     activeSuggestion?.field === 'to' && activeSuggestion?.index === index 
                       ? 'bg-accent text-accent-foreground' 
                       : ''
                   }`}
-                  onClick={() => handleSuggestionClick('to', suggestion)}
+                  onClick={() => handleSuggestionClick('to', suggestion.value)}
                 >
                   <MapPin className="h-3 w-3 inline mr-2 text-muted-foreground" />
-                  {suggestion}
+                  {suggestion.label}
                 </button>
               ))}
             </div>
@@ -379,7 +331,7 @@ const EnhancedSearchWithSuggestions = ({
           {/* Show inline error for passengers field */}
           {hasFieldError('passengers') && (
             <div className="absolute -bottom-5 left-0 text-xs text-destructive">
-              Selecteer het aantal passagiers
+              {validationErrors.find(e => e.field === 'passengers')?.message}
             </div>
           )}
         </div>
