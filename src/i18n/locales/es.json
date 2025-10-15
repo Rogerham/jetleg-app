@@ -37,6 +37,15 @@
     "everywhere": "En todas partes"
   },
   "search": {
+    "from": "Desde",
+    "fromPlaceholder": "Ej. Ámsterdam (AMS)",
+    "to": "Hasta",
+    "toPlaceholder": "Ej. París (CDG)",
+    "date": "Fecha",
+    "datePlaceholder": "Seleccionar fecha",
+    "passengers": "Pasajeros",
+    "searchFlights": "Buscar vuelos",
+    "searching": "Buscando...",
     "allAirports": "Todos los aeropuertos",
     "everywhere": "En todas partes",
     "popularRoute": "Ruta popular",
@@ -45,6 +54,29 @@
       "toRequired": "Por favor seleccione un destino",
       "dateRequired": "Por favor seleccione una fecha de salida",
       "passengersRequired": "Por favor seleccione el número de pasajeros"
+    },
+    "results": {
+      "title": "Vuelos desde",
+      "to": "hasta",
+      "allDestinations": "todos los destinos",
+      "passenger": "pasajero",
+      "passengers": "pasajeros",
+      "available": "vuelos disponibles",
+      "searching": "Buscando vuelos...",
+      "searchingDesc": "Estamos buscando los mejores vuelos disponibles para ti.",
+      "error": "Ha ocurrido un error",
+      "errorDesc": "No se pudieron cargar los vuelos. Por favor, inténtalo de nuevo.",
+      "retry": "Intentar de nuevo",
+      "noResults": "No se encontraron vuelos",
+      "noResultsDesc": "Intenta ajustar tus criterios de búsqueda o elige otros filtros.",
+      "resetFilters": "Restablecer filtros",
+      "sortBy": "Ordenar por:",
+      "sortPrice": "Precio (ascendente)",
+      "sortDuration": "Duración del vuelo",
+      "sortDeparture": "Hora de salida",
+      "filters": "Filtros",
+      "perPerson": "por persona",
+      "moreDetails": "Más detalles"
     }
   },
   "deals": {
@@ -58,6 +90,7 @@
     "aircraft": "Aeronave",
     "passengers": "Pasajeros",
     "upTo": "Hasta",
+    "noDeals": "No hay ofertas disponibles en este momento.",
     "parisNice": {
       "description": "Vuela a la Costa Azul con estilo."
     },

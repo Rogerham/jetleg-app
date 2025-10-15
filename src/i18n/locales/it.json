@@ -38,6 +38,15 @@
     "everywhere": "Ovunque"
   },
   "search": {
+    "from": "Da",
+    "fromPlaceholder": "Es. Amsterdam (AMS)",
+    "to": "A",
+    "toPlaceholder": "Es. Parigi (CDG)",
+    "date": "Data",
+    "datePlaceholder": "Seleziona data",
+    "passengers": "Passeggeri",
+    "searchFlights": "Cerca voli",
+    "searching": "Ricerca...",
     "allAirports": "Tutti gli aeroporti",
     "everywhere": "Ovunque",
     "popularRoute": "Rotta popolare",
@@ -46,6 +55,29 @@
       "toRequired": "Si prega di selezionare una destinazione",
       "dateRequired": "Si prega di selezionare una data di partenza",
       "passengersRequired": "Si prega di selezionare il numero di passeggeri"
+    },
+    "results": {
+      "title": "Voli da",
+      "to": "a",
+      "allDestinations": "tutte le destinazioni",
+      "passenger": "passeggero",
+      "passengers": "passeggeri",
+      "available": "voli disponibili",
+      "searching": "Ricerca voli...",
+      "searchingDesc": "Stiamo cercando i migliori voli disponibili per te.",
+      "error": "Si è verificato un errore",
+      "errorDesc": "Impossibile caricare i voli. Riprova.",
+      "retry": "Riprova",
+      "noResults": "Nessun volo trovato",
+      "noResultsDesc": "Prova a modificare i criteri di ricerca o scegli altri filtri.",
+      "resetFilters": "Ripristina filtri",
+      "sortBy": "Ordina per:",
+      "sortPrice": "Prezzo (crescente)",
+      "sortDuration": "Durata del volo",
+      "sortDeparture": "Orario di partenza",
+      "filters": "Filtri",
+      "perPerson": "a persona",
+      "moreDetails": "Più dettagli"
     }
   },
   "deals": {
@@ -60,6 +92,7 @@
     "passengers": "Passeggeri",
     "upTo": "Fino a",
     "from": "da",
+    "noDeals": "Nessuna offerta disponibile al momento.",
     "parisNice": {
       "description": "Vola verso la Costa Azzurra con stile."
     },

@@ -39,10 +39,15 @@
   },
   "search": {
     "from": "From",
+    "fromPlaceholder": "E.g. Amsterdam (AMS)",
     "to": "To",
+    "toPlaceholder": "E.g. Paris (CDG)",
+    "date": "Date",
+    "datePlaceholder": "Select date",
     "departure": "Departure",
     "passengers": "Passengers",
     "searchFlights": "Search Flights",
+    "searching": "Searching...",
     "flexible": "Flexible",
     "fullyFlexible": "Fully Flexible",
     "today": "Today",
@@ -58,6 +63,33 @@
       "toRequired": "Please select a destination",
       "dateRequired": "Please select a departure date",
       "passengersRequired": "Please select number of passengers"
+    },
+    "results": {
+      "title": "Flights from",
+      "to": "to",
+      "allDestinations": "all destinations",
+      "allDates": "All dates",
+      "passenger": "passenger",
+      "passengers": "passengers",
+      "available": "available flights",
+      "searching": "Searching for flights...",
+      "searchingDesc": "We're finding the best available flights for you.",
+      "error": "An error occurred",
+      "errorDesc": "We couldn't load flights. Please try again.",
+      "retry": "Try again",
+      "noResults": "No flights found",
+      "noResultsDesc": "Try adjusting your search criteria or choose different filters.",
+      "resetFilters": "Reset filters",
+      "sortBy": "Sort by:",
+      "sortPrice": "Price (ascending)",
+      "sortDuration": "Flight duration",
+      "sortDeparture": "Departure time",
+      "filters": "Filters",
+      "perPerson": "per person",
+      "availableSeats": "available seats",
+      "by": "By",
+      "moreDetails": "More details",
+      "bookNow": "Book flight"
     }
   },
   "flight": {
@@ -85,6 +117,7 @@
     "passengers": "Passengers",
     "upTo": "Up to",
     "from": "from",
+    "noDeals": "No deals available at the moment.",
     "parisNice": {
       "description": "Fly to the Côte d'Azur in style."
     },

@@ -37,6 +37,15 @@
     "everywhere": "Partout"
   },
   "search": {
+    "from": "De",
+    "fromPlaceholder": "Ex. Amsterdam (AMS)",
+    "to": "À",
+    "toPlaceholder": "Ex. Paris (CDG)",
+    "date": "Date",
+    "datePlaceholder": "Sélectionner la date",
+    "passengers": "Passagers",
+    "searchFlights": "Rechercher des vols",
+    "searching": "Recherche...",
     "allAirports": "Tous les aéroports",
     "everywhere": "Partout",
     "popularRoute": "Route populaire",
@@ -45,6 +54,29 @@
       "toRequired": "Veuillez sélectionner une destination",
       "dateRequired": "Veuillez sélectionner une date de départ",
       "passengersRequired": "Veuillez sélectionner le nombre de passagers"
+    },
+    "results": {
+      "title": "Vols de",
+      "to": "à",
+      "allDestinations": "toutes destinations",
+      "passenger": "passager",
+      "passengers": "passagers",
+      "available": "vols disponibles",
+      "searching": "Recherche de vols...",
+      "searchingDesc": "Nous recherchons les meilleurs vols disponibles pour vous.",
+      "error": "Une erreur s'est produite",
+      "errorDesc": "Impossible de charger les vols. Veuillez réessayer.",
+      "retry": "Réessayer",
+      "noResults": "Aucun vol trouvé",
+      "noResultsDesc": "Essayez d'ajuster vos critères de recherche ou choisissez d'autres filtres.",
+      "resetFilters": "Réinitialiser les filtres",
+      "sortBy": "Trier par:",
+      "sortPrice": "Prix (croissant)",
+      "sortDuration": "Durée du vol",
+      "sortDeparture": "Heure de départ",
+      "filters": "Filtres",
+      "perPerson": "par personne",
+      "moreDetails": "Plus de détails"
     }
   },
   "deals": {
@@ -58,6 +90,7 @@
     "aircraft": "Avion",
     "passengers": "Passagers",
     "upTo": "Jusqu'à",
+    "noDeals": "Aucune offre disponible pour le moment.",
     "parisNice": {
       "description": "Volez vers la Côte d'Azur avec style."
     },

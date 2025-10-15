@@ -37,6 +37,15 @@
     "everywhere": "Überall"
   },
   "search": {
+    "from": "Von",
+    "fromPlaceholder": "Z.B. Amsterdam (AMS)",
+    "to": "Nach",
+    "toPlaceholder": "Z.B. Paris (CDG)",
+    "date": "Datum",
+    "datePlaceholder": "Datum wählen",
+    "passengers": "Passagiere",
+    "searchFlights": "Flüge suchen",
+    "searching": "Suche...",
     "allAirports": "Alle Flughäfen",
     "everywhere": "Überall",
     "popularRoute": "Beliebte Route",
@@ -45,6 +54,29 @@
       "toRequired": "Bitte wählen Sie ein Ziel",
       "dateRequired": "Bitte wählen Sie ein Abflugdatum",
       "passengersRequired": "Bitte wählen Sie die Anzahl der Passagiere"
+    },
+    "results": {
+      "title": "Flüge von",
+      "to": "nach",
+      "allDestinations": "alle Ziele",
+      "passenger": "Passagier",
+      "passengers": "Passagiere",
+      "available": "verfügbare Flüge",
+      "searching": "Flüge suchen...",
+      "searchingDesc": "Wir suchen die besten verfügbaren Flüge für Sie.",
+      "error": "Ein Fehler ist aufgetreten",
+      "errorDesc": "Flüge konnten nicht geladen werden. Bitte versuchen Sie es erneut.",
+      "retry": "Erneut versuchen",
+      "noResults": "Keine Flüge gefunden",
+      "noResultsDesc": "Versuchen Sie, Ihre Suchkriterien anzupassen oder andere Filter zu wählen.",
+      "resetFilters": "Filter zurücksetzen",
+      "sortBy": "Sortieren nach:",
+      "sortPrice": "Preis (aufsteigend)",
+      "sortDuration": "Flugdauer",
+      "sortDeparture": "Abflugzeit",
+      "filters": "Filter",
+      "perPerson": "pro Person",
+      "moreDetails": "Mehr Details"
     }
   },
   "deals": {
@@ -58,6 +90,7 @@
     "aircraft": "Flugzeug",
     "passengers": "Passagiere",
     "upTo": "Bis zu",
+    "noDeals": "Derzeit keine Angebote verfügbar.",
     "parisNice": {
       "description": "Fliegen Sie stilvoll an die Côte d'Azur."
     },

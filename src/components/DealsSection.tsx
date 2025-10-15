@@ -46,7 +46,7 @@ const DealsSection = () => {
             </p>
           </div>
           <div className="text-center">
-            <p className="text-muted-foreground">Geen deals beschikbaar op dit moment.</p>
+            <p className="text-muted-foreground">{t('deals.noDeals')}</p>
           </div>
         </div>
       </section>;

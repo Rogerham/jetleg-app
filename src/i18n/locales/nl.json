@@ -37,6 +37,53 @@
     "flexibleDates": "Flexibele datums",
     "everywhere": "Overal"
   },
+  "search": {
+    "from": "Van",
+    "fromPlaceholder": "Bijv. Amsterdam (AMS)",
+    "to": "Naar",
+    "toPlaceholder": "Bijv. Parijs (CDG)",
+    "date": "Datum",
+    "datePlaceholder": "Selecteer datum",
+    "passengers": "Passagiers",
+    "searchFlights": "Zoek vluchten",
+    "searching": "Zoeken...",
+    "allAirports": "Alle luchthavens",
+    "everywhere": "Overal",
+    "popularRoute": "Populaire route",
+    "validation": {
+      "fromRequired": "Selecteer een vertreklocatie",
+      "toRequired": "Selecteer een bestemming",
+      "dateRequired": "Selecteer een vertrekdatum om te kunnen zoeken",
+      "passengersRequired": "Selecteer het aantal passagiers"
+    },
+    "results": {
+      "title": "Vluchten van",
+      "to": "naar",
+      "allDestinations": "alle bestemmingen",
+      "allDates": "Alle data",
+      "passenger": "passagier",
+      "passengers": "passagiers",
+      "available": "beschikbare vluchten",
+      "searching": "Vluchten zoeken...",
+      "searchingDesc": "We zoeken de beste beschikbare vluchten voor je.",
+      "error": "Er is een fout opgetreden",
+      "errorDesc": "We konden geen vluchten laden. Probeer het opnieuw.",
+      "retry": "Opnieuw proberen",
+      "noResults": "Geen vluchten gevonden",
+      "noResultsDesc": "Probeer je zoekcriteria aan te passen of kies andere filters.",
+      "resetFilters": "Reset filters",
+      "sortBy": "Sorteer:",
+      "sortPrice": "Prijs (oplopend)",
+      "sortDuration": "Vliegduur",
+      "sortDeparture": "Vertrektijd",
+      "filters": "Filters",
+      "perPerson": "per persoon",
+      "availableSeats": "beschikbare plaatsen",
+      "by": "Door",
+      "moreDetails": "Meer details",
+      "bookNow": "Vlucht boeken"
+    }
+  },
   "deals": {
     "title": "Last-minute vluchten",
     "subtitle": "Ontdek luxe vluchten tegen onverslaanbare prijzen",
@@ -49,6 +96,7 @@
     "passengers": "Passagiers",
     "upTo": "Tot",
     "from": "vanaf",
+    "noDeals": "Geen deals beschikbaar op dit moment.",
     "parisNice": {
       "description": "Vlieg in stijl naar de Côte d'Azur."
     },
@@ -87,7 +135,7 @@
       "phone": "Telefoonnummer",
       "dateOfBirth": "Geboortedatum",
       "passportNumber": "Paspoortnummer",
-      "addPassenger": "Passagier toevoegen",
+      "addPassenger": "+ Passagier toevoegen",
       "required": "*"
     },
     "payment": {
@@ -112,8 +160,11 @@
       "aircraft": "Vliegtuig:",
       "operator": "Operator:",
       "passengers": "Passagiers",
+      "passengerCount": "passagiers",
+      "passengerSingular": "passagier",
       "terms": "Ik ga akkoord met de algemene voorwaarden en privacybeleid",
-      "pay": "Betaal"
+      "pay": "Betaal",
+      "travelTips": "Zorg ervoor dat je paspoort geldig is en alle passagiers hun ID bij zich hebben"
     },
     "navigation": {
       "back": "Vorige",
@@ -134,463 +185,92 @@
     }
   },
   "topDeals": {
-    "title": "Laatste Deals",
-    "subtitle": "Ontdek de beste empty leg deals naar de mooiste bestemmingen wereldwijd.",
-    "backToHome": "Terug naar home",
+    "title": "Top Deals",
+    "subtitle": "Ontdek de beste empty leg vluchten naar populaire bestemmingen",
     "destinationsAvailable": "bestemmingen beschikbaar",
     "filters": {
       "all": "Alle",
       "europe": "Europa",
       "northAmerica": "Noord-Amerika",
-      "uae": "VAE",
-      "worldwide": "Wereldwijd",
-      "reset": "Reset"
-    },
-    "loading": {
-      "title": "Bestemmingen laden...",
-      "description": "We zoeken de beste beschikbare bestemmingen voor jou."
-    },
-    "error": {
-      "title": "Er is een fout opgetreden",
-      "description": "We konden de bestemmingen niet laden. Probeer het opnieuw.",
-      "retry": "Opnieuw proberen"
+      "uae": "VAE"
     },
     "noFlights": {
-      "title": "Nog geen vluchten beschikbaar",
-      "description": "Er zijn momenteel geen vluchten beschikbaar naar onze exclusieve bestemmingen. Kom later terug voor nieuwe deals."
+      "title": "Geen deals beschikbaar",
+      "description": "Er zijn momenteel geen deals beschikbaar. Probeer het later opnieuw."
+    },
+    "error": {
+      "title": "Er ging iets fout",
+      "description": "We konden de deals niet laden. Probeer het opnieuw.",
+      "retry": "Opnieuw proberen"
     }
+  },
+  "favorites": {
+    "title": "Favoriete vluchten",
+    "subtitle": "Beheer je opgeslagen zoekopdrachten en notificaties",
+    "noFavorites": "Geen favorieten gevonden",
+    "noFavoritesDesc": "Je hebt nog geen vluchten opgeslagen. Ga naar de zoekpagina en klik op het hartje om vluchten op te slaan.",
+    "goToSearch": "Ga naar zoeken",
+    "loginRequired": "Inloggen vereist",
+    "loginRequiredDesc": "Je moet ingelogd zijn om je favoriete vluchten te bekijken. Log in of maak een gratis account aan om zoekopdrachten op te slaan en notificaties te ontvangen.",
+    "backToHome": "Terug naar home",
+    "loginOrRegister": "Inloggen of account maken",
+    "deleteConfirm": "Favoriet verwijderen",
+    "deleteConfirmDesc": "Weet je zeker dat je deze opgeslagen zoekopdracht wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
+    "cancel": "Annuleren",
+    "delete": "Verwijderen",
+    "enableNotifications": "Notificaties inschakelen",
+    "disableNotifications": "Notificaties uitschakelen"
+  },
+  "flightDetails": {
+    "title": "Vluchtdetails",
+    "backToResults": "Terug naar resultaten",
+    "bookFlight": "Vlucht boeken",
+    "loading": "Vluchtdetails laden...",
+    "notFound": "Vlucht niet gevonden",
+    "notFoundDesc": "De vlucht die je zoekt bestaat niet of is niet beschikbaar.",
+    "overview": "Vluchtongevingen",
+    "available": "Beschikbaar",
+    "directFlight": "Directe vlucht",
+    "operator": "Operator",
+    "route": "Route",
+    "availableSeats": "Beschikbare stoelen",
+    "flightNumber": "Vluchtnummer",
+    "aircraftDetails": "Vliegtuigdetails",
+    "specifications": "Specificaties",
+    "brandModel": "Merk & Model:",
+    "seats": "Zitplaatsen:",
+    "passenger": "passagier",
+    "passengers": "passagiers",
+    "cruiseSpeed": "Kruissnelheid:",
+    "maxAltitude": "Max. hoogte:",
+    "range": "Bereik:",
+    "amenities": "Voorzieningen",
+    "wifi": "Wifi",
+    "refreshments": "Refreshments",
+    "leatherSeats": "Leather Seats",
+    "coffeeService": "Coffee Service",
+    "bookingTerms": "Boekingsvoorwaarden",
+    "cancellationPolicy": "Annuleringsbeleid",
+    "cancellationPolicyDesc": "Gratis annulering tot 24 uur voor vertrek. Daarna gelden annuleringskosten.",
+    "baggage": "Bagage",
+    "baggageDesc": "Handbagage inbegrepen. Extra bagage op aanvraag tegen meerprijs.",
+    "catering": "Catering",
+    "cateringDesc": "Lichte versnaperingen en drankjes inbegrepen. Premium catering op aanvraag.",
+    "perPerson": "per persoon",
+    "date": "Datum:",
+    "noHiddenCosts": "Geen verborgen kosten • Veilige betaling • Direct bevestiging"
   },
   "destinations": {
-    "Barcelona": "Barcelona",
-    "Berlin": "Berlijn",
-    "Cannes": "Cannes",
-    "Dubai": "Dubai",
-    "Courchevel": "Courchevel",
-    "London": "Londen",
-    "Los Angeles": "Los Angeles",
-    "Madrid": "Madrid",
-    "Monaco": "Monaco",
-    "New York": "New York",
-    "Paris": "Parijs",
-    "Geneva": "Genève"
-  },
-  "countries": {
-    "Spain": "Spanje",
-    "Germany": "Duitsland",
-    "France": "Frankrijk",
-    "UAE": "Verenigde Arabische Emiraten",
-    "UK": "Verenigd Koninkrijk",
-    "USA": "Verenigde Staten",
-    "Monaco": "Monaco",
-    "Switzerland": "Zwitserland"
-  },
-  "destinationDeals": {
-    "from": "Vanaf",
-    "viewDeals": "Bekijk Deals",
-    "flightsAvailable": "vluchten beschikbaar",
-    "seats": "stoelen",
-    "operators": "operatoren",
-    "more": "meer",
-    "discoverDestination": "Ontdek {{destination}}, {{country}} met {{count}} {{operators}} beschikbaar",
-    "operator": "operator",
-    "oneOperator": "operator",
-    "multipleOperators": "operatoren"
-  },
-  "howItWorks": {
-    "title": "Wat is een \"Empty Leg\"?",
-    "description1": "Een empty leg vlucht, ook wel \"positioneringsvlucht\" genoemd, is een privéjet die leeg vliegt nadat hij passagiers heeft afgezet, of onderweg is om passagiers op te halen.",
-    "description2": "Omdat het vliegtuig deze vlucht toch moet maken, bieden chartermaatschappijen deze \"lege\" stoelen aan met een aanzienlijke korting - vaak tot 75% van de normale prijs.",
-    "description3": "Jetleg centraliseert het aanbod van honderden betrouwbare operators, zodat je gemakkelijk de perfecte deal kunt vinden en boeken. Het is de slimste manier om de luxe van privévliegen te ervaren.",
-    "hero": {
-      "title": "Hoe werkt het?",
-      "subtitle": "Ontdek hoe je tot 75% kunt besparen op luxe privéjet reizen door empty leg vluchten."
-    },
-    "step": "Stap",
-    "benefits": {
-      "savings": {
-        "title": "Tot 75% Besparing",
-        "description": "Bespaar tot 75% ten opzichte van reguliere privévluchten door gebruik te maken van empty leg positioneringsvluchten."
-      },
-      "availability": {
-        "title": "Last-minute Beschikbaarheid",
-        "description": "Vind en boek exclusieve vluchten die binnenkort beschikbaar komen, perfect voor flexibele reizigers."
-      },
-      "premium": {
-        "title": "Premium Vliegtuigen",
-        "description": "Vlieg in luxe jets van gecertificeerde operators met de hoogste veiligheids- en kwaliteitsstandaarden."
-      },
-      "reliable": {
-        "title": "Betrouwbaar en Veilig",
-        "description": "Alle operators zijn volledig gecertificeerd en voldoen aan de strengste internationale luchtvaartnormen."
-      }
-    },
-    "timeline": {
-      "step1": {
-        "title": "Zoek je Perfect Empty Leg",
-        "description": "Gebruik onze geavanceerde zoekfunctie om beschikbare empty leg vluchten te vinden die passen bij jouw reisplannen.",
-        "details": [
-          "Zoek op vertrek- en aankomstluchthaven",
-          "Flexibele datums voor meer opties",
-          "Filter op vliegtuigtype en capaciteit",
-          "Real-time beschikbaarheid en prijzen"
-        ]
-      },
-      "step2": {
-        "title": "Vergelijk en Selecteer",
-        "description": "Bekijk alle beschikbare opties en kies de vlucht die het beste bij jouw behoeften en budget past.",
-        "details": [
-          "Transparante prijzen zonder verborgen kosten",
-          "Gedetailleerde vliegtuiginformatie",
-          "Operator beoordelingen en certificeringen",
-          "Flexibele annuleringsvoorwaarden"
-        ]
-      },
-      "step3": {
-        "title": "Veilig Boeken",
-        "description": "Voltooi je boeking met onze veilige betaalomgeving en ontvang direct je vliegbevestiging.",
-        "details": [
-          "Beveiligde online betaling",
-          "Directe bevestiging en e-tickets",
-          "24/7 klantenservice",
-          "Volledige GDPR-compliance"
-        ]
-      },
-      "step4": {
-        "title": "Geniet van je Luxe Reis",
-        "description": "Stap aan boord van je privéjet en ervaar de ultieme luxe en comfort tegen een fractie van de normale prijs.",
-        "details": [
-          "VIP terminal service",
-          "Persoonlijke concierge service",
-          "Premium catering aan boord",
-          "Geen wachtrijen of vertragingen"
-        ]
-      }
-    },
-    "faq": {
-      "title": "Veelgestelde Vragen",
-      "subtitle": "Krijg antwoorden op de meest gestelde vragen over empty leg vluchten.",
-      "viewAll": "Bekijk alle FAQ's",
-      "questions": [
-        "Hoe boek ik een empty leg vlucht?",
-        "Wat zijn de annuleringsvoorwaarden?",
-        "Welke documenten heb ik nodig?",
-        "Kan ik mijn vlucht wijzigen?"
-      ],
-      "answers": [
-        "Het boeken van een empty leg vlucht is eenvoudig via ons platform. Zoek naar beschikbare vluchten, selecteer je gewenste optie en voltooi de betaling online.",
-        "Onze annuleringsvoorwaarden variëren per operator, maar bieden meestal flexibiliteit tot 24-48 uur voor vertrek. Check altijd de specifieke voorwaarden bij je boeking.",
-        "Je hebt een geldig paspoort of identiteitskaart nodig, afhankelijk van je bestemming. Voor internationale vluchten kan een visum vereist zijn.",
-        "Wijzigingen zijn mogelijk afhankelijk van beschikbaarheid en de voorwaarden van de operator. Neem contact op met onze klantenservice voor ondersteuning."
-      ]
-    },
-    "cta": {
-      "title": "Klaar voor je volgende luxe avontuur?",
-      "subtitle": "Ontdek beschikbare empty leg vluchten en bespaar tot 75% op je volgende privéjet reis.",
-      "button": "Zoek vluchten"
-    }
-  },
-  "contact": {
-    "hero": {
-      "title": "Contact",
-      "subtitle": "Heb je vragen over onze vluchten of heb je hulp nodig bij je boeking? Ons vriendelijke team staat klaar om je te helpen."
-    },
-    "info": {
-      "phone": {
-        "title": "Telefoon",
-        "details": ["+32 1 234 56 789", "Ma-Vr: 08:00 - 20:00", "Za-Zo: 10:00 - 18:00"]
-      },
-      "email": {
-        "title": "E-mail",
-        "details": ["info@jetleg.com", "support@jetleg.com", "Reactie binnen 2 uur"]
-      },
-      "address": {
-        "title": "Adres",
-        "details": ["Jetleg BV", "Luchthavenlaan 42", "1930 Zaventem, België"]
-      },
-      "hours": {
-        "title": "Openingstijden",
-        "details": ["Maandag - Vrijdag: 08:00 - 20:00", "Weekend: 10:00 - 18:00", "24/7 noodlijn beschikbaar"]
-      }
-    },
-    "form": {
-      "title": "Stuur ons een bericht",
-      "name": "Naam",
-      "email": "E-mailadres",
-      "phone": "Telefoonnummer",
-      "subject": "Onderwerp",
-      "message": "Bericht",
-      "submit": "Verzend bericht",
-      "required": "*",
-      "messagePlaceholder": "Beschrijf je vraag of opmerking...",
-      "selectSubject": "Selecteer onderwerp",
-      "subjects": ["Algemene vraag", "Boekingshulp", "Klacht", "Partnership", "Media aanvraag", "Anders"]
-    },
-    "faq": {
-      "title": "Veelgestelde vragen",
-      "questions": [
-        "Hoe boek ik een empty leg vlucht?",
-        "Wat zijn de annuleringsvoorwaarden?",
-        "Welke documenten heb ik nodig?",
-        "Kan ik mijn vlucht wijzigen?",
-        "Hoe werkt de betaling?"
-      ]
-    },
-    "emergency": {
-      "title": "Noodcontact",
-      "description": "Voor urgente zaken buiten kantooruren kun je ons 24/7 bereiken:",
-      "phone": "+32 800 123 456",
-      "email": "emergency@jetleg.com"
-    },
-    "location": {
-      "title": "Bezoekadres",
-      "address": "Luchthavenlaan 42\n1930 Zaventem, België",
-      "note": "Gelegen op 5 minuten van Brussels Airport. Gratis parking beschikbaar."
-    },
-    "validation": {
-      "incomplete": "Onvolledige gegevens",
-      "fillRequired": "Vul alle verplichte velden in.",
-      "success": "Bericht verzonden!",
-      "response": "We nemen binnen 24 uur contact met je op."
-    }
-  },
-  "faq": {
-    "hero": {
-      "title": "Veelgestelde Vragen",
-      "subtitle": "Vind antwoorden op de meest gestelde vragen over empty leg vluchten en ons platform."
-    },
-    "categories": {
-      "general": {
-        "title": "Algemeen",
-        "questions": [
-          "Wat is Jetleg?",
-          "Wat is een empty leg vlucht?",
-          "Hoe groot zijn de besparingen?",
-          "Is Jetleg veilig?"
-        ],
-        "answers": [
-          "Jetleg is een platform gespecialiseerd in empty leg vluchten - privéjet vluchten die anders leeg zouden vliegen. Wij bieden deze vluchten aan tegen sterk gereduceerde prijzen, waardoor privéjet reizen toegankelijker wordt.",
-          "Een empty leg vlucht ontstaat wanneer een privéjet terug moet vliegen naar zijn basis zonder passagiers, of zich moet verplaatsen naar een nieuwe locatie voor de volgende klant. In plaats van leeg te vliegen, bieden operators deze vluchten aan tegen gereduceerde prijzen.",
-          "Empty leg vluchten kunnen tot 75% goedkoper zijn dan reguliere privéjet charters. De exacte besparing is afhankelijk van de route, het vliegtuigtype en de timing van de vlucht.",
-          "Absoluut. Alle vluchten worden uitgevoerd door gecertificeerde operators die voldoen aan de hoogste veiligheidsnormen. Onze partners hebben alle benodigde licenties en certificeringen voor commerciële vluchten."
-        ]
-      },
-      "booking": {
-        "title": "Boeking en Betaling",
-        "questions": [
-          "Hoe boek ik een vlucht?",
-          "Welke betaalmethodes accepteren jullie?",
-          "Kan ik mijn boeking annuleren?",
-          "Krijg ik een factuur?",
-          "Wat gebeurt er nadat ik een empty leg geboekt heb?",
-          "Zijn vluchten naar andere werelddelen ook beschikbaar?"
-        ],
-        "answers": [
-          "Boeken is eenvoudig: zoek een vlucht op onze website, selecteer je gewenste optie, vul je gegevens in en betaal veilig online. Je ontvangt direct een bevestiging per e-mail.",
-          "Wij accepteren alle grote creditcards (Visa, Mastercard, American Express), iDEAL, bankoverschrijving en andere lokale betaalmethodes afhankelijk van jouw locatie.",
-          "Annuleringsvoorwaarden verschillen per vlucht en operator. Over het algemeen zijn empty legs minder flexibel dan reguliere charters. Check altijd de specifieke voorwaarden bij je boeking.",
-          "Ja, na betaling ontvang je automatisch een factuur per e-mail. Voor zakelijke boekingen kunnen wij aangepaste facturen leveren met je bedrijfsgegevens.",
-          "Na je boeking ontvang je direct een bevestigingsmail met alle vliegdetails en je e-tickets. Onze klantenservice neemt indien nodig contact met je op voor eventuele bijzonderheden. Op de dag van vertrek kun je rechtstreeks naar de private terminal gaan - meld je 15-30 minuten voor vertrek. Na landing ontvang je een vragenlijst om je ervaring met ons te delen.",
-          "Momenteel richten we ons voornamelijk op Europa, Noord-Amerika en de VAE. Vluchten naar Azië, Zuid-Amerika, Afrika en Australië zijn in ontwikkeling en zullen in de nabije toekomst beschikbaar komen. We zijn volop bezig met het uitbreiden van onze partnerschappen wereldwijd om jou straks ook deze prachtige bestemmingen te kunnen aanbieden."
-        ]
-      },
-      "flights": {
-        "title": "Vluchtdetails",
-        "questions": [
-          "Hoe ver van tevoren zijn empty legs beschikbaar?",
-          "Kan ik de vertrektijd wijzigen?",
-          "Wat gebeurt er bij slecht weer?",
-          "Zijn maaltijden en dranken inbegrepen?"
-        ],
-        "answers": [
-          "Empty legs zijn vaak last-minute beschikbaar, van een paar uur tot maximaal 2 weken van tevoren. De meeste deals worden 24-72 uur van tevoren gepubliceerd.",
-          "Beperkte flexibiliteit is mogelijk, maar wijzigingen zijn afhankelijk van de operator en het vliegschema. Kleine aanpassingen (1-2 uur) zijn soms mogelijk tegen een meerprijs.",
-          "Bij slecht weer volgen we standaard luchtvaartprotocollen. Vluchten kunnen vertraagd of geannuleerd worden voor jouw veiligheid. In dat geval krijg je volledige terugbetaling of alternatieve opties.",
-          "Standaard catering is meestal inbegrepen. Speciale dieetwensen of premium catering kunnen extra kosten met zich meebrengen. Dit wordt duidelijk aangegeven bij het boeken."
-        ]
-      },
-      "practical": {
-        "title": "Praktische zaken",
-        "questions": [
-          "Hoeveel bagage kan ik meenemen?",
-          "Moet ik eerder inchecken?",
-          "Kan ik mijn huisdier meenemen?",
-          "Welke documenten heb ik nodig?"
-        ],
-        "answers": [
-          "Bagagelimieten variëren per vliegtuigtype. Over het algemeen is 20-30kg handbagage en 20-50kg ruimbagage toegestaan. Je kunt exacte limieten zien in de vluchtdetails.",
-          "Inchecken is veel sneller bij privéjets. Arriveer 15-30 minuten voor vertrek bij de terminal. Op kleinere luchthavens kan dit zelfs korter zijn.",
-          "Huisdieren zijn vaak toegestaan op privéjets, afhankelijk van de operator en bestemming. Vraag naar specifieke regels en eventuele extra kosten bij het boeken.",
-          "Je hebt een geldig paspoort nodig voor internationale vluchten en een identiteitskaart voor binnenlandse vluchten. Controleer visumvereisten voor je bestemming."
-        ]
-      }
-    }
-  },
-  "about": {
-    "hero": {
-      "title": "Over Jetleg",
-      "subtitle": "Wij revolutioneren privéjet reizen door empty leg vluchten toegankelijk en betaalbaar te maken voor iedereen."
-    },
-    "mission": {
-      "title": "Onze missie",
-      "paragraph1": "Jetleg is opgericht met een eenvoudige maar krachtige missie: het democratiseren van luxe reizen. Wij geloven dat iedereen moet kunnen genieten van de voordelen van privéjet reizen, zonder de traditioneel hoge kosten.",
-      "paragraph2": "Door gebruik te maken van empty leg vluchten - vluchten die anders leeg zouden vliegen - bieden wij onze klanten de mogelijkheid om in stijl te reizen voor een fractie van de normale prijs.",
-      "paragraph3": "Onze technologie verbindt reizigers rechtstreeks met beschikbare vluchten, waardoor zowel economische als ecologische voordelen ontstaan."
-    },
-    "stats": {
-      "title": "Jetleg in cijfers",
-      "customers": "Tevreden klanten",
-      "destinations": "Bestemmingen",
-      "satisfaction": "Tevredenheidsscore",
-      "support": "Klantenservice"
-    },
-    "values": {
-      "title": "Onze waarden",
-      "safety": {
-        "title": "Veiligheid voorop",
-        "description": "We werken alleen met gecertificeerde operators die voldoen aan de hoogste veiligheidsnormen."
-      },
-      "excellence": {
-        "title": "Excellentie",
-        "description": "Elke vlucht wordt behandeld met de grootste aandacht voor detail en service."
-      },
-      "customerCentric": {
-        "title": "Klantgericht",
-        "description": "Onze klanten staan centraal in alles wat we doen, van boeking tot nazorg."
-      },
-      "accessibility": {
-        "title": "Toegankelijkheid",
-        "description": "We maken luxe reizen toegankelijk door optimaal gebruik te maken van onbenutte capaciteit."
-      }
-    },
-    "team": {
-      "title": "Ons team",
-      "xavier": {
-        "name": "Xavier Verhoestraete",
-        "role": "CEO en Medeoprichter",
-        "description": "Met 15 jaar ervaring in de luchtvaart leidde Xavier de revolutie in privéjet reizen."
-      },
-      "carley": {
-        "name": "Carley Hamaway",
-        "role": "CTO en Medeoprichter",
-        "description": "Carley ontwikkelt de technologie die ons platform zo gebruiksvriendelijk maakt."
-      },
-      "marc": {
-        "name": "Marc Dubois",
-        "role": "COO",
-        "description": "Marc zorgt ervoor dat elke vlucht perfect verloopt, van boeking tot landing."
-      }
-    },
-    "cta": {
-      "title": "Klaar om je volgende avontuur te beginnen?",
-      "subtitle": "Ontdek onze beschikbare vluchten en ervaar zelf waarom duizenden reizigers voor Jetleg kiezen.",
-      "viewFlights": "Bekijk vluchten",
-      "contact": "Neem contact op"
-    }
-  },
-  "privacyPolicy": {
-    "title": "Privacybeleid",
-    "lastUpdate": "Laatste update: 21 juli 2025"
-  },
-  "termsConditions": {
-    "title": "Algemene Voorwaarden",
-    "lastUpdate": "Laatste update: 21 juli 2025"
-  },
-  "forOperators": {
-    "hero": {
-      "title": "Voor Operators",
-      "subtitle": "Transformeer je empty legs in winstgevende vluchten. Sluit je aan bij honderden operators die al succesvol zijn met Jetleg.",
-      "becomePartner": "Word Partner",
-      "planDemo": "Plan Demo"
-    },
-    "stats": {
-      "extraRevenue": "Extra omzet gegenereerd voor onze partners in 2024",
-      "operators": "Operators",
-      "flights": "Vluchten",
-      "averageIncrease": "Gem. toename"
-    },
-    "benefits": {
-      "title": "Waarom kiezen voor Jetleg?",
-      "subtitle": "Ons platform is speciaal ontworpen om operators te helpen het maximale uit hun empty legs te halen.",
-      "revenue": {
-        "title": "Meer omzet genereren",
-        "description": "Verdien geld met vluchten die anders leeg zouden vliegen. Gemiddeld 30% meer inkomsten uit je vloot."
-      },
-      "customers": {
-        "title": "Toegang tot nieuwe klanten",
-        "description": "Bereik duizenden potentiële klanten die op zoek zijn naar last-minute privéjet oplossingen."
-      },
-      "payments": {
-        "title": "Veilige betalingen",
-        "description": "Gegarandeerde uitbetalingen binnen 48 uur na voltooiing van de vlucht."
-      },
-      "management": {
-        "title": "Eenvoudig beheer",
-        "description": "Intuïtief dashboard om je empty legs te beheren en real-time beschikbaarheid bij te werken."
-      }
-    },
-    "features": {
-      "title": "Alles wat je nodig hebt in één platform",
-      "subtitle": "Ons geavanceerde platform biedt alle tools die je nodig hebt om je empty leg business te laten groeien.",
-      "list": [
-        "Real-time inventory management",
-        "Automatische prijsoptimalisatie",
-        "24/7 customer support",
-        "Geïntegreerde betalingsverwerking",
-        "Uitgebreide rapportage en analytics",
-        "API integratie voor je eigen systemen"
-      ]
-    },
-    "testimonials": {
-      "title": "Wat onze partners zeggen",
-      "subtitle": "Hoor van operators die hun succes hebben vergroot met Jetleg"
-    },
-    "cta": {
-      "title": "Klaar om te beginnen?",
-      "subtitle": "Sluit je aan bij de snelst groeiende empty leg marketplace en start vandaag nog met het genereren van extra omzet.",
-      "becomePartner": "Aanmelden als Partner",
-      "contact": "Contact Opnemen"
-    }
-  },
-  "search": {
-    "searchResults": "Zoekresultaten",
-    "searchingFromTo": "Vluchten van {{from}} naar {{to}}",
-    "searchingAllFlights": "Alle beschikbare vluchten",
-    "allAirports": "Alle luchthavens",
-    "everywhere": "Overal",
-    "popularRoute": "Populaire route",
-    "validation": {
-      "fromRequired": "Selecteer een vertreklocatie",
-      "toRequired": "Selecteer een bestemming",
-      "dateRequired": "Selecteer een vertrekdatum om te kunnen zoeken",
-      "passengersRequired": "Selecteer het aantal passagiers"
-    },
-    "errorLoadingResults": "Er is een fout opgetreden bij het laden van de resultaten",
-    "searchingFlights": "Zoeken naar vluchten...",
-    "noFlightsFound": "Geen vluchten gevonden",
-    "tryAdjustingFilters": "Probeer je filters aan te passen om meer resultaten te krijgen",
-    "advancedFilters": "Geavanceerde filters",
-    "priceRange": "Prijsbereik",
-    "minPrice": "Min. prijs",
-    "maxPrice": "Max. prijs",
-    "jetType": "Type vliegtuig",
-    "selectJetType": "Selecteer type vliegtuig",
-    "allTypes": "Alle types",
-    "lightJet": "Light jet",
-    "midsizeJet": "Midsize jet",
-    "heavyJet": "Heavy jet",
-    "superJet": "Super jet",
-    "operator": "Operator",
-    "searchOperator": "Zoek operator...",
-    "maxDuration": "Max. duur",
-    "selectMaxDuration": "Selecteer max. duur",
-    "anyDuration": "Elke duur",
-    "hours": "uren",
-    "hour": "uur",
-    "activeFilters": "Actieve filters",
-    "clearAllFilters": "Alle filters wissen",
-    "saveSearch": "Zoekopdracht opslaan",
-    "enableNotifications": "Notificaties inschakelen",
-    "searchSaved": "Zoekopdracht opgeslagen!",
-    "notificationsEnabled": "Notificaties ingeschakeld voor deze zoekopdracht"
+    "cancellationPolicy": "Annuleringsbeleid",
+    "cancellationPolicyDesc": "Gratis annulering tot 24 uur voor vertrek. Daarna gelden annuleringskosten.",
+    "baggage": "Bagage",
+    "baggageDesc": "Handbagage inbegrepen. Extra bagage op aanvraag tegen meerprijs.",
+    "catering": "Catering",
+    "cateringDesc": "Lichte versnaperingen en drankjes inbegrepen. Premium catering op aanvraag.",
+    "perPerson": "per persoon",
+    "date": "Datum:",
+    "passengers": "Passagiers:",
+    "passenger": "passagier",
+    "noHiddenCosts": "Geen verborgen kosten • Veilige betaling • Direct bevestiging"
   }
 }

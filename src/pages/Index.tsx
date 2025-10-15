@@ -126,22 +126,22 @@ const Index = () => {
   const extractAirportCode = (airport: string) => (airport.match(/\(([^)]+)\)/) || [])[1] || airport.slice(-3);
   
   const getSearchResultsTitle = () => {
-    const fromText = searchData.from || 'Alle luchthavens';
-    const toText = searchData.to === 'Overal' ? 'alle bestemmingen' : searchData.to || 'alle bestemmingen';
+    const fromText = searchData.from || t('search.allAirports');
+    const toText = searchData.to === t('search.everywhere') ? t('search.results.allDestinations') : searchData.to || t('search.results.allDestinations');
     return (
       <>
-        Vluchten van <span className="text-accent">{fromText}</span> naar <span className="text-accent">{toText}</span>
+        {t('search.results.title')} <span className="text-accent">{fromText}</span> {t('search.results.to')} <span className="text-accent">{toText}</span>
       </>
     );
   };
   
   const getDateDisplayText = () => {
-    if (!searchData.date) return 'Alle data';
+    if (!searchData.date) return t('search.results.allDates');
     const flexibleOptions: { [key: string]: string } = {
-      'weekend': 'Dit weekend', 'next-week': 'Volgende week', 'next-month': 'Volgende maand',
-      'fully-flexible': 'Flexibele data'
+      'weekend': t('search.weekend'), 'next-week': t('search.nextWeek'), 'next-month': t('search.nextMonth'),
+      'fully-flexible': t('search.fullyFlexible')
     };
-    return flexibleOptions[searchData.date] || new Date(searchData.date).toLocaleDateString('nl-NL');
+    return flexibleOptions[searchData.date] || new Date(searchData.date).toLocaleDateString();
   };
 
   const getImageUrl = (flight: Flight) => flight.jets?.image_url || '/src/assets/jet-interior.jpg';
@@ -151,8 +151,8 @@ const Index = () => {
       <HeroSection />
       <div className="bg-background flex flex-col items-center justify-center text-center p-4 py-16">
         <Plane className="h-16 w-16 text-accent mx-auto mb-4 animate-pulse" />
-        <h3 className="text-xl font-semibold text-foreground mb-2">Vluchten zoeken...</h3>
-        <p className="text-muted-foreground">We zoeken de beste beschikbare vluchten voor je.</p>
+        <h3 className="text-xl font-semibold text-foreground mb-2">{t('search.results.searching')}</h3>
+        <p className="text-muted-foreground">{t('search.results.searchingDesc')}</p>
       </div>
     </div>
   );
@@ -162,9 +162,9 @@ const Index = () => {
       <HeroSection />
       <div className="bg-background flex flex-col items-center justify-center text-center p-4 py-16">
         <Plane className="h-16 w-16 text-destructive mx-auto mb-4" />
-        <h3 className="text-xl font-semibold text-foreground mb-2">Er is een fout opgetreden</h3>
-        <p className="text-muted-foreground mb-4">We konden geen vluchten laden. Probeer het opnieuw.</p>
-        <button onClick={() => window.location.reload()} className="btn-jetleg-primary">Opnieuw proberen</button>
+        <h3 className="text-xl font-semibold text-foreground mb-2">{t('search.results.error')}</h3>
+        <p className="text-muted-foreground mb-4">{t('search.results.errorDesc')}</p>
+        <button onClick={() => window.location.reload()} className="btn-jetleg-primary">{t('search.results.retry')}</button>
       </div>
     </div>
   );
@@ -192,10 +192,10 @@ const Index = () => {
                     </span>
                     <span className="hidden lg:inline-flex items-center gap-1 text-muted-foreground">
                       <Users className="h-4 w-4" />
-                      {searchData.passengers} {parseInt(searchData.passengers) === 1 ? 'passagier' : 'passagiers'}
+                      {searchData.passengers} {parseInt(searchData.passengers) === 1 ? t('search.results.passenger') : t('search.results.passengers')}
                     </span>
                     <span className="font-medium text-muted-foreground">
-                      {filteredFlights.length} beschikbare vluchten
+                      {filteredFlights.length} {t('search.results.available')}
                     </span>
                     <div className="flex items-center gap-1">
                       <SaveSearchButton 
@@ -217,14 +217,14 @@ const Index = () => {
                       className="flex items-center gap-2"
                     >
                       <SlidersHorizontal className="h-4 w-4" />
-                      Filters
+                      {t('search.results.filters')}
                     </Button>
                     <div className="flex items-center gap-2">
-                      <span className="text-sm text-muted-foreground whitespace-nowrap">Sorteer:</span>
+                      <span className="text-sm text-muted-foreground whitespace-nowrap">{t('search.results.sortBy')}</span>
                       <select value={sortBy} onChange={e => setSortBy(e.target.value)} className="px-3 py-2 border border-border rounded-lg bg-card text-foreground focus:ring-2 focus:ring-accent/20">
-                        <option value="price">Prijs (oplopend)</option>
-                        <option value="duration">Vliegduur</option>
-                        <option value="departure">Vertrektijd</option>
+                        <option value="price">{t('search.results.sortPrice')}</option>
+                        <option value="duration">{t('search.results.sortDuration')}</option>
+                        <option value="departure">{t('search.results.sortDeparture')}</option>
                       </select>
                     </div>
                   </div>
@@ -246,9 +246,9 @@ const Index = () => {
                   {filteredFlights.length === 0 ? (
                     <div className="text-center py-12">
                       <Plane className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-                      <h3 className="text-xl font-semibold text-foreground mb-2">Geen vluchten gevonden</h3>
-                      <p className="text-muted-foreground mb-4">Probeer je zoekcriteria aan te passen of kies andere filters.</p>
-                      <button onClick={handleClearAllFilters} className="btn-jetleg-primary">Reset filters</button>
+                      <h3 className="text-xl font-semibold text-foreground mb-2">{t('search.results.noResults')}</h3>
+                      <p className="text-muted-foreground mb-4">{t('search.results.noResultsDesc')}</p>
+                      <button onClick={handleClearAllFilters} className="btn-jetleg-primary">{t('search.results.resetFilters')}</button>
                     </div>
                   ) : (
                     <div className="space-y-6">
@@ -293,10 +293,10 @@ const Index = () => {
                                 <div className="text-xs text-muted-foreground mt-1">{flight.available_seats} beschikbare plaatsen</div>
                                 <div className="text-xs text-muted-foreground">Door {flight.operator}</div>
                               </div>
-                              <div className="flex items-center justify-between">
+                                <div className="flex items-center justify-between">
                                 <div>
                                   <div className="text-2xl font-bold text-foreground">{formatPrice(flight.price_per_seat)}</div>
-                                  <div className="text-xs text-muted-foreground">per persoon</div>
+                                  <div className="text-xs text-muted-foreground">{t('search.results.perPerson')}</div>
                                 </div>
                                 <button 
                                   onClick={(e) => {
@@ -313,10 +313,10 @@ const Index = () => {
                                       }
                                     });
                                   }}
-                                  className="btn-jetleg-primary ml-4"
-                                >
-                                  Meer details
-                                </button>
+                                    className="btn-jetleg-primary ml-4"
+                                  >
+                                    {t('search.results.moreDetails')}
+                                  </button>
                               </div>
                             </div>
                           </div>
