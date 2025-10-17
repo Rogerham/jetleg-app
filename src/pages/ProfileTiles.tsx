@@ -3,6 +3,7 @@ import { Plane, User, Heart, Settings, CreditCard, HelpCircle, ArrowLeft, LogOut
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
 import MyBookings from './MyBookings';
 import EditProfile from './EditProfile';
 import AppSettings from './AppSettings';
@@ -13,54 +14,56 @@ type TileView = 'main' | 'bookings' | 'edit-profile' | 'settings' | 'payment' | 
 
 const ProfileTiles = () => {
   const { user, signOut } = useAuth();
+  const { t } = useTranslation();
   const [activeView, setActiveView] = useState<TileView>('main');
+  
   const handleLogout = async () => {
     try {
       await signOut();
-      toast.success('Succesvol uitgelogd');
+      toast.success(t('profile.logoutSuccess'));
     } catch (error) {
       console.error('Error logging out:', error);
-      toast.error('Fout bij uitloggen');
+      toast.error(t('profile.logoutError'));
     }
   };
 
   const tiles = [
     {
       id: 'bookings',
-      title: 'Mijn boekingen',
-      subtitle: 'Bekijk je geboekte vluchten',
+      title: t('profile.tiles.bookings'),
+      subtitle: t('profile.tiles.bookingsSubtitle'),
       icon: Plane,
       color: 'text-blue-600',
       bgColor: 'bg-blue-50'
     },
     {
       id: 'edit-profile',
-      title: 'Profiel wijzigen',
-      subtitle: 'Bewerk je persoonlijke gegevens',
+      title: t('profile.tiles.editProfile'),
+      subtitle: t('profile.tiles.editProfileSubtitle'),
       icon: User,
       color: 'text-green-600',
       bgColor: 'bg-green-50'
     },
     {
       id: 'settings',
-      title: 'App instellingen',
-      subtitle: 'Notificaties, taal en valuta',
+      title: t('profile.tiles.settings'),
+      subtitle: t('profile.tiles.settingsSubtitle'),
       icon: Settings,
       color: 'text-gray-600',
       bgColor: 'bg-gray-50'
     },
     {
       id: 'payment',
-      title: 'Betaalgegevens',
-      subtitle: 'Beheer je opgeslagen betaalmethoden',
+      title: t('profile.tiles.payment'),
+      subtitle: t('profile.tiles.paymentSubtitle'),
       icon: CreditCard,
       color: 'text-purple-600',
       bgColor: 'bg-purple-50'
     },
     {
       id: 'help',
-      title: 'Help & ondersteuning',
-      subtitle: 'Veelgestelde vragen en contact',
+      title: t('profile.tiles.help'),
+      subtitle: t('profile.tiles.helpSubtitle'),
       icon: HelpCircle,
       color: 'text-orange-600',
       bgColor: 'bg-orange-50'
@@ -84,8 +87,8 @@ const ProfileTiles = () => {
           <div className="container mx-auto px-6 py-8">
             <div className="max-w-4xl mx-auto">
               <div className="mb-8">
-                <h1 className="text-3xl font-bold text-foreground mb-2">Mijn Profiel</h1>
-                <p className="text-muted-foreground">Welkom, {user?.user_metadata?.first_name || user?.email}</p>
+                <h1 className="text-3xl font-bold text-foreground mb-2">{t('profile.title')}</h1>
+                <p className="text-muted-foreground">{t('profile.welcome')}, {user?.user_metadata?.first_name || user?.email}</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
@@ -122,7 +125,7 @@ const ProfileTiles = () => {
                   className="w-full flex items-center gap-2"
                 >
                   <LogOut className="h-5 w-5" />
-                  Uitloggen
+                  {t('profile.logout')}
                 </Button>
               </div>
             </div>
@@ -141,7 +144,7 @@ const ProfileTiles = () => {
               className="flex items-center gap-2 text-accent hover:text-accent/80 transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
-              Terug naar profiel
+              {t('profile.backToProfile')}
             </button>
           </div>
         </div>

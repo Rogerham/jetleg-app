@@ -675,5 +675,90 @@
       "becomePartner": "Sign up as Partner",
       "contact": "Get in Touch"
     }
+  },
+  "profile": {
+    "title": "My Profile",
+    "welcome": "Welcome",
+    "logout": "Log out",
+    "backToProfile": "Back to profile",
+    "logoutSuccess": "Successfully logged out",
+    "logoutError": "Error logging out",
+    "loading": "Loading profile...",
+    "tiles": {
+      "bookings": "My bookings",
+      "bookingsSubtitle": "View your booked flights",
+      "editProfile": "Edit profile",
+      "editProfileSubtitle": "Edit your personal details",
+      "settings": "App settings",
+      "settingsSubtitle": "Notifications, language and currency",
+      "payment": "Payment details",
+      "paymentSubtitle": "Manage your saved payment methods",
+      "help": "Help & support",
+      "helpSubtitle": "FAQ and contact"
+    },
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Log in to access your profile",
+      "email": "Email address",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "submit": "Log in",
+      "submitting": "Logging in...",
+      "invalidCredentials": "Invalid credentials. Check your email and password.",
+      "emailNotConfirmed": "Confirm your email address before logging in. Check your inbox.",
+      "error": "An error occurred while logging in. Please try again.",
+      "unexpectedError": "An unexpected error occurred. Please try again.",
+      "success": "Successfully logged in!"
+    },
+    "register": {
+      "title": "Create account",
+      "subtitle": "Create an account to get started",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email address",
+      "phone": "Phone number",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "submit": "Create account",
+      "submitting": "Creating account...",
+      "passwordMismatch": "Passwords do not match.",
+      "passwordTooShort": "Password must be at least 6 characters long.",
+      "userExists": "An account with this email address already exists.",
+      "error": "An error occurred while registering. Please try again.",
+      "success": "Account created! Check your email to confirm your account."
+    },
+    "tabs": {
+      "login": "Log in",
+      "register": "Register"
+    }
+  },
+  "myBookings": {
+    "title": "My Bookings",
+    "subtitle": "View and manage all your flights",
+    "backToProfile": "Back to profile",
+    "tabs": {
+      "upcoming": "Upcoming flights",
+      "past": "Past flights",
+      "all": "All bookings"
+    },
+    "status": {
+      "confirmed": "Confirmed",
+      "pending": "Pending",
+      "cancelled": "Cancelled",
+      "completed": "Completed"
+    },
+    "bookingReference": "Booking reference",
+    "totalPaid": "total paid",
+    "viewDetails": "View details",
+    "downloadTicket": "Download ticket",
+    "cancel": "Cancel",
+    "aircraft": "Aircraft",
+    "bookedOn": "Booked on",
+    "noBookings": "No bookings found",
+    "noUpcoming": "You have no upcoming flights.",
+    "noPast": "You have no past flights.",
+    "noBookingsYet": "You haven't made any bookings yet.",
+    "findFlight": "Find your next flight"
   }
 }

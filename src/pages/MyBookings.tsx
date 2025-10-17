@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Calendar, MapPin, Users, Plane, Clock, Download, Eye, AlertCircle, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface Booking {
   id: string;
@@ -24,6 +25,7 @@ interface Booking {
 }
 
 const MyBookings = ({ hideNavigation = false, onBackToProfile }: { hideNavigation?: boolean; onBackToProfile?: () => void }) => {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<'upcoming' | 'past' | 'all'>('upcoming');
   
   const mockBookings: Booking[] = [
@@ -98,10 +100,10 @@ const MyBookings = ({ hideNavigation = false, onBackToProfile }: { hideNavigatio
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'confirmed': return 'Bevestigd';
-      case 'pending': return 'In behandeling';
-      case 'cancelled': return 'Geannuleerd';
-      case 'completed': return 'Voltooid';
+      case 'confirmed': return t('myBookings.status.confirmed');
+      case 'pending': return t('myBookings.status.pending');
+      case 'cancelled': return t('myBookings.status.cancelled');
+      case 'completed': return t('myBookings.status.completed');
       default: return status;
     }
   };
@@ -130,12 +132,12 @@ const MyBookings = ({ hideNavigation = false, onBackToProfile }: { hideNavigatio
               className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6"
             >
               <ArrowLeft className="h-4 w-4" />
-              Terug naar profiel
+              {t('myBookings.backToProfile')}
             </button>
           )}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-foreground mb-2">Mijn Boekingen</h1>
-            <p className="text-muted-foreground">Bekijk en beheer al je vluchten</p>
+            <h1 className="text-3xl font-bold text-foreground mb-2">{t('myBookings.title')}</h1>
+            <p className="text-muted-foreground">{t('myBookings.subtitle')}</p>
           </div>
 
           {/* ... keep existing code (tabs and bookings list) */}
@@ -143,9 +145,9 @@ const MyBookings = ({ hideNavigation = false, onBackToProfile }: { hideNavigatio
             <div className="border-b border-border">
               <nav className="flex space-x-8">
                 {[
-                  { key: 'upcoming', label: 'Aankomende vluchten', count: filterBookings(mockBookings.filter(b => activeTab !== 'upcoming')).length },
-                  { key: 'past', label: 'Eerdere vluchten', count: filterBookings(mockBookings.filter(b => activeTab !== 'past')).length },
-                  { key: 'all', label: 'Alle boekingen', count: mockBookings.length }
+                  { key: 'upcoming', label: t('myBookings.tabs.upcoming'), count: filterBookings(mockBookings.filter(b => activeTab !== 'upcoming')).length },
+                  { key: 'past', label: t('myBookings.tabs.past'), count: filterBookings(mockBookings.filter(b => activeTab !== 'past')).length },
+                  { key: 'all', label: t('myBookings.tabs.all'), count: mockBookings.length }
                 ].map((tab) => (
                   <button
                     key={tab.key}
@@ -166,17 +168,17 @@ const MyBookings = ({ hideNavigation = false, onBackToProfile }: { hideNavigatio
           {filteredBookings.length === 0 ? (
             <div className="text-center py-12">
               <AlertCircle className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-foreground mb-2">Geen boekingen gevonden</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-2">{t('myBookings.noBookings')}</h3>
               <p className="text-muted-foreground mb-6">
                 {activeTab === 'upcoming' 
-                  ? 'Je hebt nog geen aankomende vluchten.'
+                  ? t('myBookings.noUpcoming')
                   : activeTab === 'past'
-                  ? 'Je hebt nog geen eerdere vluchten.'
-                  : 'Je hebt nog geen boekingen gemaakt.'
+                  ? t('myBookings.noPast')
+                  : t('myBookings.noBookingsYet')
                 }
               </p>
               <Link to="/" className="btn-jetleg-primary">
-                Vind je volgende vlucht
+                {t('myBookings.findFlight')}
               </Link>
             </div>
           ) : (
@@ -190,7 +192,7 @@ const MyBookings = ({ hideNavigation = false, onBackToProfile }: { hideNavigatio
                           {booking.flight.from} → {booking.flight.to}
                         </h3>
                         <p className="text-sm text-muted-foreground">
-                          Boekingsreferentie: {booking.bookingReference}
+                          {t('myBookings.bookingReference')}: {booking.bookingReference}
                         </p>
                       </div>
                       
@@ -261,8 +263,8 @@ const MyBookings = ({ hideNavigation = false, onBackToProfile }: { hideNavigatio
                         </div>
 
                         <div className="text-sm text-muted-foreground">
-                          <p><span className="font-medium">Vliegtuig:</span> {booking.flight.aircraft}</p>
-                          <p><span className="font-medium">Geboekt op:</span> {new Date(booking.bookingDate).toLocaleDateString('nl-NL')}</p>
+                          <p><span className="font-medium">{t('myBookings.aircraft')}:</span> {booking.flight.aircraft}</p>
+                          <p><span className="font-medium">{t('myBookings.bookedOn')}:</span> {new Date(booking.bookingDate).toLocaleDateString('nl-NL')}</p>
                         </div>
                       </div>
 
@@ -271,22 +273,22 @@ const MyBookings = ({ hideNavigation = false, onBackToProfile }: { hideNavigatio
                           <div className="text-2xl font-bold text-foreground mb-1">
                             €{booking.totalPrice.toLocaleString()}
                           </div>
-                          <div className="text-sm text-muted-foreground">totaal betaald</div>
+                          <div className="text-sm text-muted-foreground">{t('myBookings.totalPaid')}</div>
                         </div>
 
                         <div className="flex flex-col gap-2">
                           <button className="btn-jetleg-outline flex items-center justify-center gap-2">
                             <Eye className="h-4 w-4" />
-                            Bekijk details
+                            {t('myBookings.viewDetails')}
                           </button>
                           <button className="btn-jetleg-outline flex items-center justify-center gap-2">
                             <Download className="h-4 w-4" />
-                            Download ticket
+                            {t('myBookings.downloadTicket')}
                           </button>
                           
                           {booking.status === 'confirmed' && new Date(booking.flight.date) > new Date() && (
                             <button className="text-red-600 hover:text-red-700 text-sm font-medium transition-colors">
-                              Annuleren
+                              {t('myBookings.cancel')}
                             </button>
                           )}
                         </div>

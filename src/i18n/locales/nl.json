@@ -272,5 +272,90 @@
     "passengers": "Passagiers:",
     "passenger": "passagier",
     "noHiddenCosts": "Geen verborgen kosten • Veilige betaling • Direct bevestiging"
+  },
+  "profile": {
+    "title": "Mijn Profiel",
+    "welcome": "Welkom",
+    "logout": "Uitloggen",
+    "backToProfile": "Terug naar profiel",
+    "logoutSuccess": "Succesvol uitgelogd",
+    "logoutError": "Fout bij uitloggen",
+    "loading": "Profiel laden...",
+    "tiles": {
+      "bookings": "Mijn boekingen",
+      "bookingsSubtitle": "Bekijk je geboekte vluchten",
+      "editProfile": "Profiel wijzigen",
+      "editProfileSubtitle": "Bewerk je persoonlijke gegevens",
+      "settings": "App instellingen",
+      "settingsSubtitle": "Notificaties, taal en valuta",
+      "payment": "Betaalgegevens",
+      "paymentSubtitle": "Beheer je opgeslagen betaalmethoden",
+      "help": "Help & ondersteuning",
+      "helpSubtitle": "Veelgestelde vragen en contact"
+    },
+    "login": {
+      "title": "Welkom terug",
+      "subtitle": "Log in om toegang te krijgen tot je profiel",
+      "email": "E-mailadres",
+      "password": "Wachtwoord",
+      "rememberMe": "Onthoud mij",
+      "forgotPassword": "Wachtwoord vergeten?",
+      "submit": "Inloggen",
+      "submitting": "Bezig met inloggen...",
+      "invalidCredentials": "Ongeldige inloggegevens. Controleer je e-mail en wachtwoord.",
+      "emailNotConfirmed": "Bevestig je e-mailadres voordat je inloggt. Controleer je inbox.",
+      "error": "Er is een fout opgetreden bij het inloggen. Probeer het opnieuw.",
+      "unexpectedError": "Er is een onverwachte fout opgetreden. Probeer het opnieuw.",
+      "success": "Succesvol ingelogd!"
+    },
+    "register": {
+      "title": "Account aanmaken",
+      "subtitle": "Maak een account aan om te beginnen",
+      "firstName": "Voornaam",
+      "lastName": "Achternaam",
+      "email": "E-mailadres",
+      "phone": "Telefoonnummer",
+      "password": "Wachtwoord",
+      "confirmPassword": "Bevestig wachtwoord",
+      "submit": "Account aanmaken",
+      "submitting": "Account aanmaken...",
+      "passwordMismatch": "Wachtwoorden komen niet overeen.",
+      "passwordTooShort": "Wachtwoord moet minimaal 6 karakters lang zijn.",
+      "userExists": "Er bestaat al een account met dit e-mailadres.",
+      "error": "Er is een fout opgetreden bij het registreren. Probeer het opnieuw.",
+      "success": "Account aangemaakt! Controleer je e-mail om je account te bevestigen."
+    },
+    "tabs": {
+      "login": "Inloggen",
+      "register": "Registreren"
+    }
+  },
+  "myBookings": {
+    "title": "Mijn Boekingen",
+    "subtitle": "Bekijk en beheer al je vluchten",
+    "backToProfile": "Terug naar profiel",
+    "tabs": {
+      "upcoming": "Aankomende vluchten",
+      "past": "Eerdere vluchten",
+      "all": "Alle boekingen"
+    },
+    "status": {
+      "confirmed": "Bevestigd",
+      "pending": "In behandeling",
+      "cancelled": "Geannuleerd",
+      "completed": "Voltooid"
+    },
+    "bookingReference": "Boekingsreferentie",
+    "totalPaid": "totaal betaald",
+    "viewDetails": "Bekijk details",
+    "downloadTicket": "Download ticket",
+    "cancel": "Annuleren",
+    "aircraft": "Vliegtuig",
+    "bookedOn": "Geboekt op",
+    "noBookings": "Geen boekingen gevonden",
+    "noUpcoming": "Je hebt nog geen aankomende vluchten.",
+    "noPast": "Je hebt nog geen eerdere vluchten.",
+    "noBookingsYet": "Je hebt nog geen boekingen gemaakt.",
+    "findFlight": "Vind je volgende vlucht"
   }
 }

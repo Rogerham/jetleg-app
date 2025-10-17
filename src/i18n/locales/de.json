@@ -584,5 +584,90 @@
       "becomePartner": "Als Partner anmelden",
       "contact": "Kontakt aufnehmen"
     }
+  },
+  "profile": {
+    "title": "Mein Profil",
+    "welcome": "Willkommen",
+    "logout": "Abmelden",
+    "backToProfile": "Zurück zum Profil",
+    "logoutSuccess": "Erfolgreich abgemeldet",
+    "logoutError": "Fehler beim Abmelden",
+    "loading": "Profil wird geladen...",
+    "tiles": {
+      "bookings": "Meine Buchungen",
+      "bookingsSubtitle": "Ihre gebuchten Flüge anzeigen",
+      "editProfile": "Profil bearbeiten",
+      "editProfileSubtitle": "Ihre persönlichen Daten bearbeiten",
+      "settings": "App-Einstellungen",
+      "settingsSubtitle": "Benachrichtigungen, Sprache und Währung",
+      "payment": "Zahlungsdetails",
+      "paymentSubtitle": "Ihre gespeicherten Zahlungsmethoden verwalten",
+      "help": "Hilfe & Support",
+      "helpSubtitle": "FAQ und Kontakt"
+    },
+    "login": {
+      "title": "Willkommen zurück",
+      "subtitle": "Melden Sie sich an, um auf Ihr Profil zuzugreifen",
+      "email": "E-Mail-Adresse",
+      "password": "Passwort",
+      "rememberMe": "Angemeldet bleiben",
+      "forgotPassword": "Passwort vergessen?",
+      "submit": "Anmelden",
+      "submitting": "Anmeldung läuft...",
+      "invalidCredentials": "Ungültige Anmeldedaten. Überprüfen Sie Ihre E-Mail und Ihr Passwort.",
+      "emailNotConfirmed": "Bestätigen Sie Ihre E-Mail-Adresse, bevor Sie sich anmelden. Überprüfen Sie Ihren Posteingang.",
+      "error": "Beim Anmelden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+      "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+      "success": "Erfolgreich angemeldet!"
+    },
+    "register": {
+      "title": "Konto erstellen",
+      "subtitle": "Erstellen Sie ein Konto, um loszulegen",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail-Adresse",
+      "phone": "Telefonnummer",
+      "password": "Passwort",
+      "confirmPassword": "Passwort bestätigen",
+      "submit": "Konto erstellen",
+      "submitting": "Konto wird erstellt...",
+      "passwordMismatch": "Passwörter stimmen nicht überein.",
+      "passwordTooShort": "Passwort muss mindestens 6 Zeichen lang sein.",
+      "userExists": "Ein Konto mit dieser E-Mail-Adresse existiert bereits.",
+      "error": "Beim Registrieren ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+      "success": "Konto erstellt! Überprüfen Sie Ihre E-Mail, um Ihr Konto zu bestätigen."
+    },
+    "tabs": {
+      "login": "Anmelden",
+      "register": "Registrieren"
+    }
+  },
+  "myBookings": {
+    "title": "Meine Buchungen",
+    "subtitle": "Alle Ihre Flüge anzeigen und verwalten",
+    "backToProfile": "Zurück zum Profil",
+    "tabs": {
+      "upcoming": "Bevorstehende Flüge",
+      "past": "Vergangene Flüge",
+      "all": "Alle Buchungen"
+    },
+    "status": {
+      "confirmed": "Bestätigt",
+      "pending": "Ausstehend",
+      "cancelled": "Storniert",
+      "completed": "Abgeschlossen"
+    },
+    "bookingReference": "Buchungsreferenz",
+    "totalPaid": "gesamt bezahlt",
+    "viewDetails": "Details anzeigen",
+    "downloadTicket": "Ticket herunterladen",
+    "cancel": "Stornieren",
+    "aircraft": "Flugzeug",
+    "bookedOn": "Gebucht am",
+    "noBookings": "Keine Buchungen gefunden",
+    "noUpcoming": "Sie haben keine bevorstehenden Flüge.",
+    "noPast": "Sie haben keine vergangenen Flüge.",
+    "noBookingsYet": "Sie haben noch keine Buchungen vorgenommen.",
+    "findFlight": "Finden Sie Ihren nächsten Flug"
   }
 }

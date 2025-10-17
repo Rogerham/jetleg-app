@@ -655,5 +655,90 @@
       "becomePartner": "Registrarsi come Partner",
       "contact": "Mettersi in Contatto"
     }
+  },
+  "profile": {
+    "title": "Il Mio Profilo",
+    "welcome": "Benvenuto",
+    "logout": "Esci",
+    "backToProfile": "Torna al profilo",
+    "logoutSuccess": "Disconnessione riuscita",
+    "logoutError": "Errore durante la disconnessione",
+    "loading": "Caricamento profilo...",
+    "tiles": {
+      "bookings": "Le mie prenotazioni",
+      "bookingsSubtitle": "Visualizza i tuoi voli prenotati",
+      "editProfile": "Modifica profilo",
+      "editProfileSubtitle": "Modifica i tuoi dati personali",
+      "settings": "Impostazioni app",
+      "settingsSubtitle": "Notifiche, lingua e valuta",
+      "payment": "Dettagli di pagamento",
+      "paymentSubtitle": "Gestisci i tuoi metodi di pagamento salvati",
+      "help": "Aiuto e supporto",
+      "helpSubtitle": "FAQ e contatto"
+    },
+    "login": {
+      "title": "Bentornato",
+      "subtitle": "Accedi per accedere al tuo profilo",
+      "email": "Indirizzo email",
+      "password": "Password",
+      "rememberMe": "Ricordami",
+      "forgotPassword": "Password dimenticata?",
+      "submit": "Accedi",
+      "submitting": "Accesso in corso...",
+      "invalidCredentials": "Credenziali non valide. Controlla la tua email e password.",
+      "emailNotConfirmed": "Conferma il tuo indirizzo email prima di accedere. Controlla la tua casella di posta.",
+      "error": "Si è verificato un errore durante l'accesso. Riprova.",
+      "unexpectedError": "Si è verificato un errore imprevisto. Riprova.",
+      "success": "Accesso effettuato con successo!"
+    },
+    "register": {
+      "title": "Crea account",
+      "subtitle": "Crea un account per iniziare",
+      "firstName": "Nome",
+      "lastName": "Cognome",
+      "email": "Indirizzo email",
+      "phone": "Numero di telefono",
+      "password": "Password",
+      "confirmPassword": "Conferma password",
+      "submit": "Crea account",
+      "submitting": "Creazione account...",
+      "passwordMismatch": "Le password non corrispondono.",
+      "passwordTooShort": "La password deve essere di almeno 6 caratteri.",
+      "userExists": "Esiste già un account con questo indirizzo email.",
+      "error": "Si è verificato un errore durante la registrazione. Riprova.",
+      "success": "Account creato! Controlla la tua email per confermare il tuo account."
+    },
+    "tabs": {
+      "login": "Accedi",
+      "register": "Registrati"
+    }
+  },
+  "myBookings": {
+    "title": "Le Mie Prenotazioni",
+    "subtitle": "Visualizza e gestisci tutti i tuoi voli",
+    "backToProfile": "Torna al profilo",
+    "tabs": {
+      "upcoming": "Voli in arrivo",
+      "past": "Voli passati",
+      "all": "Tutte le prenotazioni"
+    },
+    "status": {
+      "confirmed": "Confermato",
+      "pending": "In attesa",
+      "cancelled": "Annullato",
+      "completed": "Completato"
+    },
+    "bookingReference": "Riferimento prenotazione",
+    "totalPaid": "totale pagato",
+    "viewDetails": "Visualizza dettagli",
+    "downloadTicket": "Scarica biglietto",
+    "cancel": "Annulla",
+    "aircraft": "Aereo",
+    "bookedOn": "Prenotato il",
+    "noBookings": "Nessuna prenotazione trovata",
+    "noUpcoming": "Non hai voli in arrivo.",
+    "noPast": "Non hai voli passati.",
+    "noBookingsYet": "Non hai ancora fatto prenotazioni.",
+    "findFlight": "Trova il tuo prossimo volo"
   }
 }
