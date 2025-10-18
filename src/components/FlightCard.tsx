@@ -160,7 +160,7 @@ const FlightCard = ({
               }}
               className="whitespace-nowrap"
             >
-              Meer details
+              {t('search.results.moreDetails')}
             </Button>
           </div>
         </div>

@@ -13,34 +13,30 @@ const BottomNavigation = () => {
     {
       path: "/",
       icon: Search,
-      label: "Zoeken",
+      label: t("nav.search"),
     },
     {
       path: "/top-deals",
       icon: DollarSign,
-      label: "Deals",
+      label: t("nav.deals"),
     },
     {
       path: "/favorites",
       icon: Heart,
-      label: "Favorieten",
+      label: t("nav.favorites"),
     },
     {
       path: "/profile",
       icon: User,
-      label: "Profiel",
+      label: t("nav.profile"),
     },
   ];
 
   const navigationContent = (
     <nav
-      className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-sm border-t border-border z-[99999] pb-safe supports-[backdrop-filter]:bg-card/60"
+      className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-sm border-t border-border z-[99999] supports-[backdrop-filter]:bg-card/60"
       style={{
-        position: "fixed" as const,
-        transform: "translate3d(0, 0, 0)",
-        willChange: "transform",
         paddingBottom: "max(10px, env(safe-area-inset-bottom))",
-        zIndex: 99999,
       }}
     >
       <div className="flex justify-around items-center h-16 px-2">

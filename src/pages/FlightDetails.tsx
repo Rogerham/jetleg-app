@@ -7,12 +7,14 @@ import { Separator } from '@/components/ui/separator';
 import { useFlightById, type Flight } from '@/hooks/useFlights';
 import { useCurrency } from '@/contexts/CurrencyContext';
 import { extractAirportCode, extractCityName } from '@/utils/flightUtils';
+import { useTranslation } from 'react-i18next';
 
 const FlightDetails = () => {
   const { flightId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   const { formatPrice } = useCurrency();
+  const { t } = useTranslation();
   
   // Use the flight from location state if available, otherwise fetch from database
   const flightFromState = location.state?.flight;
@@ -57,7 +59,7 @@ const FlightDetails = () => {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <Plane className="h-16 w-16 text-accent mx-auto mb-4 animate-pulse" />
-          <h3 className="text-xl font-semibold text-foreground mb-2">Vluchtdetails laden...</h3>
+          <h3 className="text-xl font-semibold text-foreground mb-2">{t('flightDetails.loading')}</h3>
         </div>
       </div>
     );
@@ -68,13 +70,13 @@ const FlightDetails = () => {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <Plane className="h-16 w-16 text-destructive mx-auto mb-4" />
-          <h3 className="text-xl font-semibold text-foreground mb-2">Vlucht niet gevonden</h3>
-          <p className="text-muted-foreground mb-4">De vlucht die je zoekt bestaat niet of is niet beschikbaar.</p>
+          <h3 className="text-xl font-semibold text-foreground mb-2">{t('flightDetails.notFound')}</h3>
+          <p className="text-muted-foreground mb-4">{t('flightDetails.notFoundDesc')}</p>
           <button
             onClick={() => navigate('/')}
             className="btn-jetleg-primary"
           >
-            Terug naar zoekresultaten
+            {t('flightDetails.backToResults')}
           </button>
         </div>
       </div>
@@ -100,10 +102,10 @@ const FlightDetails = () => {
               className="text-white hover:bg-white/10"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Terug naar resultaten
+              {t('flightDetails.backToResults')}
             </Button>
           </div>
-          <h1 className="text-2xl md:text-3xl font-bold">Vluchtdetails</h1>
+          <h1 className="text-2xl md:text-3xl font-bold">{t('flightDetails.title')}</h1>
           <p className="text-white/90 mt-2">
             {departureCity} ({departureCode}) → {arrivalCity} ({arrivalCode})
           </p>
@@ -118,7 +120,7 @@ const FlightDetails = () => {
             className="w-full btn-jetleg-primary h-14 text-lg"
           >
             <Users className="h-5 w-5 mr-2" />
-            Vlucht boeken
+            {t('flightDetails.bookFlight')}
           </Button>
         </div>
       </div>
@@ -130,9 +132,9 @@ const FlightDetails = () => {
             {/* Flight Overview */}
             <div className="card-jetleg p-6">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-semibold text-foreground">Vluchtongevingen</h2>
+                <h2 className="text-xl font-semibold text-foreground">{t('flightDetails.overview')}</h2>
                 <Badge variant="secondary" className="bg-green-100 text-green-800">
-                  Beschikbaar
+                  {t('flightDetails.available')}
                 </Badge>
               </div>
 
@@ -157,7 +159,7 @@ const FlightDetails = () => {
                       <Plane className="h-5 w-5 text-accent rotate-90" />
                     </div>
                   </div>
-                  <div className="text-xs text-muted-foreground mt-2">Directe vlucht</div>
+                  <div className="text-xs text-muted-foreground mt-2">{t('flightDetails.directFlight')}</div>
                 </div>
 
                 {/* Arrival */}
@@ -174,19 +176,19 @@ const FlightDetails = () => {
               {/* Flight Info */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                 <div>
-                  <div className="text-muted-foreground">Operator</div>
+                  <div className="text-muted-foreground">{t('flightDetails.operator')}</div>
                   <div className="font-medium text-foreground">{flight.operator}</div>
                 </div>
                 <div>
-                  <div className="text-muted-foreground">Route</div>
+                  <div className="text-muted-foreground">{t('flightDetails.route')}</div>
                   <div className="font-medium text-foreground">{extractCityName(flight.departure_airport)} → {extractCityName(flight.arrival_airport)}</div>
                 </div>
                 <div>
-                  <div className="text-muted-foreground">Beschikbare stoelen</div>
+                  <div className="text-muted-foreground">{t('flightDetails.availableSeats')}</div>
                   <div className="font-medium text-foreground">{flight.available_seats} van {flight.jets?.seating_capacity}</div>
                 </div>
                 <div>
-                  <div className="text-muted-foreground">Vluchtnummer</div>
+                  <div className="text-muted-foreground">{t('flightDetails.flightNumber')}</div>
                   <div className="font-medium text-foreground">EJ-{flight.id}</div>
                 </div>
               </div>
@@ -194,7 +196,7 @@ const FlightDetails = () => {
 
             {/* Aircraft Details */}
             <div className="card-jetleg p-6">
-              <h2 className="text-xl font-semibold text-foreground mb-6">Vliegtuigdetails</h2>
+              <h2 className="text-xl font-semibold text-foreground mb-6">{t('flightDetails.aircraftDetails')}</h2>
               
               {flight.jets?.image_url && (
                 <div className="mb-6">
@@ -208,57 +210,57 @@ const FlightDetails = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <h3 className="font-semibold text-foreground mb-4">Specificaties</h3>
+                  <h3 className="font-semibold text-foreground mb-4">{t('flightDetails.specifications')}</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Merk & Model:</span>
+                      <span className="text-muted-foreground">{t('flightDetails.brandModel')}</span>
                       <span className="font-medium text-foreground">{aircraftName}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Zitplaatsen:</span>
-                      <span className="font-medium text-foreground">{flight.jets?.seating_capacity} passagiers</span>
+                      <span className="text-muted-foreground">{t('flightDetails.seats')}</span>
+                      <span className="font-medium text-foreground">{flight.jets?.seating_capacity} {t('flightDetails.passengers')}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Kruissnelheid:</span>
+                      <span className="text-muted-foreground">{t('flightDetails.cruiseSpeed')}</span>
                       <span className="font-medium text-foreground">464 km/u</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Max. hoogte:</span>
+                      <span className="text-muted-foreground">{t('flightDetails.maxAltitude')}</span>
                       <span className="font-medium text-foreground">45,000 ft</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Bereik:</span>
+                      <span className="text-muted-foreground">{t('flightDetails.range')}</span>
                       <span className="font-medium text-foreground">{flight.jets?.range_km?.toLocaleString()} km</span>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-foreground mb-4">Voorzieningen</h3>
+                  <h3 className="font-semibold text-foreground mb-4">{t('flightDetails.amenities')}</h3>
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center">
                         <Wifi className="h-4 w-4 text-accent" />
                       </div>
-                      <span className="text-foreground">Wifi</span>
+                      <span className="text-foreground">{t('flightDetails.wifi')}</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center">
                         <Utensils className="h-4 w-4 text-accent" />
                       </div>
-                      <span className="text-foreground">Refreshments</span>
+                      <span className="text-foreground">{t('flightDetails.refreshments')}</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center">
                         <Armchair className="h-4 w-4 text-accent" />
                       </div>
-                      <span className="text-foreground">Leather Seats</span>
+                      <span className="text-foreground">{t('flightDetails.leatherSeats')}</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center">
                         <Coffee className="h-4 w-4 text-accent" />
                       </div>
-                      <span className="text-foreground">Coffee Service</span>
+                      <span className="text-foreground">{t('flightDetails.coffeeService')}</span>
                     </div>
                   </div>
                 </div>
@@ -267,19 +269,19 @@ const FlightDetails = () => {
 
             {/* Booking Terms */}
             <div className="card-jetleg p-6">
-              <h2 className="text-xl font-semibold text-foreground mb-6">Boekingsvoorwaarden</h2>
+              <h2 className="text-xl font-semibold text-foreground mb-6">{t('flightDetails.bookingTerms')}</h2>
               <div className="space-y-4 text-sm text-muted-foreground">
                 <div>
-                  <h4 className="font-medium text-foreground mb-2">Annuleringsbeleid</h4>
-                  <p>Gratis annulering tot 24 uur voor vertrek. Daarna gelden annuleringskosten.</p>
+                  <h4 className="font-medium text-foreground mb-2">{t('flightDetails.cancellationPolicy')}</h4>
+                  <p>{t('flightDetails.cancellationPolicyDesc')}</p>
                 </div>
                 <div>
-                  <h4 className="font-medium text-foreground mb-2">Bagage</h4>
-                  <p>Handbagage inbegrepen. Extra bagage op aanvraag tegen meerprijs.</p>
+                  <h4 className="font-medium text-foreground mb-2">{t('flightDetails.baggage')}</h4>
+                  <p>{t('flightDetails.baggageDesc')}</p>
                 </div>
                 <div>
-                  <h4 className="font-medium text-foreground mb-2">Catering</h4>
-                  <p>Lichte versnaperingen en drankjes inbegrepen. Premium catering op aanvraag.</p>
+                  <h4 className="font-medium text-foreground mb-2">{t('flightDetails.catering')}</h4>
+                  <p>{t('flightDetails.cateringDesc')}</p>
                 </div>
               </div>
             </div>
@@ -292,20 +294,20 @@ const FlightDetails = () => {
                 <div className="text-3xl font-bold text-accent mb-2">
                   {formatPrice(flight.price_per_seat)}
                 </div>
-                <div className="text-sm text-muted-foreground">per persoon</div>
+                <div className="text-sm text-muted-foreground">{t('flightDetails.perPerson')}</div>
               </div>
 
               <div className="space-y-4 mb-6">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground">Datum:</span>
+                  <span className="text-muted-foreground">{t('flightDetails.date')}</span>
                   <span className="font-medium text-foreground">{formatDate(flight.departure_time)}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground">Passagiers:</span>
-                  <span className="font-medium text-foreground">1 passagier</span>
+                  <span className="text-muted-foreground">{t('flightDetails.passengers')}</span>
+                  <span className="font-medium text-foreground">1 {t('flightDetails.passenger')}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground">Beschikbare stoelen:</span>
+                  <span className="text-muted-foreground">{t('flightDetails.availableSeats')}</span>
                   <span className="font-medium text-foreground">{flight.available_seats}</span>
                 </div>
               </div>
@@ -315,11 +317,11 @@ const FlightDetails = () => {
                 className="w-full btn-jetleg-primary h-12 text-lg"
               >
                 <Users className="h-5 w-5 mr-2" />
-                Vlucht boeken
+                {t('flightDetails.bookFlight')}
               </Button>
 
               <div className="mt-4 text-xs text-muted-foreground text-center">
-                Geen verborgen kosten • Veilige betaling • Direct bevestiging
+                {t('flightDetails.noHiddenCosts')}
               </div>
             </div>
           </div>

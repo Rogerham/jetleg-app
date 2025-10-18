@@ -9,7 +9,9 @@
     "login": "Anmelden",
     "register": "Registrieren",
     "myBookings": "Meine Buchungen",
-    "profile": "Profil"
+    "profile": "Profil",
+    "search": "Suchen",
+    "favorites": "Favoriten"
   },
   "footer": {
     "brandDescription": "Wir machen Luxus-Privatjet-Reisen durch intelligente Technologie und Leerflüge zugänglich.",
@@ -261,6 +263,45 @@
       "subtitle": "Beginnen Sie Ihre Suche nach dem perfekten Empty Leg Angebot und erleben Sie Privatjet-Reisen wie nie zuvor.",
       "button": "Empty Legs suchen"
     }
+  },
+  "flightDetails": {
+    "title": "Flugdetails",
+    "backToResults": "Zurück zu den Ergebnissen",
+    "bookFlight": "Flug buchen",
+    "loading": "Flugdetails werden geladen...",
+    "notFound": "Flug nicht gefunden",
+    "notFoundDesc": "Der gesuchte Flug existiert nicht oder ist nicht verfügbar.",
+    "overview": "Flugübersicht",
+    "available": "Verfügbar",
+    "directFlight": "Direktflug",
+    "operator": "Betreiber",
+    "route": "Route",
+    "availableSeats": "Verfügbare Sitze",
+    "flightNumber": "Flugnummer",
+    "aircraftDetails": "Flugzeugdetails",
+    "specifications": "Spezifikationen",
+    "brandModel": "Marke & Modell:",
+    "seats": "Sitze:",
+    "passenger": "Passagier",
+    "passengers": "Passagiere",
+    "cruiseSpeed": "Reisegeschwindigkeit:",
+    "maxAltitude": "Max. Höhe:",
+    "range": "Reichweite:",
+    "amenities": "Ausstattung",
+    "wifi": "Wifi",
+    "refreshments": "Erfrischungen",
+    "leatherSeats": "Ledersitze",
+    "coffeeService": "Kaffeeservice",
+    "bookingTerms": "Buchungsbedingungen",
+    "cancellationPolicy": "Stornierungsbedingungen",
+    "cancellationPolicyDesc": "Kostenlose Stornierung bis 24 Stunden vor Abflug. Danach fallen Stornogebühren an.",
+    "baggage": "Gepäck",
+    "baggageDesc": "Handgepäck inbegriffen. Zusätzliches Gepäck auf Anfrage gegen Aufpreis.",
+    "catering": "Catering",
+    "cateringDesc": "Leichte Snacks und Getränke inbegriffen. Premium-Catering auf Anfrage.",
+    "perPerson": "pro Person",
+    "date": "Datum:",
+    "noHiddenCosts": "Keine versteckten Kosten • Sichere Zahlung • Sofortige Bestätigung"
   },
   "contact": {
     "hero": {

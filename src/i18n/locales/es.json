@@ -9,7 +9,9 @@
     "login": "Iniciar sesión",
     "register": "Registrarse",
     "myBookings": "Mis reservas",
-    "profile": "Perfil"
+    "profile": "Perfil",
+    "search": "Buscar",
+    "favorites": "Favoritos"
   },
   "footer": {
     "brandDescription": "Hacemos accesibles los viajes en jet privado de lujo a través de tecnología inteligente y vuelos vacíos.",
@@ -267,6 +269,45 @@
       "success": "¡Mensaje enviado!",
       "response": "Te contactaremos dentro de 24 horas."
     }
+  },
+  "flightDetails": {
+    "title": "Detalles del vuelo",
+    "backToResults": "Volver a resultados",
+    "bookFlight": "Reservar vuelo",
+    "loading": "Cargando detalles del vuelo...",
+    "notFound": "Vuelo no encontrado",
+    "notFoundDesc": "El vuelo que buscas no existe o no está disponible.",
+    "overview": "Resumen del vuelo",
+    "available": "Disponible",
+    "directFlight": "Vuelo directo",
+    "operator": "Operador",
+    "route": "Ruta",
+    "availableSeats": "Asientos disponibles",
+    "flightNumber": "Número de vuelo",
+    "aircraftDetails": "Detalles del avión",
+    "specifications": "Especificaciones",
+    "brandModel": "Marca y Modelo:",
+    "seats": "Asientos:",
+    "passenger": "pasajero",
+    "passengers": "pasajeros",
+    "cruiseSpeed": "Velocidad de crucero:",
+    "maxAltitude": "Altitud máx:",
+    "range": "Alcance:",
+    "amenities": "Servicios",
+    "wifi": "Wifi",
+    "refreshments": "Refrescos",
+    "leatherSeats": "Asientos de cuero",
+    "coffeeService": "Servicio de café",
+    "bookingTerms": "Términos de reserva",
+    "cancellationPolicy": "Política de cancelación",
+    "cancellationPolicyDesc": "Cancelación gratuita hasta 24 horas antes de la salida. Después se aplican cargos por cancelación.",
+    "baggage": "Equipaje",
+    "baggageDesc": "Equipaje de mano incluido. Equipaje adicional bajo petición con coste adicional.",
+    "catering": "Catering",
+    "cateringDesc": "Aperitivos ligeros y bebidas incluidos. Catering premium bajo petición.",
+    "perPerson": "por persona",
+    "date": "Fecha:",
+    "noHiddenCosts": "Sin costes ocultos • Pago seguro • Confirmación instantánea"
   },
   "about": {
     "hero": {

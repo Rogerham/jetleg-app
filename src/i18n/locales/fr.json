@@ -9,7 +9,9 @@
     "login": "Connexion",
     "register": "S'inscrire",
     "myBookings": "Mes réservations",
-    "profile": "Profil"
+    "profile": "Profil",
+    "search": "Rechercher",
+    "favorites": "Favoris"
   },
   "footer": {
     "brandDescription": "Nous rendons les voyages en jet privé de luxe accessibles grâce à une technologie intelligente et aux vols à vide.",
@@ -261,6 +263,45 @@
       "subtitle": "Commencez votre recherche de l'offre empty leg parfaite et découvrez les voyages en jet privé comme jamais auparavant.",
       "button": "Rechercher Empty Legs"
     }
+  },
+  "flightDetails": {
+    "title": "Détails du vol",
+    "backToResults": "Retour aux résultats",
+    "bookFlight": "Réserver le vol",
+    "loading": "Chargement des détails du vol...",
+    "notFound": "Vol non trouvé",
+    "notFoundDesc": "Le vol que vous recherchez n'existe pas ou n'est pas disponible.",
+    "overview": "Aperçu du vol",
+    "available": "Disponible",
+    "directFlight": "Vol direct",
+    "operator": "Opérateur",
+    "route": "Route",
+    "availableSeats": "Sièges disponibles",
+    "flightNumber": "Numéro de vol",
+    "aircraftDetails": "Détails de l'avion",
+    "specifications": "Spécifications",
+    "brandModel": "Marque & Modèle:",
+    "seats": "Sièges:",
+    "passenger": "passager",
+    "passengers": "passagers",
+    "cruiseSpeed": "Vitesse de croisière:",
+    "maxAltitude": "Altitude max:",
+    "range": "Portée:",
+    "amenities": "Équipements",
+    "wifi": "Wifi",
+    "refreshments": "Rafraîchissements",
+    "leatherSeats": "Sièges en cuir",
+    "coffeeService": "Service café",
+    "bookingTerms": "Conditions de réservation",
+    "cancellationPolicy": "Politique d'annulation",
+    "cancellationPolicyDesc": "Annulation gratuite jusqu'à 24 heures avant le départ. Après, des frais d'annulation s'appliquent.",
+    "baggage": "Bagages",
+    "baggageDesc": "Bagage à main inclus. Bagage supplémentaire sur demande moyennant supplément.",
+    "catering": "Restauration",
+    "cateringDesc": "Collations légères et boissons incluses. Restauration premium sur demande.",
+    "perPerson": "par personne",
+    "date": "Date:",
+    "noHiddenCosts": "Pas de coûts cachés • Paiement sécurisé • Confirmation instantanée"
   },
   "contact": {
     "hero": {

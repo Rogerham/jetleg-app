@@ -10,7 +10,9 @@
     "register": "Registreren",
     "myBookings": "Mijn boekingen",
     "profile": "Profiel",
-    "operators": "Operatoren"
+    "operators": "Operatoren",
+    "search": "Zoeken",
+    "favorites": "Favorieten"
   },
   "footer": {
     "brandDescription": "Wij maken luxe privéjet reizen toegankelijk door slimme technologie en empty leg vluchten.",
