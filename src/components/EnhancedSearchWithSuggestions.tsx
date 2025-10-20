@@ -230,12 +230,12 @@ const EnhancedSearchWithSuggestions = ({
           )}
           
           {showSuggestions.from && fromSuggestions.length > 0 && (
-            <div className="absolute top-full left-0 right-0 z-10 mt-1 bg-popover border border-border rounded-md shadow-lg max-h-48 overflow-y-auto">
+            <div className="absolute top-full left-0 right-0 z-50 mt-1 bg-card border border-border rounded-md shadow-lg max-h-48 overflow-y-auto">
               {fromSuggestions.map((suggestion, index) => (
                 <button
                   key={`${suggestion.value}-${index}`}
                   type="button"
-                  className={`w-full text-left px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground ${
+                  className={`w-full text-left px-3 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground ${
                     activeSuggestion?.field === 'from' && activeSuggestion?.index === index 
                       ? 'bg-accent text-accent-foreground' 
                       : ''
@@ -278,12 +278,12 @@ const EnhancedSearchWithSuggestions = ({
           )}
           
           {showSuggestions.to && toSuggestions.length > 0 && (
-            <div className="absolute top-full left-0 right-0 z-10 mt-1 bg-popover border border-border rounded-md shadow-lg max-h-48 overflow-y-auto">
+            <div className="absolute top-full left-0 right-0 z-50 mt-1 bg-card border border-border rounded-md shadow-lg max-h-48 overflow-y-auto">
               {toSuggestions.map((suggestion, index) => (
                 <button
                   key={`${suggestion.value}-${index}`}
                   type="button"
-                  className={`w-full text-left px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground ${
+                  className={`w-full text-left px-3 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground ${
                     activeSuggestion?.field === 'to' && activeSuggestion?.index === index 
                       ? 'bg-accent text-accent-foreground' 
                       : ''

@@ -8,10 +8,12 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { format } from 'date-fns';
 import { nl } from 'date-fns/locale';
+import { useTranslation } from 'react-i18next';
 
 const FavoriteFlights = () => {
   const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { savedSearches, isLoading, deleteSearch } = useSavedSearches(!!user);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [searchToDelete, setSearchToDelete] = useState<string | null>(null);
@@ -51,10 +53,10 @@ const FavoriteFlights = () => {
           <div className="container mx-auto px-6">
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-                Favoriete vluchten
+                {t('favorites.title')}
               </h1>
               <p className="text-lg text-white/90">
-                Beheer je opgeslagen zoekopdrachten en notificaties
+                {t('favorites.subtitle')}
               </p>
             </div>
           </div>
@@ -78,10 +80,10 @@ const FavoriteFlights = () => {
           <div className="container mx-auto px-6">
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-                Favoriete vluchten
+                {t('favorites.title')}
               </h1>
               <p className="text-lg text-white/90">
-                Beheer je opgeslagen zoekopdrachten en notificaties
+                {t('favorites.subtitle')}
               </p>
             </div>
           </div>
@@ -93,13 +95,13 @@ const FavoriteFlights = () => {
               {savedSearches.length === 0 ? (
                 <div className="text-center py-12">
                   <Heart className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Geen favorieten gevonden</h3>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">{t('favorites.noFavorites')}</h3>
                   <p className="text-muted-foreground mb-6">
-                    Je hebt nog geen vluchten opgeslagen. Ga naar de zoekpagina en klik op het hartje om vluchten op te slaan.
+                    {t('favorites.noFavoritesDesc')}
                   </p>
                   <Link to="/" className="inline-flex items-center gap-2 bg-accent text-accent-foreground hover:bg-accent/90 px-6 py-3 rounded-xl font-medium transition-colors">
                     <Search className="h-4 w-4" />
-                    Ga naar zoeken
+                    {t('favorites.goToSearch')}
                   </Link>
                 </div>
               ) : (
@@ -120,23 +122,22 @@ const FavoriteFlights = () => {
                   <DialogHeader>
                     <DialogTitle className="flex items-center gap-2">
                       <Heart className="h-5 w-5 text-accent" />
-                      Inloggen vereist
+                      {t('favorites.loginRequired')}
                     </DialogTitle>
                     <DialogDescription className="pt-4">
-                      Je moet ingelogd zijn om je favoriete vluchten te bekijken. 
-                      Log in of maak een gratis account aan om zoekopdrachten op te slaan en notificaties te ontvangen.
+                      {t('favorites.loginRequiredDesc')}
                     </DialogDescription>
                   </DialogHeader>
                   <DialogFooter>
                     <Button variant="outline" onClick={() => navigate('/')}>
-                      Terug naar home
+                      {t('favorites.backToHome')}
                     </Button>
                     <Button 
                       onClick={() => navigate('/login')}
                       className="bg-accent text-accent-foreground hover:bg-accent/90"
                     >
                       <LogIn className="h-4 w-4 mr-2" />
-                      Inloggen of account maken
+                      {t('favorites.loginOrRegister')}
                     </Button>
                   </DialogFooter>
                 </DialogContent>
@@ -147,18 +148,18 @@ const FavoriteFlights = () => {
                   <DialogHeader>
                     <DialogTitle className="flex items-center gap-2">
                       <AlertTriangle className="h-5 w-5 text-red-500" />
-                      Favoriet verwijderen
+                      {t('favorites.deleteConfirm')}
                     </DialogTitle>
                     <DialogDescription>
-                      Weet je zeker dat je deze opgeslagen zoekopdracht wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.
+                      {t('favorites.deleteConfirmDesc')}
                     </DialogDescription>
                   </DialogHeader>
                   <DialogFooter>
                     <Button variant="outline" onClick={() => setDeleteDialogOpen(false)}>
-                      Annuleren
+                      {t('favorites.cancel')}
                     </Button>
                     <Button variant="destructive" onClick={handleConfirmDelete}>
-                      Verwijderen
+                      {t('favorites.delete')}
                     </Button>
                   </DialogFooter>
                 </DialogContent>
@@ -205,6 +206,7 @@ FavoriteSkeletonCard.displayName = 'FavoriteSkeletonCard';
 
 const SavedSearchCard = React.memo(({ search, onDelete }: SavedSearchCardProps) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { alertPreferences, saveAlertPreferences } = useAlertPreferences(search.id);
   const [notificationsEnabled, setNotificationsEnabled] = useState(
     alertPreferences?.email_notifications || false
@@ -262,7 +264,7 @@ const SavedSearchCard = React.memo(({ search, onDelete }: SavedSearchCardProps) 
           
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <span>{formatDate(search.search_criteria.date)}</span>
-            <span>{search.search_criteria.passengers} {parseInt(search.search_criteria.passengers) === 1 ? 'passagier' : 'passagiers'}</span>
+            <span>{search.search_criteria.passengers} {parseInt(search.search_criteria.passengers) === 1 ? t('favorites.passenger') : t('favorites.passengers')}</span>
           </div>
         </div>
 
@@ -277,7 +279,7 @@ const SavedSearchCard = React.memo(({ search, onDelete }: SavedSearchCardProps) 
                 ? 'text-blue-600 bg-blue-50 hover:bg-blue-100' 
                 : 'text-muted-foreground bg-muted hover:bg-muted/80'
             }`}
-            title={notificationsEnabled ? 'Notificaties uitschakelen' : 'Notificaties inschakelen'}
+            title={notificationsEnabled ? t('favorites.disableNotifications') : t('favorites.enableNotifications')}
           >
             {notificationsEnabled ? <Bell className="h-4 w-4" /> : <BellOff className="h-4 w-4" />}
           </button>
@@ -288,7 +290,7 @@ const SavedSearchCard = React.memo(({ search, onDelete }: SavedSearchCardProps) 
               onDelete();
             }}
             className="p-2 rounded-full text-red-600 bg-red-50 hover:bg-red-100 transition-colors"
-            title="Verwijderen"
+            title={t('favorites.delete')}
           >
             <Trash2 className="h-4 w-4" />
           </button>
