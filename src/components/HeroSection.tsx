@@ -32,11 +32,13 @@ const HeroSection = () => {
       }}
     >
       <div className="container mx-auto px-6 py-4 md:py-6 text-center">
-        <div className="animate-fade-in">
-          <p className="text-xl md:text-2xl mb-3 text-white/90 max-w-3xl mx-auto drop-shadow-md font-bold">
-            {t("hero.subtitle")}
-          </p>
-        </div>
+        {t("hero.subtitle") && (
+          <div className="animate-fade-in">
+            <p className="text-xl md:text-2xl mb-3 text-white/90 max-w-3xl mx-auto drop-shadow-md font-bold">
+              {t("hero.subtitle")}
+            </p>
+          </div>
+        )}
 
         <SearchWithSuggestions initialValues={initialValues} />
       </div>

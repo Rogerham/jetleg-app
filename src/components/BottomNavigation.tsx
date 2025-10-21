@@ -37,6 +37,7 @@ const BottomNavigation = () => {
       className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-sm border-t border-border z-[99999] supports-[backdrop-filter]:bg-card/60"
       style={{
         paddingBottom: "max(10px, env(safe-area-inset-bottom))",
+        position: "fixed"
       }}
     >
       <div className="flex justify-around items-center h-16 px-2">

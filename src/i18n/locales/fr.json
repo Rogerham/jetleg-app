@@ -1,120 +1,128 @@
 {
   "nav": {
-    "home": "Accueil",
-    "deals": "Offres", 
-    "howItWorks": "Comment ça marche",
-    "about": "À propos",
-    "contact": "Contact",
-    "account": "Profil",
-    "login": "Connexion",
-    "register": "S'inscrire",
-    "myBookings": "Mes réservations",
-    "profile": "Profil",
     "search": "Rechercher",
-    "favorites": "Favoris"
-  },
-  "footer": {
-    "brandDescription": "Nous rendons les voyages en jet privé de luxe accessibles grâce à une technologie intelligente et aux vols à vide.",
-    "menu": "Menu",
-    "support": "Support",
-    "faq": "FAQ",
-    "customerService": "Service client",
-    "operators": "Opérateurs",
-    "contact": "Contact",
-    "email": "hello@jetleg.com",
-    "phone": "+32 (0)1 234 56 789",
-    "copyright": "Tous droits réservés.",
-    "privacy": "Confidentialité",
-    "terms": "Conditions"
+    "deals": "Offres",
+    "favorites": "Favoris",
+    "profile": "Profil"
   },
   "hero": {
-    "title": "Un JETLEG à retenir",
-    "subtitle": "",
-    "searchPlaceholder": "D'où?",
-    "destinationPlaceholder": "Vers où?",
-    "datePlaceholder": "Date de départ",
-    "passengersLabel": "Passagers",
-    "searchButton": "Rechercher des vols",
-    "flexibleDates": "Dates flexibles",
-    "everywhere": "Partout"
+    "title": "Réservez des vols en jet privé à prix réduit",
+    "subtitle": ""
   },
   "search": {
     "from": "De",
-    "fromPlaceholder": "Ex. Amsterdam (AMS)",
     "to": "À",
-    "toPlaceholder": "Ex. Paris (CDG)",
     "date": "Date",
-    "datePlaceholder": "Sélectionner la date",
     "passengers": "Passagers",
     "searchFlights": "Rechercher des vols",
-    "searching": "Recherche...",
     "allAirports": "Tous les aéroports",
     "everywhere": "Partout",
-    "popularRoute": "Route populaire",
-    "validation": {
-      "fromRequired": "Veuillez sélectionner un lieu de départ",
-      "toRequired": "Veuillez sélectionner une destination",
-      "dateRequired": "Veuillez sélectionner une date de départ",
-      "passengersRequired": "Veuillez sélectionner le nombre de passagers"
-    },
     "results": {
-      "title": "Vols de",
-      "to": "à",
-      "allDestinations": "toutes destinations",
-      "passenger": "passager",
-      "passengers": "passagers",
-      "available": "vols disponibles",
-      "searching": "Recherche de vols...",
-      "searchingDesc": "Nous recherchons les meilleurs vols disponibles pour vous.",
-      "error": "Une erreur s'est produite",
-      "errorDesc": "Impossible de charger les vols. Veuillez réessayer.",
-      "retry": "Réessayer",
+      "title": "Résultats de recherche",
       "noResults": "Aucun vol trouvé",
-      "noResultsDesc": "Essayez d'ajuster vos critères de recherche ou choisissez d'autres filtres.",
-      "resetFilters": "Réinitialiser les filtres",
-      "sortBy": "Trier par:",
-      "sortPrice": "Prix (croissant)",
-      "sortDuration": "Durée du vol",
-      "sortDeparture": "Heure de départ",
-      "filters": "Filtres",
-      "perPerson": "par personne",
+      "noResultsDesc": "Essayez d'ajuster vos critères de recherche",
+      "from": "De",
+      "to": "À",
+      "availableSeats": "places disponibles",
       "moreDetails": "Plus de détails"
     }
   },
-  "deals": {
-    "title": "Vols de dernière minute",
-    "subtitle": "Découvrez des vols de luxe à des prix imbattables",
-    "viewAll": "Voir toutes les offres",
-    "bookNow": "Réserver",
-    "perFlight": "par vol",
-    "discount": "Réduction",
-    "date": "Date",
-    "aircraft": "Avion",
-    "passengers": "Passagers",
-    "upTo": "Jusqu'à",
-    "noDeals": "Aucune offre disponible pour le moment.",
-    "parisNice": {
-      "description": "Volez vers la Côte d'Azur avec style."
+  "howItWorks": {
+    "title": "Qu'est-ce qu'un \"Empty Leg\"?",
+    "description1": "Un vol empty leg est un vol privé retour à vide",
+    "description2": "Économisez jusqu'à 75% sur les vols privés",
+    "description3": "Trouvez et réservez facilement des vols empty leg",
+    "benefits": {
+      "savings": {
+        "title": "Jusqu'à 75% d'économies",
+        "description": "Économisez en réservant des vols empty leg"
+      },
+      "availability": {
+        "title": "Disponibilité de dernière minute",
+        "description": "Trouvez des vols exclusifs"
+      },
+      "premium": {
+        "title": "Avions Premium",
+        "description": "Jets de luxe certifiés"
+      },
+      "reliable": {
+        "title": "Fiable et sûr",
+        "description": "Opérateurs entièrement certifiés"
+      }
     },
-    "londonZurich": {
-      "description": "Parfait pour un voyage d'affaires ou un weekend dans les Alpes."
+    "hero": {
+      "title": "Comment fonctionne Jetleg?",
+      "subtitle": "Découvrez comment réserver facilement"
     },
-    "barcelonaIbiza": {
-      "description": "Commencez vos vacances sur l'Île Blanche avec un luxe ultime."
+    "step": "Étape",
+    "steps": {
+      "search": {
+        "title": "Trouvez votre vol idéal",
+        "description": "Recherchez parmi des milliers d'empty legs",
+        "details": [
+          "Recherchez parmi des milliers d'empty legs disponibles",
+          "Disponibilité et tarification en temps réel",
+          "Options de recherche flexibles"
+        ]
+      },
+      "book": {
+        "title": "Réservez directement en ligne",
+        "description": "Processus de réservation sécurisé",
+        "details": [
+          "Paiement en ligne sécurisé",
+          "Confirmation instantanée",
+          "Assistance disponible 24/7"
+        ]
+      },
+      "fly": {
+        "title": "Volez avec style",
+        "description": "Profitez de votre expérience de luxe",
+        "details": [
+          "Service de conciergerie exclusif",
+          "Enregistrement rapide au terminal privé",
+          "Expérience de luxe de bout en bout"
+        ]
+      }
     }
   },
-  "flight": {
-    "date": "Date:",
-    "departure": "Départ:",
-    "aircraft": "Avion:",
-    "available": "Disponible:",
-    "seats": "places",
-    "bookNow": "Réserver",
-    "privateJet": "Jet Privé"
+  "contact": {
+    "hero": {
+      "title": "Contactez-nous",
+      "subtitle": "Notre équipe est prête à vous aider"
+    },
+    "info": {
+      "phone": {
+        "title": "Téléphone",
+        "details": ["+32 1 234 56 789", "Lun-Ven: 08:00 - 20:00", "Sam-Dim: 10:00 - 18:00"]
+      },
+      "email": {
+        "title": "E-mail",
+        "details": ["info@jetleg.com", "support@jetleg.com", "Réponse en 2 heures"]
+      },
+      "address": {
+        "title": "Adresse",
+        "details": ["Jetleg BV", "Avenue de l'Aéroport 42", "1930 Zaventem, Belgique"]
+      },
+      "hours": {
+        "title": "Heures d'ouverture",
+        "weekdays": "Lun-Ven: 08:00 - 20:00",
+        "weekend": "Sam-Dim: 10:00 - 18:00"
+      }
+    },
+    "form": {
+      "title": "Envoyez-nous un message",
+      "name": "Nom",
+      "email": "E-mail",
+      "phone": "Téléphone (optionnel)",
+      "subject": "Sujet",
+      "message": "Message",
+      "send": "Envoyer le message",
+      "sending": "Envoi en cours..."
+    }
   },
   "topDeals": {
-    "title": "Destinations Principales",
-    "subtitle": "Découvrez les meilleures offres empty leg vers les plus belles destinations du monde. Destinations exclusives comme Barcelone, Paris, Londres, New York, Dubaï et plus.",
+    "title": "Destinations Top",
+    "subtitle": "Découvrez les meilleures offres",
     "backToHome": "Retour à l'accueil",
     "destinationsAvailable": "destinations disponibles",
     "filters": {
@@ -127,21 +135,21 @@
     },
     "loading": {
       "title": "Chargement des destinations...",
-      "description": "Nous recherchons les meilleures destinations disponibles pour vous."
+      "description": "Nous recherchons les meilleures destinations"
     },
     "error": {
       "title": "Une erreur s'est produite",
-      "description": "Nous n'avons pas pu charger les destinations. Veuillez réessayer.",
+      "description": "Impossible de charger les destinations",
       "retry": "Réessayer"
     },
     "noFlights": {
       "title": "Aucun vol disponible pour le moment",
-      "description": "Il n'y a actuellement aucun vol disponible vers nos destinations exclusives. Revenez plus tard pour de nouvelles offres."
+      "description": "Revenez plus tard pour de nouvelles offres"
     }
   },
   "destinations": {
     "Barcelona": "Barcelone",
-    "Berlin": "Berlin", 
+    "Berlin": "Berlin",
     "Cannes": "Cannes",
     "Dubai": "Dubaï",
     "Courchevel": "Courchevel",
@@ -165,550 +173,241 @@
   },
   "destinationDeals": {
     "from": "À partir de",
-    "viewDeals": "Voir les Offres",
+    "viewDeals": "Voir les offres",
     "flightsAvailable": "vols disponibles",
     "seats": "places",
     "operators": "opérateurs",
     "more": "plus",
-    "discoverDestination": "Découvrez {{destination}}, {{country}} avec {{count}} {{operators}} disponible{{plural}}",
+    "discoverDestination": "Découvrez {{destination}}",
     "operator": "opérateur",
     "oneOperator": "opérateur",
     "multipleOperators": "opérateurs"
   },
-  "howItWorks": {
-    "title": "Qu'est-ce qu'un \"Empty Leg\"?",
-    "description1": "Un vol empty leg, aussi appelé \"vol de positionnement\", est un jet privé qui vole à vide après avoir déposé des passagers, ou se rend pour récupérer des passagers.",
-    "description2": "Puisque l'avion doit faire ce vol de toute façon, les compagnies de charter offrent ces sièges \"vides\" avec une réduction significative - souvent jusqu'à 75% du prix normal.",
-    "description3": "Jetleg centralise l'offre de centaines d'opérateurs fiables, pour que vous puissiez facilement trouver et réserver la parfaite affaire. C'est la façon la plus intelligente de vivre le luxe du vol privé.",
-    "benefits": {
-      "savings": {
-        "title": "Jusqu'à 75% d'Économies",
-        "description": "Économisez jusqu'à 75% par rapport aux vols privés réguliers en utilisant les vols de positionnement empty leg."
-      },
-      "availability": {
-        "title": "Disponibilité de Dernière Minute",
-        "description": "Trouvez et réservez des vols exclusifs qui deviennent disponibles bientôt, parfait pour les voyageurs flexibles."
-      },
-      "premium": {
-        "title": "Avions Premium",
-        "description": "Volez dans des jets de luxe d'opérateurs certifiés avec les plus hauts standards de sécurité et qualité."
-      },
-      "reliable": {
-        "title": "Fiable et Sûr",
-        "description": "Tous les opérateurs sont entièrement certifiés et respectent les normes d'aviation européennes les plus strictes."
-      }
-    },
-    "hero": {
-      "title": "Comment fonctionne Jetleg?",
-      "subtitle": "Découvrez à quel point il est facile de réserver des offres de jets privés de dernière minute avec Jetleg. De la recherche à l'atterrissage, nous rendons le processus aussi simple que possible."
-    },
-    "step": "Étape",
-    "steps": {
-      "search": {
-        "title": "Trouvez votre vol idéal",
-        "description": "Utilisez notre moteur de recherche avancé pour trouver des vols empty leg vers votre destination souhaitée. Filtrez par prix, date, type d'avion et plus.",
-        "details": [
-          "Recherchez parmi des milliers d'empty legs disponibles",
-          "Disponibilité et tarification en temps réel",
-          "Options de recherche flexibles pour les meilleures offres"
-        ]
-      },
-      "book": {
-        "title": "Réservez directement en ligne",
-        "description": "Réservez votre vol en quelques clics seulement. Notre processus de réservation sécurisé est rapide et transparent, sans coûts cachés.",
-        "details": [
-          "Paiement en ligne sécurisé",
-          "Confirmation instantanée par e-mail",
-          "Service client 24/7 disponible"
-        ]
-      },
-      "fly": {
-        "title": "Profitez de votre vol",
-        "description": "Montez à bord de votre jet privé et vivez un luxe et un confort ultimes. Nos opérateurs certifiés garantissent une expérience de vol inoubliable.",
-        "details": [
-          "Expérience de jet privé de luxe",
-          "Service personnel à bord",
-          "Horaires de départ et d'arrivée flexibles"
-        ]
-      },
-      "arrive": {
-        "title": "Arrivée à destination",
-        "description": "Arrivez rafraîchi et à l'heure à votre destination. Avec un jet privé, vous volez directement, sans correspondances ni temps d'attente dans les aéroports bondés.",
-        "details": [
-          "Vols directs vers des aéroports plus petits",
-          "Procédures d'enregistrement et de sortie plus rapides",
-          "Plus de temps pour ce qui compte vraiment"
-        ]
-      }
-    },
-    "faq": {
-      "title": "Questions fréquemment posées",
-      "subtitle": "Tout ce que vous devez savoir sur les vols empty leg",
-      "viewAll": "Voir tout",
-      "questions": [
-        "Qu'est-ce qu'un vol empty leg?",
-        "Combien de temps à l'avance dois-je réserver?",
-        "Puis-je modifier ma réservation?",
-        "Qu'est-ce qui est inclus dans le prix?"
-      ],
-      "answers": [
-        "Un vol empty leg est un jet privé qui retourne à vide vers sa base ou vers un nouveau client. Ces vols sont proposés à des prix fortement réduits.",
-        "Les empty legs sont souvent disponibles en dernière minute, de quelques heures à quelques jours à l'avance. Plus vous êtes flexible, plus vous avez de chances d'obtenir de bonnes affaires.",
-        "Les modifications sont limitées et dépendent du vol spécifique. Contactez notre service client pour plus d'informations sur votre réservation.",
-        "Le prix comprend le vol complet, le carburant, l'équipage et la restauration standard. Des services supplémentaires peuvent être ajoutés moyennant un supplément."
-      ]
-    },
-    "cta": {
-      "title": "Prêt à commencer?",
-      "subtitle": "Commencez votre recherche de l'offre empty leg parfaite et découvrez les voyages en jet privé comme jamais auparavant.",
-      "button": "Rechercher Empty Legs"
-    }
-  },
   "flightDetails": {
-    "title": "Détails du vol",
-    "backToResults": "Retour aux résultats",
-    "bookFlight": "Réserver le vol",
     "loading": "Chargement des détails du vol...",
     "notFound": "Vol non trouvé",
     "notFoundDesc": "Le vol que vous recherchez n'existe pas ou n'est pas disponible.",
-    "overview": "Aperçu du vol",
-    "available": "Disponible",
-    "directFlight": "Vol direct",
-    "operator": "Opérateur",
-    "route": "Route",
-    "availableSeats": "Sièges disponibles",
-    "flightNumber": "Numéro de vol",
-    "aircraftDetails": "Détails de l'avion",
-    "specifications": "Spécifications",
-    "brandModel": "Marque & Modèle:",
-    "seats": "Sièges:",
+    "backToResults": "Retour aux résultats",
+    "overview": {
+      "title": "Aperçu du vol",
+      "departure": "Départ",
+      "arrival": "Arrivée",
+      "duration": "Durée",
+      "hours": "heures",
+      "aircraft": "Aéronef",
+      "operator": "Opérateur",
+      "availableSeats": "Sièges disponibles",
+      "pricePerSeat": "Prix par siège"
+    },
+    "aircraft": {
+      "title": "Détails de l'aéronef",
+      "type": "Type",
+      "capacity": "Capacité",
+      "range": "Autonomie",
+      "speed": "Vitesse de croisière"
+    },
+    "amenities": {
+      "title": "Équipements",
+      "wifi": "WiFi à bord",
+      "catering": "Restauration premium",
+      "entertainment": "Système de divertissement",
+      "luggage": "Bagages généreux"
+    },
+    "booking": {
+      "title": "Informations de réservation",
+      "bookNow": "Réserver maintenant",
+      "cancellationPolicy": "Politique d'annulation",
+      "freeCancellation": "Annulation gratuite jusqu'à 48h avant le départ",
+      "paymentOptions": "Options de paiement flexibles disponibles",
+      "insuranceAvailable": "Assurance voyage disponible",
+      "minNotice": "Préavis minimum de 24h requis"
+    }
+  },
+  "favorites": {
+    "title": "Vols favoris",
+    "subtitle": "Gérez vos recherches enregistrées et notifications",
+    "noFavorites": "Aucun favori trouvé",
+    "noFavoritesDesc": "Vous n'avez pas encore enregistré de vols. Commencez à rechercher et enregistrez vos vols préférés pour un accès rapide.",
+    "goToSearch": "Aller à la recherche",
+    "loginRequired": "Connexion requise",
+    "loginRequiredDesc": "Vous devez être connecté pour voir vos vols favoris.",
+    "backToHome": "Retour à l'accueil",
+    "loginOrRegister": "Se connecter ou créer un compte",
+    "deleteConfirm": "Supprimer le favori",
+    "deleteConfirmDesc": "Êtes-vous sûr de vouloir supprimer ce vol de vos favoris ?",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "enableNotifications": "Activer les notifications",
+    "disableNotifications": "Désactiver les notifications",
     "passenger": "passager",
-    "passengers": "passagers",
-    "cruiseSpeed": "Vitesse de croisière:",
-    "maxAltitude": "Altitude max:",
-    "range": "Portée:",
-    "amenities": "Équipements",
-    "wifi": "Wifi",
-    "refreshments": "Rafraîchissements",
-    "leatherSeats": "Sièges en cuir",
-    "coffeeService": "Service café",
-    "bookingTerms": "Conditions de réservation",
-    "cancellationPolicy": "Politique d'annulation",
-    "cancellationPolicyDesc": "Annulation gratuite jusqu'à 24 heures avant le départ. Après, des frais d'annulation s'appliquent.",
-    "baggage": "Bagages",
-    "baggageDesc": "Bagage à main inclus. Bagage supplémentaire sur demande moyennant supplément.",
-    "catering": "Restauration",
-    "cateringDesc": "Collations légères et boissons incluses. Restauration premium sur demande.",
-    "perPerson": "par personne",
-    "date": "Date:",
-    "noHiddenCosts": "Pas de coûts cachés • Paiement sécurisé • Confirmation instantanée"
+    "passengers": "passagers"
   },
-  "contact": {
-    "hero": {
-      "title": "Contact",
-      "subtitle": "Vous avez des questions sur nos vols ou besoin d'aide pour votre réservation? Notre équipe amicale est prête à vous aider."
+  "booking": {
+    "steps": {
+      "passengers": "Passagers",
+      "payment": "Paiement",
+      "confirmation": "Confirmation",
+      "passengersDesc": "Entrer les détails",
+      "paymentDesc": "Détails de paiement",
+      "confirmationDesc": "Vérifier et confirmer"
     },
-    "info": {
-      "phone": {
-        "title": "Téléphone",
-        "details": ["+32 1 234 56 789", "Lun-Ven: 08:00 - 20:00", "Sam-Dim: 10:00 - 18:00"]
-      },
-      "email": {
-        "title": "E-mail",
-        "details": ["info@jetleg.com", "support@jetleg.com", "Réponse sous 2 heures"]
-      },
-      "address": {
-        "title": "Adresse",
-        "details": ["Jetleg BV", "Avenue de l'Aéroport 42", "1930 Zaventem, Belgique"]
-      },
-      "hours": {
-        "title": "Heures d'ouverture",
-        "details": ["Lundi - Vendredi: 08:00 - 20:00", "Weekend: 10:00 - 18:00", "Ligne d'urgence 24/7 disponible"]
-      }
-    },
-    "form": {
-      "title": "Envoyez-nous un message",
-      "name": "Nom",
-      "email": "Adresse e-mail",
-      "phone": "Numéro de téléphone",
-      "subject": "Sujet",
-      "message": "Message",
-      "submit": "Envoyer le message",
-      "required": "*",
-      "messagePlaceholder": "Décrivez votre question ou commentaire...",
-      "selectSubject": "Sélectionner le sujet",
-      "subjects": [
-        "Question générale",
-        "Aide à la réservation",
-        "Plainte",
-        "Partenariat",
-        "Demande média",
-        "Autre"
-      ]
-    },
-    "faq": {
-      "title": "Questions fréquemment posées",
-      "questions": [
-        "Comment réserver un vol empty leg?",
-        "Quelles sont les conditions d'annulation?",
-        "Quels documents ai-je besoin?",
-        "Puis-je modifier mon vol?",
-        "Comment fonctionne le paiement?"
-      ]
-    },
-    "emergency": {
-      "title": "Contact d'urgence",
-      "description": "Pour les questions urgentes en dehors des heures de bureau, vous pouvez nous joindre 24/7:",
-      "phone": "+32 800 123 456",
-      "email": "emergency@jetleg.com"
-    },
-    "location": {
-      "title": "Adresse de visite",
-      "address": "Avenue de l'Aéroport 42\n1930 Zaventem, Belgique",
-      "note": "Situé à 5 minutes de l'Aéroport de Bruxelles. Parking gratuit disponible."
-    },
-    "validation": {
-      "incomplete": "Données incomplètes",
-      "fillRequired": "Remplissez tous les champs requis.",
-      "success": "Message envoyé!",
-      "response": "Nous vous contacterons dans les 24 heures."
-    }
-  },
-  "about": {
-    "hero": {
-      "title": "À propos de Jetleg",
-      "subtitle": "Nous révolutionnons les voyages en jet privé en rendant les vols à vide accessibles et abordables pour tous."
-    },
-    "mission": {
-      "title": "Notre mission",
-      "paragraph1": "Jetleg a été fondé avec une mission simple mais puissante : démocratiser les voyages de luxe. Nous croyons que tout le monde devrait pouvoir profiter des avantages des voyages en jet privé, sans les coûts élevés traditionnels.",
-      "paragraph2": "En utilisant les vols à vide - des vols qui voleraient autrement vides - nous offrons à nos clients la possibilité de voyager avec style à une fraction du prix normal.",
-      "paragraph3": "Notre technologie connecte directement les voyageurs avec les vols disponibles, créant des avantages économiques et écologiques."
-    },
-    "stats": {
-      "title": "Jetleg en chiffres",
-      "customers": "Clients satisfaits",
-      "destinations": "Destinations",
-      "satisfaction": "Score de satisfaction",
-      "support": "Service client"
-    },
-    "values": {
-      "title": "Nos valeurs",
-      "safety": {
-        "title": "Sécurité d'abord",
-        "description": "Nous ne travaillons qu'avec des opérateurs certifiés qui répondent aux normes de sécurité les plus élevées."
-      },
-      "excellence": {
-        "title": "Excellence",
-        "description": "Chaque vol est géré avec la plus grande attention aux détails et au service."
-      },
-      "customerCentric": {
-        "title": "Centré sur le client",
-        "description": "Nos clients sont au centre de tout ce que nous faisons, de la réservation au suivi."
-      },
-      "accessibility": {
-        "title": "Accessibilité",
-        "description": "Nous rendons les voyages de luxe accessibles en utilisant de manière optimale la capacité inutilisée."
-      }
-    },
-    "team": {
-      "title": "Notre équipe",
-      "xavier": {
-        "name": "Xavier Verhoestraete",
-        "role": "PDG & Co-fondateur",
-        "description": "Avec 15 ans d'expérience dans l'aviation, Xavier a mené la révolution dans les voyages en jet privé."
-      },
-      "carley": {
-        "name": "Carley Hamaway",
-        "role": "CTO & Co-fondatrice",
-        "description": "Carley développe la technologie qui rend notre plateforme si conviviale."
-      },
-      "marc": {
-        "name": "Marc Dubois",
-        "role": "COO",
-        "description": "Marc s'assure que chaque vol se déroule parfaitement, de la réservation à l'atterrissage."
-      }
-    },
-    "cta": {
-      "title": "Prêt à commencer votre prochaine aventure ?",
-      "subtitle": "Découvrez nos vols disponibles et découvrez par vous-même pourquoi des milliers de voyageurs choisissent Jetleg.",
-      "viewFlights": "Voir les vols",
-      "contact": "Prendre contact"
-    }
-  },
-  "faq": {
-    "hero": {
-      "title": "Questions Fréquemment Posées",
-      "subtitle": "Trouvez des réponses aux questions les plus fréquemment posées sur les vols empty leg et notre plateforme."
-    },
-    "categories": {
-      "general": {
-        "title": "Général",
-        "questions": [
-          "Qu'est-ce que Jetleg?",
-          "Qu'est-ce qu'un vol empty leg?",
-          "Quelles sont les économies?",
-          "Jetleg est-il sûr?"
-        ],
-        "answers": [
-          "Jetleg est une plateforme spécialisée dans les vols empty leg - des vols de jets privés qui voleraient autrement vides. Nous offrons ces vols à des prix fortement réduits, rendant les voyages en jet privé plus accessibles.",
-          "Un vol empty leg se produit quand un jet privé doit retourner à sa base sans passagers, ou doit se déplacer vers un nouvel emplacement pour le prochain client. Au lieu de voler vide, les opérateurs offrent ces vols à prix réduit.",
-          "Les vols empty leg peuvent être jusqu'à 75% moins chers que les charters de jets privés réguliers. Les économies exactes dépendent de la route, du type d'avion et du timing du vol.",
-          "Absolument. Tous les vols sont opérés par des opérateurs certifiés qui respectent les plus hauts standards de sécurité. Nos partenaires ont toutes les licences et certifications nécessaires pour les vols commerciaux."
-        ]
-      },
-      "booking": {
-        "title": "Réservation et Paiement",
-        "questions": [
-          "Comment réserver un vol?",
-          "Quelles méthodes de paiement acceptez-vous?",
-          "Puis-je annuler ma réservation?",
-          "Recevrai-je une facture?"
-        ],
-        "answers": [
-          "La réservation est simple : recherchez un vol sur notre site web, sélectionnez votre option désirée, remplissez vos détails et payez de manière sécurisée en ligne. Vous recevrez une confirmation immédiate par e-mail.",
-          "Nous acceptons toutes les principales cartes de crédit (Visa, Mastercard, American Express), iDEAL, virement bancaire et autres méthodes de paiement locales selon votre localisation.",
-          "Les conditions d'annulation varient par vol et opérateur. En général, les empty legs sont moins flexibles que les charters réguliers. Vérifiez toujours les conditions spécifiques lors de la réservation.",
-          "Oui, après paiement vous recevez automatiquement une facture par e-mail. Pour les réservations d'entreprise, nous pouvons fournir des factures personnalisées avec les détails de votre société."
-        ]
-      },
-      "flights": {
-        "title": "Détails des Vols",
-        "questions": [
-          "Combien de temps à l'avance les empty legs sont-ils disponibles?",
-          "Puis-je changer l'heure de départ?",
-          "Que se passe-t-il par mauvais temps?",
-          "Les repas et boissons sont-ils inclus?"
-        ],
-        "answers": [
-          "Les empty legs sont souvent disponibles en dernière minute, de quelques heures à un maximum de 2 semaines à l'avance. La plupart des offres sont publiées 24-72 heures à l'avance.",
-          "Une flexibilité limitée est possible, mais les changements dépendent de l'opérateur et du planning de vol. De petits ajustements (1-2 heures) sont parfois possibles moyennant un coût supplémentaire.",
-          "Par mauvais temps, nous suivons les protocoles d'aviation standard. Les vols peuvent être retardés ou annulés pour votre sécurité. Dans ce cas, vous obtenez un remboursement complet ou des options alternatives.",
-          "La restauration standard est généralement incluse. Les exigences diététiques spéciales ou la restauration premium peuvent entraîner des coûts supplémentaires. Ceci est clairement indiqué lors de la réservation."
-        ]
-      },
-      "practical": {
-        "title": "Questions Pratiques",
-        "questions": [
-          "Combien de bagages puis-je emporter?",
-          "Dois-je m'enregistrer plus tôt?",
-          "Puis-je amener mon animal de compagnie?",
-          "Quels documents ai-je besoin?"
-        ],
-        "answers": [
-          "Les limites de bagages varient selon le type d'avion. Généralement 20-30kg de bagages à main et 20-50kg de bagages en soute sont autorisés. Vous pouvez voir les limites exactes dans les détails du vol.",
-          "L'enregistrement est beaucoup plus rapide pour les jets privés. Arrivez 15-30 minutes avant le départ au terminal. Dans les petits aéroports, cela peut être encore plus court.",
-          "Les animaux de compagnie sont souvent autorisés sur les jets privés, selon l'opérateur et la destination. Demandez les règles spécifiques et les coûts additionnels lors de la réservation.",
-          "Vous avez besoin d'un passeport valide pour les vols internationaux et d'une carte d'identité pour les vols domestiques. Vérifiez les exigences de visa pour votre destination."
-        ]
-      }
-    }
-  },
-  "customerService": {
-    "hero": {
-      "title": "Service Client",
-      "subtitle": "Notre équipe expérimentée est prête à vous aider avec toutes vos questions sur les vols empty leg et les réservations."
-    },
-    "contact": {
-      "phone": {
-        "title": "Téléphone",
-        "description": "Appelez-nous pour une aide directe",
-        "contact": "+32 2 123 45 67",
-        "availability": "Lun-Ven: 8:00 - 20:00, Sam-Dim: 9:00 - 17:00"
-      },
-      "email": {
-        "title": "E-mail",
-        "description": "Envoyez-nous un e-mail",
-        "contact": "support@jetleg.com",
-        "availability": "Réponse sous 2 heures"
-      },
-      "chat": {
-        "title": "Chat en Direct",
-        "description": "Chattez directement avec nos experts",
-        "contact": "Démarrez le chat dans le coin droit",
-        "availability": "Disponible 24/7"
-      }
-    },
-    "services": {
-      "booking": {
-        "title": "Aide à la réservation",
-        "description": "Aide pour trouver et réserver votre vol parfait",
-        "services": [
-          "Recherche et comparaison de vols",
-          "Support du processus de réservation",
-          "Questions de paiement et facture",
-          "Gérer les demandes spéciales"
-        ]
-      },
-      "management": {
-        "title": "Gestion des réservations",
-        "description": "Modifications et questions sur les réservations existantes",
-        "services": [
-          "Modifier les détails de réservation",
-          "Annulations et remboursements",
-          "Changements d'avion et d'horaire",
-          "Documents de voyage et bons"
-        ]
-      },
-      "dayOf": {
-        "title": "Jour du vol",
-        "description": "Support le jour de votre vol",
-        "services": [
-          "Informations d'enregistrement",
-          "Retards ou annulations de vol",
-          "Directives terminal et bagages",
-          "Changements de dernière minute"
-        ]
-      }
-    }
-  },
-  "privacyPolicy": {
-    "title": "Politique de Confidentialité",
-    "lastUpdate": "Dernière mise à jour : 21 juillet 2025"
-  },
-  "termsConditions": {
-    "title": "Conditions Générales", 
-    "lastUpdate": "Dernière mise à jour : 21 juillet 2025"
-  },
-  "forOperators": {
-    "hero": {
-      "title": "Pour les Opérateurs",
-      "subtitle": "Transformez vos empty legs en vols rentables. Rejoignez des centaines d'opérateurs qui réussissent déjà avec Jetleg.",
-      "becomePartner": "Devenir Partenaire",
-      "planDemo": "Planifier une Démo"
-    },
-    "stats": {
-      "extraRevenue": "Revenus supplémentaires générés pour nos partenaires en 2024",
-      "operators": "Opérateurs", 
-      "flights": "Vols",
-      "averageIncrease": "Augmentation moy."
-    },
-    "benefits": {
-      "title": "Pourquoi choisir Jetleg ?",
-      "subtitle": "Notre plateforme est spécialement conçue pour aider les opérateurs à maximiser le potentiel de leurs empty legs.",
-      "revenue": {
-        "title": "Générer plus de revenus",
-        "description": "Gagnez de l'argent avec des vols qui voleraient autrement vides. En moyenne 30% de revenus supplémentaires de votre flotte."
-      },
-      "customers": {
-        "title": "Accès à de nouveaux clients", 
-        "description": "Atteignez des milliers de clients potentiels à la recherche de solutions de jets privés de dernière minute."
-      },
-      "payments": {
-        "title": "Paiements sécurisés",
-        "description": "Paiements garantis dans les 48 heures après la completion du vol."
-      },
-      "management": {
-        "title": "Gestion facile",
-        "description": "Tableau de bord intuitif pour gérer vos empty legs et mettre à jour la disponibilité en temps réel."
-      }
-    },
-    "features": {
-      "title": "Tout ce dont vous avez besoin sur une seule plateforme",
-      "subtitle": "Notre plateforme avancée fournit tous les outils nécessaires pour développer votre business d'empty legs.",
-      "list": [
-        "Gestion d'inventaire en temps réel",
-        "Optimisation automatique des prix", 
-        "Support client 24/7",
-        "Traitement de paiement intégré",
-        "Rapports et analyses complets",
-        "Intégration API pour vos propres systèmes"
-      ]
-    },
-    "testimonials": {
-      "title": "Ce que disent nos partenaires",
-      "subtitle": "Entendez des opérateurs qui ont développé leur succès avec Jetleg"
-    },
-    "cta": {
-      "title": "Prêt à commencer ?",
-      "subtitle": "Rejoignez la marketplace d'empty legs qui croît le plus rapidement et commencez à générer des revenus supplémentaires dès aujourd'hui.",
-      "becomePartner": "S'inscrire comme Partenaire",
-      "contact": "Prendre Contact"
-    }
-  },
-  "profile": {
-    "title": "Mon Profil",
-    "welcome": "Bienvenue",
-    "logout": "Se déconnecter",
-    "backToProfile": "Retour au profil",
-    "logoutSuccess": "Déconnexion réussie",
-    "logoutError": "Erreur lors de la déconnexion",
-    "loading": "Chargement du profil...",
-    "tiles": {
-      "bookings": "Mes réservations",
-      "bookingsSubtitle": "Voir vos vols réservés",
-      "editProfile": "Modifier le profil",
-      "editProfileSubtitle": "Modifier vos informations personnelles",
-      "settings": "Paramètres de l'application",
-      "settingsSubtitle": "Notifications, langue et devise",
-      "payment": "Détails de paiement",
-      "paymentSubtitle": "Gérer vos modes de paiement enregistrés",
-      "help": "Aide & support",
-      "helpSubtitle": "FAQ et contact"
-    },
-    "login": {
-      "title": "Bon retour",
-      "subtitle": "Connectez-vous pour accéder à votre profil",
-      "email": "Adresse e-mail",
-      "password": "Mot de passe",
-      "rememberMe": "Se souvenir de moi",
-      "forgotPassword": "Mot de passe oublié?",
-      "submit": "Se connecter",
-      "submitting": "Connexion en cours...",
-      "invalidCredentials": "Identifiants invalides. Vérifiez votre e-mail et mot de passe.",
-      "emailNotConfirmed": "Confirmez votre adresse e-mail avant de vous connecter. Vérifiez votre boîte de réception.",
-      "error": "Une erreur s'est produite lors de la connexion. Veuillez réessayer.",
-      "unexpectedError": "Une erreur inattendue s'est produite. Veuillez réessayer.",
-      "success": "Connexion réussie!"
-    },
-    "register": {
-      "title": "Créer un compte",
-      "subtitle": "Créez un compte pour commencer",
+    "passengers": {
+      "title": "Détails des passagers",
+      "passenger": "Passager",
+      "remove": "Supprimer",
       "firstName": "Prénom",
       "lastName": "Nom",
-      "email": "Adresse e-mail",
-      "phone": "Numéro de téléphone",
-      "password": "Mot de passe",
-      "confirmPassword": "Confirmer le mot de passe",
-      "submit": "Créer un compte",
-      "submitting": "Création du compte...",
-      "passwordMismatch": "Les mots de passe ne correspondent pas.",
-      "passwordTooShort": "Le mot de passe doit comporter au moins 6 caractères.",
-      "userExists": "Un compte avec cette adresse e-mail existe déjà.",
-      "error": "Une erreur s'est produite lors de l'inscription. Veuillez réessayer.",
-      "success": "Compte créé! Vérifiez votre e-mail pour confirmer votre compte."
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "dateOfBirth": "Date de naissance",
+      "passportNumber": "Numéro de passeport",
+      "addPassenger": "+ Ajouter un passager",
+      "required": "*"
     },
-    "tabs": {
-      "login": "Se connecter",
-      "register": "S'inscrire"
+    "payment": {
+      "title": "Paiement sécurisé",
+      "method": "Carte de crédit / débit",
+      "cardNumber": "Numéro de carte",
+      "expiryDate": "Date d'expiration",
+      "cvv": "CVV",
+      "cardholderName": "Nom sur la carte",
+      "billingAddress": "Adresse de facturation",
+      "street": "Rue et numéro",
+      "city": "Ville",
+      "postalCode": "Code postal",
+      "country": "Pays"
+    },
+    "confirmation": {
+      "title": "Confirmation",
+      "flightSummary": "Résumé du vol",
+      "route": "Route :",
+      "date": "Date :",
+      "departure": "Départ :",
+      "aircraft": "Avion :",
+      "operator": "Opérateur :",
+      "passengers": "Passagers",
+      "passengerCount": "passagers",
+      "passengerSingular": "passager",
+      "terms": "J'accepte les conditions générales",
+      "pay": "Payer",
+      "travelTips": "Assurez-vous d'arriver 30 minutes avant le départ"
+    },
+    "navigation": {
+      "back": "Précédent",
+      "next": "Suivant",
+      "backToResults": "Retour aux résultats"
+    },
+    "overview": {
+      "title": "Récapitulatif de réservation",
+      "pricePerPerson": "Prix par personne",
+      "passengers": "Nombre de passagers",
+      "total": "Total"
+    },
+    "validation": {
+      "incompleteData": "Données incomplètes",
+      "fillPassengers": "Veuillez remplir tous les détails des passagers",
+      "incompletePayment": "Paiement incomplet",
+      "fillPayment": "Veuillez remplir tous les détails de paiement"
+    },
+    "loading": "Chargement des détails du vol...",
+    "notFound": "Vol non trouvé",
+    "notFoundDesc": "Le vol que vous recherchez n'existe pas",
+    "confirmed": "Réservation confirmée !",
+    "confirmedDesc": "Vous recevrez une confirmation par e-mail"
+  },
+  "editProfile": {
+    "title": "Informations personnelles",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "companyName": "Nom de l'entreprise (optionnel)",
+    "vatNumber": "Numéro de TVA (optionnel)",
+    "saveDetails": "Enregistrer les détails",
+    "saving": "Enregistrement...",
+    "accountSettings": "Paramètres du compte",
+    "changePassword": "Changer le mot de passe",
+    "currentPassword": "Mot de passe actuel",
+    "newPassword": "Nouveau mot de passe",
+    "confirmPassword": "Confirmer le nouveau mot de passe",
+    "changePasswordButton": "Changer le mot de passe",
+    "changing": "Changement...",
+    "activeSince": "Actif depuis",
+    "deleteAccount": "Supprimer le compte",
+    "deleteAccountConfirm": "Êtes-vous sûr de vouloir supprimer votre compte ?",
+    "cancel": "Annuler",
+    "months": {
+      "january": "janvier",
+      "february": "février",
+      "march": "mars",
+      "april": "avril",
+      "may": "mai",
+      "june": "juin",
+      "july": "juillet",
+      "august": "août",
+      "september": "septembre",
+      "october": "octobre",
+      "november": "novembre",
+      "december": "décembre"
+    },
+    "toast": {
+      "emailChangeInfo": "E-mail de vérification envoyé",
+      "emailError": "Erreur lors du changement d'e-mail",
+      "profileUpdated": "Profil mis à jour avec succès",
+      "profileError": "Erreur lors de l'enregistrement",
+      "passwordMismatch": "Les mots de passe ne correspondent pas",
+      "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères",
+      "passwordIncorrect": "Mot de passe actuel incorrect",
+      "passwordSuccess": "Mot de passe changé avec succès",
+      "passwordError": "Erreur lors du changement de mot de passe",
+      "deleteNotImplemented": "Suppression de compte non implémentée"
     }
   },
-  "myBookings": {
-    "title": "Mes Réservations",
-    "subtitle": "Voir et gérer tous vos vols",
-    "backToProfile": "Retour au profil",
-    "tabs": {
-      "upcoming": "Vols à venir",
-      "past": "Vols passés",
-      "all": "Toutes les réservations"
-    },
-    "status": {
-      "confirmed": "Confirmé",
-      "pending": "En attente",
-      "cancelled": "Annulé",
-      "completed": "Terminé"
-    },
-    "bookingReference": "Référence de réservation",
-    "totalPaid": "total payé",
-    "viewDetails": "Voir les détails",
-    "downloadTicket": "Télécharger le billet",
+  "appSettings": {
+    "notifications": "Notifications",
+    "pushNotifications": "Notifications push",
+    "pushDesc": "Recevoir des notifications directes",
+    "emailNotifications": "Notifications par e-mail",
+    "emailDesc": "Recevoir des mises à jour par e-mail",
+    "priceAlerts": "Alertes de prix",
+    "priceAlertsDesc": "Être alerté des changements de prix",
+    "marketing": "E-mails marketing",
+    "marketingDesc": "Recevoir des offres et des actualités",
+    "language": "Langue",
+    "currency": "Devise",
+    "appearance": "Apparence",
+    "darkMode": "Mode sombre",
+    "darkModeDesc": "Basculer entre le thème clair et sombre",
+    "saveSettings": "Enregistrer les paramètres",
+    "saving": "Enregistrement...",
+    "toast": {
+      "saved": "Paramètres enregistrés",
+      "error": "Erreur lors de l'enregistrement"
+    }
+  },
+  "paymentDetails": {
+    "title": "Détails de paiement",
+    "subtitle": "Gérez vos méthodes de paiement enregistrées",
+    "securityTitle": "Stockage sécurisé",
+    "securityDesc": "Vos informations de paiement sont cryptées en toute sécurité",
+    "default": "Par défaut",
+    "setDefault": "Définir par défaut",
+    "addNew": "Ajouter une méthode de paiement",
+    "addCardTitle": "Ajouter une nouvelle carte",
+    "cardNumber": "Numéro de carte",
+    "month": "Mois",
+    "year": "Année",
+    "cvv": "CVV",
+    "holderName": "Nom sur la carte",
     "cancel": "Annuler",
-    "aircraft": "Avion",
-    "bookedOn": "Réservé le",
-    "noBookings": "Aucune réservation trouvée",
-    "noUpcoming": "Vous n'avez aucun vol à venir.",
-    "noPast": "Vous n'avez aucun vol passé.",
-    "noBookingsYet": "Vous n'avez pas encore fait de réservation.",
-    "findFlight": "Trouvez votre prochain vol"
+    "add": "Ajouter la carte",
+    "toast": {
+      "fillAll": "Veuillez remplir tous les champs",
+      "invalidCard": "Numéro de carte invalide",
+      "added": "Méthode de paiement ajoutée",
+      "deleted": "Méthode de paiement supprimée",
+      "defaultSet": "Méthode de paiement par défaut définie"
+    }
   }
 }
