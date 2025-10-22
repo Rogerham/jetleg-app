@@ -3,6 +3,7 @@ import { CreditCard, Plus, Trash2, Shield, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 interface PaymentDetailsProps {
   onBack: () => void;
@@ -19,6 +20,7 @@ interface PaymentMethod {
 }
 
 const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
+  const { t } = useTranslation();
   const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([
     {
       id: '1',
@@ -67,13 +69,13 @@ const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
 
   const handleAddCard = () => {
     if (!newCard.cardNumber || !newCard.expiryMonth || !newCard.expiryYear || !newCard.cvv || !newCard.holderName) {
-      toast.error('Vul alle velden in');
+      toast.error(t('paymentDetails.toast.fillAll'));
       return;
     }
 
     const cleanCardNumber = newCard.cardNumber.replace(/\s/g, '');
     if (cleanCardNumber.length < 16) {
-      toast.error('Ongeldig kaartnummer');
+      toast.error(t('paymentDetails.toast.invalidCard'));
       return;
     }
 
@@ -90,19 +92,19 @@ const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
     setPaymentMethods(prev => [...prev, newPaymentMethod]);
     setNewCard({ cardNumber: '', expiryMonth: '', expiryYear: '', cvv: '', holderName: '' });
     setShowAddCard(false);
-    toast.success('Betaalmethode toegevoegd');
+    toast.success(t('paymentDetails.toast.added'));
   };
 
   const handleDeleteCard = (id: string) => {
     setPaymentMethods(prev => prev.filter(method => method.id !== id));
-    toast.success('Betaalmethode verwijderd');
+    toast.success(t('paymentDetails.toast.deleted'));
   };
 
   const setDefaultCard = (id: string) => {
     setPaymentMethods(prev => 
       prev.map(method => ({ ...method, isDefault: method.id === id }))
     );
-    toast.success('Standaard betaalmethode ingesteld');
+    toast.success(t('paymentDetails.toast.defaultSet'));
   };
 
   return (
@@ -111,9 +113,9 @@ const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground mb-2 flex items-center gap-2">
             <CreditCard className="h-8 w-8" />
-            Betaalgegevens
+            {t('paymentDetails.title')}
           </h1>
-          <p className="text-muted-foreground">Beheer je opgeslagen betaalmethoden</p>
+          <p className="text-muted-foreground">{t('paymentDetails.subtitle')}</p>
         </div>
 
         {/* Security Notice */}
@@ -121,9 +123,9 @@ const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
           <div className="flex items-start gap-3">
             <Shield className="h-5 w-5 text-blue-600 mt-0.5" />
             <div>
-              <h3 className="font-medium text-blue-900 mb-1">Veilig opgeslagen</h3>
+              <h3 className="font-medium text-blue-900 mb-1">{t('paymentDetails.securityTitle')}</h3>
               <p className="text-sm text-blue-700">
-                Je betaalgegevens worden veilig versleuteld opgeslagen en worden nooit in volledige vorm getoond.
+                {t('paymentDetails.securityDesc')}
               </p>
             </div>
           </div>
@@ -141,7 +143,7 @@ const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
                       <span className="font-medium text-foreground">•••• •••• •••• {method.lastFour}</span>
                       {method.isDefault && (
                         <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">
-                          Standaard
+                          {t('paymentDetails.default')}
                         </span>
                       )}
                     </div>
@@ -158,7 +160,7 @@ const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
                       size="sm"
                       onClick={() => setDefaultCard(method.id)}
                     >
-                      Standaard maken
+                      {t('paymentDetails.setDefault')}
                     </Button>
                   )}
                   <Button
@@ -180,17 +182,17 @@ const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
           <DialogTrigger asChild>
             <Button className="w-full" variant="outline">
               <Plus className="h-4 w-4 mr-2" />
-              Nieuwe betaalmethode toevoegen
+              {t('paymentDetails.addNew')}
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-md">
             <DialogHeader>
-              <DialogTitle>Nieuwe kaart toevoegen</DialogTitle>
+              <DialogTitle>{t('paymentDetails.addCardTitle')}</DialogTitle>
             </DialogHeader>
             
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Kaartnummer</label>
+                <label className="block text-sm font-medium text-foreground mb-2">{t('paymentDetails.cardNumber')}</label>
                 <input
                   type="text"
                   placeholder="1234 5678 9012 3456"
@@ -207,7 +209,7 @@ const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Maand</label>
+                  <label className="block text-sm font-medium text-foreground mb-2">{t('paymentDetails.month')}</label>
                   <select
                     value={newCard.expiryMonth}
                     onChange={(e) => setNewCard(prev => ({ ...prev, expiryMonth: e.target.value }))}
@@ -223,7 +225,7 @@ const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Jaar</label>
+                  <label className="block text-sm font-medium text-foreground mb-2">{t('paymentDetails.year')}</label>
                   <select
                     value={newCard.expiryYear}
                     onChange={(e) => setNewCard(prev => ({ ...prev, expiryYear: e.target.value }))}
@@ -240,7 +242,7 @@ const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">CVV</label>
+                <label className="block text-sm font-medium text-foreground mb-2">{t('paymentDetails.cvv')}</label>
                 <input
                   type="text"
                   placeholder="123"
@@ -256,7 +258,7 @@ const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Naam op kaart</label>
+                <label className="block text-sm font-medium text-foreground mb-2">{t('paymentDetails.holderName')}</label>
                 <input
                   type="text"
                   placeholder="Jan Janssen"
@@ -268,10 +270,10 @@ const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
 
               <div className="flex gap-2 pt-4">
                 <Button variant="outline" onClick={() => setShowAddCard(false)} className="flex-1">
-                  Annuleren
+                  {t('paymentDetails.cancel')}
                 </Button>
                 <Button onClick={handleAddCard} className="flex-1">
-                  Kaart toevoegen
+                  {t('paymentDetails.add')}
                 </Button>
               </div>
             </div>

@@ -3,6 +3,7 @@ import { Eye, EyeOff, User, Mail, Phone, MapPin, Building, Hash, Trash2 } from '
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -30,6 +31,7 @@ interface ProfileData {
 
 const EditProfile = ({ onBack }: EditProfileProps) => {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
@@ -64,9 +66,10 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
       // Format account creation date
       if (user.created_at) {
         const createdDate = new Date(user.created_at);
-        const monthNames = ['januari', 'februari', 'maart', 'april', 'mei', 'juni',
-          'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
-        const formattedDate = `${monthNames[createdDate.getMonth()]} ${createdDate.getFullYear()}`;
+        const monthKeys = ['january', 'february', 'march', 'april', 'may', 'june',
+          'july', 'august', 'september', 'october', 'november', 'december'];
+        const monthName = t(`editProfile.months.${monthKeys[createdDate.getMonth()]}`);
+        const formattedDate = `${monthName} ${createdDate.getFullYear()}`;
         setAccountCreatedDate(formattedDate);
       }
 
@@ -111,11 +114,11 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
         
         if (emailError) {
           console.error('Error updating email:', emailError);
-          toast.error('Fout bij het wijzigen van e-mail. Controleer je nieuwe e-mail voor verificatie.');
+          toast.error(t('editProfile.toast.emailError'));
           setLoading(false);
           return;
         } else {
-          toast.success('Verificatie e-mail verzonden naar je nieuwe e-mailadres');
+          toast.success(t('editProfile.toast.emailChangeInfo'));
         }
       }
 
@@ -130,9 +133,9 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
 
       if (error) {
         console.error('Error updating profile:', error);
-        toast.error('Fout bij het opslaan van profielgegevens');
+        toast.error(t('editProfile.toast.profileError'));
       } else {
-        toast.success('Profiel succesvol bijgewerkt');
+        toast.success(t('editProfile.toast.profileUpdated'));
       }
     } catch (error) {
       console.error('Error:', error);
@@ -146,17 +149,17 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
     e.preventDefault();
     
     if (!passwordData.currentPassword) {
-      toast.error('Voer je huidige wachtwoord in');
+      toast.error(t('editProfile.toast.passwordMismatch'));
       return;
     }
     
     if (passwordData.newPassword !== passwordData.confirmPassword) {
-      toast.error('Nieuwe wachtwoorden komen niet overeen');
+      toast.error(t('editProfile.toast.passwordMismatch'));
       return;
     }
 
     if (passwordData.newPassword.length < 6) {
-      toast.error('Nieuw wachtwoord moet minimaal 6 karakters lang zijn');
+      toast.error(t('editProfile.toast.passwordTooShort'));
       return;
     }
 
@@ -170,7 +173,7 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
         });
         
         if (verifyError) {
-          toast.error('Huidig wachtwoord is incorrect');
+          toast.error(t('editProfile.toast.passwordIncorrect'));
           setLoading(false);
           return;
         }
@@ -182,9 +185,9 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
 
       if (error) {
         console.error('Error updating password:', error);
-        toast.error('Fout bij het wijzigen van wachtwoord');
+        toast.error(t('editProfile.toast.passwordError'));
       } else {
-        toast.success('Wachtwoord succesvol gewijzigd');
+        toast.success(t('editProfile.toast.passwordSuccess'));
         setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
       }
     } catch (error) {
@@ -202,10 +205,10 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
     try {
       // For now, we'll direct users to contact support for account deletion
       // as proper account deletion requires backend setup
-      toast.error('Account verwijdering is nog niet geïmplementeerd. Neem contact op met de klantenservice voor hulp.');
+      toast.error(t('editProfile.toast.deleteNotImplemented'));
     } catch (error) {
       console.error('Error:', error);
-      toast.error('Er is een fout opgetreden');
+      toast.error(t('editProfile.toast.profileError'));
     } finally {
       setIsDeleting(false);
     }
@@ -218,13 +221,13 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
         <div className="card-jetleg p-6">
           <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
             <User className="h-5 w-5" />
-            Persoonlijke gegevens
+            {t('editProfile.title')}
           </h2>
           
           <form onSubmit={handleProfileSubmit} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Voornaam</label>
+                <label className="block text-sm font-medium text-foreground mb-2">{t('editProfile.firstName')}</label>
                 <input
                   type="text"
                   value={profileData.first_name}
@@ -234,7 +237,7 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Achternaam</label>
+                <label className="block text-sm font-medium text-foreground mb-2">{t('editProfile.lastName')}</label>
                 <input
                   type="text"
                   value={profileData.last_name}
@@ -245,7 +248,7 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">E-mail</label>
+              <label className="block text-sm font-medium text-foreground mb-2">{t('editProfile.email')}</label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <input
@@ -256,11 +259,11 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
                   placeholder="user@email.com"
                 />
               </div>
-              <p className="text-xs text-muted-foreground mt-1">Bij wijziging wordt een verificatie e-mail verzonden</p>
+              <p className="text-xs text-muted-foreground mt-1">{t('editProfile.toast.emailChangeInfo')}</p>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">Telefoon</label>
+              <label className="block text-sm font-medium text-foreground mb-2">{t('editProfile.phone')}</label>
               <div className="relative">
                 <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <input
@@ -273,7 +276,7 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">Adres</label>
+              <label className="block text-sm font-medium text-foreground mb-2">{t('editProfile.address')}</label>
               <div className="relative">
                 <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <input
@@ -286,7 +289,7 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">Bedrijfsnaam (optioneel)</label>
+              <label className="block text-sm font-medium text-foreground mb-2">{t('editProfile.companyName')}</label>
               <div className="relative">
                 <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <input
@@ -299,7 +302,7 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">BTW nummer (optioneel)</label>
+              <label className="block text-sm font-medium text-foreground mb-2">{t('editProfile.vatNumber')}</label>
               <input
                 type="text"
                 value={profileData.vat_number}
@@ -314,7 +317,7 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
               className="btn-jetleg-primary flex items-center gap-2 w-full"
             >
               <User className="h-4 w-4" />
-              {loading ? 'Opslaan...' : 'Gegevens opslaan'}
+              {loading ? t('editProfile.saving') : t('editProfile.saveDetails')}
             </button>
           </form>
         </div>
@@ -323,16 +326,16 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
         <div className="card-jetleg p-6">
           <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
             <User className="h-5 w-5" />
-            Account gegevens
+            {t('editProfile.accountSettings')}
           </h2>
           
           {/* Password Change */}
           <div className="mb-8">
-            <h3 className="text-lg font-medium text-foreground mb-4">Wachtwoord wijzigen</h3>
+            <h3 className="text-lg font-medium text-foreground mb-4">{t('editProfile.changePassword')}</h3>
             
             <form onSubmit={handlePasswordSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Huidig wachtwoord</label>
+                <label className="block text-sm font-medium text-foreground mb-2">{t('editProfile.currentPassword')}</label>
                 <div className="relative">
                   <input
                     type={showCurrentPassword ? 'text' : 'password'}
@@ -352,7 +355,7 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Nieuw wachtwoord</label>
+                <label className="block text-sm font-medium text-foreground mb-2">{t('editProfile.newPassword')}</label>
                 <div className="relative">
                   <input
                     type={showNewPassword ? 'text' : 'password'}
@@ -372,7 +375,7 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Bevestig nieuw wachtwoord</label>
+                <label className="block text-sm font-medium text-foreground mb-2">{t('editProfile.confirmPassword')}</label>
                 <input
                   type="password"
                   value={passwordData.confirmPassword}
@@ -387,7 +390,7 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
                 disabled={loading}
                 className="btn-jetleg-primary w-full"
               >
-                {loading ? 'Wijzigen...' : 'Wachtwoord wijzigen'}
+                {loading ? t('editProfile.changing') : t('editProfile.changePasswordButton')}
               </button>
             </form>
           </div>
@@ -396,7 +399,7 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
           {accountCreatedDate && (
             <div className="mb-8">
               <p className="text-sm text-muted-foreground">
-                Actief sinds {accountCreatedDate}
+                {t('editProfile.activeSince')} {accountCreatedDate}
               </p>
             </div>
           )}
@@ -410,23 +413,23 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
                   className="flex items-center gap-2 px-4 py-2 bg-background text-destructive border border-destructive rounded-lg hover:bg-destructive/10 transition-colors"
                 >
                   <Trash2 className="h-4 w-4" />
-                  {isDeleting ? 'Verwijderen...' : 'Account verwijderen'}
+                  {isDeleting ? t('editProfile.changing') : t('editProfile.deleteAccount')}
                 </button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle>Account verwijderen</AlertDialogTitle>
+                  <AlertDialogTitle>{t('editProfile.deleteAccount')}</AlertDialogTitle>
                   <AlertDialogDescription>
-                    Weet je zeker dat je je account wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.
+                    {t('editProfile.deleteAccountConfirm')}
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Annuleren</AlertDialogCancel>
+                  <AlertDialogCancel>{t('editProfile.cancel')}</AlertDialogCancel>
                   <AlertDialogAction
                     onClick={handleDeleteAccount}
                     className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
                   >
-                    Verwijderen
+                    {t('editProfile.deleteAccount')}
                   </AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>

@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Check, CreditCard, Lock, Users, MapPin, Calendar
 import { useToast } from '@/hooks/use-toast';
 import { useFlightById } from '@/hooks/useFlights';
 import { extractCityName } from '@/utils/flightUtils';
+import { useTranslation } from 'react-i18next';
 
 interface Passenger {
   firstName: string;
@@ -32,6 +33,7 @@ const BookingFlow = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { toast } = useToast();
+  const { t } = useTranslation();
   
   // Handle different parameter names from different routes
   const flightId = params.id || params.flightId;
@@ -69,9 +71,9 @@ const BookingFlow = () => {
   const flight = flightFromState || flightFromDb;
 
   const steps = [
-    { number: 1, title: 'Passagiers', description: 'Voer gegevens in' },
-    { number: 2, title: 'Betaling', description: 'Betalingsgegevens' },
-    { number: 3, title: 'Bevestiging', description: 'Controleer en bevestig' }
+    { number: 1, title: t('booking.steps.passengers'), description: t('booking.steps.passengersDesc') },
+    { number: 2, title: t('booking.steps.payment'), description: t('booking.steps.paymentDesc') },
+    { number: 3, title: t('booking.steps.confirmation'), description: t('booking.steps.confirmationDesc') }
   ];
 
   const addPassenger = () => {
@@ -132,8 +134,8 @@ const BookingFlow = () => {
   const handleNext = () => {
     if (currentStep === 1 && !validatePassengers()) {
       toast({
-        title: "Incomplete gegevens",
-        description: "Vul alle passagiersgegevens in om door te gaan.",
+        title: t('booking.validation.incompleteData'),
+        description: t('booking.validation.fillPassengers'),
         variant: "destructive"
       });
       return;
@@ -141,8 +143,8 @@ const BookingFlow = () => {
 
     if (currentStep === 2 && !validatePayment()) {
       toast({
-        title: "Incomplete betalingsgegevens",
-        description: "Vul alle betalingsgegevens in om door te gaan.",
+        title: t('booking.validation.incompletePayment'),
+        description: t('booking.validation.fillPayment'),
         variant: "destructive"
       });
       return;
@@ -162,8 +164,8 @@ const BookingFlow = () => {
     await new Promise(resolve => setTimeout(resolve, 2000));
     
     toast({
-      title: "Boeking bevestigd!",
-      description: "Je vlucht is succesvol geboekt. Je ontvangt een bevestiging per e-mail.",
+      title: t('booking.confirmed'),
+      description: t('booking.confirmedDesc'),
     });
 
     setIsLoading(false);
@@ -201,7 +203,7 @@ const BookingFlow = () => {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <Plane className="h-16 w-16 text-accent mx-auto mb-4 animate-pulse" />
-          <h3 className="text-xl font-semibold text-foreground mb-2">Vluchtgegevens laden...</h3>
+          <h3 className="text-xl font-semibold text-foreground mb-2">{t('booking.loading')}</h3>
         </div>
       </div>
     );
@@ -212,13 +214,13 @@ const BookingFlow = () => {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <Plane className="h-16 w-16 text-destructive mx-auto mb-4" />
-          <h3 className="text-xl font-semibold text-foreground mb-2">Vlucht niet gevonden</h3>
-          <p className="text-muted-foreground mb-4">De vlucht die je zoekt bestaat niet of is niet beschikbaar.</p>
+          <h3 className="text-xl font-semibold text-foreground mb-2">{t('booking.notFound')}</h3>
+          <p className="text-muted-foreground mb-4">{t('booking.notFoundDesc')}</p>
           <button
             onClick={() => navigate('/')}
             className="btn-jetleg-primary"
           >
-            Terug naar zoekresultaten
+            {t('booking.navigation.backToResults')}
           </button>
         </div>
       </div>
@@ -238,10 +240,10 @@ const BookingFlow = () => {
               className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
             >
               <ArrowLeft className="h-5 w-5" />
-              Terug naar resultaten
+              {t('booking.navigation.backToResults')}
             </button>
             <div className="text-sm text-muted-foreground">
-              Boeking voor vlucht {extractAirportCode(flight.departure_airport)} → {extractAirportCode(flight.arrival_airport)}
+              {t('booking.overview.title')} {extractAirportCode(flight.departure_airport)} → {extractAirportCode(flight.arrival_airport)}
             </div>
           </div>
         </div>
@@ -286,25 +288,25 @@ const BookingFlow = () => {
             <div className="card-jetleg p-6">
               {currentStep === 1 && (
                 <div>
-                  <h2 className="text-xl font-semibold text-foreground mb-6">Passagiersgegevens</h2>
+                  <h2 className="text-xl font-semibold text-foreground mb-6">{t('booking.passengers.title')}</h2>
                   
                   {passengers.map((passenger, index) => (
                     <div key={index} className="mb-8 p-4 border border-border rounded-lg">
                       <div className="flex items-center justify-between mb-4">
-                        <h3 className="font-medium text-foreground">Passagier {index + 1}</h3>
+                        <h3 className="font-medium text-foreground">{t('booking.passengers.passenger')} {index + 1}</h3>
                         {passengers.length > 1 && (
                           <button
                             onClick={() => removePassenger(index)}
                             className="text-destructive hover:text-destructive/80 text-sm"
                           >
-                            Verwijderen
+                            {t('booking.passengers.remove')}
                           </button>
                         )}
                       </div>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-medium text-foreground mb-2">Voornaam *</label>
+                          <label className="block text-sm font-medium text-foreground mb-2">{t('booking.passengers.firstName')} {t('booking.passengers.required')}</label>
                           <input
                             type="text"
                             value={passenger.firstName}
@@ -314,7 +316,7 @@ const BookingFlow = () => {
                           />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-foreground mb-2">Achternaam *</label>
+                          <label className="block text-sm font-medium text-foreground mb-2">{t('booking.passengers.lastName')} {t('booking.passengers.required')}</label>
                           <input
                             type="text"
                             value={passenger.lastName}
@@ -324,7 +326,7 @@ const BookingFlow = () => {
                           />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-foreground mb-2">E-mail *</label>
+                          <label className="block text-sm font-medium text-foreground mb-2">{t('booking.passengers.email')} {t('booking.passengers.required')}</label>
                           <input
                             type="email"
                             value={passenger.email}
@@ -334,7 +336,7 @@ const BookingFlow = () => {
                           />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-foreground mb-2">Telefoonnummer *</label>
+                          <label className="block text-sm font-medium text-foreground mb-2">{t('booking.passengers.phone')} {t('booking.passengers.required')}</label>
                           <input
                             type="tel"
                             value={passenger.phone}
@@ -344,7 +346,7 @@ const BookingFlow = () => {
                           />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-foreground mb-2">Geboortedatum *</label>
+                          <label className="block text-sm font-medium text-foreground mb-2">{t('booking.passengers.dateOfBirth')} {t('booking.passengers.required')}</label>
                           <input
                             type="date"
                             value={passenger.dateOfBirth}
@@ -354,7 +356,7 @@ const BookingFlow = () => {
                           />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-foreground mb-2">Paspoortnummer *</label>
+                          <label className="block text-sm font-medium text-foreground mb-2">{t('booking.passengers.passportNumber')} {t('booking.passengers.required')}</label>
                           <input
                             type="text"
                             value={passenger.passportNumber}
@@ -372,7 +374,7 @@ const BookingFlow = () => {
                       onClick={addPassenger}
                       className="btn-jetleg-outline w-full mb-6"
                     >
-                      + Passagier toevoegen
+                      {t('booking.passengers.addPassenger')}
                     </button>
                   )}
                 </div>
@@ -382,7 +384,7 @@ const BookingFlow = () => {
                 <div>
                   <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
                     <Lock className="h-5 w-5" />
-                    Veilige betaling
+                    {t('booking.payment.title')}
                   </h2>
                   
                   <div className="space-y-6">
@@ -390,14 +392,14 @@ const BookingFlow = () => {
                     <div className="p-4 border border-border rounded-lg bg-accent/5">
                       <div className="flex items-center gap-3">
                         <CreditCard className="h-5 w-5 text-accent" />
-                        <span className="font-medium text-foreground">Creditcard / Debitkaart</span>
+                        <span className="font-medium text-foreground">{t('booking.payment.method')}</span>
                       </div>
                     </div>
 
                     {/* Card Details */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="md:col-span-2">
-                        <label className="block text-sm font-medium text-foreground mb-2">Kaartnummer *</label>
+                        <label className="block text-sm font-medium text-foreground mb-2">{t('booking.payment.cardNumber')} *</label>
                         <input
                           type="text"
                           value={paymentData.cardNumber}
@@ -408,7 +410,7 @@ const BookingFlow = () => {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">Vervaldatum *</label>
+                        <label className="block text-sm font-medium text-foreground mb-2">{t('booking.payment.expiryDate')} *</label>
                         <input
                           type="text"
                           value={paymentData.expiryDate}
@@ -419,7 +421,7 @@ const BookingFlow = () => {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">CVV *</label>
+                        <label className="block text-sm font-medium text-foreground mb-2">{t('booking.payment.cvv')} *</label>
                         <input
                           type="text"
                           value={paymentData.cvv}
@@ -430,7 +432,7 @@ const BookingFlow = () => {
                         />
                       </div>
                       <div className="md:col-span-2">
-                        <label className="block text-sm font-medium text-foreground mb-2">Naam op kaart *</label>
+                        <label className="block text-sm font-medium text-foreground mb-2">{t('booking.payment.cardholderName')} *</label>
                         <input
                           type="text"
                           value={paymentData.cardholderName}
@@ -443,10 +445,10 @@ const BookingFlow = () => {
 
                     {/* Billing Address */}
                     <div>
-                      <h3 className="font-medium text-foreground mb-4">Factuuradres</h3>
+                      <h3 className="font-medium text-foreground mb-4">{t('booking.payment.billingAddress')}</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="md:col-span-2">
-                          <label className="block text-sm font-medium text-foreground mb-2">Straat en huisnummer *</label>
+                          <label className="block text-sm font-medium text-foreground mb-2">{t('booking.payment.street')} *</label>
                           <input
                             type="text"
                             value={paymentData.billingAddress.street}
@@ -456,7 +458,7 @@ const BookingFlow = () => {
                           />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-foreground mb-2">Stad *</label>
+                          <label className="block text-sm font-medium text-foreground mb-2">{t('booking.payment.city')} *</label>
                           <input
                             type="text"
                             value={paymentData.billingAddress.city}
@@ -466,7 +468,7 @@ const BookingFlow = () => {
                           />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-foreground mb-2">Postcode *</label>
+                          <label className="block text-sm font-medium text-foreground mb-2">{t('booking.payment.postalCode')} *</label>
                           <input
                             type="text"
                             value={paymentData.billingAddress.postalCode}
@@ -476,7 +478,7 @@ const BookingFlow = () => {
                           />
                         </div>
                         <div className="md:col-span-2">
-                          <label className="block text-sm font-medium text-foreground mb-2">Land *</label>
+                          <label className="block text-sm font-medium text-foreground mb-2">{t('booking.payment.country')} *</label>
                           <select
                             value={paymentData.billingAddress.country}
                             onChange={(e) => updatePayment('billingAddress.country', e.target.value)}
@@ -497,32 +499,26 @@ const BookingFlow = () => {
 
               {currentStep === 3 && (
                 <div>
-                  <h2 className="text-xl font-semibold text-foreground mb-6">Bevestiging</h2>
+                  <h2 className="text-xl font-semibold text-foreground mb-6">{t('booking.confirmation.title')}</h2>
                   
                   {/* Flight Summary */}
                   <div className="mb-6 p-4 bg-accent/5 rounded-lg">
-                    <h3 className="font-medium text-foreground mb-3">Vluchtsamenvatting</h3>
+                    <h3 className="font-medium text-foreground mb-3">{t('booking.confirmation.flightSummary')}</h3>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-muted-foreground">Route:</span>
+                        <span className="text-muted-foreground">{t('booking.confirmation.route')}</span>
                         <span className="text-foreground">{extractCityName(flight.departure_airport)} → {extractCityName(flight.arrival_airport)}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-muted-foreground">Datum:</span>
+                        <span className="text-muted-foreground">{t('booking.confirmation.date')}</span>
                         <span className="text-foreground">{formatDate(flight.departure_time)}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-muted-foreground">Vertrek:</span>
+                        <span className="text-muted-foreground">{t('booking.confirmation.departure')}</span>
                         <span className="text-foreground">{formatTime(flight.departure_time)}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-muted-foreground">Route:</span>
-                        <span className="text-foreground">
-                          {extractCityName(flight.departure_airport)} → {extractCityName(flight.arrival_airport)}
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">Operator:</span>
+                        <span className="text-muted-foreground">{t('booking.confirmation.operator')}</span>
                         <span className="text-foreground">{flight.operator}</span>
                       </div>
                     </div>
@@ -530,7 +526,7 @@ const BookingFlow = () => {
 
                   {/* Passengers Summary */}
                   <div className="mb-6">
-                    <h3 className="font-medium text-foreground mb-3">Passagiers ({passengers.length})</h3>
+                    <h3 className="font-medium text-foreground mb-3">{t('booking.confirmation.passengers')} ({passengers.length})</h3>
                     {passengers.map((passenger, index) => (
                       <div key={index} className="text-sm text-muted-foreground mb-1">
                         {passenger.firstName} {passenger.lastName}
@@ -543,10 +539,7 @@ const BookingFlow = () => {
                     <label className="flex items-start gap-3">
                       <input type="checkbox" className="mt-1 accent-accent" required />
                       <span className="text-sm text-foreground">
-                        Ik ga akkoord met de{' '}
-                        <a href="#" className="text-accent hover:underline">algemene voorwaarden</a>
-                        {' '}en{' '}
-                        <a href="#" className="text-accent hover:underline">privacybeleid</a>
+                        {t('booking.confirmation.terms')}
                       </span>
                     </label>
                   </div>
@@ -556,7 +549,7 @@ const BookingFlow = () => {
                     disabled={isLoading}
                     className="btn-jetleg-primary w-full"
                   >
-                    {isLoading ? 'Bezig met boeken...' : `Betaal €${totalPrice.toLocaleString()}`}
+                    {isLoading ? `${t('booking.confirmation.pay')}...` : `${t('booking.confirmation.pay')} €${totalPrice.toLocaleString()}`}
                   </button>
                 </div>
               )}
@@ -566,13 +559,13 @@ const BookingFlow = () => {
                 {currentStep > 1 ? (
                   <button onClick={handleBack} className="btn-jetleg-outline flex items-center gap-2">
                     <ArrowLeft className="h-4 w-4" />
-                    Vorige
+                    {t('booking.navigation.back')}
                   </button>
                 ) : <div />}
 
                 {currentStep < 3 && (
                   <button onClick={handleNext} className="btn-jetleg-primary flex items-center gap-2">
-                    Volgende
+                    {t('booking.navigation.next')}
                     <ArrowRight className="h-4 w-4" />
                   </button>
                 )}
@@ -583,7 +576,7 @@ const BookingFlow = () => {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             <div className="card-jetleg p-6 sticky top-6">
-              <h3 className="font-semibold text-foreground mb-4">Boekingoverzicht</h3>
+              <h3 className="font-semibold text-foreground mb-4">{t('booking.overview.title')}</h3>
               
               {/* Flight Details */}
               <div className="space-y-4 mb-6">
@@ -606,7 +599,7 @@ const BookingFlow = () => {
                 <div className="flex items-center gap-3">
                   <Users className="h-5 w-5 text-accent" />
                   <div>
-                    <div className="font-medium text-foreground">{passengers.length} passagier{passengers.length !== 1 ? 's' : ''}</div>
+                    <div className="font-medium text-foreground">{passengers.length} {passengers.length !== 1 ? t('booking.confirmation.passengerCount') : t('booking.confirmation.passengerSingular')}</div>
                     <div className="text-sm text-muted-foreground">
                       {flight.jets ? `${flight.jets.brand} ${flight.jets.model}` : flight.operator}
                     </div>
@@ -618,15 +611,15 @@ const BookingFlow = () => {
               <div className="border-t border-border pt-4">
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Prijs per persoon</span>
+                    <span className="text-muted-foreground">{t('booking.overview.pricePerPerson')}</span>
                     <span className="text-foreground">€{flight.price_per_seat.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Aantal passagiers</span>
+                    <span className="text-muted-foreground">{t('booking.overview.passengers')}</span>
                     <span className="text-foreground">×{passengers.length}</span>
                   </div>
                   <div className="border-t border-border pt-2 flex justify-between font-semibold text-lg">
-                    <span className="text-foreground">Totaal</span>
+                    <span className="text-foreground">{t('booking.overview.total')}</span>
                     <span className="text-foreground">€{totalPrice.toLocaleString()}</span>
                   </div>
                 </div>

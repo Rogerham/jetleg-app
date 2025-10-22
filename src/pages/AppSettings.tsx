@@ -13,7 +13,7 @@ interface AppSettingsProps {
 
 const AppSettings = ({ onBack }: AppSettingsProps) => {
   const { currency, setCurrency } = useCurrency();
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const [notifications, setNotifications] = useState({
     push: true,
     email: true,
@@ -28,10 +28,10 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
     try {
       // Save settings to localStorage or backend
       localStorage.setItem('notifications', JSON.stringify(notifications));
-      toast.success('Instellingen opgeslagen');
+      toast.success(t('appSettings.toast.saved'));
     } catch (error) {
       console.error('Error saving settings:', error);
-      toast.error('Fout bij het opslaan van instellingen');
+      toast.error(t('appSettings.toast.error'));
     } finally {
       setLoading(false);
     }
@@ -87,14 +87,14 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
         <div className="card-jetleg p-6">
           <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
             <Bell className="h-5 w-5" />
-            Notificaties
+            {t('appSettings.notifications')}
           </h2>
           
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="font-medium text-foreground">Push notificaties</h3>
-                <p className="text-sm text-muted-foreground">Ontvang directe meldingen op je apparaat</p>
+                <h3 className="font-medium text-foreground">{t('appSettings.pushNotifications')}</h3>
+                <p className="text-sm text-muted-foreground">{t('appSettings.pushDesc')}</p>
               </div>
               <Switch
                 checked={notifications.push}
@@ -104,8 +104,8 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
             
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="font-medium text-foreground">E-mail notificaties</h3>
-                <p className="text-sm text-muted-foreground">Ontvang updates via e-mail</p>
+                <h3 className="font-medium text-foreground">{t('appSettings.emailNotifications')}</h3>
+                <p className="text-sm text-muted-foreground">{t('appSettings.emailDesc')}</p>
               </div>
               <Switch
                 checked={notifications.email}
@@ -115,8 +115,8 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
             
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="font-medium text-foreground">Prijsalerts</h3>
-                <p className="text-sm text-muted-foreground">Word gewaarschuwd bij prijswijzigingen</p>
+                <h3 className="font-medium text-foreground">{t('appSettings.priceAlerts')}</h3>
+                <p className="text-sm text-muted-foreground">{t('appSettings.priceAlertsDesc')}</p>
               </div>
               <Switch
                 checked={notifications.priceAlerts}
@@ -126,8 +126,8 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
             
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="font-medium text-foreground">Marketing e-mails</h3>
-                <p className="text-sm text-muted-foreground">Ontvang aanbiedingen en nieuws</p>
+                <h3 className="font-medium text-foreground">{t('appSettings.marketing')}</h3>
+                <p className="text-sm text-muted-foreground">{t('appSettings.marketingDesc')}</p>
               </div>
               <Switch
                 checked={notifications.marketing}
@@ -141,7 +141,7 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
         <div className="card-jetleg p-6">
           <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
             <Globe className="h-5 w-5" />
-            Taal
+            {t('appSettings.language')}
           </h2>
           
           <Select value={i18n.language} onValueChange={handleLanguageChange}>
@@ -165,7 +165,7 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
         <div className="card-jetleg p-6">
           <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
             <DollarSign className="h-5 w-5" />
-            Valuta
+            {t('appSettings.currency')}
           </h2>
           
           <Select value={currency} onValueChange={handleCurrencyChange}>
@@ -189,15 +189,15 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
         <div className="card-jetleg p-6">
           <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
             <Smartphone className="h-5 w-5" />
-            Weergave
+            {t('appSettings.appearance')}
           </h2>
           
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               {darkMode ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
               <div>
-                <h3 className="font-medium text-foreground">Donkere modus</h3>
-                <p className="text-sm text-muted-foreground">Schakel tussen licht en donker thema</p>
+                <h3 className="font-medium text-foreground">{t('appSettings.darkMode')}</h3>
+                <p className="text-sm text-muted-foreground">{t('appSettings.darkModeDesc')}</p>
               </div>
             </div>
             <Switch
@@ -216,7 +216,7 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
             className="w-full md:w-auto min-w-[200px] flex items-center gap-2"
           >
             <Save className="h-4 w-4" />
-            {loading ? 'Opslaan...' : 'Instellingen opslaan'}
+            {loading ? t('appSettings.saving') : t('appSettings.saveSettings')}
           </Button>
         </div>
       </div>
