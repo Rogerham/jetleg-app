@@ -897,5 +897,74 @@
       "deleted": "Zahlungsmethode gelöscht",
       "defaultSet": "Standard-Zahlungsmethode festgelegt"
     }
+  },
+  "helpSupport": {
+    "title": "Hilfe & Support",
+    "subtitle": "Finden Sie Antworten auf häufig gestellte Fragen oder kontaktieren Sie uns",
+    "liveChat": {
+      "title": "Live-Chat",
+      "description": "Sprechen Sie direkt mit unserem Kundenservice",
+      "button": "Chat starten"
+    },
+    "phone": {
+      "title": "Rufen Sie uns an",
+      "hours": "Mo-Fr: 9:00-18:00"
+    },
+    "email": {
+      "title": "E-Mail",
+      "responseTime": "Wir antworten innerhalb von 2 Stunden"
+    },
+    "faqTitle": "Häufig gestellte Fragen",
+    "faq": {
+      "whatIsEmptyLeg": {
+        "question": "Was ist ein Empty-Leg-Flug?",
+        "answer": "Ein Empty-Leg-Flug ist ein Privatflug, bei dem das Flugzeug leer zu seiner Basis oder zum nächsten Ziel zurückfliegt. Diese Flüge werden zu reduzierten Preisen angeboten, da sie sonst leer fliegen würden."
+      },
+      "howToBook": {
+        "question": "Wie buche ich einen Flug?",
+        "answer": "Verwenden Sie unsere Suchfunktion, um verfügbare Flüge zu finden. Wählen Sie Ihren gewünschten Flug aus und folgen Sie den Buchungsschritten. Sie erhalten eine Bestätigungs-E-Mail, sobald Ihre Buchung abgeschlossen ist."
+      },
+      "afterBooking": {
+        "question": "Was passiert, nachdem ich einen Empty Leg gebucht habe?",
+        "answer": "Nach Ihrer Buchung erhalten Sie sofort eine Bestätigungs-E-Mail mit allen Flugdetails und Ihren E-Tickets. Unser Kundenservice wird Sie bei Bedarf für besondere Anforderungen kontaktieren. Am Abflugtag können Sie direkt zum privaten Terminal gehen - checken Sie 15-30 Minuten vor Abflug ein. Nach der Landung erhalten Sie einen Fragebogen, um Ihre Erfahrungen mit uns zu teilen."
+      },
+      "otherDestinations": {
+        "question": "Sind auch Flüge zu anderen Kontinenten verfügbar?",
+        "answer": "Derzeit konzentrieren wir uns hauptsächlich auf Europa, Nordamerika und die VAE. Flüge nach Asien, Südamerika, Afrika und Australien befinden sich in der Entwicklung und werden in naher Zukunft verfügbar sein. Wir erweitern aktiv unsere Partnerschaften weltweit, um Ihnen bald diese wunderschönen Ziele anbieten zu können."
+      },
+      "cancellationPolicy": {
+        "question": "Was ist die Stornierungspolitik?",
+        "answer": "Stornierungen sind bis 24 Stunden vor Abflug möglich. Bei Stornierung innerhalb von 24 Stunden können Gebühren anfallen. Bitte überprüfen Sie die spezifischen Bedingungen Ihrer Buchung."
+      },
+      "luggagePolicy": {
+        "question": "Wie viel Gepäck darf ich mitnehmen?",
+        "answer": "Die Gepäckregeln variieren je nach Flugzeugtyp. Im Allgemeinen ist Handgepäck immer enthalten. Für aufgegebenes Gepäck empfehlen wir, uns für genaue Grenzen zu kontaktieren."
+      },
+      "paymentMethods": {
+        "question": "Welche Zahlungsmethoden akzeptieren Sie?",
+        "answer": "Wir akzeptieren alle gängigen Kreditkarten (Visa, Mastercard, American Express) und Banküberweisungen. Die Zahlung erfolgt über eine sichere Verbindung."
+      },
+      "flightChanges": {
+        "question": "Kann ich meinen Flug ändern?",
+        "answer": "Änderungen sind je nach Verfügbarkeit möglich und können zusätzliche Kosten verursachen. Bitte kontaktieren Sie uns für Änderungen."
+      }
+    },
+    "contactForm": {
+      "title": "Noch eine Frage?",
+      "name": "Name",
+      "email": "E-Mail",
+      "subject": "Betreff",
+      "selectSubject": "Wählen Sie einen Betreff",
+      "subjects": {
+        "booking": "Buchung",
+        "payment": "Zahlung",
+        "cancellation": "Stornierung",
+        "technical": "Technische Probleme",
+        "other": "Sonstiges"
+      },
+      "message": "Nachricht",
+      "messagePlaceholder": "Beschreiben Sie Ihre Frage oder Ihr Problem...",
+      "submit": "Nachricht senden"
+    }
   }
 }

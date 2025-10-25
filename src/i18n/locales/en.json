@@ -990,5 +990,74 @@
       "deleted": "Payment method deleted",
       "defaultSet": "Default payment method set"
     }
+  },
+  "helpSupport": {
+    "title": "Help & Support",
+    "subtitle": "Find answers to frequently asked questions or contact us",
+    "liveChat": {
+      "title": "Live Chat",
+      "description": "Talk directly with our customer service",
+      "button": "Start chat"
+    },
+    "phone": {
+      "title": "Call us",
+      "hours": "Mon-Fri: 9:00-18:00"
+    },
+    "email": {
+      "title": "Email",
+      "responseTime": "We respond within 2 hours"
+    },
+    "faqTitle": "Frequently Asked Questions",
+    "faq": {
+      "whatIsEmptyLeg": {
+        "question": "What is an empty leg flight?",
+        "answer": "An empty leg flight is a private flight where the aircraft flies empty back to its base or to the next destination. These flights are offered at reduced rates because they would otherwise fly empty."
+      },
+      "howToBook": {
+        "question": "How do I book a flight?",
+        "answer": "Use our search function to find available flights. Select your desired flight and follow the booking steps. You will receive a confirmation email once your booking is complete."
+      },
+      "afterBooking": {
+        "question": "What happens after I book an empty leg?",
+        "answer": "After your booking, you will immediately receive a confirmation email with all flight details and your e-tickets. Our customer service will contact you if necessary for any special requirements. On the day of departure, you can go directly to the private terminal - check in 15-30 minutes before departure. After landing, you will receive a questionnaire to share your experience with us."
+      },
+      "otherDestinations": {
+        "question": "Are flights to other continents also available?",
+        "answer": "Currently, we mainly focus on Europe, North America, and the UAE. Flights to Asia, South America, Africa, and Australia are in development and will be available in the near future. We are actively expanding our partnerships worldwide to offer you these beautiful destinations soon."
+      },
+      "cancellationPolicy": {
+        "question": "What is the cancellation policy?",
+        "answer": "Cancellations are possible up to 24 hours before departure. Cancellation within 24 hours may incur charges. Please check the specific terms of your booking."
+      },
+      "luggagePolicy": {
+        "question": "How much luggage can I take?",
+        "answer": "Baggage rules vary by aircraft type. Generally, hand luggage is always included. For checked baggage, we advise contacting us for exact limits."
+      },
+      "paymentMethods": {
+        "question": "Which payment methods do you accept?",
+        "answer": "We accept all major credit cards (Visa, Mastercard, American Express) and bank transfers. Payment is processed through a secure connection."
+      },
+      "flightChanges": {
+        "question": "Can I change my flight?",
+        "answer": "Changes are possible depending on availability and may incur additional costs. Please contact us for changes."
+      }
+    },
+    "contactForm": {
+      "title": "Have another question?",
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "selectSubject": "Select a subject",
+      "subjects": {
+        "booking": "Booking",
+        "payment": "Payment",
+        "cancellation": "Cancellation",
+        "technical": "Technical issues",
+        "other": "Other"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Describe your question or problem...",
+      "submit": "Send message"
+    }
   }
 }

@@ -1,54 +1,56 @@
 import { useState } from 'react';
 import { HelpCircle, MessageCircle, Phone, Mail, ChevronDown, ChevronUp } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { useTranslation } from 'react-i18next';
 
 interface HelpSupportProps {
   onBack: () => void;
 }
 
 const HelpSupport = ({ onBack }: HelpSupportProps) => {
+  const { t } = useTranslation();
   const [openFaq, setOpenFaq] = useState<string | null>(null);
 
   const faqData = [
     {
-      id: 'what-is-empty-leg',
-      question: 'Wat is een empty leg vlucht?',
-      answer: 'Een empty leg vlucht is een privévlucht waarbij het vliegtuig leeg terugvliegt naar zijn basis of naar de volgende bestemming. Deze vluchten worden tegen gereduceerde tarieven aangeboden omdat ze anders leeg zouden vliegen.'
+      id: 'whatIsEmptyLeg',
+      question: t('helpSupport.faq.whatIsEmptyLeg.question'),
+      answer: t('helpSupport.faq.whatIsEmptyLeg.answer')
     },
     {
-      id: 'how-to-book',
-      question: 'Hoe boek ik een vlucht?',
-      answer: 'Gebruik onze zoekfunctie om beschikbare vluchten te vinden. Selecteer je gewenste vlucht en volg de boekingsstappen. Je ontvangt een bevestiging via e-mail zodra je boeking is voltooid.'
+      id: 'howToBook',
+      question: t('helpSupport.faq.howToBook.question'),
+      answer: t('helpSupport.faq.howToBook.answer')
     },
     {
-      id: 'after-booking',
-      question: 'Wat gebeurt er nadat ik een empty leg geboekt heb?',
-      answer: 'Na je boeking ontvang je direct een bevestigingsmail met alle vliegdetails en je e-tickets. Onze klantenservice neemt indien nodig contact met je op voor eventuele bijzonderheden. Op de dag van vertrek kun je rechtstreeks naar de private terminal gaan - meld je 15-30 minuten voor vertrek. Na landing ontvang je een vragenlijst om je ervaring met ons te delen.'
+      id: 'afterBooking',
+      question: t('helpSupport.faq.afterBooking.question'),
+      answer: t('helpSupport.faq.afterBooking.answer')
     },
     {
-      id: 'other-destinations',
-      question: 'Zijn vluchten naar andere werelddelen ook beschikbaar?',
-      answer: 'Momenteel richten we ons voornamelijk op Europa, Noord-Amerika en de VAE. Vluchten naar Azië, Zuid-Amerika, Afrika en Australië zijn in ontwikkeling en zullen in de nabije toekomst beschikbaar komen. We zijn volop bezig met het uitbreiden van onze partnerschappen wereldwijd om jou straks ook deze prachtige bestemmingen te kunnen aanbieden.'
+      id: 'otherDestinations',
+      question: t('helpSupport.faq.otherDestinations.question'),
+      answer: t('helpSupport.faq.otherDestinations.answer')
     },
     {
-      id: 'cancellation-policy',
-      question: 'Wat is het annuleringsbeleid?',
-      answer: 'Annuleringen zijn mogelijk tot 24 uur voor vertrek. Bij annulering binnen 24 uur kunnen kosten in rekening worden gebracht. Controleer de specifieke voorwaarden van je boeking.'
+      id: 'cancellationPolicy',
+      question: t('helpSupport.faq.cancellationPolicy.question'),
+      answer: t('helpSupport.faq.cancellationPolicy.answer')
     },
     {
-      id: 'luggage-policy',
-      question: 'Hoeveel bagage mag ik meenemen?',
-      answer: 'De bagageregels variëren per vliegtuigtype. Over het algemeen is handbagage altijd inbegrepen. Voor ruimbagage adviseren we contact op te nemen voor de exacte limieten.'
+      id: 'luggagePolicy',
+      question: t('helpSupport.faq.luggagePolicy.question'),
+      answer: t('helpSupport.faq.luggagePolicy.answer')
     },
     {
-      id: 'payment-methods',
-      question: 'Welke betaalmethoden accepteren jullie?',
-      answer: 'We accepteren alle grote creditcards (Visa, Mastercard, American Express) en bankoverschrijvingen. Betaling gebeurt via een beveiligde verbinding.'
+      id: 'paymentMethods',
+      question: t('helpSupport.faq.paymentMethods.question'),
+      answer: t('helpSupport.faq.paymentMethods.answer')
     },
     {
-      id: 'flight-changes',
-      question: 'Kan ik mijn vlucht wijzigen?',
-      answer: 'Wijzigingen zijn mogelijk afhankelijk van beschikbaarheid en kunnen extra kosten met zich meebrengen. Neem contact met ons op voor wijzigingen.'
+      id: 'flightChanges',
+      question: t('helpSupport.faq.flightChanges.question'),
+      answer: t('helpSupport.faq.flightChanges.answer')
     }
   ];
 
@@ -62,26 +64,26 @@ const HelpSupport = ({ onBack }: HelpSupportProps) => {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground mb-2 flex items-center gap-2">
             <HelpCircle className="h-8 w-8" />
-            Help & ondersteuning
+            {t('helpSupport.title')}
           </h1>
-          <p className="text-muted-foreground">Vind antwoorden op veelgestelde vragen of neem contact met ons op</p>
+          <p className="text-muted-foreground">{t('helpSupport.subtitle')}</p>
         </div>
 
         {/* Contact Options */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <div className="card-jetleg p-6 text-center">
             <MessageCircle className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-            <h3 className="font-semibold text-foreground mb-2">Live Chat</h3>
-            <p className="text-sm text-muted-foreground mb-4">Praat direct met onze klantenservice</p>
+            <h3 className="font-semibold text-foreground mb-2">{t('helpSupport.liveChat.title')}</h3>
+            <p className="text-sm text-muted-foreground mb-4">{t('helpSupport.liveChat.description')}</p>
             <button className="btn-jetleg-primary w-full">
-              Start chat
+              {t('helpSupport.liveChat.button')}
             </button>
           </div>
 
           <div className="card-jetleg p-6 text-center">
             <Phone className="h-8 w-8 text-green-600 mx-auto mb-3" />
-            <h3 className="font-semibold text-foreground mb-2">Bel ons</h3>
-            <p className="text-sm text-muted-foreground mb-4">Ma-vr: 9:00-18:00</p>
+            <h3 className="font-semibold text-foreground mb-2">{t('helpSupport.phone.title')}</h3>
+            <p className="text-sm text-muted-foreground mb-4">{t('helpSupport.phone.hours')}</p>
             <a href="tel:+31201234567" className="btn-jetleg-outline w-full">
               +31 20 123 4567
             </a>
@@ -89,8 +91,8 @@ const HelpSupport = ({ onBack }: HelpSupportProps) => {
 
           <div className="card-jetleg p-6 text-center">
             <Mail className="h-8 w-8 text-purple-600 mx-auto mb-3" />
-            <h3 className="font-semibold text-foreground mb-2">E-mail</h3>
-            <p className="text-sm text-muted-foreground mb-4">We reageren binnen 2 uur</p>
+            <h3 className="font-semibold text-foreground mb-2">{t('helpSupport.email.title')}</h3>
+            <p className="text-sm text-muted-foreground mb-4">{t('helpSupport.email.responseTime')}</p>
             <a href="mailto:support@jetleg.com" className="btn-jetleg-outline w-full">
               support@jetleg.com
             </a>
@@ -99,7 +101,7 @@ const HelpSupport = ({ onBack }: HelpSupportProps) => {
 
         {/* FAQ Section */}
         <div className="card-jetleg p-6">
-          <h2 className="text-xl font-semibold text-foreground mb-6">Veelgestelde vragen</h2>
+          <h2 className="text-xl font-semibold text-foreground mb-6">{t('helpSupport.faqTitle')}</h2>
           
           <div className="space-y-4">
             {faqData.map((faq) => (
@@ -122,12 +124,12 @@ const HelpSupport = ({ onBack }: HelpSupportProps) => {
 
         {/* Contact Form */}
         <div className="card-jetleg p-6 mt-8">
-          <h2 className="text-xl font-semibold text-foreground mb-6">Nog een vraag?</h2>
+          <h2 className="text-xl font-semibold text-foreground mb-6">{t('helpSupport.contactForm.title')}</h2>
           
           <form className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Naam</label>
+                <label className="block text-sm font-medium text-foreground mb-2">{t('helpSupport.contactForm.name')}</label>
                 <input
                   type="text"
                   className="w-full px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-accent/20 focus:border-accent"
@@ -135,7 +137,7 @@ const HelpSupport = ({ onBack }: HelpSupportProps) => {
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">E-mail</label>
+                <label className="block text-sm font-medium text-foreground mb-2">{t('helpSupport.contactForm.email')}</label>
                 <input
                   type="email"
                   className="w-full px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-accent/20 focus:border-accent"
@@ -144,28 +146,28 @@ const HelpSupport = ({ onBack }: HelpSupportProps) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">Onderwerp</label>
+              <label className="block text-sm font-medium text-foreground mb-2">{t('helpSupport.contactForm.subject')}</label>
               <select className="w-full px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-accent/20 focus:border-accent">
-                <option value="">Selecteer een onderwerp</option>
-                <option value="booking">Boeking</option>
-                <option value="payment">Betaling</option>
-                <option value="cancellation">Annulering</option>
-                <option value="technical">Technische problemen</option>
-                <option value="other">Anders</option>
+                <option value="">{t('helpSupport.contactForm.selectSubject')}</option>
+                <option value="booking">{t('helpSupport.contactForm.subjects.booking')}</option>
+                <option value="payment">{t('helpSupport.contactForm.subjects.payment')}</option>
+                <option value="cancellation">{t('helpSupport.contactForm.subjects.cancellation')}</option>
+                <option value="technical">{t('helpSupport.contactForm.subjects.technical')}</option>
+                <option value="other">{t('helpSupport.contactForm.subjects.other')}</option>
               </select>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">Bericht</label>
+              <label className="block text-sm font-medium text-foreground mb-2">{t('helpSupport.contactForm.message')}</label>
               <textarea
                 rows={5}
                 className="w-full px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-accent/20 focus:border-accent"
-                placeholder="Beschrijf je vraag of probleem..."
+                placeholder={t('helpSupport.contactForm.messagePlaceholder')}
               ></textarea>
             </div>
 
             <button type="submit" className="btn-jetleg-primary w-full">
-              Bericht verzenden
+              {t('helpSupport.contactForm.submit')}
             </button>
           </form>
         </div>

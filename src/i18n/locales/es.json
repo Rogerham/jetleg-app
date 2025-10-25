@@ -903,5 +903,74 @@
       "deleted": "Método de pago eliminado",
       "defaultSet": "Método de pago predeterminado establecido"
     }
+  },
+  "helpSupport": {
+    "title": "Ayuda y Soporte",
+    "subtitle": "Encuentre respuestas a preguntas frecuentes o contáctenos",
+    "liveChat": {
+      "title": "Chat en vivo",
+      "description": "Hable directamente con nuestro servicio al cliente",
+      "button": "Iniciar chat"
+    },
+    "phone": {
+      "title": "Llámanos",
+      "hours": "Lun-Vie: 9:00-18:00"
+    },
+    "email": {
+      "title": "Correo electrónico",
+      "responseTime": "Respondemos en 2 horas"
+    },
+    "faqTitle": "Preguntas frecuentes",
+    "faq": {
+      "whatIsEmptyLeg": {
+        "question": "¿Qué es un vuelo empty leg?",
+        "answer": "Un vuelo empty leg es un vuelo privado en el que el avión vuela vacío de regreso a su base o al siguiente destino. Estos vuelos se ofrecen a tarifas reducidas porque de lo contrario volarían vacíos."
+      },
+      "howToBook": {
+        "question": "¿Cómo reservo un vuelo?",
+        "answer": "Use nuestra función de búsqueda para encontrar vuelos disponibles. Seleccione el vuelo deseado y siga los pasos de reserva. Recibirá un correo de confirmación una vez que se complete su reserva."
+      },
+      "afterBooking": {
+        "question": "¿Qué sucede después de reservar un empty leg?",
+        "answer": "Después de su reserva, recibirá inmediatamente un correo de confirmación con todos los detalles del vuelo y sus billetes electrónicos. Nuestro servicio al cliente se pondrá en contacto con usted si es necesario para cualquier requisito especial. El día de la salida, puede ir directamente a la terminal privada: preséntese 15-30 minutos antes de la salida. Después del aterrizaje, recibirá un cuestionario para compartir su experiencia con nosotros."
+      },
+      "otherDestinations": {
+        "question": "¿También están disponibles vuelos a otros continentes?",
+        "answer": "Actualmente, nos enfocamos principalmente en Europa, América del Norte y los EAU. Los vuelos a Asia, América del Sur, África y Australia están en desarrollo y estarán disponibles en un futuro cercano. Estamos expandiendo activamente nuestras asociaciones en todo el mundo para ofrecerle pronto estos hermosos destinos."
+      },
+      "cancellationPolicy": {
+        "question": "¿Cuál es la política de cancelación?",
+        "answer": "Las cancelaciones son posibles hasta 24 horas antes de la salida. La cancelación dentro de las 24 horas puede incurrir en cargos. Por favor, verifique los términos específicos de su reserva."
+      },
+      "luggagePolicy": {
+        "question": "¿Cuánto equipaje puedo llevar?",
+        "answer": "Las reglas de equipaje varían según el tipo de avión. Generalmente, el equipaje de mano siempre está incluido. Para equipaje facturado, le aconsejamos que nos contacte para conocer los límites exactos."
+      },
+      "paymentMethods": {
+        "question": "¿Qué métodos de pago aceptan?",
+        "answer": "Aceptamos todas las principales tarjetas de crédito (Visa, Mastercard, American Express) y transferencias bancarias. El pago se procesa a través de una conexión segura."
+      },
+      "flightChanges": {
+        "question": "¿Puedo cambiar mi vuelo?",
+        "answer": "Los cambios son posibles según la disponibilidad y pueden incurrir en costos adicionales. Por favor, contáctenos para cambios."
+      }
+    },
+    "contactForm": {
+      "title": "¿Tiene otra pregunta?",
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "subject": "Asunto",
+      "selectSubject": "Seleccione un asunto",
+      "subjects": {
+        "booking": "Reserva",
+        "payment": "Pago",
+        "cancellation": "Cancelación",
+        "technical": "Problemas técnicos",
+        "other": "Otro"
+      },
+      "message": "Mensaje",
+      "messagePlaceholder": "Describa su pregunta o problema...",
+      "submit": "Enviar mensaje"
+    }
   }
 }

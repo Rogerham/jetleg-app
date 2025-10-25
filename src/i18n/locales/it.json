@@ -968,5 +968,74 @@
       "deleted": "Metodo di pagamento eliminato",
       "defaultSet": "Metodo di pagamento predefinito impostato"
     }
+  },
+  "helpSupport": {
+    "title": "Aiuto & Supporto",
+    "subtitle": "Trova risposte alle domande frequenti o contattaci",
+    "liveChat": {
+      "title": "Chat dal vivo",
+      "description": "Parla direttamente con il nostro servizio clienti",
+      "button": "Avvia chat"
+    },
+    "phone": {
+      "title": "Chiamaci",
+      "hours": "Lun-Ven: 9:00-18:00"
+    },
+    "email": {
+      "title": "Email",
+      "responseTime": "Rispondiamo entro 2 ore"
+    },
+    "faqTitle": "Domande frequenti",
+    "faq": {
+      "whatIsEmptyLeg": {
+        "question": "Cos'è un volo empty leg?",
+        "answer": "Un volo empty leg è un volo privato in cui l'aereo vola vuoto verso la sua base o verso la prossima destinazione. Questi voli sono offerti a tariffe ridotte perché altrimenti volerebbero vuoti."
+      },
+      "howToBook": {
+        "question": "Come prenoto un volo?",
+        "answer": "Usa la nostra funzione di ricerca per trovare voli disponibili. Seleziona il volo desiderato e segui i passaggi di prenotazione. Riceverai un'email di conferma una volta completata la prenotazione."
+      },
+      "afterBooking": {
+        "question": "Cosa succede dopo aver prenotato un empty leg?",
+        "answer": "Dopo la prenotazione, riceverai immediatamente un'email di conferma con tutti i dettagli del volo e i tuoi biglietti elettronici. Il nostro servizio clienti ti contatterà se necessario per eventuali requisiti speciali. Il giorno della partenza, puoi andare direttamente al terminal privato - presentati 15-30 minuti prima della partenza. Dopo l'atterraggio, riceverai un questionario per condividere la tua esperienza con noi."
+      },
+      "otherDestinations": {
+        "question": "Sono disponibili anche voli per altri continenti?",
+        "answer": "Attualmente, ci concentriamo principalmente su Europa, Nord America ed EAU. I voli per Asia, Sud America, Africa e Australia sono in fase di sviluppo e saranno disponibili nel prossimo futuro. Stiamo espandendo attivamente le nostre partnership in tutto il mondo per offrirti presto queste bellissime destinazioni."
+      },
+      "cancellationPolicy": {
+        "question": "Qual è la politica di cancellazione?",
+        "answer": "Le cancellazioni sono possibili fino a 24 ore prima della partenza. La cancellazione entro 24 ore può comportare addebiti. Si prega di verificare i termini specifici della prenotazione."
+      },
+      "luggagePolicy": {
+        "question": "Quanto bagaglio posso portare?",
+        "answer": "Le regole sui bagagli variano in base al tipo di aereo. Generalmente, il bagaglio a mano è sempre incluso. Per il bagaglio registrato, consigliamo di contattarci per i limiti esatti."
+      },
+      "paymentMethods": {
+        "question": "Quali metodi di pagamento accettate?",
+        "answer": "Accettiamo tutte le principali carte di credito (Visa, Mastercard, American Express) e bonifici bancari. Il pagamento viene elaborato tramite una connessione sicura."
+      },
+      "flightChanges": {
+        "question": "Posso modificare il mio volo?",
+        "answer": "Le modifiche sono possibili in base alla disponibilità e possono comportare costi aggiuntivi. Si prega di contattarci per le modifiche."
+      }
+    },
+    "contactForm": {
+      "title": "Hai un'altra domanda?",
+      "name": "Nome",
+      "email": "Email",
+      "subject": "Oggetto",
+      "selectSubject": "Seleziona un oggetto",
+      "subjects": {
+        "booking": "Prenotazione",
+        "payment": "Pagamento",
+        "cancellation": "Cancellazione",
+        "technical": "Problemi tecnici",
+        "other": "Altro"
+      },
+      "message": "Messaggio",
+      "messagePlaceholder": "Descrivi la tua domanda o problema...",
+      "submit": "Invia messaggio"
+    }
   }
 }

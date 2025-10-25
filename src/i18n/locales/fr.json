@@ -409,5 +409,74 @@
       "deleted": "Méthode de paiement supprimée",
       "defaultSet": "Méthode de paiement par défaut définie"
     }
+  },
+  "helpSupport": {
+    "title": "Aide & Support",
+    "subtitle": "Trouvez des réponses aux questions fréquentes ou contactez-nous",
+    "liveChat": {
+      "title": "Chat en direct",
+      "description": "Discutez directement avec notre service client",
+      "button": "Démarrer le chat"
+    },
+    "phone": {
+      "title": "Appelez-nous",
+      "hours": "Lun-Ven: 9h00-18h00"
+    },
+    "email": {
+      "title": "E-mail",
+      "responseTime": "Nous répondons dans les 2 heures"
+    },
+    "faqTitle": "Questions fréquemment posées",
+    "faq": {
+      "whatIsEmptyLeg": {
+        "question": "Qu'est-ce qu'un vol empty leg ?",
+        "answer": "Un vol empty leg est un vol privé où l'avion retourne à vide vers sa base ou vers la prochaine destination. Ces vols sont proposés à des tarifs réduits car ils voleraient autrement à vide."
+      },
+      "howToBook": {
+        "question": "Comment réserver un vol ?",
+        "answer": "Utilisez notre fonction de recherche pour trouver les vols disponibles. Sélectionnez le vol souhaité et suivez les étapes de réservation. Vous recevrez une confirmation par e-mail une fois votre réservation terminée."
+      },
+      "afterBooking": {
+        "question": "Que se passe-t-il après avoir réservé un empty leg ?",
+        "answer": "Après votre réservation, vous recevrez immédiatement un e-mail de confirmation avec tous les détails du vol et vos billets électroniques. Notre service client vous contactera si nécessaire pour toute exigence particulière. Le jour du départ, vous pouvez vous rendre directement au terminal privé - enregistrez-vous 15-30 minutes avant le départ. Après l'atterrissage, vous recevrez un questionnaire pour partager votre expérience avec nous."
+      },
+      "otherDestinations": {
+        "question": "Les vols vers d'autres continents sont-ils également disponibles ?",
+        "answer": "Actuellement, nous nous concentrons principalement sur l'Europe, l'Amérique du Nord et les EAU. Les vols vers l'Asie, l'Amérique du Sud, l'Afrique et l'Australie sont en développement et seront disponibles dans un proche avenir. Nous élargissons activement nos partenariats dans le monde entier pour vous offrir bientôt ces belles destinations."
+      },
+      "cancellationPolicy": {
+        "question": "Quelle est la politique d'annulation ?",
+        "answer": "Les annulations sont possibles jusqu'à 24 heures avant le départ. L'annulation dans les 24 heures peut entraîner des frais. Veuillez vérifier les conditions spécifiques de votre réservation."
+      },
+      "luggagePolicy": {
+        "question": "Combien de bagages puis-je emporter ?",
+        "answer": "Les règles de bagages varient selon le type d'avion. En général, les bagages à main sont toujours inclus. Pour les bagages enregistrés, nous vous conseillons de nous contacter pour connaître les limites exactes."
+      },
+      "paymentMethods": {
+        "question": "Quels modes de paiement acceptez-vous ?",
+        "answer": "Nous acceptons toutes les principales cartes de crédit (Visa, Mastercard, American Express) et les virements bancaires. Le paiement est traité via une connexion sécurisée."
+      },
+      "flightChanges": {
+        "question": "Puis-je modifier mon vol ?",
+        "answer": "Les modifications sont possibles selon la disponibilité et peuvent entraîner des frais supplémentaires. Veuillez nous contacter pour les modifications."
+      }
+    },
+    "contactForm": {
+      "title": "Une autre question ?",
+      "name": "Nom",
+      "email": "E-mail",
+      "subject": "Sujet",
+      "selectSubject": "Sélectionnez un sujet",
+      "subjects": {
+        "booking": "Réservation",
+        "payment": "Paiement",
+        "cancellation": "Annulation",
+        "technical": "Problèmes techniques",
+        "other": "Autre"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Décrivez votre question ou problème...",
+      "submit": "Envoyer le message"
+    }
   }
 }

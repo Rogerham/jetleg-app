@@ -550,5 +550,74 @@
       "deleted": "Betaalmethode verwijderd",
       "defaultSet": "Standaard betaalmethode ingesteld"
     }
+  },
+  "helpSupport": {
+    "title": "Help & ondersteuning",
+    "subtitle": "Vind antwoorden op veelgestelde vragen of neem contact met ons op",
+    "liveChat": {
+      "title": "Live Chat",
+      "description": "Praat direct met onze klantenservice",
+      "button": "Start chat"
+    },
+    "phone": {
+      "title": "Bel ons",
+      "hours": "Ma-vr: 9:00-18:00"
+    },
+    "email": {
+      "title": "E-mail",
+      "responseTime": "We reageren binnen 2 uur"
+    },
+    "faqTitle": "Veelgestelde vragen",
+    "faq": {
+      "whatIsEmptyLeg": {
+        "question": "Wat is een empty leg vlucht?",
+        "answer": "Een empty leg vlucht is een privévlucht waarbij het vliegtuig leeg terugvliegt naar zijn basis of naar de volgende bestemming. Deze vluchten worden tegen gereduceerde tarieven aangeboden omdat ze anders leeg zouden vliegen."
+      },
+      "howToBook": {
+        "question": "Hoe boek ik een vlucht?",
+        "answer": "Gebruik onze zoekfunctie om beschikbare vluchten te vinden. Selecteer je gewenste vlucht en volg de boekingsstappen. Je ontvangt een bevestiging via e-mail zodra je boeking is voltooid."
+      },
+      "afterBooking": {
+        "question": "Wat gebeurt er nadat ik een empty leg geboekt heb?",
+        "answer": "Na je boeking ontvang je direct een bevestigingsmail met alle vliegdetails en je e-tickets. Onze klantenservice neemt indien nodig contact met je op voor eventuele bijzonderheden. Op de dag van vertrek kun je rechtstreeks naar de private terminal gaan - meld je 15-30 minuten voor vertrek. Na landing ontvang je een vragenlijst om je ervaring met ons te delen."
+      },
+      "otherDestinations": {
+        "question": "Zijn vluchten naar andere werelddelen ook beschikbaar?",
+        "answer": "Momenteel richten we ons voornamelijk op Europa, Noord-Amerika en de VAE. Vluchten naar Azië, Zuid-Amerika, Afrika en Australië zijn in ontwikkeling en zullen in de nabije toekomst beschikbaar komen. We zijn volop bezig met het uitbreiden van onze partnerschappen wereldwijd om jou straks ook deze prachtige bestemmingen te kunnen aanbieden."
+      },
+      "cancellationPolicy": {
+        "question": "Wat is het annuleringsbeleid?",
+        "answer": "Annuleringen zijn mogelijk tot 24 uur voor vertrek. Bij annulering binnen 24 uur kunnen kosten in rekening worden gebracht. Controleer de specifieke voorwaarden van je boeking."
+      },
+      "luggagePolicy": {
+        "question": "Hoeveel bagage mag ik meenemen?",
+        "answer": "De bagageregels variëren per vliegtuigtype. Over het algemeen is handbagage altijd inbegrepen. Voor ruimbagage adviseren we contact op te nemen voor de exacte limieten."
+      },
+      "paymentMethods": {
+        "question": "Welke betaalmethoden accepteren jullie?",
+        "answer": "We accepteren alle grote creditcards (Visa, Mastercard, American Express) en bankoverschrijvingen. Betaling gebeurt via een beveiligde verbinding."
+      },
+      "flightChanges": {
+        "question": "Kan ik mijn vlucht wijzigen?",
+        "answer": "Wijzigingen zijn mogelijk afhankelijk van beschikbaarheid en kunnen extra kosten met zich meebrengen. Neem contact met ons op voor wijzigingen."
+      }
+    },
+    "contactForm": {
+      "title": "Nog een vraag?",
+      "name": "Naam",
+      "email": "E-mail",
+      "subject": "Onderwerp",
+      "selectSubject": "Selecteer een onderwerp",
+      "subjects": {
+        "booking": "Boeking",
+        "payment": "Betaling",
+        "cancellation": "Annulering",
+        "technical": "Technische problemen",
+        "other": "Anders"
+      },
+      "message": "Bericht",
+      "messagePlaceholder": "Beschrijf je vraag of probleem...",
+      "submit": "Bericht verzenden"
+    }
   }
 }
