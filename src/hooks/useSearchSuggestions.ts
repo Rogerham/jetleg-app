@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { extendedWorldwideAirports, type Airport } from '@/data/extendedAirports';
+import { extendedWorldwideAirports, type Airport } from '@/data/airports';
 import { useTranslation } from 'react-i18next';
 
 interface SearchSuggestion {

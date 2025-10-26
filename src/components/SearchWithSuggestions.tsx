@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { MapPin, Search, Users, Plane, ArrowLeftRight, X } from "lucide-react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { extendedWorldwideAirports, type Airport } from "@/data/extendedAirports";
+import { extendedWorldwideAirports, type Airport } from "@/data/airports";
 import PassengerCounter from "./PassengerCounter";
 import EnhancedDatePicker from "./EnhancedDatePicker";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 interface SearchWithSuggestionsProps {
   className?: string;
@@ -73,7 +74,8 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
       [field]: value,
     }));
     if (field === "from" || field === "to") {
-      if (value.length > 0 && value !== "Overal") {
+      const everywhereText = t('search.everywhere');
+      if (value.length > 0 && value !== everywhereText) {
         const filtered = extendedWorldwideAirports.filter((airport) => {
           const searchTerms = [
             airport.name.toLowerCase(),
@@ -114,7 +116,8 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
 
   const handleInputFocus = (field: "from" | "to") => {
     const value = searchData[field];
-    if (value.length > 0 && value !== "Overal") {
+    const everywhereText = t('search.everywhere');
+    if (value.length > 0 && value !== everywhereText) {
       const filtered = extendedWorldwideAirports.filter((airport) => {
         const searchTerms = [
           airport.name.toLowerCase(),
