@@ -235,23 +235,23 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
               />
 
               {activeSuggestion.field === "from" && suggestions.from.length > 0 && (
-                <div className="absolute top-full left-0 right-0 bg-white border border-border rounded-xl mt-1 shadow-lg z-50 max-h-64 overflow-y-auto">
+                <div className="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-xl mt-1 shadow-lg z-50 max-h-64 overflow-y-auto">
                   {suggestions.from.map((airport) => (
                     <button
                       key={airport.code}
                       type="button"
                       onClick={() => handleSuggestionClick("from", airport)}
-                      className="w-full px-4 py-3 text-left border-b border-border last:border-b-0 transition-colors bg-white hover:bg-gray-100"
+                      className="w-full px-4 py-3 text-left border-b border-gray-200 last:border-b-0 transition-colors bg-white hover:bg-gray-100"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center">
-                          <Plane className="h-4 w-4 text-accent" />
+                        <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+                          <Plane className="h-4 w-4 text-blue-600" />
                         </div>
                         <div>
-                          <div className="font-medium text-foreground">
+                          <div className="font-medium text-gray-900">
                             {airport.city} ({airport.code})
                           </div>
-                          <div className="text-sm text-muted-foreground">
+                          <div className="text-sm text-gray-600">
                             {airport.name}, {airport.country}
                           </div>
                         </div>
@@ -282,19 +282,19 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
               />
 
               {activeSuggestion.field === "to" && (
-                <div className="absolute top-full left-0 right-0 bg-white border border-border rounded-xl mt-1 shadow-lg z-50 max-h-64 overflow-y-auto">
+                <div className="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-xl mt-1 shadow-lg z-50 max-h-64 overflow-y-auto">
                   <button
                     type="button"
                     onClick={handleEverywhere}
-                    className="w-full px-4 py-3 text-left hover:bg-muted border-b border-border transition-colors bg-white"
+                    className="w-full px-4 py-3 text-left hover:bg-gray-50 border-b border-gray-200 transition-colors bg-white"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-gradient-to-r from-accent to-[hsl(var(--jetleg-amber-dark))] rounded-lg flex items-center justify-center">
+                      <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-amber-500 rounded-lg flex items-center justify-center">
                         <Search className="h-4 w-4 text-white" />
                       </div>
                       <div>
-                        <div className="font-medium text-foreground">Overal</div>
-                        <div className="text-sm text-muted-foreground">Vind de beste deals naar elke bestemming</div>
+                        <div className="font-medium text-gray-900">Overal</div>
+                        <div className="text-sm text-gray-600">Vind de beste deals naar elke bestemming</div>
                       </div>
                     </div>
                   </button>
@@ -304,17 +304,17 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
                       key={airport.code}
                       type="button"
                       onClick={() => handleSuggestionClick("to", airport)}
-                      className="w-full px-4 py-3 text-left hover:bg-muted border-b border-border last:border-b-0 transition-colors bg-white"
+                      className="w-full px-4 py-3 text-left hover:bg-gray-50 border-b border-gray-200 last:border-b-0 transition-colors bg-white"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center">
-                          <Plane className="h-4 w-4 text-accent" />
+                        <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+                          <Plane className="h-4 w-4 text-blue-600" />
                         </div>
                         <div>
-                          <div className="font-medium text-foreground">
+                          <div className="font-medium text-gray-900">
                             {airport.city} ({airport.code})
                           </div>
-                          <div className="text-sm text-muted-foreground">
+                          <div className="text-sm text-gray-600">
                             {airport.name}, {airport.country}
                           </div>
                         </div>
@@ -400,23 +400,23 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
             />
 
             {activeSuggestion.field === "from" && suggestions.from.length > 0 && (
-              <div className="absolute top-full left-0 right-0 bg-white border border-border rounded-xl mt-1 shadow-lg z-50 max-h-64 overflow-y-auto">
+              <div className="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-xl mt-1 shadow-lg z-50 max-h-64 overflow-y-auto">
                 {suggestions.from.map((airport) => (
                   <button
                     key={airport.code}
                     type="button"
                     onClick={() => handleSuggestionClick("from", airport)}
-                    className="w-full px-4 py-3 text-left border-b border-border last:border-b-0 transition-colors bg-white hover:bg-gray-100"
+                    className="w-full px-4 py-3 text-left border-b border-gray-200 last:border-b-0 transition-colors bg-white hover:bg-gray-100"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center">
-                        <Plane className="h-4 w-4 text-accent" />
+                      <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+                        <Plane className="h-4 w-4 text-blue-600" />
                       </div>
                       <div>
-                        <div className="font-medium text-foreground">
+                        <div className="font-medium text-gray-900">
                           {airport.city} ({airport.code})
                         </div>
-                        <div className="text-sm text-muted-foreground">
+                        <div className="text-sm text-gray-600">
                           {airport.name}, {airport.country}
                         </div>
                       </div>
@@ -456,19 +456,19 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
             />
 
             {activeSuggestion.field === "to" && (
-              <div className="absolute top-full left-0 right-0 bg-white border border-border rounded-xl mt-1 shadow-lg z-50 max-h-64 overflow-y-auto">
+              <div className="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-xl mt-1 shadow-lg z-50 max-h-64 overflow-y-auto">
                 <button
                   type="button"
                   onClick={handleEverywhere}
-                  className="w-full px-4 py-3 text-left hover:bg-muted border-b border-border transition-colors bg-white"
+                  className="w-full px-4 py-3 text-left hover:bg-gray-50 border-b border-gray-200 transition-colors bg-white"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-r from-accent to-[hsl(var(--jetleg-amber-dark))] rounded-lg flex items-center justify-center">
+                    <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-amber-500 rounded-lg flex items-center justify-center">
                       <Search className="h-4 w-4 text-white" />
                     </div>
                     <div>
-                      <div className="font-medium text-foreground">Overal</div>
-                      <div className="text-sm text-muted-foreground">Vind de beste deals naar elke bestemming</div>
+                      <div className="font-medium text-gray-900">Overal</div>
+                      <div className="text-sm text-gray-600">Vind de beste deals naar elke bestemming</div>
                     </div>
                   </div>
                 </button>
@@ -478,17 +478,17 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
                     key={airport.code}
                     type="button"
                     onClick={() => handleSuggestionClick("to", airport)}
-                    className="w-full px-4 py-3 text-left hover:bg-muted border-b border-border last:border-b-0 transition-colors bg-white"
+                    className="w-full px-4 py-3 text-left hover:bg-gray-50 border-b border-gray-200 last:border-b-0 transition-colors bg-white"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center">
-                        <Plane className="h-4 w-4 text-accent" />
+                      <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+                        <Plane className="h-4 w-4 text-blue-600" />
                       </div>
                       <div>
-                        <div className="font-medium text-foreground">
+                        <div className="font-medium text-gray-900">
                           {airport.city} ({airport.code})
                         </div>
-                        <div className="text-sm text-muted-foreground">
+                        <div className="text-sm text-gray-600">
                           {airport.name}, {airport.country}
                         </div>
                       </div>
