@@ -23,8 +23,8 @@ export const getAirportsForLanguage = () => {
   return airportsByLanguage[currentLang] || airportsByLanguage.en;
 };
 
-export const extendedWorldwideAirports = getAirportsForLanguage().worldwide;
-export const popularAirports = getAirportsForLanguage().popular;
+export const extendedWorldwideAirports = () => getAirportsForLanguage().worldwide;
+export const popularAirports = () => getAirportsForLanguage().popular;
 
 // Re-export type
 export type { Airport } from './types';

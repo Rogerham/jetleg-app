@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { MapPin, Search, Users, Plane, ArrowLeftRight, X } from "lucide-react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { extendedWorldwideAirports, type Airport } from "@/data/airports";
+import { getAirportsForLanguage, type Airport } from "@/data/airports";
 import PassengerCounter from "./PassengerCounter";
 import EnhancedDatePicker from "./EnhancedDatePicker";
 import { toast } from "sonner";
@@ -18,6 +18,7 @@ interface SearchWithSuggestionsProps {
 }
 
 const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSuggestionsProps) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
@@ -76,7 +77,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
     if (field === "from" || field === "to") {
       const everywhereText = t('search.everywhere');
       if (value.length > 0 && value !== everywhereText) {
-        const filtered = extendedWorldwideAirports.filter((airport) => {
+        const filtered = getAirportsForLanguage().worldwide.filter((airport) => {
           const searchTerms = [
             airport.name.toLowerCase(),
             airport.city.toLowerCase(),
@@ -118,7 +119,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
     const value = searchData[field];
     const everywhereText = t('search.everywhere');
     if (value.length > 0 && value !== everywhereText) {
-      const filtered = extendedWorldwideAirports.filter((airport) => {
+      const filtered = getAirportsForLanguage().worldwide.filter((airport) => {
         const searchTerms = [
           airport.name.toLowerCase(),
           airport.city.toLowerCase(),

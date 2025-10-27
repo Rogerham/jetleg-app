@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { extendedWorldwideAirports, type Airport } from '@/data/airports';
+import { getAirportsForLanguage, type Airport } from '@/data/airports';
 import { useTranslation } from 'react-i18next';
 
 interface SearchSuggestion {
@@ -72,7 +72,7 @@ export const useSearchSuggestions = (query: string, field: 'from' | 'to') => {
       }
 
       // Add airport matches with enhanced matching
-      const airportMatches = extendedWorldwideAirports
+      const airportMatches = getAirportsForLanguage().worldwide
         .filter(airport => {
           const searchTerms = [
             airport.name.toLowerCase(),
