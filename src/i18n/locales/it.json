@@ -42,20 +42,25 @@
   "search": {
     "from": "Da",
     "fromPlaceholder": "Es. Amsterdam (AMS)",
+    "departureLocation": "Luogo di partenza",
     "to": "A",
     "toPlaceholder": "Es. Parigi (CDG)",
+    "destination": "Destinazione",
     "date": "Data",
     "datePlaceholder": "Seleziona data",
     "passengers": "Passeggeri",
     "searchFlights": "Cerca voli",
+    "searchButton": "Cerca",
+    "clearButton": "Cancella",
     "searching": "Ricerca...",
     "allAirports": "Tutti gli aeroporti",
     "everywhere": "Ovunque",
+    "everywhereDescription": "Trova le migliori offerte per qualsiasi destinazione",
     "popularRoute": "Rotta popolare",
     "validation": {
-      "fromRequired": "Si prega di selezionare un luogo di partenza",
-      "toRequired": "Si prega di selezionare una destinazione",
-      "dateRequired": "Si prega di selezionare una data di partenza",
+      "fromRequired": "Si prega di inserire un luogo di partenza",
+      "toRequired": "Si prega di inserire una destinazione",
+      "dateRequired": "Si prega di selezionare una data",
       "passengersRequired": "Si prega di selezionare il numero di passeggeri"
     },
     "results": {

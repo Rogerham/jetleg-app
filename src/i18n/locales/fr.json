@@ -11,12 +11,27 @@
   },
   "search": {
     "from": "De",
+    "fromPlaceholder": "Ex. Amsterdam (AMS)",
+    "departureLocation": "Lieu de départ",
     "to": "À",
+    "toPlaceholder": "Ex. Paris (CDG)",
+    "destination": "Destination",
     "date": "Date",
+    "datePlaceholder": "Sélectionner la date",
     "passengers": "Passagers",
     "searchFlights": "Rechercher des vols",
+    "searchButton": "Rechercher",
+    "clearButton": "Effacer",
+    "searching": "Recherche...",
     "allAirports": "Tous les aéroports",
     "everywhere": "Partout",
+    "everywhereDescription": "Trouvez les meilleures offres vers n'importe quelle destination",
+    "validation": {
+      "fromRequired": "Veuillez entrer un lieu de départ",
+      "toRequired": "Veuillez entrer une destination",
+      "dateRequired": "Veuillez sélectionner une date",
+      "passengersRequired": "Veuillez sélectionner le nombre de passagers"
+    },
     "results": {
       "title": "Résultats de recherche",
       "noResults": "Aucun vol trouvé",

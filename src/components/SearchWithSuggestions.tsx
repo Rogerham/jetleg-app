@@ -99,7 +99,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
           ...prev,
           [field]: [],
         }));
-        if (value !== "Overal") {
+        if (value !== everywhereText) {
           setActiveSuggestion({
             field: null,
           });
@@ -158,9 +158,10 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
   };
 
   const handleEverywhere = () => {
+    const everywhereText = t('search.everywhere');
     setSearchData((prev) => ({
       ...prev,
-      to: "Overal",
+      to: everywhereText,
     }));
     setActiveSuggestion({
       field: null,
@@ -172,9 +173,10 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
   };
 
   const handleSwapLocations = () => {
+    const everywhereText = t('search.everywhere');
     setSearchData((prev) => ({
       ...prev,
-      from: prev.to === "Overal" ? "" : prev.to,
+      from: prev.to === everywhereText ? "" : prev.to,
       to: prev.from,
     }));
   };
@@ -183,15 +185,15 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
     e.preventDefault();
 
     if (!searchData.from) {
-      toast.error("Vul een vertreklocatie in.");
+      toast.error(t('search.validation.fromRequired'));
       return;
     }
     if (!searchData.to) {
-      toast.error("Vul een bestemming in.");
+      toast.error(t('search.validation.toRequired'));
       return;
     }
     if (!searchData.date) {
-      toast.error("Kies een datum.");
+      toast.error(t('search.validation.dateRequired'));
       return;
     }
 
@@ -225,7 +227,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
             <div className="relative">
               <label htmlFor="from" className="block text-sm font-medium text-white mb-2 flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
-                Van
+                {t('search.from')}
               </label>
               <input
                 ref={fromInputRef}
@@ -234,7 +236,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
                 value={searchData.from}
                 onChange={(e) => handleInputChange("from", e.target.value)}
                 onFocus={() => handleInputFocus("from")}
-                placeholder="Vertrek locatie"
+                placeholder={t('search.departureLocation')}
                 className="input-jetleg h-14 w-full"
               />
 
@@ -272,7 +274,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
             <div className="relative">
               <label htmlFor="to" className="block text-sm font-medium text-white mb-2 flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
-                Naar
+                {t('search.to')}
               </label>
               <input
                 ref={toInputRef}
@@ -281,7 +283,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
                 value={searchData.to}
                 onChange={(e) => handleInputChange("to", e.target.value)}
                 onFocus={() => handleInputFocus("to")}
-                placeholder="Bestemming"
+                placeholder={t('search.destination')}
                 className="input-jetleg h-14 w-full"
               />
 
@@ -297,8 +299,8 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
                         <Search className="h-4 w-4 text-white" />
                       </div>
                       <div>
-                        <div className="font-medium text-gray-900">Overal</div>
-                        <div className="text-sm text-gray-600">Vind de beste deals naar elke bestemming</div>
+                        <div className="font-medium text-gray-900">{t('search.everywhere')}</div>
+                        <div className="text-sm text-gray-600">{t('search.everywhereDescription')}</div>
                       </div>
                     </div>
                   </button>
@@ -336,7 +338,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
             <div className="col-span-2">
               <label className="block text-sm font-medium text-white mb-2 flex items-center gap-2">
                 <Search className="h-4 w-4" />
-                Datum
+                {t('search.date')}
               </label>
               <EnhancedDatePicker
                 value={searchData.date}
@@ -352,7 +354,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
                 className="block text-sm font-medium text-white mb-2 flex items-center gap-2"
               >
                 <Users className="h-4 w-4" />
-                Personen
+                {t('search.passengers')}
               </label>
               <PassengerCounter
                 value={parseInt(searchData.passengers)}
@@ -370,7 +372,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
               className="btn-jetleg-primary h-14 px-6 flex items-center justify-center gap-2 whitespace-nowrap flex-1 text-lg"
             >
               <Search className="h-5 w-5" />
-              Zoeken
+              {t('search.searchButton')}
             </button>
             {hasSearchParams && (
               <button
@@ -379,7 +381,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
                 className="btn-jetleg-outline h-14 px-4 flex items-center justify-center gap-2 whitespace-nowrap"
               >
                 <X className="h-5 w-5" />
-                Wissen
+                {t('search.clearButton')}
               </button>
             )}
           </div>
@@ -391,7 +393,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
           <div className="flex-1 min-w-0 relative">
             <label htmlFor="from-desktop" className="block text-sm font-medium text-white mb-2 flex items-center gap-2">
               <MapPin className="h-4 w-4" />
-              Van
+              {t('search.from')}
             </label>
             <input
               type="text"
@@ -399,7 +401,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
               value={searchData.from}
               onChange={(e) => handleInputChange("from", e.target.value)}
               onFocus={() => handleInputFocus("from")}
-              placeholder="Vertrek locatie"
+              placeholder={t('search.departureLocation')}
               className="input-jetleg h-12"
             />
 
@@ -447,7 +449,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
           <div className="flex-1 min-w-0 relative">
             <label htmlFor="to-desktop" className="block text-sm font-medium text-white mb-2 flex items-center gap-2">
               <MapPin className="h-4 w-4" />
-              Naar
+              {t('search.to')}
             </label>
             <input
               type="text"
@@ -455,7 +457,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
               value={searchData.to}
               onChange={(e) => handleInputChange("to", e.target.value)}
               onFocus={() => handleInputFocus("to")}
-              placeholder="Bestemming"
+              placeholder={t('search.destination')}
               className="input-jetleg h-12"
             />
 
@@ -471,8 +473,8 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
                       <Search className="h-4 w-4 text-white" />
                     </div>
                     <div>
-                      <div className="font-medium text-gray-900">Overal</div>
-                      <div className="text-sm text-gray-600">Vind de beste deals naar elke bestemming</div>
+                      <div className="font-medium text-gray-900">{t('search.everywhere')}</div>
+                      <div className="text-sm text-gray-600">{t('search.everywhereDescription')}</div>
                     </div>
                   </div>
                 </button>
@@ -507,7 +509,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
           <div className="flex-shrink-0 w-48">
             <label className="block text-sm font-medium text-white mb-2 flex items-center gap-2">
               <Search className="h-4 w-4" />
-              Datum
+              {t('search.date')}
             </label>
             <EnhancedDatePicker
               value={searchData.date}
@@ -523,7 +525,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
               className="block text-sm font-medium text-white mb-2 flex items-center gap-2"
             >
               <Users className="h-4 w-4" />
-              Personen
+              {t('search.passengers')}
             </label>
             <PassengerCounter
               value={parseInt(searchData.passengers)}
@@ -540,7 +542,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
               className="btn-jetleg-primary h-12 px-6 flex items-center justify-center gap-2 whitespace-nowrap"
             >
               <Search className="h-5 w-5" />
-              Zoeken
+              {t('search.searchButton')}
             </button>
             {hasSearchParams && (
               <button
@@ -549,7 +551,7 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
                 className="btn-jetleg-outline h-12 px-4 flex items-center justify-center gap-2 whitespace-nowrap"
               >
                 <X className="h-5 w-5" />
-                Wissen
+                {t('search.clearButton')}
               </button>
             )}
           </div>

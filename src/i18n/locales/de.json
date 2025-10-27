@@ -41,20 +41,25 @@
   "search": {
     "from": "Von",
     "fromPlaceholder": "Z.B. Amsterdam (AMS)",
+    "departureLocation": "Abflugort",
     "to": "Nach",
     "toPlaceholder": "Z.B. Paris (CDG)",
+    "destination": "Ziel",
     "date": "Datum",
     "datePlaceholder": "Datum wählen",
     "passengers": "Passagiere",
     "searchFlights": "Flüge suchen",
+    "searchButton": "Suchen",
+    "clearButton": "Löschen",
     "searching": "Suche...",
     "allAirports": "Alle Flughäfen",
     "everywhere": "Überall",
+    "everywhereDescription": "Finden Sie die besten Angebote zu jedem Ziel",
     "popularRoute": "Beliebte Route",
     "validation": {
-      "fromRequired": "Bitte wählen Sie einen Abflugort",
-      "toRequired": "Bitte wählen Sie ein Ziel",
-      "dateRequired": "Bitte wählen Sie ein Abflugdatum",
+      "fromRequired": "Bitte geben Sie einen Abflugort ein",
+      "toRequired": "Bitte geben Sie ein Ziel ein",
+      "dateRequired": "Bitte wählen Sie ein Datum",
       "passengersRequired": "Bitte wählen Sie die Anzahl der Passagiere"
     },
     "results": {

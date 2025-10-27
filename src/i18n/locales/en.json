@@ -42,13 +42,17 @@
   "search": {
     "from": "From",
     "fromPlaceholder": "E.g. Amsterdam (AMS)",
+    "departureLocation": "Departure location",
     "to": "To",
     "toPlaceholder": "E.g. Paris (CDG)",
+    "destination": "Destination",
     "date": "Date",
     "datePlaceholder": "Select date",
     "departure": "Departure",
     "passengers": "Passengers",
     "searchFlights": "Search Flights",
+    "searchButton": "Search",
+    "clearButton": "Clear",
     "searching": "Searching...",
     "flexible": "Flexible",
     "fullyFlexible": "Fully Flexible",
@@ -59,11 +63,12 @@
     "nextMonth": "Next Month",
     "allAirports": "All Airports",
     "everywhere": "Everywhere",
+    "everywhereDescription": "Find the best deals to any destination",
     "popularRoute": "Popular route",
     "validation": {
-      "fromRequired": "Please select a departure location",
-      "toRequired": "Please select a destination",
-      "dateRequired": "Please select a departure date",
+      "fromRequired": "Please enter a departure location",
+      "toRequired": "Please enter a destination",
+      "dateRequired": "Please select a date",
       "passengersRequired": "Please select number of passengers"
     },
     "results": {

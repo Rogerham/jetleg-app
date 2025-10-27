@@ -41,20 +41,25 @@
   "search": {
     "from": "Desde",
     "fromPlaceholder": "Ej. Ámsterdam (AMS)",
+    "departureLocation": "Lugar de salida",
     "to": "Hasta",
     "toPlaceholder": "Ej. París (CDG)",
+    "destination": "Destino",
     "date": "Fecha",
     "datePlaceholder": "Seleccionar fecha",
     "passengers": "Pasajeros",
     "searchFlights": "Buscar vuelos",
+    "searchButton": "Buscar",
+    "clearButton": "Borrar",
     "searching": "Buscando...",
     "allAirports": "Todos los aeropuertos",
     "everywhere": "En todas partes",
+    "everywhereDescription": "Encuentra las mejores ofertas a cualquier destino",
     "popularRoute": "Ruta popular",
     "validation": {
-      "fromRequired": "Por favor seleccione un lugar de salida",
-      "toRequired": "Por favor seleccione un destino",
-      "dateRequired": "Por favor seleccione una fecha de salida",
+      "fromRequired": "Por favor ingrese un lugar de salida",
+      "toRequired": "Por favor ingrese un destino",
+      "dateRequired": "Por favor seleccione una fecha",
       "passengersRequired": "Por favor seleccione el número de pasajeros"
     },
     "results": {
