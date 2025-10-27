@@ -295,8 +295,8 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
                     className="w-full px-4 py-3 text-left hover:bg-gray-50 border-b border-gray-200 transition-colors bg-white"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-amber-500 rounded-lg flex items-center justify-center">
-                        <Search className="h-4 w-4 text-white" />
+                      <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+                        <Search className="h-4 w-4 text-blue-600" />
                       </div>
                       <div>
                         <div className="font-medium text-gray-900">{t('search.everywhere')}</div>
@@ -469,8 +469,8 @@ const SearchWithSuggestions = ({ className = "", initialValues }: SearchWithSugg
                   className="w-full px-4 py-3 text-left hover:bg-gray-50 border-b border-gray-200 transition-colors bg-white"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-amber-500 rounded-lg flex items-center justify-center">
-                      <Search className="h-4 w-4 text-white" />
+                    <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+                      <Search className="h-4 w-4 text-blue-600" />
                     </div>
                     <div>
                       <div className="font-medium text-gray-900">{t('search.everywhere')}</div>
