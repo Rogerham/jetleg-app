@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { extractAirportCode, extractCityName } from '@/utils/flightUtils';
 import type { Flight } from '@/hooks/useFlights';
+import { getDiscountedPriceInfo } from '@/utils/priceUtils';
 
 interface ResponsiveFlightCardProps extends Flight {
   showImage?: boolean;
@@ -43,6 +44,8 @@ const ResponsiveFlightCard = ({
     });
   };
 
+  const { originalPrice, currentPrice, discountPercentage } = getDiscountedPriceInfo(flight.price_per_seat, flight.id);
+
   return (
     <div className="card-jetleg p-4 sm:p-6 hover:scale-105 transition-all duration-200 h-full flex flex-col">
       {/* Mobile Layout - No Image */}
@@ -62,8 +65,13 @@ const ResponsiveFlightCard = ({
             </div>
           </div>
           <div className="text-right">
-            <p className="text-sm text-muted-foreground">{t('deals.from')}</p>
-            <p className="text-2xl font-bold text-foreground">{formatPrice(flight.price_per_seat)}</p>
+            <p className="text-xs text-muted-foreground line-through">{formatPrice(originalPrice)}</p>
+            <div className="flex items-center gap-1 justify-end">
+              <p className="text-2xl font-bold text-foreground">{formatPrice(currentPrice)}</p>
+              <span className="text-[10px] font-semibold px-1.5 py-0.5 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 rounded">
+                {discountPercentage}%
+              </span>
+            </div>
           </div>
         </div>
         
@@ -103,7 +111,13 @@ const ResponsiveFlightCard = ({
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-muted-foreground">{t('deals.from')}</p>
-                <p className="text-2xl font-bold text-foreground">{formatPrice(flight.price_per_seat)}</p>
+                <p className="text-xs text-muted-foreground line-through">{formatPrice(originalPrice)}</p>
+                <div className="flex items-center gap-2 mt-1">
+                  <p className="text-2xl font-bold text-foreground">{formatPrice(currentPrice)}</p>
+                  <span className="text-xs font-semibold px-2 py-0.5 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 rounded">
+                    {discountPercentage}%
+                  </span>
+                </div>
               </div>
               <button 
                 onClick={handleViewDetails}
@@ -178,7 +192,13 @@ const ResponsiveFlightCard = ({
           <div className="flex flex-col items-end justify-between">
             <div className="text-right">
               <p className="text-sm text-muted-foreground">{t('deals.from')}</p>
-              <p className="text-2xl font-bold text-foreground">{formatPrice(flight.price_per_seat)}</p>
+              <p className="text-xs text-muted-foreground line-through">{formatPrice(originalPrice)}</p>
+              <div className="flex items-center gap-2 justify-end mt-1">
+                <p className="text-2xl font-bold text-foreground">{formatPrice(currentPrice)}</p>
+                <span className="text-xs font-semibold px-2 py-0.5 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 rounded">
+                  {discountPercentage}%
+                </span>
+              </div>
             </div>
             <button 
               onClick={handleViewDetails}

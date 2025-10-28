@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { extractAirportCode, extractCityName } from '@/utils/flightUtils';
 import { useCurrency } from '@/contexts/CurrencyContext';
+import { getDiscountedPriceInfo } from '@/utils/priceUtils';
 
 interface ListFlightCardProps {
   id: string;
@@ -76,6 +77,8 @@ const ListFlightCard = ({
     return jets ? `${jets.brand} ${jets.model}` : t('flight.privateJet');
   };
 
+  const { originalPrice, currentPrice, discountPercentage } = getDiscountedPriceInfo(price_per_seat, id);
+
   return (
     <div className="bg-card rounded-lg border border-border p-6 mb-4 hover:shadow-md transition-shadow">
       {/* Flight times and route */}
@@ -127,8 +130,18 @@ const ListFlightCard = ({
 
       {/* Price and details button */}
       <div className="flex items-center justify-between">
-        <div className="text-3xl font-bold text-foreground">
-          {formatPrice(price_per_seat)}
+        <div>
+          <div className="text-sm text-muted-foreground line-through mb-1">
+            {formatPrice(originalPrice)}
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="text-3xl font-bold text-foreground">
+              {formatPrice(currentPrice)}
+            </div>
+            <span className="text-xs font-semibold px-2 py-1 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 rounded">
+              {discountPercentage}% korting
+            </span>
+          </div>
         </div>
         <button 
           onClick={handleViewDetails}

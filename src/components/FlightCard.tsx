@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { extractAirportCode, extractCityName } from '@/utils/flightUtils';
 import { useCurrency } from '@/contexts/CurrencyContext';
 import { Button } from '@/components/ui/button';
+import { getDiscountedPriceInfo } from '@/utils/priceUtils';
 
 interface FlightCardProps {
   id: string;
@@ -94,6 +95,8 @@ const FlightCard = ({
     return jets?.image_url || '/src/assets/jet-interior.jpg';
   };
 
+  const { originalPrice, currentPrice, discountPercentage } = getDiscountedPriceInfo(price_per_seat, id);
+
   return (
     <div 
       className="card-jetleg hover:scale-[1.03] transition-all duration-200 h-full flex flex-col cursor-pointer"
@@ -147,9 +150,17 @@ const FlightCard = ({
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-sm text-muted-foreground">{t('deals.from')}</p>
-              <p className="text-3xl font-bold text-foreground">
-                {formatPrice(price_per_seat)}
+              <p className="text-sm text-muted-foreground line-through">
+                {formatPrice(originalPrice)}
               </p>
+              <div className="flex items-center gap-2 mt-1">
+                <p className="text-3xl font-bold text-foreground">
+                  {formatPrice(currentPrice)}
+                </p>
+                <span className="text-xs font-semibold px-2 py-1 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 rounded">
+                  {discountPercentage}%
+                </span>
+              </div>
             </div>
             <Button 
               variant="default" 

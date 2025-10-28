@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { extractAirportCode, extractCityName } from '@/utils/flightUtils';
 import { useCurrency } from '@/contexts/CurrencyContext';
+import { getDiscountedPriceInfo } from '@/utils/priceUtils';
 
 interface OptimizedFlightCardProps {
   id: string;
@@ -92,7 +93,13 @@ const OptimizedFlightCard = React.memo(({
     return jets?.image_url || '/src/assets/jet-interior.jpg';
   }, [jets?.image_url]);
 
-  const formattedPrice = React.useMemo(() => formatPrice(price_per_seat), [formatPrice, price_per_seat]);
+  const { originalPrice, currentPrice, discountPercentage } = React.useMemo(
+    () => getDiscountedPriceInfo(price_per_seat, id),
+    [price_per_seat, id]
+  );
+  
+  const formattedPrice = React.useMemo(() => formatPrice(currentPrice), [formatPrice, currentPrice]);
+  const formattedOriginalPrice = React.useMemo(() => formatPrice(originalPrice), [formatPrice, originalPrice]);
   const formattedDate = React.useMemo(() => formatDate(departure_time), [formatDate, departure_time]);
   const formattedDepartureTime = React.useMemo(() => formatTime(departure_time), [formatTime, departure_time]);
   const formattedArrivalTime = React.useMemo(() => formatTime(arrival_time), [formatTime, arrival_time]);
@@ -148,9 +155,17 @@ const OptimizedFlightCard = React.memo(({
         
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mt-auto">
           <div>
-            <p className="text-3xl font-bold text-foreground">
-              {formattedPrice}
+            <p className="text-sm text-muted-foreground line-through">
+              {formattedOriginalPrice}
             </p>
+            <div className="flex items-center gap-2 mt-1">
+              <p className="text-3xl font-bold text-foreground">
+                {formattedPrice}
+              </p>
+              <span className="text-xs font-semibold px-2 py-1 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 rounded">
+                {discountPercentage}%
+              </span>
+            </div>
           </div>
           <button 
             onClick={handleViewDetails}

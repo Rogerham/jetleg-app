@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { DestinationDeal } from '@/types/destinationDeals';
 import { getBestFlightForDestination } from '@/utils/destinationUtils';
 import { useCurrency } from '@/contexts/CurrencyContext';
+import { getDiscountedPriceInfo } from '@/utils/priceUtils';
 interface DestinationDealCardProps {
   deal: DestinationDeal;
 }
@@ -60,6 +61,10 @@ const DestinationDealCard = ({
     defaultValue: deal.countryKey
   });
 
+  // Get discount pricing info - use first flight's ID for consistency
+  const firstFlightId = deal.flights[0]?.id || deal.id;
+  const { originalPrice, currentPrice, discountPercentage } = getDiscountedPriceInfo(deal.minPrice, firstFlightId);
+
   return <div className="card-jetleg hover:scale-[1.03] transition-all duration-200 h-full flex flex-col group cursor-pointer" onClick={handleCardClick}>
       <div className="relative overflow-hidden">
         <img src={deal.imageUrl} alt={`${translatedDestination}, ${translatedCountry}`} className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300" onError={handleImageError} />
@@ -94,9 +99,17 @@ const DestinationDealCard = ({
         <div className="flex justify-between items-center mt-auto">
           <div>
             <p className="text-sm text-muted-foreground">{t('destinationDeals.from')}</p>
-            <p className="text-3xl font-bold text-foreground">
-              {formatPrice(deal.minPrice)}
+            <p className="text-xs text-muted-foreground line-through">
+              {formatPrice(originalPrice)}
             </p>
+            <div className="flex items-center gap-2 mt-1">
+              <p className="text-3xl font-bold text-foreground">
+                {formatPrice(currentPrice)}
+              </p>
+              <span className="text-xs font-semibold px-2 py-1 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 rounded">
+                {discountPercentage}%
+              </span>
+            </div>
           </div>
           <button onClick={e => {
           e.stopPropagation(); // Prevent card click when button is clicked

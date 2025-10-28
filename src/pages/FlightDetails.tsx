@@ -8,6 +8,7 @@ import { useFlightById, type Flight } from '@/hooks/useFlights';
 import { useCurrency } from '@/contexts/CurrencyContext';
 import { extractAirportCode, extractCityName } from '@/utils/flightUtils';
 import { useTranslation } from 'react-i18next';
+import { getDiscountedPriceInfo, calculatePricePerPerson } from '@/utils/priceUtils';
 
 const FlightDetails = () => {
   const { flightId } = useParams();
@@ -88,6 +89,11 @@ const FlightDetails = () => {
   const arrivalCity = extractCityName(flight.arrival_airport);
   const arrivalCode = extractAirportCode(flight.arrival_airport);
   const aircraftName = `${flight.jets?.brand} ${flight.jets?.model}`;
+  
+  const { originalPrice, currentPrice, discountPercentage } = getDiscountedPriceInfo(flight.price_per_seat, flight.id);
+  const pricePerPerson = flight.jets?.seating_capacity 
+    ? calculatePricePerPerson(currentPrice, flight.jets.seating_capacity)
+    : null;
 
   return (
     <div className="min-h-screen bg-background">
@@ -291,10 +297,28 @@ const FlightDetails = () => {
           <div className="lg:col-span-1">
             <div className="card-jetleg p-6 sticky top-6">
               <div className="text-center mb-6">
-                <div className="text-3xl font-bold text-accent mb-2">
-                  {formatPrice(flight.price_per_seat)}
+                <div className="text-lg text-muted-foreground line-through mb-2">
+                  {formatPrice(originalPrice)}
                 </div>
-                <div className="text-sm text-muted-foreground">{t('flightDetails.perPerson')}</div>
+                <div className="flex items-center justify-center gap-3 mb-3">
+                  <div className="text-3xl font-bold text-accent">
+                    {formatPrice(currentPrice)}
+                  </div>
+                  <span className="text-sm font-semibold px-3 py-1.5 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 rounded">
+                    {discountPercentage}% korting
+                  </span>
+                </div>
+                <div className="text-xs text-muted-foreground mb-1">
+                  Totale prijs voor de hele jet
+                </div>
+                {pricePerPerson && (
+                  <div className="text-sm text-muted-foreground">
+                    Ca. {formatPrice(pricePerPerson)} per persoon
+                    <div className="text-xs opacity-75">
+                      (gebaseerd op {flight.jets?.seating_capacity} zitplaatsen)
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="space-y-4 mb-6">
