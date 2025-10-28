@@ -1,5 +1,5 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { supabase } from '@/integrations/supabase/client';
 
 interface CurrencyContextType {
   currency: string;
@@ -21,6 +21,26 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const [currency, setCurrencyState] = useState(() => {
     return localStorage.getItem('jetleg-currency') || 'EUR';
   });
+
+  useEffect(() => {
+    // Load currency from database for authenticated users
+    const loadCurrency = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const { data } = await supabase
+          .from('user_settings')
+          .select('currency')
+          .eq('user_id', user.id)
+          .single();
+        
+        if (data?.currency) {
+          setCurrencyState(data.currency);
+        }
+      }
+    };
+    
+    loadCurrency();
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('jetleg-currency', currency);

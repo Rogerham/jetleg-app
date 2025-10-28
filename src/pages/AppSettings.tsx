@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { useCurrency } from '@/contexts/CurrencyContext';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
+import { useUserSettings } from '@/hooks/useUserSettings';
 
 interface AppSettingsProps {
   onBack: () => void;
@@ -14,41 +15,42 @@ interface AppSettingsProps {
 const AppSettings = ({ onBack }: AppSettingsProps) => {
   const { currency, setCurrency } = useCurrency();
   const { i18n, t } = useTranslation();
-  const [notifications, setNotifications] = useState({
-    push: true,
-    email: true,
-    marketing: false,
-    priceAlerts: true
-  });
-  const [darkMode, setDarkMode] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const { settings, updateSettings, isLoading, isUpdating } = useUserSettings();
+  
+  const [notifications, setNotifications] = useState(settings.notifications);
+  const [darkMode, setDarkMode] = useState(settings.dark_mode);
+
+  // Update local state when settings are loaded
+  useEffect(() => {
+    setNotifications(settings.notifications);
+    setDarkMode(settings.dark_mode);
+    
+    // Apply dark mode
+    if (settings.dark_mode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [settings]);
 
   const handleSaveSettings = async () => {
-    setLoading(true);
     try {
-      // Save settings to localStorage or backend
-      localStorage.setItem('notifications', JSON.stringify(notifications));
+      updateSettings({ notifications });
       toast.success(t('appSettings.toast.saved'));
     } catch (error) {
       console.error('Error saving settings:', error);
       toast.error(t('appSettings.toast.error'));
-    } finally {
-      setLoading(false);
     }
   };
 
-  useEffect(() => {
-    // Check if dark mode is enabled
-    const isDark = document.documentElement.classList.contains('dark');
-    setDarkMode(isDark);
-  }, []);
-
   const handleLanguageChange = (langCode: string) => {
     i18n.changeLanguage(langCode);
+    updateSettings({ language: langCode });
   };
 
   const handleCurrencyChange = (newCurrency: string) => {
     setCurrency(newCurrency as 'EUR' | 'USD' | 'GBP');
+    updateSettings({ currency: newCurrency });
   };
 
   const toggleDarkMode = () => {
@@ -61,8 +63,7 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
       document.documentElement.classList.remove('dark');
     }
     
-    // Store preference
-    localStorage.setItem('theme', newDarkMode ? 'dark' : 'light');
+    updateSettings({ dark_mode: newDarkMode });
   };
 
   const languages = [
@@ -211,12 +212,12 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
         <div className="flex justify-center pt-4">
           <Button
             onClick={handleSaveSettings}
-            disabled={loading}
+            disabled={isUpdating || isLoading}
             size="lg"
             className="w-full md:w-auto min-w-[200px] flex items-center gap-2"
           >
             <Save className="h-4 w-4" />
-            {loading ? t('appSettings.saving') : t('appSettings.saveSettings')}
+            {isUpdating ? t('appSettings.saving') : t('appSettings.saveSettings')}
           </Button>
         </div>
       </div>

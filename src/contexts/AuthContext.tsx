@@ -2,6 +2,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
+import i18n from '@/i18n/config';
 
 interface AuthContextType {
   user: User | null;
@@ -45,6 +46,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           setSession(session);
           setUser(session?.user ?? null);
           setLoading(false);
+          
+          // Load user settings when user logs in
+          if (event === 'SIGNED_IN' && session?.user) {
+            setTimeout(() => {
+              loadUserSettings(session.user.id);
+            }, 0);
+          }
         }
       }
     );
@@ -58,6 +66,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setSession(session);
         setUser(session?.user ?? null);
         setLoading(false);
+        
+        // Load user settings if user is already logged in
+        if (session?.user) {
+          setTimeout(() => {
+            loadUserSettings(session.user.id);
+          }, 0);
+        }
       }
     });
 
@@ -69,6 +84,39 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       subscription.unsubscribe();
     };
   }, []);
+
+  const loadUserSettings = async (userId: string) => {
+    try {
+      const { data } = await supabase
+        .from('user_settings')
+        .select('*')
+        .eq('user_id', userId)
+        .single();
+      
+      if (data) {
+        // Apply dark mode
+        if (data.dark_mode) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+        localStorage.setItem('jetleg-dark-mode', String(data.dark_mode));
+        
+        // Apply language
+        if (data.language) {
+          i18n.changeLanguage(data.language);
+          localStorage.setItem('jetleg-language', data.language);
+        }
+        
+        // Apply currency (will be picked up by CurrencyContext)
+        if (data.currency) {
+          localStorage.setItem('jetleg-currency', data.currency);
+        }
+      }
+    } catch (error) {
+      console.error('Error loading user settings:', error);
+    }
+  };
 
   const signUp = async (email: string, password: string, firstName: string, lastName: string, phone: string) => {
     if (process.env.NODE_ENV === 'development') {
