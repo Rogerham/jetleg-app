@@ -149,7 +149,7 @@ const FlightCard = ({
         <div className="mt-auto">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <p className="text-sm text-muted-foreground">{t('deals.from')}</p>
+              <p className="text-sm text-muted-foreground">Originele jet prijs</p>
               <p className="text-sm text-muted-foreground line-through">
                 {formatPrice(originalPrice)}
               </p>

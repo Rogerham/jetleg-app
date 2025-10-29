@@ -98,18 +98,10 @@ const DestinationDealCard = ({
         
         <div className="flex justify-between items-center mt-auto">
           <div>
-            <p className="text-sm text-muted-foreground">{t('destinationDeals.from')}</p>
-            <p className="text-xs text-muted-foreground line-through">
-              {formatPrice(originalPrice)}
+            <p className="text-sm text-muted-foreground">Volledige jet vanaf</p>
+            <p className="text-3xl font-bold text-foreground">
+              {formatPrice(currentPrice)}
             </p>
-            <div className="flex items-center gap-2 mt-1">
-              <p className="text-3xl font-bold text-foreground">
-                {formatPrice(currentPrice)}
-              </p>
-              <span className="text-xs font-semibold px-2 py-1 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 rounded">
-                {discountPercentage}%
-              </span>
-            </div>
           </div>
           <button onClick={e => {
           e.stopPropagation(); // Prevent card click when button is clicked

@@ -131,15 +131,16 @@ const ListFlightCard = ({
       {/* Price and details button */}
       <div className="flex items-center justify-between">
         <div>
-          <div className="text-sm text-muted-foreground line-through mb-1">
+          <p className="text-sm text-muted-foreground">Originele jet prijs</p>
+          <p className="text-sm text-muted-foreground line-through">
             {formatPrice(originalPrice)}
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="text-3xl font-bold text-foreground">
+          </p>
+          <div className="flex items-center gap-2 mt-1">
+            <p className="text-3xl font-bold text-foreground">
               {formatPrice(currentPrice)}
-            </div>
+            </p>
             <span className="text-xs font-semibold px-2 py-1 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 rounded">
-              {discountPercentage}% korting
+              {discountPercentage}%
             </span>
           </div>
         </div>

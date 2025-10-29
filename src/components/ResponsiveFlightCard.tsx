@@ -65,6 +65,7 @@ const ResponsiveFlightCard = ({
             </div>
           </div>
           <div className="text-right">
+            <p className="text-[10px] text-muted-foreground">Originele jet prijs</p>
             <p className="text-xs text-muted-foreground line-through">{formatPrice(originalPrice)}</p>
             <div className="flex items-center gap-1 justify-end">
               <p className="text-2xl font-bold text-foreground">{formatPrice(currentPrice)}</p>
@@ -110,7 +111,7 @@ const ResponsiveFlightCard = ({
             </div>
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">{t('deals.from')}</p>
+                <p className="text-sm text-muted-foreground">Originele jet prijs</p>
                 <p className="text-xs text-muted-foreground line-through">{formatPrice(originalPrice)}</p>
                 <div className="flex items-center gap-2 mt-1">
                   <p className="text-2xl font-bold text-foreground">{formatPrice(currentPrice)}</p>
@@ -191,7 +192,7 @@ const ResponsiveFlightCard = ({
           
           <div className="flex flex-col items-end justify-between">
             <div className="text-right">
-              <p className="text-sm text-muted-foreground">{t('deals.from')}</p>
+              <p className="text-sm text-muted-foreground">Originele jet prijs</p>
               <p className="text-xs text-muted-foreground line-through">{formatPrice(originalPrice)}</p>
               <div className="flex items-center gap-2 justify-end mt-1">
                 <p className="text-2xl font-bold text-foreground">{formatPrice(currentPrice)}</p>

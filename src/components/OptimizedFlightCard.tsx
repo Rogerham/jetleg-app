@@ -155,6 +155,7 @@ const OptimizedFlightCard = React.memo(({
         
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mt-auto">
           <div>
+            <p className="text-sm text-muted-foreground">Originele jet prijs</p>
             <p className="text-sm text-muted-foreground line-through">
               {formattedOriginalPrice}
             </p>
