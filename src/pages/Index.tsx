@@ -20,6 +20,7 @@ import { cn } from '@/lib/utils';
 import { useFlights, type Flight } from '@/hooks/useFlights';
 import { parseDurationToHours } from '@/utils/durationUtils';
 import { useCurrency } from '@/contexts/CurrencyContext';
+import { getDiscountedPriceInfo } from '@/utils/priceUtils';
 
 
 const Index = () => {
@@ -295,8 +296,21 @@ const Index = () => {
                               </div>
                                 <div className="flex items-center justify-between">
                                 <div>
-                                  <div className="text-2xl font-bold text-foreground">{formatPrice(flight.price_per_seat)}</div>
-                                  <div className="text-xs text-muted-foreground">{t('search.results.perPerson')}</div>
+                                  {(() => {
+                                    const { originalPrice, currentPrice, discountPercentage } = getDiscountedPriceInfo(flight.price_per_seat, flight.id);
+                                    return (
+                                      <>
+                                        <div className="text-xs text-muted-foreground">Originele jet prijs</div>
+                                        <div className="text-sm text-muted-foreground line-through">{formatPrice(originalPrice)}</div>
+                                        <div className="flex items-center gap-2 mt-1">
+                                          <div className="text-2xl font-bold text-foreground">{formatPrice(currentPrice)}</div>
+                                          <span className="text-xs font-semibold px-2 py-1 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 rounded">
+                                            {discountPercentage}%
+                                          </span>
+                                        </div>
+                                      </>
+                                    );
+                                  })()}
                                 </div>
                                 <button 
                                   onClick={(e) => {
