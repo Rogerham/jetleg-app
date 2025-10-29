@@ -212,6 +212,45 @@ export type Database = {
         }
         Relationships: []
       }
+      payment_methods: {
+        Row: {
+          card_type: string
+          created_at: string
+          expiry_month: string
+          expiry_year: string
+          holder_name: string
+          id: string
+          is_default: boolean
+          last_four: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          card_type: string
+          created_at?: string
+          expiry_month: string
+          expiry_year: string
+          holder_name: string
+          id?: string
+          is_default?: boolean
+          last_four: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          card_type?: string
+          created_at?: string
+          expiry_month?: string
+          expiry_year?: string
+          holder_name?: string
+          id?: string
+          is_default?: boolean
+          last_four?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string

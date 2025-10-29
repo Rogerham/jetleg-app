@@ -1,6 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
+import { detectBrowserLanguage, detectBrowserCurrency } from '@/utils/localeUtils';
 
 interface UserSettings {
   dark_mode: boolean;
@@ -14,10 +15,11 @@ interface UserSettings {
   };
 }
 
+// Use OS/browser defaults
 const DEFAULT_SETTINGS: UserSettings = {
   dark_mode: false,
-  language: 'nl',
-  currency: 'EUR',
+  language: detectBrowserLanguage(),
+  currency: detectBrowserCurrency(),
   notifications: {
     push: true,
     email: true,
@@ -35,11 +37,11 @@ export const useUserSettings = () => {
     queryKey: ['userSettings', user?.id],
     queryFn: async () => {
       if (!user) {
-        // Fallback to localStorage for non-authenticated users
+        // Fallback to localStorage for non-authenticated users, with OS defaults
         const localSettings = {
           dark_mode: localStorage.getItem('jetleg-dark-mode') === 'true',
-          language: localStorage.getItem('jetleg-language') || 'nl',
-          currency: localStorage.getItem('jetleg-currency') || 'EUR',
+          language: localStorage.getItem('jetleg-language') || detectBrowserLanguage(),
+          currency: localStorage.getItem('jetleg-currency') || detectBrowserCurrency(),
           notifications: DEFAULT_SETTINGS.notifications,
         };
         return localSettings;
@@ -55,12 +57,12 @@ export const useUserSettings = () => {
         throw error;
       }
 
-      // If no settings exist, create them with defaults from localStorage
+      // If no settings exist, create them with OS defaults
       if (!data) {
         const localSettings = {
           dark_mode: localStorage.getItem('jetleg-dark-mode') === 'true',
-          language: localStorage.getItem('jetleg-language') || 'nl',
-          currency: localStorage.getItem('jetleg-currency') || 'EUR',
+          language: localStorage.getItem('jetleg-language') || detectBrowserLanguage(),
+          currency: localStorage.getItem('jetleg-currency') || detectBrowserCurrency(),
           notifications: DEFAULT_SETTINGS.notifications,
         };
 

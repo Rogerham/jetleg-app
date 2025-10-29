@@ -7,6 +7,7 @@ import { useCurrency } from '@/contexts/CurrencyContext';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { useUserSettings } from '@/hooks/useUserSettings';
+import { detectBrowserLanguage, detectBrowserCurrency } from '@/utils/localeUtils';
 
 interface AppSettingsProps {
   onBack: () => void;
@@ -147,9 +148,19 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
           
           <Select value={i18n.language} onValueChange={handleLanguageChange}>
             <SelectTrigger className="w-full">
-              <SelectValue />
+              <SelectValue>
+                {(() => {
+                  const currentLang = languages.find(lang => lang.code === i18n.language);
+                  return currentLang ? (
+                    <div className="flex items-center gap-2">
+                      <span>{currentLang.flag}</span>
+                      <span>{currentLang.name}</span>
+                    </div>
+                  ) : null;
+                })()}
+              </SelectValue>
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="z-50 bg-popover">
               {languages.map((lang) => (
                 <SelectItem key={lang.code} value={lang.code}>
                   <div className="flex items-center gap-2">
@@ -171,9 +182,19 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
           
           <Select value={currency} onValueChange={handleCurrencyChange}>
             <SelectTrigger className="w-full">
-              <SelectValue />
+              <SelectValue>
+                {(() => {
+                  const currentCurr = currencies.find(curr => curr.code === currency);
+                  return currentCurr ? (
+                    <div className="flex items-center gap-2">
+                      <span>{currentCurr.symbol}</span>
+                      <span>{currentCurr.name} ({currentCurr.code})</span>
+                    </div>
+                  ) : null;
+                })()}
+              </SelectValue>
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="z-50 bg-popover">
               {currencies.map((curr) => (
                 <SelectItem key={curr.code} value={curr.code}>
                   <div className="flex items-center gap-2">

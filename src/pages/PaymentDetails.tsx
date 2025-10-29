@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CreditCard, Plus, Trash2, Shield, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
+import { supabase } from '@/integrations/supabase/client';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface PaymentDetailsProps {
   onBack: () => void;
@@ -21,17 +23,9 @@ interface PaymentMethod {
 
 const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
   const { t } = useTranslation();
-  const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([
-    {
-      id: '1',
-      type: 'visa',
-      lastFour: '4242',
-      expiryMonth: '12',
-      expiryYear: '26',
-      holderName: 'Jan Janssen',
-      isDefault: true
-    }
-  ]);
+  const { user } = useAuth();
+  const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   
   const [showAddCard, setShowAddCard] = useState(false);
   const [newCard, setNewCard] = useState({
@@ -41,6 +35,43 @@ const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
     cvv: '',
     holderName: ''
   });
+
+  // Fetch payment methods from database
+  useEffect(() => {
+    const fetchPaymentMethods = async () => {
+      if (!user) return;
+      
+      setIsLoading(true);
+      try {
+        const { data, error } = await supabase
+          .from('payment_methods')
+          .select('*')
+          .eq('user_id', user.id)
+          .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        const formattedMethods: PaymentMethod[] = (data || []).map((method: any) => ({
+          id: method.id,
+          type: method.card_type as 'visa' | 'mastercard' | 'amex',
+          lastFour: method.last_four,
+          expiryMonth: method.expiry_month,
+          expiryYear: method.expiry_year,
+          holderName: method.holder_name,
+          isDefault: method.is_default,
+        }));
+
+        setPaymentMethods(formattedMethods);
+      } catch (error) {
+        console.error('Error fetching payment methods:', error);
+        toast.error(t('paymentDetails.toast.fetchError'));
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPaymentMethods();
+  }, [user]);
 
   const getCardIcon = (type: string) => {
     const iconClass = "h-8 w-8";
@@ -67,7 +98,12 @@ const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
     return value.replace(/\s/g, '').replace(/(.{4})/g, '$1 ').trim();
   };
 
-  const handleAddCard = () => {
+  const handleAddCard = async () => {
+    if (!user) {
+      toast.error(t('paymentDetails.toast.loginRequired'));
+      return;
+    }
+
     if (!newCard.cardNumber || !newCard.expiryMonth || !newCard.expiryYear || !newCard.cvv || !newCard.holderName) {
       toast.error(t('paymentDetails.toast.fillAll'));
       return;
@@ -79,32 +115,90 @@ const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
       return;
     }
 
-    const newPaymentMethod: PaymentMethod = {
-      id: Date.now().toString(),
-      type: detectCardType(cleanCardNumber),
-      lastFour: cleanCardNumber.slice(-4),
-      expiryMonth: newCard.expiryMonth,
-      expiryYear: newCard.expiryYear,
-      holderName: newCard.holderName,
-      isDefault: paymentMethods.length === 0
-    };
+    try {
+      const { data, error } = await supabase
+        .from('payment_methods')
+        .insert({
+          user_id: user.id,
+          card_type: detectCardType(cleanCardNumber),
+          last_four: cleanCardNumber.slice(-4),
+          expiry_month: newCard.expiryMonth,
+          expiry_year: newCard.expiryYear,
+          holder_name: newCard.holderName,
+          is_default: paymentMethods.length === 0,
+        })
+        .select()
+        .single();
 
-    setPaymentMethods(prev => [...prev, newPaymentMethod]);
-    setNewCard({ cardNumber: '', expiryMonth: '', expiryYear: '', cvv: '', holderName: '' });
-    setShowAddCard(false);
-    toast.success(t('paymentDetails.toast.added'));
+      if (error) throw error;
+
+      const newPaymentMethod: PaymentMethod = {
+        id: data.id,
+        type: data.card_type as 'visa' | 'mastercard' | 'amex',
+        lastFour: data.last_four,
+        expiryMonth: data.expiry_month,
+        expiryYear: data.expiry_year,
+        holderName: data.holder_name,
+        isDefault: data.is_default,
+      };
+
+      setPaymentMethods(prev => [...prev, newPaymentMethod]);
+      setNewCard({ cardNumber: '', expiryMonth: '', expiryYear: '', cvv: '', holderName: '' });
+      setShowAddCard(false);
+      toast.success(t('paymentDetails.toast.added'));
+    } catch (error) {
+      console.error('Error adding payment method:', error);
+      toast.error(t('paymentDetails.toast.addError'));
+    }
   };
 
-  const handleDeleteCard = (id: string) => {
-    setPaymentMethods(prev => prev.filter(method => method.id !== id));
-    toast.success(t('paymentDetails.toast.deleted'));
+  const handleDeleteCard = async (id: string) => {
+    if (!user) return;
+
+    try {
+      const { error } = await supabase
+        .from('payment_methods')
+        .delete()
+        .eq('id', id)
+        .eq('user_id', user.id);
+
+      if (error) throw error;
+
+      setPaymentMethods(prev => prev.filter(method => method.id !== id));
+      toast.success(t('paymentDetails.toast.deleted'));
+    } catch (error) {
+      console.error('Error deleting payment method:', error);
+      toast.error(t('paymentDetails.toast.deleteError'));
+    }
   };
 
-  const setDefaultCard = (id: string) => {
-    setPaymentMethods(prev => 
-      prev.map(method => ({ ...method, isDefault: method.id === id }))
-    );
-    toast.success(t('paymentDetails.toast.defaultSet'));
+  const setDefaultCard = async (id: string) => {
+    if (!user) return;
+
+    try {
+      // First, set all cards to non-default
+      await supabase
+        .from('payment_methods')
+        .update({ is_default: false })
+        .eq('user_id', user.id);
+
+      // Then set the selected card as default
+      const { error } = await supabase
+        .from('payment_methods')
+        .update({ is_default: true })
+        .eq('id', id)
+        .eq('user_id', user.id);
+
+      if (error) throw error;
+
+      setPaymentMethods(prev => 
+        prev.map(method => ({ ...method, isDefault: method.id === id }))
+      );
+      toast.success(t('paymentDetails.toast.defaultSet'));
+    } catch (error) {
+      console.error('Error setting default payment method:', error);
+      toast.error(t('paymentDetails.toast.defaultError'));
+    }
   };
 
   return (
@@ -132,8 +226,24 @@ const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
         </div>
 
         {/* Saved Payment Methods */}
-        <div className="space-y-4 mb-6">
-          {paymentMethods.map((method) => (
+        {isLoading ? (
+          <div className="text-center py-8">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto mb-4"></div>
+            <p className="text-muted-foreground">Betaalgegevens laden...</p>
+          </div>
+        ) : paymentMethods.length === 0 ? (
+          <div className="card-jetleg p-8 text-center mb-6">
+            <CreditCard className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+            <h3 className="text-lg font-medium text-foreground mb-2">
+              {t('paymentDetails.noMethods')}
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              {t('paymentDetails.addFirstMethod')}
+            </p>
+          </div>
+        ) : (
+          <div className="space-y-4 mb-6">
+            {paymentMethods.map((method) => (
             <div key={method.id} className="card-jetleg p-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
@@ -174,8 +284,9 @@ const PaymentDetails = ({ onBack }: PaymentDetailsProps) => {
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
 
         {/* Add New Card */}
         <Dialog open={showAddCard} onOpenChange={setShowAddCard}>
