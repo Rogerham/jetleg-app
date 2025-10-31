@@ -4,6 +4,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
+import { PasswordStrengthMeter } from '@/components/PasswordStrengthMeter';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -372,6 +373,7 @@ const EditProfile = ({ onBack }: EditProfileProps) => {
                     {showNewPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
                 </div>
+                <PasswordStrengthMeter password={passwordData.newPassword} />
               </div>
 
               <div>
