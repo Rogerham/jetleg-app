@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Bell, Globe, DollarSign, Moon, Sun, Smartphone, Save } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+
 import { Button } from '@/components/ui/button';
 import { useCurrency } from '@/contexts/CurrencyContext';
 import { useTranslation } from 'react-i18next';
@@ -146,31 +146,17 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
             {t('appSettings.language')}
           </h2>
           
-          <Select value={i18n.language} onValueChange={handleLanguageChange}>
-            <SelectTrigger className="w-full">
-              <SelectValue>
-                {(() => {
-                  const currentLang = languages.find(lang => lang.code === i18n.language);
-                  return currentLang ? (
-                    <div className="flex items-center gap-2">
-                      <span>{currentLang.flag}</span>
-                      <span>{currentLang.name}</span>
-                    </div>
-                  ) : null;
-                })()}
-              </SelectValue>
-            </SelectTrigger>
-            <SelectContent className="z-50 bg-popover">
-              {languages.map((lang) => (
-                <SelectItem key={lang.code} value={lang.code}>
-                  <div className="flex items-center gap-2">
-                    <span>{lang.flag}</span>
-                    <span>{lang.name}</span>
-                  </div>
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <select 
+            value={i18n.language} 
+            onChange={(e) => handleLanguageChange(e.target.value)}
+            className="w-full px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-accent/20 focus:border-accent"
+          >
+            {languages.map((lang) => (
+              <option key={lang.code} value={lang.code}>
+                {lang.flag} {lang.name}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Currency */}
@@ -180,31 +166,17 @@ const AppSettings = ({ onBack }: AppSettingsProps) => {
             {t('appSettings.currency')}
           </h2>
           
-          <Select value={currency} onValueChange={handleCurrencyChange}>
-            <SelectTrigger className="w-full">
-              <SelectValue>
-                {(() => {
-                  const currentCurr = currencies.find(curr => curr.code === currency);
-                  return currentCurr ? (
-                    <div className="flex items-center gap-2">
-                      <span>{currentCurr.symbol}</span>
-                      <span>{currentCurr.name} ({currentCurr.code})</span>
-                    </div>
-                  ) : null;
-                })()}
-              </SelectValue>
-            </SelectTrigger>
-            <SelectContent className="z-50 bg-popover">
-              {currencies.map((curr) => (
-                <SelectItem key={curr.code} value={curr.code}>
-                  <div className="flex items-center gap-2">
-                    <span>{curr.symbol}</span>
-                    <span>{curr.name} ({curr.code})</span>
-                  </div>
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <select 
+            value={currency} 
+            onChange={(e) => handleCurrencyChange(e.target.value)}
+            className="w-full px-3 py-2 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-accent/20 focus:border-accent"
+          >
+            {currencies.map((curr) => (
+              <option key={curr.code} value={curr.code}>
+                {curr.symbol} {curr.name} ({curr.code})
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Appearance */}
