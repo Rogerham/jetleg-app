@@ -1,6 +1,7 @@
 import React from 'react';
 import { Progress } from '@/components/ui/progress';
 import { CheckCircle2, XCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface PasswordStrengthMeterProps {
   password: string;
@@ -29,32 +30,34 @@ const calculateStrength = (criteria: PasswordCriteria): number => {
   return (metCriteria / 5) * 100;
 };
 
-const getStrengthLevel = (strength: number): { level: string; color: string } => {
-  if (strength < 40) return { level: 'Zwak', color: 'bg-destructive' };
-  if (strength < 80) return { level: 'Gemiddeld', color: 'bg-amber-500' };
-  return { level: 'Sterk', color: 'bg-emerald-500' };
+const getStrengthLevel = (strength: number, t: any): { level: string; color: string } => {
+  if (strength < 40) return { level: t('passwordStrength.weak'), color: 'bg-destructive' };
+  if (strength < 80) return { level: t('passwordStrength.medium'), color: 'bg-amber-500' };
+  return { level: t('passwordStrength.strong'), color: 'bg-emerald-500' };
 };
 
 export const PasswordStrengthMeter: React.FC<PasswordStrengthMeterProps> = ({ password }) => {
+  const { t } = useTranslation();
+  
   if (!password) return null;
 
   const criteria = checkPasswordCriteria(password);
   const strength = calculateStrength(criteria);
-  const { level, color } = getStrengthLevel(strength);
+  const { level, color } = getStrengthLevel(strength, t);
 
   const criteriaList = [
-    { key: 'length', text: 'Minimaal 8 karakters', met: criteria.length },
-    { key: 'uppercase', text: 'Hoofdletter', met: criteria.uppercase },
-    { key: 'lowercase', text: 'Kleine letter', met: criteria.lowercase },
-    { key: 'number', text: 'Cijfer', met: criteria.number },
-    { key: 'special', text: 'Speciaal teken (!@#$%^&*)', met: criteria.special },
+    { key: 'length', text: t('passwordStrength.minLength'), met: criteria.length },
+    { key: 'uppercase', text: t('passwordStrength.uppercase'), met: criteria.uppercase },
+    { key: 'lowercase', text: t('passwordStrength.lowercase'), met: criteria.lowercase },
+    { key: 'number', text: t('passwordStrength.number'), met: criteria.number },
+    { key: 'special', text: t('passwordStrength.special'), met: criteria.special },
   ];
 
   return (
     <div className="mt-3 space-y-3">
       <div className="space-y-2">
         <div className="flex justify-between items-center">
-          <span className="text-sm font-medium text-foreground">Wachtwoord sterkte:</span>
+          <span className="text-sm font-medium text-foreground">{t('passwordStrength.label')}</span>
           <span className="text-sm font-medium text-foreground">{level}</span>
         </div>
         <div className="relative w-full h-2 bg-muted rounded-full overflow-hidden">

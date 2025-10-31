@@ -493,5 +493,16 @@
       "messagePlaceholder": "Décrivez votre question ou problème...",
       "submit": "Envoyer le message"
     }
+  },
+  "passwordStrength": {
+    "label": "Force du mot de passe :",
+    "weak": "Faible",
+    "medium": "Moyen",
+    "strong": "Fort",
+    "minLength": "Minimum 8 caractères",
+    "uppercase": "Lettre majuscule",
+    "lowercase": "Lettre minuscule",
+    "number": "Chiffre",
+    "special": "Caractère spécial (!@#$%^&*)"
   }
 }

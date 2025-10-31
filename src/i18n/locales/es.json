@@ -977,5 +977,16 @@
       "messagePlaceholder": "Describa su pregunta o problema...",
       "submit": "Enviar mensaje"
     }
+  },
+  "passwordStrength": {
+    "label": "Fuerza de contraseña:",
+    "weak": "Débil",
+    "medium": "Media",
+    "strong": "Fuerte",
+    "minLength": "Mínimo 8 caracteres",
+    "uppercase": "Letra mayúscula",
+    "lowercase": "Letra minúscula",
+    "number": "Número",
+    "special": "Carácter especial (!@#$%^&*)"
   }
 }

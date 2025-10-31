@@ -1064,5 +1064,16 @@
       "messagePlaceholder": "Describe your question or problem...",
       "submit": "Send message"
     }
+  },
+  "passwordStrength": {
+    "label": "Password strength:",
+    "weak": "Weak",
+    "medium": "Medium",
+    "strong": "Strong",
+    "minLength": "Minimum 8 characters",
+    "uppercase": "Uppercase letter",
+    "lowercase": "Lowercase letter",
+    "number": "Number",
+    "special": "Special character (!@#$%^&*)"
   }
 }

@@ -1042,5 +1042,16 @@
       "messagePlaceholder": "Descrivi la tua domanda o problema...",
       "submit": "Invia messaggio"
     }
+  },
+  "passwordStrength": {
+    "label": "Forza password:",
+    "weak": "Debole",
+    "medium": "Media",
+    "strong": "Forte",
+    "minLength": "Minimo 8 caratteri",
+    "uppercase": "Lettera maiuscola",
+    "lowercase": "Lettera minuscola",
+    "number": "Numero",
+    "special": "Carattere speciale (!@#$%^&*)"
   }
 }

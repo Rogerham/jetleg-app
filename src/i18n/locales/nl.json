@@ -624,5 +624,16 @@
       "messagePlaceholder": "Beschrijf je vraag of probleem...",
       "submit": "Bericht verzenden"
     }
+  },
+  "passwordStrength": {
+    "label": "Wachtwoord sterkte:",
+    "weak": "Zwak",
+    "medium": "Gemiddeld",
+    "strong": "Sterk",
+    "minLength": "Minimaal 8 karakters",
+    "uppercase": "Hoofdletter",
+    "lowercase": "Kleine letter",
+    "number": "Cijfer",
+    "special": "Speciaal teken (!@#$%^&*)"
   }
 }

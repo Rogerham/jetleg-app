@@ -971,5 +971,16 @@
       "messagePlaceholder": "Beschreiben Sie Ihre Frage oder Ihr Problem...",
       "submit": "Nachricht senden"
     }
+  },
+  "passwordStrength": {
+    "label": "Passwortstärke:",
+    "weak": "Schwach",
+    "medium": "Mittel",
+    "strong": "Stark",
+    "minLength": "Mindestens 8 Zeichen",
+    "uppercase": "Großbuchstabe",
+    "lowercase": "Kleinbuchstabe",
+    "number": "Zahl",
+    "special": "Sonderzeichen (!@#$%^&*)"
   }
 }
