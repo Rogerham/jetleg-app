@@ -330,6 +330,91 @@
     "confirmed": "Réservation confirmée !",
     "confirmedDesc": "Vous recevrez une confirmation par e-mail"
   },
+  "profile": {
+    "title": "Mon Profil",
+    "welcome": "Bienvenue",
+    "logout": "Déconnexion",
+    "backToProfile": "Retour au profil",
+    "logoutSuccess": "Déconnexion réussie",
+    "logoutError": "Erreur lors de la déconnexion",
+    "loading": "Chargement du profil...",
+    "tiles": {
+      "bookings": "Mes réservations",
+      "bookingsSubtitle": "Consultez vos vols réservés",
+      "editProfile": "Modifier le profil",
+      "editProfileSubtitle": "Modifiez vos informations personnelles",
+      "settings": "Paramètres de l'application",
+      "settingsSubtitle": "Notifications, langue et devise",
+      "payment": "Détails de paiement",
+      "paymentSubtitle": "Gérez vos méthodes de paiement enregistrées",
+      "help": "Aide & support",
+      "helpSubtitle": "Questions fréquentes et contact"
+    },
+    "login": {
+      "title": "Bon retour",
+      "subtitle": "Connectez-vous pour accéder à votre profil",
+      "email": "Adresse e-mail",
+      "password": "Mot de passe",
+      "rememberMe": "Se souvenir de moi",
+      "forgotPassword": "Mot de passe oublié ?",
+      "submit": "Se connecter",
+      "submitting": "Connexion en cours...",
+      "invalidCredentials": "Identifiants invalides. Vérifiez votre e-mail et mot de passe.",
+      "emailNotConfirmed": "Confirmez votre adresse e-mail avant de vous connecter. Vérifiez votre boîte de réception.",
+      "error": "Une erreur s'est produite lors de la connexion. Réessayez.",
+      "unexpectedError": "Une erreur inattendue s'est produite. Réessayez.",
+      "success": "Connexion réussie !"
+    },
+    "register": {
+      "title": "Créer un compte",
+      "subtitle": "Créez un compte pour commencer",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "Adresse e-mail",
+      "phone": "Numéro de téléphone",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "submit": "Créer un compte",
+      "submitting": "Création du compte...",
+      "passwordMismatch": "Les mots de passe ne correspondent pas.",
+      "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères.",
+      "userExists": "Un compte existe déjà avec cette adresse e-mail.",
+      "error": "Une erreur s'est produite lors de l'inscription. Réessayez.",
+      "success": "Compte créé ! Vérifiez votre e-mail pour confirmer votre compte."
+    },
+    "tabs": {
+      "login": "Se connecter",
+      "register": "S'inscrire"
+    }
+  },
+  "myBookings": {
+    "title": "Mes Réservations",
+    "subtitle": "Consultez et gérez tous vos vols",
+    "backToProfile": "Retour au profil",
+    "tabs": {
+      "upcoming": "Vols à venir",
+      "past": "Vols passés",
+      "all": "Toutes les réservations"
+    },
+    "status": {
+      "confirmed": "Confirmé",
+      "pending": "En attente",
+      "cancelled": "Annulé",
+      "completed": "Terminé"
+    },
+    "bookingReference": "Référence de réservation",
+    "totalPaid": "total payé",
+    "viewDetails": "Voir les détails",
+    "downloadTicket": "Télécharger le billet",
+    "cancel": "Annuler",
+    "aircraft": "Avion",
+    "bookedOn": "Réservé le",
+    "noBookings": "Aucune réservation trouvée",
+    "noUpcoming": "Vous n'avez pas encore de vols à venir.",
+    "noPast": "Vous n'avez pas encore de vols passés.",
+    "noBookingsYet": "Vous n'avez pas encore fait de réservations.",
+    "findFlight": "Trouvez votre prochain vol"
+  },
   "editProfile": {
     "title": "Informations personnelles",
     "firstName": "Prénom",
