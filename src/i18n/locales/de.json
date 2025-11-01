@@ -984,8 +984,9 @@
     "special": "Sonderzeichen (!@#$%^&*)"
   },
   "flight": {
-    "originalPrice": "Original Jet-Preis",
+    "originalPrice": "Ursprünglicher Jet-Preis",
     "privateJet": "Privatjet",
+    "fullJetFrom": "Vollständiger Jet ab",
     "date": "Datum:",
     "departure": "Abflug:",
     "available": "Verfügbar:",

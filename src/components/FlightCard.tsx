@@ -80,9 +80,6 @@ const FlightCard = ({
   };
 
   const getRouteDescription = () => {
-    if (jets?.description) {
-      return jets.description;
-    }
     return jets ? `${operator} - ${jets.brand} ${jets.model}` : `${operator} - ${t('flight.privateJet')}`;
   };
 

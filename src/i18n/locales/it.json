@@ -1057,6 +1057,7 @@
   "flight": {
     "originalPrice": "Prezzo originale del jet",
     "privateJet": "Jet privato",
+    "fullJetFrom": "Jet completo da",
     "date": "Data:",
     "departure": "Partenza:",
     "available": "Disponibile:",

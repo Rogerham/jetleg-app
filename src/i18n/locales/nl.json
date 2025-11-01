@@ -639,6 +639,7 @@
   "flight": {
     "originalPrice": "Originele jet prijs",
     "privateJet": "Privé jet",
+    "fullJetFrom": "Volledige jet vanaf",
     "date": "Datum:",
     "departure": "Vertrek:",
     "available": "Beschikbaar:",

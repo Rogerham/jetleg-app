@@ -98,7 +98,7 @@ const DestinationDealCard = ({
         
         <div className="flex justify-between items-center mt-auto">
           <div>
-            <p className="text-sm text-muted-foreground">Volledige jet vanaf</p>
+            <p className="text-sm text-muted-foreground">{t('flight.fullJetFrom')}</p>
             <p className="text-3xl font-bold text-foreground">
               {formatPrice(currentPrice)}
             </p>
