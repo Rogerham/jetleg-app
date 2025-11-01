@@ -14,10 +14,10 @@ const ToastViewport = React.forwardRef<
   <ToastPrimitives.Viewport
     ref={ref}
     className={cn(
-      "fixed z-[100] w-full flex flex-col-reverse p-4 bottom-16 right-0 top-auto flex-col md:max-w-[420px]",
+      "pointer-events-none fixed z-[100] right-0 w-full flex flex-col-reverse p-4 md:max-w-[420px]",
       className
     )}
-    style={{ marginBottom: "env(safe-area-inset-bottom)" }}
+    style={{ bottom: "calc(4rem + max(10px, env(safe-area-inset-bottom)))" }}
     {...props}
   />
 ))
