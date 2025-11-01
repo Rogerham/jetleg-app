@@ -1,5 +1,5 @@
 
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -15,17 +15,45 @@ import "./i18n/config";
 
 const queryClient = new QueryClient();
 
-const App = () => (
+const App = () => {
+  const [toastOffset, setToastOffset] = useState(64);
+
+  useEffect(() => {
+    const updateToastOffset = () => {
+      const navHeight = getComputedStyle(document.documentElement)
+        .getPropertyValue("--bottom-nav-height");
+      if (navHeight) {
+        const height = parseInt(navHeight, 10);
+        if (!isNaN(height) && height > 0) {
+          setToastOffset(height);
+        }
+      }
+    };
+
+    // Custom event listener for navigation height changes
+    window.addEventListener("bottom-nav-height-changed", updateToastOffset);
+
+    // Initial update with a small delay to ensure BottomNavigation has mounted and measured its height
+    const MOUNT_DELAY_MS = 100;
+    const timeoutId = setTimeout(updateToastOffset, MOUNT_DELAY_MS);
+
+    return () => {
+      window.removeEventListener("bottom-nav-height-changed", updateToastOffset);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  return (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
       <CurrencyProvider>
         <TooltipProvider>
           <Toaster 
             position="bottom-center" 
-            offset={220}
+            offset={toastOffset}
             toastOptions={{
               classNames: {
-                toast: "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg [&]:z-[9998] mb-6",
+                toast: "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg [&]:z-[9998]",
                 description: "group-[.toast]:text-muted-foreground",
                 actionButton: "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
                 cancelButton: "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
@@ -56,6 +84,7 @@ const App = () => (
       </CurrencyProvider>
     </AuthProvider>
   </QueryClientProvider>
-);
+  );
+};
 
 export default App;

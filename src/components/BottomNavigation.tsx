@@ -2,10 +2,12 @@ import { Home, Search, DollarSign, User, Plane, Heart } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { createPortal } from "react-dom";
+import { useEffect, useRef } from "react";
 
 const BottomNavigation = () => {
   const location = useLocation();
   const { t } = useTranslation();
+  const navRef = useRef<HTMLElement>(null);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -32,8 +34,33 @@ const BottomNavigation = () => {
     },
   ];
 
+  // Measure and set the navigation height as a CSS variable
+  useEffect(() => {
+    const updateNavHeight = () => {
+      if (navRef.current) {
+        const height = navRef.current.offsetHeight;
+        document.documentElement.style.setProperty("--bottom-nav-height", `${height}px`);
+        // Dispatch custom event to notify App component
+        window.dispatchEvent(new CustomEvent("bottom-nav-height-changed"));
+      }
+    };
+
+    // Update on mount
+    updateNavHeight();
+
+    // Update on resize and orientation change
+    window.addEventListener("resize", updateNavHeight);
+    window.addEventListener("orientationchange", updateNavHeight);
+
+    return () => {
+      window.removeEventListener("resize", updateNavHeight);
+      window.removeEventListener("orientationchange", updateNavHeight);
+    };
+  }, []);
+
   const navigationContent = (
     <nav
+      ref={navRef}
       className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-sm border-t border-border z-[99999] supports-[backdrop-filter]:bg-card/60"
       style={{
         paddingBottom: "max(10px, env(safe-area-inset-bottom))",
