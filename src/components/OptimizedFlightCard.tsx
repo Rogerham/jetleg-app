@@ -155,7 +155,7 @@ const OptimizedFlightCard = React.memo(({
         
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mt-auto">
           <div>
-            <p className="text-sm text-muted-foreground">Originele jet prijs</p>
+            <p className="text-sm text-muted-foreground">{t('flight.originalPrice')}</p>
             <p className="text-sm text-muted-foreground line-through">
               {formattedOriginalPrice}
             </p>
@@ -172,7 +172,7 @@ const OptimizedFlightCard = React.memo(({
             onClick={handleViewDetails}
             className="btn-jetleg-secondary hover:bg-accent hover:text-primary-foreground w-full sm:w-auto"
           >
-            Meer details
+            {t('search.results.moreDetails')}
           </button>
         </div>
       </div>

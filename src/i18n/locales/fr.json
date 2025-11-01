@@ -589,5 +589,28 @@
     "lowercase": "Lettre minuscule",
     "number": "Chiffre",
     "special": "Caractère spécial (!@#$%^&*)"
+  },
+  "flight": {
+    "originalPrice": "Prix jet original",
+    "privateJet": "Jet privé",
+    "date": "Date :",
+    "departure": "Départ :",
+    "available": "Disponible :",
+    "seats": "places"
+  },
+  "filters": {
+    "title": "Filtres",
+    "price": "Prix (€)",
+    "minimum": "Minimum",
+    "maximum": "Maximum",
+    "passengers": "Nombre de passagers",
+    "duration": "Durée du vol (heures)",
+    "departureTime": "Heure de départ",
+    "allTimes": "Tous les horaires",
+    "morning": "Matin (06:00 - 12:00)",
+    "afternoon": "Après-midi (12:00 - 18:00)",
+    "evening": "Soir (18:00 - 24:00)",
+    "clearAll": "Effacer tous les filtres",
+    "saveFilters": "Enregistrer les filtres"
   }
 }

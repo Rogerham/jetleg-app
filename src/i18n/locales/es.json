@@ -979,7 +979,7 @@
     }
   },
   "passwordStrength": {
-    "label": "Fuerza de contraseña:",
+    "label": "Fuerza de la contraseña:",
     "weak": "Débil",
     "medium": "Media",
     "strong": "Fuerte",
@@ -988,5 +988,28 @@
     "lowercase": "Letra minúscula",
     "number": "Número",
     "special": "Carácter especial (!@#$%^&*)"
+  },
+  "flight": {
+    "originalPrice": "Precio original del jet",
+    "privateJet": "Jet privado",
+    "date": "Fecha:",
+    "departure": "Salida:",
+    "available": "Disponible:",
+    "seats": "asientos"
+  },
+  "filters": {
+    "title": "Filtros",
+    "price": "Precio (€)",
+    "minimum": "Mínimo",
+    "maximum": "Máximo",
+    "passengers": "Número de pasajeros",
+    "duration": "Duración del vuelo (horas)",
+    "departureTime": "Hora de salida",
+    "allTimes": "Todas las horas",
+    "morning": "Mañana (06:00 - 12:00)",
+    "afternoon": "Tarde (12:00 - 18:00)",
+    "evening": "Noche (18:00 - 24:00)",
+    "clearAll": "Borrar todos los filtros",
+    "saveFilters": "Guardar filtros"
   }
 }

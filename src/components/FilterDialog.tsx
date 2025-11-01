@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Filter, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -36,6 +37,7 @@ const FilterDialog = ({
   onApplyFilters,
   onClearFilters 
 }: FilterDialogProps) => {
+  const { t } = useTranslation();
   // Local state for editing filters
   const [localFilters, setLocalFilters] = useState(filters);
 
@@ -89,17 +91,17 @@ const FilterDialog = ({
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Filter className="h-5 w-5" />
-            Filters
+            {t('filters.title')}
           </DialogTitle>
         </DialogHeader>
 
         <div className="space-y-6 py-4">
           {/* Price Filter */}
           <div>
-            <label className="block text-sm font-medium text-foreground mb-3">Prijs (€)</label>
+            <label className="block text-sm font-medium text-foreground mb-3">{t('filters.price')}</label>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs text-muted-foreground mb-1">Minimum</label>
+                <label className="block text-xs text-muted-foreground mb-1">{t('filters.minimum')}</label>
                 <input
                   type="number"
                   min="0"
@@ -112,7 +114,7 @@ const FilterDialog = ({
                 />
               </div>
               <div>
-                <label className="block text-xs text-muted-foreground mb-1">Maximum</label>
+                <label className="block text-xs text-muted-foreground mb-1">{t('filters.maximum')}</label>
                 <input
                   type="number"
                   min="0"
@@ -129,10 +131,10 @@ const FilterDialog = ({
 
           {/* Passengers Filter */}
           <div>
-            <label className="block text-sm font-medium text-foreground mb-3">Aantal passagiers</label>
+            <label className="block text-sm font-medium text-foreground mb-3">{t('filters.passengers')}</label>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs text-muted-foreground mb-1">Minimum</label>
+                <label className="block text-xs text-muted-foreground mb-1">{t('filters.minimum')}</label>
                 <input
                   type="number"
                   min="1"
@@ -145,7 +147,7 @@ const FilterDialog = ({
                 />
               </div>
               <div>
-                <label className="block text-xs text-muted-foreground mb-1">Maximum</label>
+                <label className="block text-xs text-muted-foreground mb-1">{t('filters.maximum')}</label>
                 <input
                   type="number"
                   min="1"
@@ -162,7 +164,7 @@ const FilterDialog = ({
 
           {/* Duration Filter */}
           <div>
-            <label className="block text-sm font-medium text-foreground mb-3">Vliegduur (uren)</label>
+            <label className="block text-sm font-medium text-foreground mb-3">{t('filters.duration')}</label>
             <div className="w-full">
               <Slider
                 value={[localFilters.minDuration, localFilters.maxDuration]}
@@ -181,13 +183,13 @@ const FilterDialog = ({
 
           {/* Time of Day Filter */}
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">Vertrektijd</label>
+            <label className="block text-sm font-medium text-foreground mb-2">{t('filters.departureTime')}</label>
             <div className="space-y-2">
               {[
-                { value: 'any', label: 'Alle tijden' },
-                { value: 'morning', label: 'Ochtend (06:00 - 12:00)' },
-                { value: 'afternoon', label: 'Middag (12:00 - 18:00)' },
-                { value: 'evening', label: 'Avond (18:00 - 24:00)' }
+                { value: 'any', label: t('filters.allTimes') },
+                { value: 'morning', label: t('filters.morning') },
+                { value: 'afternoon', label: t('filters.afternoon') },
+                { value: 'evening', label: t('filters.evening') }
               ].map(option => (
                 <label key={option.value} className="flex items-center gap-2 cursor-pointer">
                   <input
@@ -211,13 +213,13 @@ const FilterDialog = ({
             onClick={handleClearAll}
             className="w-full"
           >
-            Wis alle filters
+            {t('filters.clearAll')}
           </Button>
           <Button
             onClick={handleSaveFilters}
             className="w-full"
           >
-            Filters opslaan
+            {t('filters.saveFilters')}
           </Button>
         </DialogFooter>
       </DialogContent>

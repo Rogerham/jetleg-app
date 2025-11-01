@@ -634,6 +634,29 @@
     "uppercase": "Hoofdletter",
     "lowercase": "Kleine letter",
     "number": "Cijfer",
-    "special": "Speciaal teken (!@#$%^&*)"
+    "special": "Speciaal karakter (!@#$%^&*)"
+  },
+  "flight": {
+    "originalPrice": "Originele jet prijs",
+    "privateJet": "Privé jet",
+    "date": "Datum:",
+    "departure": "Vertrek:",
+    "available": "Beschikbaar:",
+    "seats": "plaatsen"
+  },
+  "filters": {
+    "title": "Filters",
+    "price": "Prijs (€)",
+    "minimum": "Minimum",
+    "maximum": "Maximum",
+    "passengers": "Aantal passagiers",
+    "duration": "Vliegduur (uren)",
+    "departureTime": "Vertrektijd",
+    "allTimes": "Alle tijden",
+    "morning": "Ochtend (06:00 - 12:00)",
+    "afternoon": "Middag (12:00 - 18:00)",
+    "evening": "Avond (18:00 - 24:00)",
+    "clearAll": "Wis alle filters",
+    "saveFilters": "Filters opslaan"
   }
 }

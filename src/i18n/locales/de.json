@@ -982,5 +982,28 @@
     "lowercase": "Kleinbuchstabe",
     "number": "Zahl",
     "special": "Sonderzeichen (!@#$%^&*)"
+  },
+  "flight": {
+    "originalPrice": "Original Jet-Preis",
+    "privateJet": "Privatjet",
+    "date": "Datum:",
+    "departure": "Abflug:",
+    "available": "Verfügbar:",
+    "seats": "Plätze"
+  },
+  "filters": {
+    "title": "Filter",
+    "price": "Preis (€)",
+    "minimum": "Minimum",
+    "maximum": "Maximum",
+    "passengers": "Anzahl Passagiere",
+    "duration": "Flugdauer (Stunden)",
+    "departureTime": "Abflugzeit",
+    "allTimes": "Alle Zeiten",
+    "morning": "Morgen (06:00 - 12:00)",
+    "afternoon": "Nachmittag (12:00 - 18:00)",
+    "evening": "Abend (18:00 - 24:00)",
+    "clearAll": "Alle Filter löschen",
+    "saveFilters": "Filter speichern"
   }
 }
