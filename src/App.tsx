@@ -23,7 +23,7 @@ const App = () => {
       const navHeight = getComputedStyle(document.documentElement)
         .getPropertyValue("--bottom-nav-height");
       if (navHeight) {
-        const height = parseInt(navHeight);
+        const height = parseInt(navHeight, 10);
         if (!isNaN(height) && height > 0) {
           setToastOffset(height);
         }
@@ -33,8 +33,9 @@ const App = () => {
     // Custom event listener for navigation height changes
     window.addEventListener("bottom-nav-height-changed", updateToastOffset);
 
-    // Initial update with a small delay to ensure BottomNavigation has mounted
-    const timeoutId = setTimeout(updateToastOffset, 100);
+    // Initial update with a small delay to ensure BottomNavigation has mounted and measured its height
+    const MOUNT_DELAY_MS = 100;
+    const timeoutId = setTimeout(updateToastOffset, MOUNT_DELAY_MS);
 
     return () => {
       window.removeEventListener("bottom-nav-height-changed", updateToastOffset);
