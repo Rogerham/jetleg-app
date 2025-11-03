@@ -291,8 +291,8 @@ const Index = () => {
                               <div>
                                 <div className="font-medium text-foreground mb-1">{flight.departure_airport.split('(')[0].trim()} → {flight.arrival_airport.split('(')[0].trim()}</div>
                                 <div className="text-xs text-muted-foreground">{new Date(flight.departure_time).toLocaleDateString('nl-NL', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })}</div>
-                                <div className="text-xs text-muted-foreground mt-1">{flight.available_seats} beschikbare plaatsen</div>
-                                <div className="text-xs text-muted-foreground">Door {flight.operator}</div>
+                                <div className="text-xs text-muted-foreground mt-1">{flight.available_seats} {t('search.results.availableSeats')}</div>
+                                <div className="text-xs text-muted-foreground">{t('search.results.by')} {flight.operator}</div>
                               </div>
                                 <div className="flex items-center justify-between">
                                 <div>
@@ -300,7 +300,7 @@ const Index = () => {
                                     const { originalPrice, currentPrice, discountPercentage } = getDiscountedPriceInfo(flight.price_per_seat, flight.id);
                                     return (
                                       <>
-                                        <div className="text-xs text-muted-foreground">Originele jet prijs</div>
+                                        <div className="text-xs text-muted-foreground">{t('flight.originalPrice')}</div>
                                         <div className="text-sm text-muted-foreground line-through">{formatPrice(originalPrice)}</div>
                                         <div className="flex items-center gap-2 mt-1">
                                           <div className="text-2xl font-bold text-foreground">{formatPrice(currentPrice)}</div>
