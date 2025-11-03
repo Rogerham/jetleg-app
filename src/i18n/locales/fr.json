@@ -322,13 +322,17 @@
       "incompleteData": "Données incomplètes",
       "fillPassengers": "Veuillez remplir tous les détails des passagers",
       "incompletePayment": "Paiement incomplet",
-      "fillPayment": "Veuillez remplir tous les détails de paiement"
+      "fillPayment": "Veuillez remplir tous les détails de paiement",
+      "loginRequired": "Connexion requise",
+      "loginRequiredDesc": "Veuillez vous connecter pour finaliser votre réservation.",
+      "bookingFailed": "Échec de la réservation",
+      "bookingFailedDesc": "Nous n'avons pas pu finaliser votre réservation. Veuillez réessayer."
     },
     "loading": "Chargement des détails du vol...",
     "notFound": "Vol non trouvé",
     "notFoundDesc": "Le vol que vous recherchez n'existe pas",
     "confirmed": "Réservation confirmée !",
-    "confirmedDesc": "Vous recevrez une confirmation par e-mail"
+    "confirmedDesc": "Vous recevrez un email de confirmation sous peu."
   },
   "profile": {
     "title": "Mon Profil",

@@ -800,13 +800,17 @@
       "incompleteData": "Unvollständige Daten",
       "fillPassengers": "Bitte füllen Sie alle Passagierdetails aus",
       "incompletePayment": "Unvollständige Zahlung",
-      "fillPayment": "Bitte füllen Sie alle Zahlungsdetails aus"
+      "fillPayment": "Bitte füllen Sie alle Zahlungsdetails aus",
+      "loginRequired": "Anmeldung erforderlich",
+      "loginRequiredDesc": "Bitte melden Sie sich an, um Ihre Buchung abzuschließen.",
+      "bookingFailed": "Buchung fehlgeschlagen",
+      "bookingFailedDesc": "Wir konnten Ihre Buchung nicht abschließen. Bitte versuchen Sie es erneut."
     },
     "loading": "Flugdetails laden...",
     "notFound": "Flug nicht gefunden",
     "notFoundDesc": "Der gesuchte Flug existiert nicht",
     "confirmed": "Buchung bestätigt!",
-    "confirmedDesc": "Sie erhalten eine Bestätigungs-E-Mail"
+    "confirmedDesc": "Sie erhalten in Kürze eine Bestätigungs-E-Mail."
   },
   "editProfile": {
     "title": "Persönliche Informationen",

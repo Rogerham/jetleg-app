@@ -871,13 +871,17 @@
       "incompleteData": "Dati incompleti",
       "fillPassengers": "Compila tutti i dettagli dei passeggeri",
       "incompletePayment": "Pagamento incompleto",
-      "fillPayment": "Compila tutti i dettagli di pagamento"
+      "fillPayment": "Compila tutti i dettagli di pagamento",
+      "loginRequired": "Accesso richiesto",
+      "loginRequiredDesc": "Effettua l'accesso per completare la prenotazione.",
+      "bookingFailed": "Prenotazione fallita",
+      "bookingFailedDesc": "Non siamo riusciti a completare la prenotazione. Riprova."
     },
     "loading": "Caricamento dettagli volo...",
     "notFound": "Volo non trovato",
     "notFoundDesc": "Il volo che cerchi non esiste",
     "confirmed": "Prenotazione confermata!",
-    "confirmedDesc": "Riceverai un'email di conferma"
+    "confirmedDesc": "Riceverai un'email di conferma a breve."
   },
   "editProfile": {
     "title": "Informazioni personali",

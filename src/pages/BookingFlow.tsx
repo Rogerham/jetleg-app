@@ -5,6 +5,8 @@ import { useToast } from '@/hooks/use-toast';
 import { useFlightById } from '@/hooks/useFlights';
 import { extractCityName } from '@/utils/flightUtils';
 import { useTranslation } from 'react-i18next';
+import { supabase } from '@/integrations/supabase/client';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface Passenger {
   firstName: string;
@@ -34,6 +36,7 @@ const BookingFlow = () => {
   const location = useLocation();
   const { toast } = useToast();
   const { t } = useTranslation();
+  const { user } = useAuth();
   
   // Handle different parameter names from different routes
   const flightId = params.id || params.flightId;
@@ -158,24 +161,92 @@ const BookingFlow = () => {
   };
 
   const handleBooking = async () => {
+    if (!user) {
+      toast({
+        title: t('booking.validation.loginRequired'),
+        description: t('booking.validation.loginRequiredDesc'),
+        variant: "destructive"
+      });
+      navigate('/login');
+      return;
+    }
+
     setIsLoading(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    toast({
-      title: t('booking.confirmed'),
-      description: t('booking.confirmedDesc'),
-    });
+    try {
+      // Step 1: Tokenize payment method - store only last 4 digits and reference
+      const cardType = detectCardType(paymentData.cardNumber);
+      const lastFour = paymentData.cardNumber.slice(-4);
+      const [expiryMonth, expiryYear] = paymentData.expiryDate.split('/');
 
-    setIsLoading(false);
-    navigate(`/booking-confirmation/${flightId}`, {
-      state: {
-        flight,
-        passengers,
-        totalPrice
-      }
-    });
+      const { data: paymentMethod, error: paymentError } = await supabase
+        .from('payment_methods')
+        .insert({
+          user_id: user.id,
+          card_type: cardType,
+          last_four: lastFour,
+          expiry_month: expiryMonth?.trim() || '',
+          expiry_year: expiryYear?.trim() || '',
+          holder_name: paymentData.cardholderName,
+          is_default: false
+        })
+        .select()
+        .single();
+
+      if (paymentError) throw paymentError;
+
+      // Step 2: Create booking with payment method reference (no sensitive data)
+      const { data: booking, error: bookingError } = await supabase
+        .from('bookings')
+        .insert([{
+          user_id: user.id,
+          flight_id: flightId || '',
+          passenger_count: passengers.length,
+          total_price: totalPrice,
+          passenger_details: passengers as any,
+          payment_method_id: paymentMethod.id,
+          // Only store non-sensitive billing info
+          payment_details: {
+            billing_address: paymentData.billingAddress,
+            payment_status: 'completed'
+          } as any,
+          booking_status: 'confirmed'
+        }])
+        .select()
+        .single();
+
+      if (bookingError) throw bookingError;
+
+      toast({
+        title: t('booking.confirmed'),
+        description: t('booking.confirmedDesc'),
+      });
+
+      navigate(`/booking-confirmation/${flightId}`, {
+        state: {
+          flight,
+          passengers,
+          totalPrice
+        }
+      });
+    } catch (error) {
+      console.error('Booking error:', error);
+      toast({
+        title: t('booking.validation.bookingFailed'),
+        description: t('booking.validation.bookingFailedDesc'),
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const detectCardType = (cardNumber: string): string => {
+    const cleaned = cardNumber.replace(/\s/g, '');
+    if (/^4/.test(cleaned)) return 'visa';
+    if (/^5[1-5]/.test(cleaned)) return 'mastercard';
+    if (/^3[47]/.test(cleaned)) return 'amex';
+    return 'other';
   };
 
   const formatTime = (dateString: string) => {

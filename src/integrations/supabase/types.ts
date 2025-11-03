@@ -64,6 +64,7 @@ export type Database = {
           passenger_count: number
           passenger_details: Json | null
           payment_details: Json | null
+          payment_method_id: string | null
           total_price: number
           updated_at: string
           user_id: string
@@ -76,6 +77,7 @@ export type Database = {
           passenger_count?: number
           passenger_details?: Json | null
           payment_details?: Json | null
+          payment_method_id?: string | null
           total_price: number
           updated_at?: string
           user_id: string
@@ -88,6 +90,7 @@ export type Database = {
           passenger_count?: number
           passenger_details?: Json | null
           payment_details?: Json | null
+          payment_method_id?: string | null
           total_price?: number
           updated_at?: string
           user_id?: string
@@ -98,6 +101,13 @@ export type Database = {
             columns: ["flight_id"]
             isOneToOne: false
             referencedRelation: "flights"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bookings_payment_method_id_fkey"
+            columns: ["payment_method_id"]
+            isOneToOne: false
+            referencedRelation: "payment_methods"
             referencedColumns: ["id"]
           },
           {

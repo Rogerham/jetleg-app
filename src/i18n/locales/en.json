@@ -891,12 +891,18 @@
       "incompleteData": "Incomplete data",
       "fillPassengers": "Please fill in all passenger details to continue.",
       "incompletePayment": "Incomplete payment details",
-      "fillPayment": "Please fill in all payment details to continue."
+      "fillPayment": "Please fill in all payment details to continue.",
+      "loginRequired": "Login required",
+      "loginRequiredDesc": "Please log in to complete your booking.",
+      "bookingFailed": "Booking failed",
+      "bookingFailedDesc": "We couldn't complete your booking. Please try again."
     },
     "loading": "Loading flight details...",
     "notFound": "Flight not found",
     "notFoundDesc": "The flight you're looking for does not exist or is not available.",
-    "bookingFor": "Booking for flight"
+    "bookingFor": "Booking for flight",
+    "confirmed": "Booking confirmed!",
+    "confirmedDesc": "You will receive a confirmation email shortly."
   },
   "editProfile": {
     "title": "Personal Information",

@@ -449,14 +449,18 @@
       "incompleteData": "Incomplete gegevens",
       "fillPassengers": "Vul alle passagiersgegevens in om door te gaan.",
       "incompletePayment": "Incomplete betalingsgegevens",
-      "fillPayment": "Vul alle betalingsgegevens in om door te gaan."
+      "fillPayment": "Vul alle betalingsgegevens in om door te gaan.",
+      "loginRequired": "Inloggen vereist",
+      "loginRequiredDesc": "Log in om je boeking te voltooien.",
+      "bookingFailed": "Boeking mislukt",
+      "bookingFailedDesc": "We konden je boeking niet voltooien. Probeer het opnieuw."
     },
     "loading": "Vluchtgegevens laden...",
     "notFound": "Vlucht niet gevonden",
     "notFoundDesc": "De vlucht die je zoekt bestaat niet of is niet beschikbaar.",
     "bookingFor": "Boeking voor vlucht",
     "confirmed": "Boeking bevestigd!",
-    "confirmedDesc": "Je vlucht is succesvol geboekt. Je ontvangt een bevestiging per e-mail."
+    "confirmedDesc": "Je ontvangt binnenkort een bevestigingsmail."
   },
   "editProfile": {
     "title": "Persoonlijke gegevens",

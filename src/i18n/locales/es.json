@@ -806,13 +806,17 @@
       "incompleteData": "Datos incompletos",
       "fillPassengers": "Por favor complete todos los detalles de los pasajeros",
       "incompletePayment": "Pago incompleto",
-      "fillPayment": "Por favor complete todos los detalles de pago"
+      "fillPayment": "Por favor complete todos los detalles de pago",
+      "loginRequired": "Inicio de sesión requerido",
+      "loginRequiredDesc": "Por favor inicia sesión para completar tu reserva.",
+      "bookingFailed": "Reserva fallida",
+      "bookingFailedDesc": "No pudimos completar tu reserva. Por favor intenta de nuevo."
     },
     "loading": "Cargando detalles del vuelo...",
     "notFound": "Vuelo no encontrado",
     "notFoundDesc": "El vuelo que buscas no existe",
     "confirmed": "¡Reserva confirmada!",
-    "confirmedDesc": "Recibirás un correo de confirmación"
+    "confirmedDesc": "Recibirás un correo de confirmación pronto."
   },
   "editProfile": {
     "title": "Información personal",
