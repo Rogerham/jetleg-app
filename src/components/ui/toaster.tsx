@@ -10,12 +10,17 @@ import {
 
 export function Toaster() {
   const { toasts } = useToast()
+  
+  console.log('Toaster render - aantal toasts:', toasts.length);
+  if (toasts.length > 0) {
+    console.log('Toast data:', toasts);
+  }
 
   return (
     <ToastProvider>
       {toasts.map(function ({ id, title, description, action, ...props }) {
         return (
-          <Toast key={id} {...props}>
+          <Toast key={id} duration={5000} {...props}>
             <div className="grid gap-1">
               {title && <ToastTitle>{title}</ToastTitle>}
               {description && (
