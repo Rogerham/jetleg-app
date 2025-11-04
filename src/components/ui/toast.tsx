@@ -19,7 +19,8 @@ const ToastViewport = React.forwardRef<
     )}
     style={{
       bottom: "calc(5rem + max(10px, env(safe-area-inset-bottom)))", // 4rem nav height + 1rem gap + safe area
-      top: "auto"
+      top: "auto",
+      pointerEvents: "auto"
     }}
     {...props}
   />
