@@ -3,8 +3,10 @@ import { useState } from 'react';
 import { Calendar, MapPin, Users, Plane, Clock, Download, Eye, AlertCircle, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useBookings } from '@/hooks/useBookings';
+import { extractCityName } from '@/utils/flightUtils';
 
-interface Booking {
+interface UIBooking {
   id: string;
   bookingReference: string;
   status: 'confirmed' | 'pending' | 'cancelled' | 'completed';
@@ -27,66 +29,36 @@ interface Booking {
 const MyBookings = ({ hideNavigation = false, onBackToProfile }: { hideNavigation?: boolean; onBackToProfile?: () => void }) => {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<'upcoming' | 'past' | 'all'>('upcoming');
-  
-  const mockBookings: Booking[] = [
-    {
-      id: '1',
-      bookingReference: 'JL-2024-001',
-      status: 'confirmed',
+  const { data: bookings, isLoading } = useBookings();
+
+  // Transform database bookings to UI format
+  const transformedBookings: UIBooking[] = (bookings || []).map(booking => {
+    const flight = booking.flights;
+    if (!flight) return null;
+
+    const departureDate = new Date(flight.departure_time);
+    const arrivalDate = new Date(flight.arrival_time);
+
+    return {
+      id: booking.id,
+      bookingReference: `JL-${booking.id.slice(0, 8).toUpperCase()}`,
+      status: booking.booking_status,
       flight: {
-        from: 'Brussels',
-        to: 'Nice',
-        fromCode: 'BRU',
-        toCode: 'NCE',
-        date: '2024-08-15',
-        departure: '14:30',
-        arrival: '16:15',
-        aircraft: 'Cessna Citation CJ3+',
-        duration: '1h 45m'
+        from: extractCityName(flight.departure_airport),
+        to: extractCityName(flight.arrival_airport),
+        fromCode: flight.departure_airport.split('(').pop()?.replace(')', '').trim() || '',
+        toCode: flight.arrival_airport.split('(').pop()?.replace(')', '').trim() || '',
+        date: departureDate.toISOString().split('T')[0],
+        departure: departureDate.toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }),
+        arrival: arrivalDate.toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }),
+        aircraft: flight.jets ? `${flight.jets.brand} ${flight.jets.model}` : flight.operator,
+        duration: flight.flight_duration
       },
-      passengers: 2,
-      totalPrice: 4900,
-      bookingDate: '2024-07-20'
-    },
-    {
-      id: '2',
-      bookingReference: 'JL-2024-002',
-      status: 'completed',
-      flight: {
-        from: 'Brussels',
-        to: 'Paris',
-        fromCode: 'BRU',
-        toCode: 'CDG',
-        date: '2024-07-10',
-        departure: '09:15',
-        arrival: '10:00',
-        aircraft: 'Embraer Phenom 300',
-        duration: '45m'
-      },
-      passengers: 1,
-      totalPrice: 1890,
-      bookingDate: '2024-06-15'
-    },
-    {
-      id: '3',
-      bookingReference: 'JL-2024-003',
-      status: 'pending',
-      flight: {
-        from: 'Brussels',
-        to: 'London',
-        fromCode: 'BRU',
-        toCode: 'LHR',
-        date: '2024-09-01',
-        departure: '16:45',
-        arrival: '17:05',
-        aircraft: 'Bombardier Challenger 350',
-        duration: '1h 20m'
-      },
-      passengers: 4,
-      totalPrice: 12800,
-      bookingDate: '2024-07-25'
-    }
-  ];
+      passengers: booking.passenger_count,
+      totalPrice: booking.total_price,
+      bookingDate: new Date(booking.created_at).toISOString().split('T')[0]
+    };
+  }).filter((b): b is UIBooking => b !== null);
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -108,7 +80,7 @@ const MyBookings = ({ hideNavigation = false, onBackToProfile }: { hideNavigatio
     }
   };
 
-  const filterBookings = (bookings: Booking[]) => {
+  const filterBookings = (bookings: UIBooking[]) => {
     const now = new Date();
     switch (activeTab) {
       case 'upcoming':
@@ -120,7 +92,24 @@ const MyBookings = ({ hideNavigation = false, onBackToProfile }: { hideNavigatio
     }
   };
 
-  const filteredBookings = filterBookings(mockBookings);
+  const filteredBookings = filterBookings(transformedBookings);
+
+  if (isLoading) {
+    return (
+      <div className="container mx-auto px-6 py-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold text-foreground mb-2">{t('myBookings.title')}</h1>
+            <p className="text-muted-foreground">{t('myBookings.subtitle')}</p>
+          </div>
+          <div className="text-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto mb-4"></div>
+            <p className="text-muted-foreground">Boekingen laden...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (hideNavigation) {
     return (
@@ -145,9 +134,9 @@ const MyBookings = ({ hideNavigation = false, onBackToProfile }: { hideNavigatio
             <div className="border-b border-border">
               <nav className="flex space-x-8">
                 {[
-                  { key: 'upcoming', label: t('myBookings.tabs.upcoming'), count: filterBookings(mockBookings.filter(b => activeTab !== 'upcoming')).length },
-                  { key: 'past', label: t('myBookings.tabs.past'), count: filterBookings(mockBookings.filter(b => activeTab !== 'past')).length },
-                  { key: 'all', label: t('myBookings.tabs.all'), count: mockBookings.length }
+                  { key: 'upcoming', label: t('myBookings.tabs.upcoming'), count: transformedBookings.filter(b => new Date(b.flight.date) >= new Date() && b.status !== 'cancelled').length },
+                  { key: 'past', label: t('myBookings.tabs.past'), count: transformedBookings.filter(b => new Date(b.flight.date) < new Date() || b.status === 'completed').length },
+                  { key: 'all', label: t('myBookings.tabs.all'), count: transformedBookings.length }
                 ].map((tab) => (
                   <button
                     key={tab.key}
@@ -318,9 +307,9 @@ const MyBookings = ({ hideNavigation = false, onBackToProfile }: { hideNavigatio
             <div className="border-b border-border">
               <nav className="flex space-x-8">
                 {[
-                  { key: 'upcoming', label: 'Aankomende vluchten', count: filterBookings(mockBookings.filter(b => activeTab !== 'upcoming')).length },
-                  { key: 'past', label: 'Eerdere vluchten', count: filterBookings(mockBookings.filter(b => activeTab !== 'past')).length },
-                  { key: 'all', label: 'Alle boekingen', count: mockBookings.length }
+                  { key: 'upcoming', label: 'Aankomende vluchten', count: transformedBookings.filter(b => new Date(b.flight.date) >= new Date() && b.status !== 'cancelled').length },
+                  { key: 'past', label: 'Eerdere vluchten', count: transformedBookings.filter(b => new Date(b.flight.date) < new Date() || b.status === 'completed').length },
+                  { key: 'all', label: 'Alle boekingen', count: transformedBookings.length }
                 ].map((tab) => (
                   <button
                     key={tab.key}
