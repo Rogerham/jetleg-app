@@ -1,6 +1,6 @@
 
 import { Suspense } from "react";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -21,7 +21,15 @@ const App = () => {
     <AuthProvider>
       <CurrencyProvider>
         <TooltipProvider>
-          <Toaster />
+          <Toaster 
+            position="bottom-right"
+            toastOptions={{
+              style: {
+                zIndex: 100000,
+                bottom: 'calc(5rem + max(10px, env(safe-area-inset-bottom)))'
+              }
+            }}
+          />
           <BrowserRouter>
             <ScrollToTop />
             <div className="min-h-screen flex flex-col">

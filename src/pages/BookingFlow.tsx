@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Check, CreditCard, Lock, Users, MapPin, Calendar, Plane } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { toast } from 'sonner';
 import { useFlightById } from '@/hooks/useFlights';
 import { extractCityName } from '@/utils/flightUtils';
 import { useTranslation } from 'react-i18next';
@@ -34,7 +34,6 @@ const BookingFlow = () => {
   const params = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const { toast } = useToast();
   const { t } = useTranslation();
   const { user } = useAuth();
   
@@ -136,19 +135,15 @@ const BookingFlow = () => {
 
   const handleNext = () => {
     if (currentStep === 1 && !validatePassengers()) {
-      toast({
-        title: t('booking.validation.incompleteData'),
-        description: t('booking.validation.fillPassengers'),
-        variant: "destructive"
+      toast.error(t('booking.validation.incompleteData'), {
+        description: t('booking.validation.fillPassengers')
       });
       return;
     }
 
     if (currentStep === 2 && !validatePayment()) {
-      toast({
-        title: t('booking.validation.incompletePayment'),
-        description: t('booking.validation.fillPayment'),
-        variant: "destructive"
+      toast.error(t('booking.validation.incompletePayment'), {
+        description: t('booking.validation.fillPayment')
       });
       return;
     }
@@ -162,10 +157,8 @@ const BookingFlow = () => {
 
   const handleBooking = async () => {
     if (!user) {
-      toast({
-        title: t('booking.validation.loginRequired'),
-        description: t('booking.validation.loginRequiredDesc'),
-        variant: "destructive"
+      toast.error(t('booking.validation.loginRequired'), {
+        description: t('booking.validation.loginRequiredDesc')
       });
       navigate('/login');
       return;
@@ -217,9 +210,8 @@ const BookingFlow = () => {
 
       if (bookingError) throw bookingError;
 
-      toast({
-        title: t('booking.confirmed'),
-        description: t('booking.confirmedDesc'),
+      toast.success(t('booking.confirmed'), {
+        description: t('booking.confirmedDesc')
       });
 
       navigate(`/booking-confirmation/${flightId}`, {
@@ -231,10 +223,8 @@ const BookingFlow = () => {
       });
     } catch (error) {
       console.error('Booking error:', error);
-      toast({
-        title: t('booking.validation.bookingFailed'),
-        description: t('booking.validation.bookingFailedDesc'),
-        variant: "destructive"
+      toast.error(t('booking.validation.bookingFailed'), {
+        description: t('booking.validation.bookingFailedDesc')
       });
     } finally {
       setIsLoading(false);
