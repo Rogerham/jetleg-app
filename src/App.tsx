@@ -1,5 +1,5 @@
 
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { Toaster } from "sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -9,13 +9,26 @@ import BottomNavigation from "./components/BottomNavigation";
 import ScrollToTop from "./components/ScrollToTop";
 import { CurrencyProvider } from "./contexts/CurrencyContext";
 import { AuthProvider } from "./contexts/AuthContext";
+import { supabase } from "./integrations/supabase/client";
 
 import BookingFlow from "./pages/BookingFlow";
 import "./i18n/config";
 
+// Refresh demo flights on app load (ensures flights are always in 1-30 day window)
+const refreshDemoFlights = () => {
+  supabase.functions.invoke('refresh-demo-flights').catch(() => {
+    // Silently ignore errors - this is just for demo data maintenance
+  });
+};
+
 const queryClient = new QueryClient();
 
 const App = () => {
+  // Refresh demo flights once on app mount
+  useEffect(() => {
+    refreshDemoFlights();
+  }, []);
+
   return (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
