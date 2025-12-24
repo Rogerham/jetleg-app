@@ -1,4 +1,3 @@
-
 import { Home, Plane, Info, User, BookOpen } from "lucide-react";
 import Index from "./pages/Index";
 import TopDeals from "./pages/TopDeals";
@@ -22,7 +21,7 @@ export const navItems = [
     page: <Index />,
   },
   {
-    title: "Top Deals",
+    title: "Top deals",
     to: "/top-deals",
     icon: Plane,
     page: <TopDeals />,
@@ -47,7 +46,7 @@ export const navItems = [
   },
   {
     title: "Favorites",
-    to: "/favorites", 
+    to: "/favorites",
     icon: Info,
     page: <FavoriteFlights />,
   },
