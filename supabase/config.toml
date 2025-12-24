@@ -1,1 +1,4 @@
 project_id = "dtvvyopjzdmbnpgwhkbi"
+
+[functions.refresh-demo-flights]
+verify_jwt = false

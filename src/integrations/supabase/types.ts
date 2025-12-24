@@ -350,7 +350,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      refresh_demo_flights: { Args: never; Returns: number }
     }
     Enums: {
       [_ in never]: never
