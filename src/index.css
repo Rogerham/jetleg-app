@@ -32,9 +32,9 @@
     --secondary: 43 30% 92%;
     --secondary-foreground: 220 15% 18%;
 
-    /* Brushed gold accent */
-    --accent: 43 65% 55%;
-    --accent-foreground: 220 20% 12%;
+    /* Sage green accent - #6F7D7B */
+    --accent: 171 6% 46%;
+    --accent-foreground: 0 0% 100%;
 
     /* Soft muted tones */
     --muted: 35 25% 90%;
@@ -46,13 +46,14 @@
     /* Subtle borders - Sand */
     --border: 35 20% 88%;
     --input: 35 15% 90%;
-    --ring: 43 65% 55%;
+    --ring: 171 6% 46%;
 
     --radius: 0.75rem;
 
     /* Jetleg specific colors */
-    --jetleg-gold: 43 65% 55%;
-    --jetleg-gold-soft: 43 50% 70%;
+    --jetleg-sage: 171 6% 46%;
+    --jetleg-sage-light: 171 8% 56%;
+    --jetleg-sage-dark: 171 8% 38%;
     --jetleg-charcoal: 220 15% 18%;
     --jetleg-deep-slate: 220 20% 12%;
     --jetleg-success: 142 50% 45%;
@@ -67,14 +68,14 @@
     --shadow-card-hover: 0 8px 24px -8px hsl(220 15% 18% / 0.08), 
                          0 16px 32px -8px hsl(220 15% 18% / 0.04);
     --shadow-elevated: 0 12px 40px -12px hsl(220 15% 18% / 0.12);
-    --shadow-button: 0 2px 12px 0 hsl(43 65% 55% / 0.20);
-    --shadow-button-hover: 0 4px 20px 0 hsl(43 65% 55% / 0.30);
+    --shadow-button: 0 2px 12px 0 hsl(171 6% 46% / 0.25);
+    --shadow-button-hover: 0 4px 20px 0 hsl(171 6% 46% / 0.35);
 
     /* Gradients */
     --gradient-hero: linear-gradient(180deg, hsl(220 20% 12% / 0.55) 0%, hsl(220 20% 12% / 0.40) 100%);
     --gradient-card: linear-gradient(165deg, hsl(40 15% 98%) 0%, hsl(40 15% 96%) 100%);
-    --gradient-button: linear-gradient(135deg, hsl(43 65% 55%) 0%, hsl(43 55% 50%) 100%);
-    --gradient-button-hover: linear-gradient(135deg, hsl(43 55% 50%) 0%, hsl(43 50% 45%) 100%);
+    --gradient-button: linear-gradient(135deg, hsl(171 6% 46%) 0%, hsl(171 8% 38%) 100%);
+    --gradient-button-hover: linear-gradient(135deg, hsl(171 8% 38%) 0%, hsl(171 10% 32%) 100%);
 
     /* Typography sizing */
     --font-size-hero: clamp(2rem, 4vw, 3.5rem);
@@ -89,10 +90,10 @@
     --sidebar-foreground: 220 15% 18%;
     --sidebar-primary: 220 20% 12%;
     --sidebar-primary-foreground: 40 20% 98%;
-    --sidebar-accent: 43 30% 92%;
-    --sidebar-accent-foreground: 220 20% 12%;
+    --sidebar-accent: 171 6% 50%;
+    --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 35 20% 88%;
-    --sidebar-ring: 43 65% 55%;
+    --sidebar-ring: 171 6% 46%;
   }
 
   .dark {
@@ -115,7 +116,7 @@
     --muted: 220 15% 18%;
     --muted-foreground: 40 10% 60%;
 
-    --accent: 43 60% 60%;
+    --accent: 171 8% 56%;
     --accent-foreground: 220 20% 8%;
 
     --destructive: 0 62.8% 30.6%;
@@ -123,7 +124,7 @@
 
     --border: 220 15% 20%;
     --input: 220 15% 22%;
-    --ring: 43 60% 60%;
+    --ring: 171 8% 56%;
 
     /* Dark mode shadows */
     --shadow-card: 0 2px 8px -2px hsl(0 0% 0% / 0.2), 
@@ -135,16 +136,16 @@
     --gradient-hero: hsl(var(--background));
     --gradient-card: hsl(var(--card));
     --gradient-button: hsl(var(--accent));
-    --gradient-button-hover: hsl(43 55% 55%);
+    --gradient-button-hover: hsl(171 10% 50%);
 
     --sidebar-background: 220 20% 8%;
     --sidebar-foreground: 40 15% 92%;
-    --sidebar-primary: 43 60% 60%;
+    --sidebar-primary: 171 8% 56%;
     --sidebar-primary-foreground: 220 20% 8%;
     --sidebar-accent: 220 15% 15%;
     --sidebar-accent-foreground: 40 15% 92%;
     --sidebar-border: 220 15% 20%;
-    --sidebar-ring: 43 60% 60%;
+    --sidebar-ring: 171 8% 56%;
   }
 }
 
@@ -177,7 +178,7 @@
   .btn-jetleg-primary {
     @apply font-medium px-8 py-4 rounded-xl tracking-wide transition-all duration-300 hover:scale-105 active:scale-95;
     background: var(--gradient-button);
-    color: hsl(220 20% 12%);
+    color: hsl(0 0% 100%);
     box-shadow: var(--shadow-button);
     letter-spacing: 0.03em;
     font-family: var(--font-body);
@@ -190,11 +191,11 @@
 
   .dark .btn-jetleg-primary {
     background: hsl(var(--accent));
-    color: hsl(var(--accent-foreground));
+    color: hsl(0 0% 100%);
   }
 
   .dark .btn-jetleg-primary:hover {
-    background: hsl(43 55% 55%);
+    background: hsl(171 10% 50%);
   }
 
   /* Jetleg Secondary Button */
@@ -232,7 +233,7 @@
 
   .card-jetleg:hover {
     box-shadow: var(--shadow-card-hover);
-    border-color: hsl(43 65% 55% / 0.2);
+    border-color: hsl(171 6% 46% / 0.3);
   }
 
   .dark .card-jetleg {
@@ -242,7 +243,7 @@
   }
 
   .dark .card-jetleg:hover {
-    border-color: hsl(43 60% 60% / 0.3);
+    border-color: hsl(171 8% 56% / 0.3);
   }
   
   /* Enhanced hover effects with better mobile support */
@@ -291,23 +292,23 @@
   }
 
   .input-jetleg:focus {
-    border-color: hsl(43 65% 55%);
-    box-shadow: 0 0 0 3px hsl(43 65% 55% / 0.1);
+    border-color: hsl(171 6% 46%);
+    box-shadow: 0 0 0 3px hsl(171 6% 46% / 0.15);
   }
 
-  /* Deal Badge - Gold accent */
+  /* Deal Badge - Sage green accent */
   .deal-badge {
     @apply text-xs font-medium px-3 py-1.5 rounded-full uppercase;
-    background: hsl(43 65% 55% / 0.15);
-    color: hsl(43 60% 40%);
-    border: 1px solid hsl(43 65% 55% / 0.25);
+    background: hsl(171 6% 46% / 0.15);
+    color: hsl(171 8% 35%);
+    border: 1px solid hsl(171 6% 46% / 0.25);
     letter-spacing: 0.04em;
   }
 
   .dark .deal-badge {
-    background: hsl(43 60% 60% / 0.15);
-    color: hsl(43 50% 70%);
-    border-color: hsl(43 60% 60% / 0.25);
+    background: hsl(171 8% 56% / 0.15);
+    color: hsl(171 10% 70%);
+    border-color: hsl(171 8% 56% / 0.25);
   }
 
   /* Discount Badge - Success green */
