@@ -3,122 +3,148 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Jetleg Design System - All colors, gradients, fonts, etc */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+/* Jetleg Luxury Design System */
 
 @layer base {
   :root {
-    /* Core brand colors - All HSL values */
-    --background: 0 0% 100%; /* Pure white */
-    --foreground: 222.2 84% 4.9%; /* slate-900 */
+    /* Typography */
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+    --letter-spacing-body: 0.02em;
+    --letter-spacing-wide: 0.05em;
 
-    --card: 0 0% 100%; /* white */
-    --card-foreground: 222.2 84% 4.9%;
+    /* Luxe off-white backgrounds */
+    --background: 40 20% 98%;
+    --foreground: 220 15% 18%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Warm cream cards */
+    --card: 40 15% 96%;
+    --card-foreground: 220 15% 18%;
 
-    /* Jetleg brand identity */
-    --primary: 222.2 47.4% 11.2%; /* slate-800 */
-    --primary-foreground: 210 40% 98%;
+    --popover: 40 15% 96%;
+    --popover-foreground: 220 15% 18%;
 
-    --secondary: 210 40% 96.1%; /* slate-100 */
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Refined primary colors - Deep Slate */
+    --primary: 220 20% 12%;
+    --primary-foreground: 40 20% 98%;
 
-    --accent: 45 93% 47%; /* amber-500 */
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Subtle secondary - Champagne */
+    --secondary: 43 30% 92%;
+    --secondary-foreground: 220 15% 18%;
 
-    --muted: 210 40% 96.1%; /* slate-100 */
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Brushed gold accent */
+    --accent: 43 65% 55%;
+    --accent-foreground: 220 20% 12%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Soft muted tones */
+    --muted: 35 25% 90%;
+    --muted-foreground: 30 10% 45%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 220 13% 91%;
-    --ring: 45 93% 47%; /* amber focus */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Subtle borders - Sand */
+    --border: 35 20% 88%;
+    --input: 35 15% 90%;
+    --ring: 43 65% 55%;
 
     --radius: 0.75rem;
 
     /* Jetleg specific colors */
-    --jetleg-blue: 217 91% 60%; /* blue-500 */
-    --jetleg-amber: 45 93% 47%; /* amber-500 */
-    --jetleg-amber-dark: 43 96% 56%; /* amber-400 */
-    --jetleg-success: 142 76% 36%; /* emerald-600 */
-    --jetleg-slate-light: 210 40% 96.1%; /* slate-100 */
-    --jetleg-banner-bg: 222.2 47.4% 11.2%; /* Always dark blue banner */
+    --jetleg-gold: 43 65% 55%;
+    --jetleg-gold-soft: 43 50% 70%;
+    --jetleg-charcoal: 220 15% 18%;
+    --jetleg-deep-slate: 220 20% 12%;
+    --jetleg-success: 142 50% 45%;
+    --jetleg-ivory: 40 20% 98%;
+    --jetleg-cream: 40 15% 96%;
+    --jetleg-sand: 35 25% 85%;
+    --jetleg-taupe: 30 10% 60%;
+
+    /* Luxe shadows */
+    --shadow-card: 0 2px 8px -2px hsl(220 15% 18% / 0.04), 
+                   0 4px 16px -4px hsl(220 15% 18% / 0.06);
+    --shadow-card-hover: 0 8px 24px -8px hsl(220 15% 18% / 0.08), 
+                         0 16px 32px -8px hsl(220 15% 18% / 0.04);
+    --shadow-elevated: 0 12px 40px -12px hsl(220 15% 18% / 0.12);
+    --shadow-button: 0 2px 12px 0 hsl(43 65% 55% / 0.20);
+    --shadow-button-hover: 0 4px 20px 0 hsl(43 65% 55% / 0.30);
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(222.2 47.4% 11.2% / 0.7), hsl(222.2 47.4% 11.2% / 0.5));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 40% 98%));
-    --gradient-button: linear-gradient(135deg, hsl(45 93% 47%), hsl(43 96% 56%));
+    --gradient-hero: linear-gradient(180deg, hsl(220 20% 12% / 0.55) 0%, hsl(220 20% 12% / 0.40) 100%);
+    --gradient-card: linear-gradient(165deg, hsl(40 15% 98%) 0%, hsl(40 15% 96%) 100%);
+    --gradient-button: linear-gradient(135deg, hsl(43 65% 55%) 0%, hsl(43 55% 50%) 100%);
+    --gradient-button-hover: linear-gradient(135deg, hsl(43 55% 50%) 0%, hsl(43 50% 45%) 100%);
 
-    /* Shadows */
-    --shadow-card: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.06);
-    --shadow-card-hover: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -2px hsl(0 0% 0% / 0.05);
-    --shadow-button: 0 4px 14px 0 hsl(45 93% 47% / 0.25);
-
-    /* Typography */
-    --font-size-hero: clamp(1.5rem, 3.5vw, 4rem);
-    --font-size-title: clamp(1.5rem, 3vw, 2.25rem);
-    --font-size-page-title: clamp(1.75rem, 3.5vw, 2.5rem);
+    /* Typography sizing */
+    --font-size-hero: clamp(2rem, 4vw, 3.5rem);
+    --font-size-title: clamp(1.5rem, 2.5vw, 2rem);
+    --font-size-page-title: clamp(1.75rem, 3vw, 2.25rem);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 40 20% 98%;
+    --sidebar-foreground: 220 15% 18%;
+    --sidebar-primary: 220 20% 12%;
+    --sidebar-primary-foreground: 40 20% 98%;
+    --sidebar-accent: 43 30% 92%;
+    --sidebar-accent-foreground: 220 20% 12%;
+    --sidebar-border: 35 20% 88%;
+    --sidebar-ring: 43 65% 55%;
   }
 
   .dark {
-    /* ... keep existing code (dark theme variables) */
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Sophisticated dark palette */
+    --background: 220 20% 8%;
+    --foreground: 40 15% 92%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 18% 12%;
+    --card-foreground: 40 15% 92%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 18% 12%;
+    --popover-foreground: 40 15% 92%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 40 15% 92%;
+    --primary-foreground: 220 20% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 40 15% 92%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 15% 18%;
+    --muted-foreground: 40 10% 60%;
 
-    --accent: 45 93% 47%; /* Keep amber/yellow in dark mode */
-    --accent-foreground: 222.2 47.4% 11.2%; /* Dark text on yellow */
+    --accent: 43 60% 60%;
+    --accent-foreground: 220 20% 8%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 0 0% 100%; /* White input fields in dark mode */
-    --ring: 45 93% 47%; /* Yellow focus ring in dark mode */
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 220 15% 20%;
+    --input: 220 15% 22%;
+    --ring: 43 60% 60%;
 
-    /* Dark mode: no gradients, solid colors */
+    /* Dark mode shadows */
+    --shadow-card: 0 2px 8px -2px hsl(0 0% 0% / 0.2), 
+                   0 4px 16px -4px hsl(0 0% 0% / 0.3);
+    --shadow-card-hover: 0 8px 24px -8px hsl(0 0% 0% / 0.4), 
+                         0 16px 32px -8px hsl(0 0% 0% / 0.2);
+
+    /* Dark mode gradients - simplified */
     --gradient-hero: hsl(var(--background));
     --gradient-card: hsl(var(--card));
     --gradient-button: hsl(var(--accent));
+    --gradient-button-hover: hsl(43 55% 55%);
+
+    --sidebar-background: 220 20% 8%;
+    --sidebar-foreground: 40 15% 92%;
+    --sidebar-primary: 43 60% 60%;
+    --sidebar-primary-foreground: 220 20% 8%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 40 15% 92%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 43 60% 60%;
   }
 }
 
@@ -128,28 +154,58 @@
   }
 
   body {
-    @apply bg-background text-foreground font-['Inter',sans-serif];
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    font-weight: 400;
+    letter-spacing: var(--letter-spacing-body);
+    line-height: 1.65;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  p, span, label {
+    letter-spacing: 0.015em;
   }
 }
 
 @layer components {
-  /* Jetleg Button Variants */
+  /* Jetleg Primary Button - Gold gradient */
   .btn-jetleg-primary {
-    @apply bg-gradient-to-r from-accent to-[hsl(var(--jetleg-amber-dark))] text-primary-foreground font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95;
+    @apply font-medium px-8 py-4 rounded-xl tracking-wide transition-all duration-300 hover:scale-105 active:scale-95;
+    background: var(--gradient-button);
+    color: hsl(220 20% 12%);
     box-shadow: var(--shadow-button);
+    letter-spacing: 0.03em;
+    font-family: var(--font-body);
+  }
+
+  .btn-jetleg-primary:hover {
+    background: var(--gradient-button-hover);
+    box-shadow: var(--shadow-button-hover);
   }
 
   .dark .btn-jetleg-primary {
-    @apply bg-gradient-to-r from-accent to-[hsl(var(--jetleg-amber-dark))] text-accent-foreground;
-    box-shadow: var(--shadow-button);
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
   }
 
+  .dark .btn-jetleg-primary:hover {
+    background: hsl(43 55% 55%);
+  }
+
+  /* Jetleg Secondary Button */
   .btn-jetleg-secondary {
-    @apply bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:bg-primary/90 hover:scale-105 active:scale-95;
+    @apply bg-primary text-primary-foreground font-medium px-8 py-4 rounded-xl transition-all duration-300 hover:bg-primary/90 hover:scale-105 active:scale-95;
+    letter-spacing: 0.02em;
   }
 
+  /* Jetleg Outline Button */
   .btn-jetleg-outline {
-    @apply border-2 border-accent text-accent bg-transparent font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:bg-accent hover:text-primary-foreground hover:scale-105 active:scale-95;
+    @apply border-2 border-accent text-accent bg-transparent font-medium px-8 py-4 rounded-xl transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105 active:scale-95;
   }
 
   /* Bottom navigation stays fixed */
@@ -166,28 +222,37 @@
     @apply bg-gradient-to-r from-primary to-primary/80 text-white py-8;
   }
 
-  /* Jetleg Card - Updated with reduced hover scale and better mobile behavior */
+  /* Jetleg Card - Luxe styling */
   .card-jetleg {
     @apply bg-card rounded-2xl overflow-hidden transition-all duration-300;
-    box-shadow: var(--shadow-card);
     background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+    border: 1px solid hsl(35 15% 90% / 0.5);
+  }
+
+  .card-jetleg:hover {
+    box-shadow: var(--shadow-card-hover);
+    border-color: hsl(43 65% 55% / 0.2);
   }
 
   .dark .card-jetleg {
-    @apply bg-card border border-white/10;
+    @apply bg-card;
     background: hsl(var(--card));
-    box-shadow: 0 4px 6px -1px hsl(0 0% 0% / 0.3);
+    border: 1px solid hsl(220 15% 25% / 0.5);
+  }
+
+  .dark .card-jetleg:hover {
+    border-color: hsl(43 60% 60% / 0.3);
   }
   
   /* Enhanced hover effects with better mobile support */
   @media (hover: hover) {
     .card-jetleg:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-4px);
     }
   }
   
-  /* Prevent hover effects on touch devices to avoid clipping */
+  /* Prevent hover effects on touch devices */
   @media (hover: none) {
     .card-jetleg:hover {
       transform: none;
@@ -208,19 +273,48 @@
     background-position: center;
   }
 
-  /* Search Form */
+  /* Search Form - Luxe glassmorphism */
   .search-form-jetleg {
-    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 lg:p-6;
+    @apply backdrop-blur-lg rounded-2xl p-6 lg:p-8;
+    background: hsl(0 0% 100% / 0.12);
+    border: 1px solid hsl(0 0% 100% / 0.15);
   }
 
-  /* Input Field - Fixed styling for both light and dark mode */
+  /* Input Field - Refined styling */
   .input-jetleg {
-    @apply w-full px-4 py-3 rounded-xl border border-input bg-white text-[hsl(222.2,84%,4.9%)] transition-all duration-200 focus:border-accent focus:ring-2 focus:ring-accent/20 focus:outline-none;
+    @apply w-full px-5 py-4 rounded-xl transition-all duration-200 focus:outline-none;
+    background: hsl(0 0% 100%);
+    border: 1px solid hsl(35 20% 88%);
+    color: hsl(220 15% 18%);
+    font-family: var(--font-body);
+    letter-spacing: 0.01em;
   }
 
-  /* Deal Badge */
+  .input-jetleg:focus {
+    border-color: hsl(43 65% 55%);
+    box-shadow: 0 0 0 3px hsl(43 65% 55% / 0.1);
+  }
+
+  /* Deal Badge - Gold accent */
   .deal-badge {
-    @apply bg-[hsl(var(--jetleg-success))]/10 text-[hsl(var(--jetleg-success))] text-sm font-semibold px-3 py-1 rounded-full border border-[hsl(var(--jetleg-success))]/20;
+    @apply text-xs font-medium px-3 py-1.5 rounded-full uppercase;
+    background: hsl(43 65% 55% / 0.15);
+    color: hsl(43 60% 40%);
+    border: 1px solid hsl(43 65% 55% / 0.25);
+    letter-spacing: 0.04em;
+  }
+
+  .dark .deal-badge {
+    background: hsl(43 60% 60% / 0.15);
+    color: hsl(43 50% 70%);
+    border-color: hsl(43 60% 60% / 0.25);
+  }
+
+  /* Discount Badge - Success green */
+  .discount-badge {
+    @apply text-xs font-medium px-3 py-1.5 rounded-full;
+    background: linear-gradient(135deg, hsl(142 50% 45%) 0%, hsl(142 45% 40%) 100%);
+    color: white;
   }
 
   /* Animation classes */
@@ -232,9 +326,8 @@
     transition: var(--transition-smooth);
   }
 
-  /* Updated hover scale animation with reduced scale */
   .animate-scale-hover:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
   }
 
   /* Date input styling */
@@ -246,20 +339,23 @@
 @layer utilities {
   .text-hero {
     font-size: var(--font-size-hero);
-    line-height: 1.1;
-    font-weight: 800;
+    line-height: 1.15;
+    font-weight: 400;
+    font-family: var(--font-heading);
   }
 
   .text-title {
     font-size: var(--font-size-title);
-    line-height: 1.2;
-    font-weight: 700;
+    line-height: 1.25;
+    font-weight: 500;
+    font-family: var(--font-heading);
   }
 
   .text-page-title {
     font-size: var(--font-size-page-title);
     line-height: 1.2;
-    font-weight: 700;
+    font-weight: 500;
+    font-family: var(--font-heading);
   }
 
   .transition-jetleg {
@@ -269,13 +365,22 @@
   .transition-jetleg-bounce {
     transition: var(--transition-bounce);
   }
+
+  /* Luxury spacing utilities */
+  .space-luxury {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+
+  .container-luxury {
+    @apply px-6 md:px-10 lg:px-12;
+  }
 }
 
 /* Keyframes */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;

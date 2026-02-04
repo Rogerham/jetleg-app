@@ -20,13 +20,16 @@ const HeroSection = () => {
     [searchParams],
   );
 
-  const overlayOpacity = theme === "dark" ? "0.5" : "0.3";
+  // Luxe gradient overlay - more sophisticated than simple black
+  const overlayGradient = theme === "dark" 
+    ? "linear-gradient(180deg, hsl(220 20% 8% / 0.7) 0%, hsl(220 20% 8% / 0.5) 100%)"
+    : "linear-gradient(180deg, hsl(220 20% 12% / 0.55) 0%, hsl(220 20% 12% / 0.40) 100%)";
 
   return (
     <section
       className="text-white min-h-[35vh] md:min-h-[38vh] flex items-center"
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, ${overlayOpacity}), rgba(0, 0, 0, ${overlayOpacity})), url(${heroImage})`,
+        backgroundImage: `${overlayGradient}, url(${heroImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
