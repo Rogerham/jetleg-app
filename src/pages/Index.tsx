@@ -9,6 +9,7 @@ import SearchWithSuggestions from '@/components/SearchWithSuggestions';
 import ActiveFilters from '@/components/ActiveFilters';
 import HeroSection from '@/components/HeroSection';
 import DealsSection from '@/components/DealsSection';
+ import NewsletterSignup from '@/components/NewsletterSignup';
 import SaveSearchButton from '@/components/SaveSearchButton';
 import FilterDialog from '@/components/FilterDialog';
 import { Button } from '@/components/ui/button';
@@ -344,7 +345,16 @@ const Index = () => {
           </>
         ) : (
           // Default Home View with Deals
-          <DealsSection />
+           <>
+             <DealsSection />
+             
+             {/* Newsletter Signup Section */}
+             <section className="container mx-auto px-6 py-16">
+               <div className="max-w-2xl mx-auto">
+                 <NewsletterSignup type="traveler" />
+               </div>
+             </section>
+           </>
         )}
       </div>
     </TooltipProvider>
