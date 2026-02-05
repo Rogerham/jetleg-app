@@ -1,5 +1,30 @@
 {
   "nav": {
+   "newsletter": {
+     "emailPlaceholder": "Enter your email",
+     "firstName": "First name",
+     "lastName": "Last name",
+     "subscribe": "Subscribe",
+     "subscribing": "Subscribing...",
+     "tryAgain": "Try again",
+     "invalidEmail": "Please enter a valid email address.",
+     "error": "Something went wrong. Please try again.",
+     "privacyNote": "We respect your privacy. Unsubscribe anytime.",
+     "traveler": {
+       "title": "Stay updated on exclusive deals",
+       "subtitle": "Get the best empty leg flights delivered to your inbox.",
+       "successTitle": "Welcome traveler!",
+       "successMessage": "Check your inbox to confirm your subscription.",
+       "alreadySubscribed": "You're already subscribed to our newsletter."
+     },
+     "operator": {
+       "title": "Partner with Jetleg",
+       "subtitle": "List your empty leg flights and reach luxury travelers.",
+       "successTitle": "Welcome partner!",
+       "successMessage": "Check your inbox to confirm your subscription.",
+       "alreadySubscribed": "You're already registered as an operator."
+     }
+   },
     "home": "Home",
     "deals": "Deals",
     "howItWorks": "How It Works",
